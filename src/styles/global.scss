@@ -50,3 +50,14 @@ a {
 main {
   min-height: 60svh;
 }
+
+.layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.layout_main {
+  flex: 1;
+  padding: 2rem 0;
+}
