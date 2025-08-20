@@ -1,0 +1,626 @@
+@use "../../../../styles/variables" as *;
+
+.heroSection {
+  min-height: 100vh;
+  background: $gradient-background;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 0;
+  font-family: $font-primary;
+}
+
+
+
+// Phoenix Wings
+.phoenixWings {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.wingLeft, .wingRight {
+  position: absolute;
+  width: 250px;
+  height: 150px;
+  background: linear-gradient(45deg, 
+    $phoenix-blue-light 0%, 
+    $phoenix-purple-light 25%, 
+    $phoenix-pink-light 50%, 
+    $phoenix-blue-light 100%);
+  border-radius: 50% 0 0 50%;
+  animation: wingFlap 8s $ease-in-out infinite;
+  filter: blur(1px);
+
+  @keyframes wingFlap {
+    0%, 100% {
+      transform: rotate(-12deg) scale(0.8);
+      opacity: 0.2;
+    }
+    25% {
+      transform: rotate(-4deg) scale(0.9);
+      opacity: 0.4;
+    }
+    50% {
+      transform: rotate(0deg) scale(1);
+      opacity: 0.6;
+    }
+    75% {
+      transform: rotate(-4deg) scale(0.9);
+      opacity: 0.4;
+    }
+  }
+}
+
+.wingRight {
+  right: 0;
+  transform: scaleX(-1);
+  border-radius: 0 50% 50% 0;
+}
+
+// Phoenix Rising Effect
+.phoenixRising {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.phoenixGlow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 180px;
+  height: 180px;
+  background: radial-gradient(circle, 
+    $phoenix-blue-medium 0%, 
+    $phoenix-purple-medium 40%, 
+    $phoenix-pink-medium 70%, 
+    transparent 100%);
+  border-radius: 50%;
+  animation: phoenixGlow 10s $ease-in-out infinite;
+
+  @keyframes phoenixGlow {
+    0%, 100% {
+      opacity: 0.2;
+      transform: translate(-50%, -50%) scale(1);
+    }
+    50% {
+      opacity: 0.6;
+      transform: translate(-50%, -50%) scale(1.2);
+    }
+  }
+}
+
+.phoenixTrail {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.trailParticle {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: radial-gradient(circle, $primary-blue 0%, $primary-purple 50%, transparent 100%);
+  border-radius: 50%;
+  animation: trailRise 4s $ease-out infinite;
+
+  @keyframes trailRise {
+    0% {
+      opacity: 0;
+      transform: translateY(0) scale(0);
+    }
+    20% {
+      opacity: 1;
+      transform: translateY(-15px) scale(1);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(-80px) scale(0);
+    }
+  }
+}
+
+// Fire Rings
+.fireRings {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.fireRing {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 350px;
+  height: 350px;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  background: conic-gradient(from 0deg, 
+    transparent 0deg, 
+    $phoenix-blue-medium 90deg, 
+    rgba(118, 75, 162, 0.25) 180deg, 
+    $phoenix-pink-medium 270deg, 
+    transparent 360deg);
+  animation: fireRingExpand 8s $ease-out infinite;
+
+  @keyframes fireRingExpand {
+    0% {
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(0) rotate(0deg);
+    }
+    20% {
+      opacity: 0.6;
+      transform: translate(-50%, -50%) scale(0.6) rotate(90deg);
+    }
+    80% {
+      opacity: 0.3;
+      transform: translate(-50%, -50%) scale(1.4) rotate(270deg);
+    }
+    100% {
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(1.8) rotate(360deg);
+    }
+  }
+}
+
+
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+// AI Innovation Hub Badge
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: $glass-bg-light;
+  backdrop-filter: blur(10px);
+  border: 1px solid $glass-border-light;
+  border-radius: 50px;
+  padding: 0.75rem 1.5rem;
+  margin-bottom: 3rem;
+  animation: fadeInUp $duration-slower $ease-out;
+
+  .badgeIcon {
+    font-size: $font-size-xl;
+  }
+
+  .badgeText {
+    color: $text-white;
+    font-weight: $font-weight-medium;
+    font-size: $font-size-sm;
+  }
+}
+
+// Main Headline
+.headline {
+  margin-bottom: 4rem;
+  animation: fadeInUp $duration-slower $ease-out 0.2s both;
+
+  .title {
+    font-size: clamp($font-size-4xl, 5vw, $font-size-5xl);
+    font-weight: $font-weight-bold;
+    color: $text-white;
+    margin-bottom: 1.5rem;
+    line-height: $line-height-tight;
+    letter-spacing: $letter-spacing-tight;
+  }
+
+  .gradientText {
+    background: $gradient-primary;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradientShift 3s $ease-in-out infinite;
+  }
+
+  .description {
+    font-size: $font-size-xl;
+    color: $text-gray-light;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: $line-height-relaxed;
+  }
+}
+
+// Feature Cards
+.featureCards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-bottom: 4rem;
+  animation: fadeInUp $duration-slower $ease-out 0.4s both;
+}
+
+.card {
+  background: $glass-bg-dark;
+  backdrop-filter: blur(10px);
+  border: 1px solid $glass-border-dark;
+  border-radius: 20px;
+  padding: 2rem;
+  transition: all $duration-normal $ease-out;
+  cursor: pointer;
+
+  &:hover {
+    transform: translateY(-5px);
+    background: $glass-bg-light;
+    border-color: $glass-border-light;
+    box-shadow: $shadow-xl;
+  }
+
+  .cardIcon {
+    width: 60px;
+    height: 60px;
+    background: $gradient-secondary;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    font-size: $font-size-3xl;
+    transition: transform $duration-normal $ease-out;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  .cardTitle {
+    color: $text-white;
+    font-size: $font-size-xl;
+    font-weight: $font-weight-semibold;
+    margin-bottom: 1rem;
+    line-height: $line-height-normal;
+  }
+
+  .cardDescription {
+    color: $text-gray-light;
+    line-height: $line-height-relaxed;
+  }
+}
+
+// Email Subscription Section
+.subscriptionCard {
+  background: $glass-bg-medium;
+  backdrop-filter: blur(15px);
+  border: 1px solid $glass-border-medium;
+  border-radius: 25px;
+  padding: 3rem;
+  margin-bottom: 4rem;
+  animation: fadeInUp $duration-slower $ease-out 0.6s both;
+
+  .subscriptionTitle {
+    color: $text-white;
+    font-size: $font-size-4xl;
+    font-weight: $font-weight-bold;
+    margin-bottom: 0.5rem;
+  }
+
+  .subscriptionSubtitle {
+    color: $text-gray-light;
+    font-size: $font-size-lg;
+    margin-bottom: 2rem;
+  }
+}
+
+.emailForm {
+  display: flex;
+  gap: 1rem;
+  max-width: 500px;
+  margin: 0 auto 1.5rem;
+  flex-wrap: wrap;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+}
+
+.emailInput {
+  flex: 1;
+  min-width: 250px;
+  padding: 1rem 1.5rem;
+  border: 2px solid $glass-border-light;
+  border-radius: 50px;
+  background: $glass-bg-light;
+  color: $text-white;
+  font-size: $font-size-base;
+  transition: all $duration-normal $ease-out;
+
+  &::placeholder {
+    color: $text-gray-light;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: $primary-blue;
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: $shadow-glow-blue;
+  }
+}
+
+.submitButton {
+  padding: 1rem 2rem;
+  background: $gradient-secondary;
+  border: none;
+  border-radius: 50px;
+  color: $text-white;
+  font-weight: $font-weight-semibold;
+  font-size: $font-size-base;
+  cursor: pointer;
+  transition: all $duration-normal $ease-out;
+  white-space: nowrap;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: $shadow-lg;
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+.disclaimer {
+  color: $text-gray-light;
+  font-size: $font-size-sm;
+  margin-bottom: 2rem;
+
+  .sparkle {
+    animation: sparkle 2s $ease-in-out infinite;
+    display: inline-block;
+    margin-right: 0.5rem;
+  }
+}
+
+// Community Proof
+.communityProof {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+
+  .profiles {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    .profile {
+      position: relative;
+
+      .profileImage {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        border: 2px solid $text-white;
+        object-fit: cover;
+        background: $gradient-secondary;
+      }
+    }
+
+    .profileCount {
+      color: $text-white;
+      font-weight: $font-weight-semibold;
+      margin-left: 0.5rem;
+    }
+  }
+
+  .rating {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    .stars {
+      display: flex;
+      gap: 0.2rem;
+
+      .star {
+        animation: starTwinkle 2s $ease-in-out infinite;
+        
+        &:nth-child(2) { animation-delay: 0.2s; }
+        &:nth-child(3) { animation-delay: 0.4s; }
+        &:nth-child(4) { animation-delay: 0.6s; }
+        &:nth-child(5) { animation-delay: 0.8s; }
+      }
+    }
+
+    .ratingText {
+      color: $text-white;
+      font-weight: $font-weight-medium;
+    }
+  }
+}
+
+// Statistics Section
+.statistics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  animation: fadeInUp $duration-slower $ease-out 0.8s both;
+
+  .stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    position: relative;
+
+    .statNumber {
+      font-size: $font-size-4xl;
+      font-weight: $font-weight-bold;
+      background: $gradient-primary;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: countUp 2s $ease-out;
+      position: relative;
+      display: inline-block;
+
+      .statDot {
+        position: absolute;
+        right: -8px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: $primary-pink;
+        font-size: $font-size-xl;
+        animation: dotPulse 2s $ease-in-out infinite;
+        opacity: 0.8;
+      }
+    }
+
+    .statLabel {
+      color: $text-gray-light;
+      font-size: $font-size-sm;
+      font-weight: $font-weight-medium;
+      animation: labelFadeIn $duration-slow $ease-out 1.5s both;
+    }
+  }
+}
+
+// Animations
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes gradientShift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes sparkle {
+  0%, 100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2) rotate(180deg);
+    opacity: 0.8;
+  }
+}
+
+@keyframes starTwinkle {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+}
+
+@keyframes countUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes dotPulse {
+  0%, 100% {
+    transform: translateY(-50%) scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translateY(-50%) scale(1.2);
+    opacity: 1;
+  }
+}
+
+@keyframes labelFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1rem;
+  }
+
+  .headline .title {
+    font-size: 2.5rem;
+  }
+
+  .featureCards {
+    grid-template-columns: 1fr;
+  }
+
+  .subscriptionCard {
+    padding: 2rem 1.5rem;
+  }
+
+  .communityProof {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .statistics {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .heroSection {
+    padding: 1rem 0;
+  }
+
+  .headline .title {
+    font-size: 2rem;
+  }
+
+  .headline .description {
+    font-size: 1rem;
+  }
+
+  .subscriptionCard .subscriptionTitle {
+    font-size: 1.5rem;
+  }
+}

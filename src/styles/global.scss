@@ -1,5 +1,6 @@
 @use "./variables" as *;
 @use "./mixins" as *;
+@import "bootstrap/dist/css/bootstrap.min.css";
 
 :root {
   --background: #ffffff;
@@ -59,5 +60,5 @@ main {
 
 .layout_main {
   flex: 1;
-  padding: 2rem 0;
+  // padding: 2rem 0;
 }
