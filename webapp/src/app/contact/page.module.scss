@@ -1,0 +1,33 @@
+.section {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.form {
+  margin-top: 16px;
+  display: grid;
+  gap: 12px;
+}
+
+.row {
+  display: grid;
+}
+
+.input,
+.textarea {
+  padding: 12px 14px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+  background: transparent;
+  color: inherit;
+}
+
+.submit {
+  height: 44px;
+  border-radius: 9999px;
+  background: var(--foreground);
+  color: var(--background);
+  font-weight: 600;
+  border: none;
+}
