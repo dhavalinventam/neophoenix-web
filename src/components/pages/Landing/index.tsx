@@ -6,6 +6,7 @@ import PersonalizedWishlist from './personalized-wishlist';
 import Testimonials from './testimonials';
 import FAQ from './faq';
 import CtaBanner from './cta-banner';
+import FeatureComparison from './Feature-Comparison';
 
 const LandingPage = () => {
   return (
@@ -16,6 +17,7 @@ const LandingPage = () => {
       <PersonalizedWishlist />
       <Testimonials />
       <FAQ />
+      <FeatureComparison />
       <CtaBanner />
     </>
   );
