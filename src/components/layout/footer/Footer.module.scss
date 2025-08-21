@@ -1,17 +1,692 @@
+@use '../../../styles/variables' as *;
 .footer {
-  background: #f9fafb;
-  border-top: 1px solid #e5e7eb;
-  padding: 2rem 0;
+  position: relative;
+  background: linear-gradient(
+    135deg,
+    rgba($bg-dark-primary, 0.9) 0%,
+    rgba($bg-dark-secondary, 0.9) 100%
+  );
+  border-top: 1px solid $glass-border-dark;
+  color: $text-white;
+  padding: 4rem 0 2rem;
   margin-top: auto;
+  overflow: hidden;
+
+  // Background effects
+  .backgroundEffects {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .gradientArc {
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 800px;
+    height: 800px;
+    background: linear-gradient(45deg, $phoenix-blue-light 0%, $phoenix-purple-light 100%);
+    border-radius: 50%;
+    transform: rotate(-15deg);
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .circularShape {
+    position: absolute;
+    top: 20%;
+    left: -10%;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, $phoenix-pink-light 0%, transparent 70%);
+    border-radius: 50%;
+    animation: pulse 4s ease-in-out infinite;
+  }
+
+  .dottedPattern {
+    position: absolute;
+    top: 10%;
+    right: 10%;
+    width: 100px;
+    height: 100px;
+    background-image: radial-gradient(circle, $glass-bg-light 1px, transparent 1px);
+    background-size: 10px 10px;
+    animation: rotate 20s linear infinite;
+  }
+
+  // Main content
+  .mainContent {
+    position: relative;
+    z-index: 2;
+    margin-bottom: 3rem;
+  }
+
+  .companySection {
+    padding: 0 2rem 0 1rem;
+
+    .logoSection {
+      .logoContainer {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 7px;
+        margin-bottom: 1rem;
+      }
+      .logoImage {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        max-width: 50px;
+        width: 100%;
+      }
+
+      .phoenixImage {
+        width: 100%;
+        height: 100%;
+      }
+
+      .brandText {
+        font-size: 16px;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        transition: all 0.3s ease;
+      }
+
+      .companyDescription {
+        color: $text-gray-light;
+        font-size: $font-size-sm;
+        line-height: $line-height-relaxed;
+        margin: 0;
+      }
+    }
+  }
+
+  .rightSideContent {
+    padding-left: 1rem;
+
+    .navigationMenu {
+      .column {
+        padding: 0 0.5rem;
+
+        .columnTitle {
+          text-align: start;
+          font-size: $font-size-lg;
+          font-weight: $font-weight-bold;
+          margin-bottom: 1rem;
+          color: $text-white;
+          position: relative;
+
+          &::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 25px;
+            height: 2px;
+            background: $gradient-secondary;
+            border-radius: 2px;
+          }
+        }
+
+        .linkList {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+          text-align: start;
+
+          li {
+            margin-bottom: 0.5rem;
+
+            .link {
+              color: $text-gray-light;
+              text-decoration: none;
+              font-size: $font-size-sm;
+              transition: all $duration-normal $ease-in-out;
+              position: relative;
+              padding-left: 0;
+
+              &::before {
+                content: '';
+                position: absolute;
+                left: -12px;
+                top: 50%;
+                width: 0;
+                height: 2px;
+                background: $primary-blue;
+                transition: width $duration-normal $ease-in-out;
+                transform: translateY(-50%);
+              }
+
+              &:hover {
+                color: $text-white;
+                padding-left: 12px;
+
+                &::before {
+                  width: 8px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .socialEmailSection {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      align-items: flex-end;
+      padding-left: 1rem;
+
+      .socialSection {
+        text-align: start;
+        width: 100%;
+
+        .socialTitle {
+          font-size: $font-size-base;
+          font-weight: $font-weight-semibold;
+          margin-bottom: 1rem;
+          color: $text-white;
+        }
+
+        .socialIcons {
+          display: flex;
+          gap: 1rem;
+          justify-content: flex-start;
+
+          .socialIcon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: $glass-bg-light;
+            border-radius: 50%;
+            color: $text-white;
+            text-decoration: none;
+            transition: all $duration-normal $ease-in-out;
+            backdrop-filter: blur(10px);
+            border: 1px solid $glass-border-light;
+
+            &:hover {
+              background: $glass-bg-medium;
+              transform: translateY(-3px);
+              box-shadow: $shadow-xl;
+            }
+
+            svg {
+              max-width: 18px;
+              width: 100%;
+              transition: transform $duration-normal $ease-in-out;
+            }
+
+            &:hover svg {
+              transform: scale(1.1);
+            }
+          }
+        }
+      }
+
+      .emailSection {
+        text-align: start;
+        width: 100%;
+
+        .emailTitle {
+          font-size: $font-size-base;
+          font-weight: $font-weight-semibold;
+          margin-bottom: 1rem;
+          color: $text-white;
+        }
+
+        .emailForm {
+          .emailInputGroup {
+            position: relative;
+            display: flex;
+            align-items: center;
+            background: $glass-bg-light;
+            border-radius: 50px;
+            padding: 5px;
+            backdrop-filter: blur(10px);
+            border: 1px solid $glass-border-light;
+            transition: all $duration-normal $ease-in-out;
+
+            &:focus-within {
+              background: $glass-bg-medium;
+              box-shadow: $shadow-glow-blue;
+            }
+
+            .emailInput {
+              flex: 1;
+              background: transparent;
+              border: none;
+              color: $text-white;
+              padding: 10px 20px;
+              font-size: $font-size-sm;
+              outline: none;
+
+              &::placeholder {
+                color: $text-gray-medium;
+              }
+            }
+
+            .emailButton {
+              background: $gradient-secondary;
+              border: none;
+              border-radius: 50%;
+              width: 40px;
+              height: 40px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              color: $text-white;
+              cursor: pointer;
+              transition: all $duration-normal $ease-in-out;
+              position: relative;
+              overflow: hidden;
+
+              &::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(90deg, transparent, $glass-bg-light, transparent);
+                transition: left $duration-slow $ease-in-out;
+              }
+
+              &:hover {
+                &::before {
+                  left: 100%;
+                }
+              }
+
+              .sendIcon {
+                transition: transform $duration-normal $ease-in-out;
+              }
+
+              &:hover .sendIcon {
+                transform: translateX(2px);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .column {
+    padding: 0 1.5rem;
+
+    .columnTitle {
+      font-size: $font-size-xl;
+      font-weight: $font-weight-bold;
+      margin-bottom: 1.5rem;
+      color: $text-white;
+      position: relative;
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -8px;
+        left: 0;
+        width: 30px;
+        height: 3px;
+        background: $gradient-secondary;
+        border-radius: 2px;
+      }
+    }
+
+    .linkList {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      li {
+        margin-bottom: 0.75rem;
+
+        .link {
+          color: $text-gray-light;
+          text-decoration: none;
+          font-size: $font-size-sm;
+          transition: all $duration-normal $ease-in-out;
+          position: relative;
+          padding-left: 0;
+
+          &::before {
+            content: '';
+            position: absolute;
+            left: -15px;
+            top: 50%;
+            width: 0;
+            height: 2px;
+            background: $primary-blue;
+            transition: width $duration-normal $ease-in-out;
+            transform: translateY(-50%);
+          }
+
+          &:hover {
+            color: $text-white;
+            padding-left: 15px;
+
+            &::before {
+              width: 10px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // Bottom row
+  .bottomRow {
+    position: relative;
+    z-index: 2;
+    border-top: 1px solid $glass-border-dark;
+    padding-top: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  // Copyright
+  .copyright {
+    position: relative;
+    z-index: 2;
+    border-top: 1px solid $glass-border-dark;
+    padding-top: 1.5rem;
+
+    .copyrightContent {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .copyrightText {
+      color: $text-gray-light;
+      font-size: $font-size-sm;
+      margin: 0;
+    }
+
+    .legalLinks {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .legalLink {
+      color: $text-gray-light;
+      font-size: $font-size-sm;
+      text-decoration: none;
+      transition: all $duration-normal $ease-in-out;
+      position: relative;
+
+      &:hover {
+        color: $text-white;
+        text-decoration: underline;
+      }
+    }
+
+    .separator {
+      color: $text-gray-light;
+      font-size: $font-size-sm;
+    }
+  }
 }
 
-.inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 1rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  color: #6b7280;
-  font-size: 0.875rem;
+// Animations
+@keyframes float {
+  0%,
+  100% {
+    transform: rotate(-15deg) translateY(0px);
+  }
+  50% {
+    transform: rotate(-15deg) translateY(-20px);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.2;
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .footer {
+    padding: 3rem 0 1.5rem;
+
+    .mainContent {
+      margin-bottom: 1rem;
+    }
+
+    .companySection {
+      padding: 0 1rem;
+      margin-bottom: 2rem;
+      text-align: center;
+
+      .logoSection {
+        .logo {
+          justify-content: center;
+          margin-bottom: 1rem;
+
+          .logoIcon {
+            width: 40px;
+            height: 40px;
+            font-size: 1.25rem;
+          }
+
+          .logoText {
+            font-size: 1.25rem;
+          }
+        }
+        .logoContainer {
+          justify-content: center;
+        }
+
+        .companyDescription {
+          font-size: 0.9rem;
+          max-width: 100%;
+          text-align: center;
+        }
+      }
+    }
+
+    .column {
+      padding: 0 1rem;
+      margin-bottom: 2rem;
+
+      .columnTitle {
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+      }
+
+      .linkList li {
+        margin-bottom: 0.5rem;
+
+        .link {
+          font-size: 0.9rem;
+        }
+      }
+    }
+
+    .bottomRow {
+      padding-top: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .copyright {
+      .copyrightContent {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.75rem;
+      }
+    }
+
+    .rightSideContent {
+      padding-left: 0.5rem;
+
+      .navigationMenu {
+        .column {
+          padding: 0 0.5rem;
+
+          .columnTitle {
+            font-size: 1rem;
+            margin-bottom: 0.75rem;
+          }
+
+          .linkList li {
+            margin-bottom: 0.4rem;
+
+            .link {
+              font-size: 0.85rem;
+            }
+          }
+        }
+      }
+
+      .socialEmailSection {
+        align-items: center;
+        gap: 1rem;
+        padding-left: 0.5rem;
+
+        .socialSection {
+          text-align: center;
+
+          .socialIcons {
+            justify-content: center;
+            gap: 0.75rem;
+
+            .socialIcon {
+              width: 40px;
+              height: 40px;
+            }
+          }
+        }
+
+        .emailSection {
+          text-align: center;
+          .emailForm .emailInputGroup {
+            .emailInput {
+              padding: 10px 15px;
+              font-size: 0.9rem;
+            }
+
+            .emailButton {
+              width: 40px;
+              height: 40px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @media (max-width: 576px) {
+    .footer {
+      .companySection {
+        .logoSection {
+          .logo {
+            .logoIcon {
+              width: 35px;
+              height: 35px;
+              font-size: 1.1rem;
+            }
+
+            .logoText {
+              font-size: 1.1rem;
+            }
+          }
+
+          .companyDescription {
+            font-size: 0.85rem;
+          }
+        }
+      }
+
+      .column {
+        text-align: center;
+
+        .linkList li .link {
+          padding-left: 0;
+
+          &::before {
+            display: none;
+          }
+
+          &:hover {
+            padding-left: 0;
+          }
+        }
+      }
+
+      .rightSideContent {
+        padding-left: 0.25rem;
+
+        .navigationMenu {
+          .column {
+            padding: 0 0.25rem;
+
+            .columnTitle {
+              font-size: 0.95rem;
+              margin-bottom: 0.5rem;
+            }
+
+            .linkList li {
+              margin-bottom: 0.3rem;
+
+              .link {
+                font-size: 0.8rem;
+              }
+            }
+          }
+        }
+
+        .socialEmailSection {
+          gap: 0.75rem;
+          padding-left: 0.25rem;
+
+          .socialSection .socialIcons {
+            gap: 0.5rem;
+
+            .socialIcon {
+              width: 35px;
+              height: 35px;
+            }
+          }
+
+          .emailSection .emailForm .emailInputGroup {
+            .emailInput {
+              padding: 8px 12px;
+              font-size: 0.85rem;
+            }
+
+            .emailButton {
+              width: 35px;
+              height: 35px;
+            }
+          }
+        }
+      }
+    }
+  }
 }

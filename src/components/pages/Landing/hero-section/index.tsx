@@ -1,17 +1,17 @@
-"use client";
+'use client';
 
-import React, { useState, useEffect, useRef } from "react";
-import styles from "./HeroSection.module.scss";
+import React, { useState, useEffect, useRef } from 'react';
+import styles from './HeroSection.module.scss';
 
 const HeroSection = () => {
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState('');
   const [counts, setCounts] = useState({ tools: 0, readers: 0, satisfaction: 0 });
   const statsRef = useRef<HTMLDivElement>(null);
 
   const handleEmailSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Handle email subscription logic here
-    console.log("Email submitted:", email);
+    console.log('Email submitted:', email);
   };
 
   // Counting animation effect
@@ -97,7 +97,7 @@ const HeroSection = () => {
         ))}
       </div>
 
-      <div className={styles.container}>
+      <div className="container text-center">
         {/* AI Innovation Hub Badge */}
         <div className={styles.badge}>
           <span className={styles.badgeIcon}>🚀</span>
@@ -177,9 +177,9 @@ const HeroSection = () => {
           <div className={styles.communityProof}>
             <div className={styles.profiles}>
               {[
-                "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face",
-                "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&h=80&fit=crop&crop=face",
-                "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&crop=face",
+                'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face',
+                'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&h=80&fit=crop&crop=face',
+                'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&crop=face',
               ].map((imageUrl, i) => (
                 <div key={i} className={styles.profile} style={{ zIndex: 4 - i }}>
                   <img
