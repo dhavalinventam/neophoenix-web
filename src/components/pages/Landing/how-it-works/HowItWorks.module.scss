@@ -1,0 +1,253 @@
+@import '@/styles/variables';
+
+.howItWorksSection {
+  background: $gradient-background;
+  padding: 6rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 30% 20%, $phoenix-blue-light 0%, transparent 50%),
+                radial-gradient(circle at 70% 80%, $phoenix-purple-light 0%, transparent 50%);
+    pointer-events: none;
+  }
+}
+
+.header {
+  margin-bottom: 4rem;
+  position: relative;
+  z-index: 1;
+}
+
+.title {
+  font-family: $font-primary;
+  font-size: $font-size-5xl;
+  font-weight: $font-weight-bold;
+  color: $text-white;
+  margin-bottom: 1.5rem;
+  position: relative;
+  display: inline-block;
+
+  .underline {
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: $gradient-primary;
+    border-radius: 2px;
+  }
+}
+
+.description {
+  font-family: $font-primary;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-normal;
+  color: $text-gray-light;
+  line-height: $line-height-relaxed;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.stepCard {
+  background: $bg-dark-secondary;
+  border: 1px solid $glass-border-medium;
+  border-radius: 20px;
+  padding: 2.5rem 2rem;
+  text-align: center;
+  transition: all $duration-normal $ease-in-out;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  height: 100%;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: $gradient-primary;
+    opacity: 0;
+    transition: opacity $duration-normal $ease-in-out;
+    z-index: -1;
+  }
+
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: $shadow-lg;
+    border-color: $glass-border-light;
+
+    &::before {
+      opacity: 0.05;
+    }
+
+    .stepIcon {
+      transform: scale(1.1);
+      background: $gradient-primary;
+    }
+
+    .stepNumber {
+      background: $gradient-primary;
+      transform: scale(1.1);
+    }
+  }
+}
+
+.stepNumber {
+  width: 50px;
+  height: 50px;
+  background: $primary-blue;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+  font-family: $font-primary;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  color: $text-white;
+  transition: all $duration-normal $ease-in-out;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.stepIcon {
+  width: 70px;
+  height: 70px;
+  background: $bg-dark-tertiary;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+  transition: all $duration-normal $ease-in-out;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: $gradient-primary;
+    border-radius: 50%;
+    z-index: -1;
+    opacity: 0.3;
+  }
+}
+
+.iconWrapper {
+  color: $text-white;
+  width: 32px;
+  height: 32px;
+}
+
+.stepTitle {
+  font-family: $font-primary;
+  font-size: $font-size-xl;
+  font-weight: $font-weight-semibold;
+  color: $text-white;
+  margin-bottom: 1rem;
+  line-height: $line-height-tight;
+}
+
+.stepDescription {
+  font-family: $font-primary;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-normal;
+  color: $text-gray-light;
+  line-height: $line-height-relaxed;
+  margin-bottom: 0;
+}
+
+.connector {
+  position: absolute;
+  top: 50%;
+  right: 0px;
+  transform: translateY(-50%);
+  color: $primary-blue;
+  z-index: 10;
+  display: none;
+
+  @media (min-width: 992px) {
+    display: block;
+  }
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+  .howItWorksSection {
+    padding: 4rem 0;
+  }
+
+  .title {
+    font-size: $font-size-4xl;
+  }
+
+  .description {
+    font-size: $font-size-base;
+  }
+
+  .stepCard {
+    padding: 2rem 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .stepTitle {
+    font-size: $font-size-lg;
+  }
+
+  .stepNumber {
+    width: 40px;
+    height: 40px;
+    font-size: $font-size-base;
+  }
+
+  .stepIcon {
+    width: 60px;
+    height: 60px;
+  }
+
+  .iconWrapper {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: $font-size-3xl;
+  }
+
+  .stepCard {
+    padding: 1.5rem 1rem;
+  }
+
+  .stepNumber {
+    width: 35px;
+    height: 35px;
+    font-size: $font-size-sm;
+  }
+
+  .stepIcon {
+    width: 50px;
+    height: 50px;
+  }
+
+  .iconWrapper {
+    width: 24px;
+    height: 24px;
+  }
+}
