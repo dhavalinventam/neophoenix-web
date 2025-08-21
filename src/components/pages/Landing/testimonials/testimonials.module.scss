@@ -1,0 +1,281 @@
+@import '../../../../styles/variables';
+
+.testimonialsSection {
+  background: $bg-dark-primary;
+  padding: 6rem 0;
+  position: relative;
+  overflow: hidden;
+
+  // Background gradient effect
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: $gradient-background;
+    opacity: 0.3;
+    z-index: 0;
+  }
+
+  // Subtle particle effect
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+      radial-gradient(circle at 20% 80%, $phoenix-blue-light 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, $phoenix-purple-light 0%, transparent 50%),
+      radial-gradient(circle at 40% 40%, $phoenix-pink-light 0%, transparent 50%);
+    z-index: 0;
+  }
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 4rem;
+
+  .title {
+    font-family: $font-secondary;
+    font-size: $font-size-4xl;
+    font-weight: $font-weight-bold;
+    color: $text-white;
+    margin-bottom: 1rem;
+    background: $gradient-primary;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: $line-height-tight;
+
+    @media (max-width: 768px) {
+      font-size: $font-size-3xl;
+    }
+  }
+
+  .subtitle {
+    font-size: $font-size-lg;
+    color: $text-gray-light;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: $line-height-relaxed;
+  }
+}
+
+.testimonialsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  margin-bottom: 4rem;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+.testimonialCard {
+  background: $glass-bg-medium;
+  backdrop-filter: blur(20px);
+  border: 1px solid $glass-border-medium;
+  border-radius: 20px;
+  padding: 2rem;
+  position: relative;
+  transition: all $duration-normal $ease-out;
+  cursor: pointer;
+
+  // Glass morphism effect
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.1) 0%,
+      rgba(255, 255, 255, 0.05) 100%
+    );
+    border-radius: 20px;
+    z-index: -1;
+  }
+
+  // Hover effects
+  &:hover {
+    border-color: $glass-border-light;
+    box-shadow: $shadow-glow-blue, $shadow-xl;
+    transform: translateY(-8px);
+
+    .quoteIcon {
+      color: $primary-blue;
+      transform: scale(1.1);
+    }
+  }
+
+  // Focus state for accessibility
+  &:focus-within {
+    outline: 2px solid $primary-blue;
+    outline-offset: 2px;
+  }
+}
+
+.quoteIcon {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  color: $text-gray-medium;
+  transition: all $duration-normal $ease-out;
+  opacity: 0.6;
+
+  svg {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.testimonialText {
+  font-size: $font-size-base;
+  line-height: $line-height-relaxed;
+  color: $text-white;
+  margin-bottom: 2rem;
+  font-weight: $font-weight-normal;
+  position: relative;
+  z-index: 1;
+}
+
+.userInfo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid $glass-border-medium;
+  transition: all $duration-normal $ease-out;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform $duration-normal $ease-out;
+  }
+
+  &:hover img {
+    transform: scale(1.1);
+  }
+}
+
+.userDetails {
+  flex: 1;
+}
+
+.userName {
+  font-family: $font-secondary;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $text-white;
+  margin: 0 0 0.25rem 0;
+  line-height: $line-height-tight;
+}
+
+.userRole {
+  font-size: $font-size-sm;
+  color: $text-gray-light;
+  margin: 0;
+  font-weight: $font-weight-normal;
+}
+
+
+
+// Responsive adjustments
+@media (max-width: 1024px) {
+  .testimonialsGrid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .testimonialCard {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .testimonialsSection {
+    padding: 4rem 0;
+  }
+
+  .container {
+    padding: 0 1rem;
+  }
+
+  .header {
+    margin-bottom: 3rem;
+
+    .title {
+      font-size: $font-size-2xl;
+    }
+
+    .subtitle {
+      font-size: $font-size-base;
+    }
+  }
+
+  .testimonialCard {
+    padding: 1.25rem;
+  }
+
+  .avatar {
+    width: 50px;
+    height: 50px;
+  }
+
+  .userName {
+    font-size: $font-size-base;
+  }
+
+
+}
+
+// Animation keyframes for additional effects
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(102, 126, 234, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(102, 126, 234, 0.5);
+  }
+}
+
+// Optional: Add floating animation to cards
+.testimonialCard:nth-child(odd) {
+  animation: float 6s ease-in-out infinite;
+}
+
+.testimonialCard:nth-child(even) {
+  animation: float 6s ease-in-out infinite reverse;
+}
