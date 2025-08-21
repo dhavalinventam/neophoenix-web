@@ -606,6 +606,7 @@
     padding: 0 1rem;
   }
   .badge {
+    padding: 5px 15px;
     margin-bottom: 1.5rem;
   }
   .headline {
@@ -619,6 +620,9 @@
   .headline .description {
     font-size: 14px;
   }
+  .subscriptionCard .subscriptionTitle {
+    font-size: 1.5rem;
+  }
 
   .featureCards {
     grid-template-columns: 1fr;
@@ -631,11 +635,5 @@
   .communityProof {
     flex-direction: column;
     gap: 1rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .subscriptionCard .subscriptionTitle {
-    font-size: 1.5rem;
   }
 }
