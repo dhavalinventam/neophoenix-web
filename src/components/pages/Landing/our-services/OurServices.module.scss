@@ -1,0 +1,265 @@
+@import '@/styles/variables';
+
+.servicesSection {
+  background: $gradient-background;
+  padding: 6rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// Bootstrap container is used instead of custom container
+
+.header {
+  margin-bottom: 4rem;
+}
+
+.title {
+  font-family: $font-primary;
+  font-size: $font-size-5xl;
+  font-weight: $font-weight-bold;
+  color: $text-white;
+  margin-bottom: 1.5rem;
+  position: relative;
+  display: inline-block;
+
+  .underline {
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: $gradient-primary;
+    border-radius: 2px;
+  }
+}
+
+.description {
+  font-family: $font-primary;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-normal;
+  color: $text-gray-light;
+  line-height: $line-height-relaxed;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+// Bootstrap grid is used instead of custom grid
+
+.serviceCard {
+  background: $bg-dark-secondary;
+  border: 1px solid $glass-border-medium;
+  border-radius: 20px;
+  padding: 3rem 2.5rem;
+  text-align: center;
+  transition: all $duration-normal $ease-in-out;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: $gradient-primary;
+    opacity: 0;
+    transition: opacity $duration-normal $ease-in-out;
+    z-index: -1;
+  }
+
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: $shadow-lg;
+    border-color: $glass-border-light;
+
+    &::before {
+      opacity: 0.05;
+    }
+
+    .cardIcon {
+      background: $gradient-primary;
+      transform: scale(1.1);
+    }
+
+    .cardButton {
+      background: $gradient-primary;
+      transform: translateY(-2px);
+      box-shadow: $shadow-glow-blue;
+    }
+  }
+}
+
+.cardIcon {
+  width: 80px;
+  height: 80px;
+  background: $primary-blue;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 2rem;
+  transition: all $duration-normal $ease-in-out;
+  position: relative;
+  box-shadow: 0 4px 20px rgba(102, 126, 234, 0.3);
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: $gradient-primary;
+    border-radius: 50%;
+    z-index: -1;
+    opacity: 0.3;
+  }
+}
+
+.iconText {
+  color: $text-white;
+  width: 32px;
+  height: 32px;
+}
+
+.cardTitle {
+  font-family: $font-primary;
+  font-size: $font-size-2xl;
+  font-weight: $font-weight-semibold;
+  color: $text-white;
+  margin-bottom: 1.5rem;
+  line-height: $line-height-tight;
+}
+
+.cardDescription {
+  font-family: $font-primary;
+  font-size: $font-size-base;
+  font-weight: $font-weight-normal;
+  color: $text-gray-light;
+  line-height: $line-height-relaxed;
+  margin-bottom: 2rem;
+}
+
+.featuresList {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2.5rem;
+  text-align: left;
+}
+
+.featureItem {
+  font-family: $font-primary;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-normal;
+  color: $text-gray-light;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  line-height: $line-height-normal;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.checkmark {
+  width: 20px;
+  height: 20px;
+  background: $primary-blue;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $text-white;
+  font-size: 0.75rem;
+  font-weight: $font-weight-bold;
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+}
+
+.cardButton {
+  font-family: $font-primary;
+  font-size: $font-size-base;
+  font-weight: $font-weight-medium;
+  color: $text-white;
+  background: $gradient-secondary;
+  border: none;
+  border-radius: 12px;
+  padding: 1rem 2rem;
+  cursor: pointer;
+  transition: all $duration-normal $ease-in-out;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left $duration-slow $ease-in-out;
+  }
+
+  &:hover::before {
+    left: 100%;
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+// Responsive Design - Using Bootstrap grid system
+@media (max-width: 768px) {
+  .servicesSection {
+    padding: 4rem 0;
+  }
+
+  .title {
+    font-size: $font-size-4xl;
+  }
+
+  .description {
+    font-size: $font-size-base;
+  }
+
+  .serviceCard {
+    padding: 2rem 1.5rem;
+  }
+
+  .cardTitle {
+    font-size: $font-size-xl;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: $font-size-3xl;
+  }
+
+  .serviceCard {
+    padding: 1.5rem 1rem;
+  }
+
+  .cardIcon {
+    width: 60px;
+    height: 60px;
+  }
+
+  .iconText {
+    font-size: 1.5rem;
+  }
+}

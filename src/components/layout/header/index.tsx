@@ -47,6 +47,9 @@ export default function Header() {
           <Link className={styles.link} href="/">
             Home
           </Link>
+          <Link className={styles.link} href="/services">
+            Services
+          </Link>
           <Link className={styles.link} href="/contact">
             Contact
           </Link>
@@ -70,6 +73,9 @@ export default function Header() {
         <nav className={styles.mobileNavContent}>
           <Link className={styles.mobileLink} href="/" onClick={() => setIsMenuOpen(false)}>
             Home
+          </Link>
+          <Link className={styles.mobileLink} href="/services" onClick={() => setIsMenuOpen(false)}>
+            Services
           </Link>
           <Link className={styles.mobileLink} href="/contact" onClick={() => setIsMenuOpen(false)}>
             Contact
