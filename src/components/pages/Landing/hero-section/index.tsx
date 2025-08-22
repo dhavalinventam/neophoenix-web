@@ -7,6 +7,7 @@ const HeroSection = () => {
   const [email, setEmail] = useState('');
   const [counts, setCounts] = useState({ tools: 0, readers: 0, satisfaction: 0 });
   const statsRef = useRef<HTMLDivElement>(null);
+  const heroRef = useRef<HTMLElement>(null);
 
   const handleEmailSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -60,12 +61,8 @@ const HeroSection = () => {
   };
 
   return (
-    <section className={styles.heroSection}>
+    <section ref={heroRef} className={styles.heroSection}>
       {/* Phoenix Wings */}
-      <div className={styles.phoenixWings}>
-        <div className={styles.wingLeft} />
-        <div className={styles.wingRight} />
-      </div>
 
       {/* Phoenix Rising Effect */}
       <div className={styles.phoenixRising}>

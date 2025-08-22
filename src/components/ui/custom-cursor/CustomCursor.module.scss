@@ -1,0 +1,52 @@
+.gradientBackground {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 3;
+  background: radial-gradient(
+    circle at var(--gradient-x, 50%) var(--gradient-y, 50%),
+    rgba(59, 130, 246, 0.2) 7%,
+    rgba(147, 51, 234, 0.15) 10%,
+    rgba(236, 72, 153, 0.01) 15%,
+    rgba(59, 130, 246, 0.01) 15%,
+    transparent 40%
+  );
+  pointer-events: none;
+  transition: all 0.15s ease-out;
+  filter: blur(50px);
+}
+
+.cursor {
+  position: fixed;
+  background-color: white;
+  width: 10px;
+  height: 10px;
+  border-radius: 100%;
+  z-index: 1;
+  transition:
+    0.3s cubic-bezier(0.75, -1.27, 0.3, 2.33) transform,
+    0.2s cubic-bezier(0.75, -0.27, 0.3, 1.33) opacity;
+  user-select: none;
+  pointer-events: none;
+  z-index: 10000;
+  transform: scale(1);
+}
+
+.cursorFollower {
+  position: fixed;
+  border: 1px solid white;
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+  z-index: 1;
+  transition:
+    0.6s cubic-bezier(0.75, -1.27, 0.3, 2.33) transform,
+    0.2s cubic-bezier(0.75, -0.27, 0.3, 1.33) opacity,
+    0.2s cubic-bezier(0.75, -0.27, 0.3, 1.33) background;
+  user-select: none;
+  pointer-events: none;
+  z-index: 10000;
+  transform: translate(0px, 0px);
+}

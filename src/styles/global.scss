@@ -1,6 +1,6 @@
-@use "./variables" as *;
-@use "./mixins" as *;
-@import "bootstrap/dist/css/bootstrap.min.css";
+@use './variables' as *;
+@use './mixins' as *;
+@import 'bootstrap/dist/css/bootstrap.min.css';
 
 :root {
   --background: #0f0f23;
@@ -15,6 +15,9 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background: $gradient-background;
   min-height: 100vh;
+  cursor: none; /* Hide default cursor */
+  position: relative;
+  z-index: 1;
 }
 
 h1,
@@ -37,14 +40,18 @@ a {
   text-decoration: none;
 }
 
-
 .layout {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  position: relative;
+  z-index: 2;
 }
 
 .layout_main {
   flex: 1;
+  position: relative;
+  z-index: 2;
   // padding: 2rem 0;
 }
+
