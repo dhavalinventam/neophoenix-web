@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import styles from './Header.module.scss';
 import logo from '../../../../public/logo.png.png';
+import Button from '@/components/ui/button';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -57,7 +58,7 @@ export default function Header() {
 
         {/* Desktop CTA Button */}
         <div className={styles.ctaContainer}>
-          <button className={styles.ctaButton}>Join Waitlist</button>
+          <Button label="Join Waitlist" />
         </div>
 
         {/* Mobile Menu Button */}
@@ -80,7 +81,7 @@ export default function Header() {
           <Link className={styles.mobileLink} href="/contact" onClick={() => setIsMenuOpen(false)}>
             Contact
           </Link>
-          <button className={styles.mobileCtaButton}>Join Waitlist</button>
+          <Button label="Join Waitlist" />
         </nav>
       </div>
     </header>

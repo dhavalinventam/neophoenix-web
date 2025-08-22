@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './OurServices.module.scss';
+import Button from '@/components/ui/button';
 
 const OurServices: React.FC = () => {
   const services = [
@@ -89,9 +90,9 @@ const OurServices: React.FC = () => {
           </p>
         </div>
 
-        <div className="row g-4 mt-5">
+        <div className="row mt-0">
           {services.map((service) => (
-            <div key={service.id} className="col-lg-6 col-md-12">
+            <div key={service.id} className="col-lg-6 col-md-12 mt-0 mb-3">
               <div className={styles.serviceCard}>
                 <div className={styles.cardIcon}>
                   <span className={styles.iconText}>{service.icon}</span>
@@ -110,7 +111,7 @@ const OurServices: React.FC = () => {
                   ))}
                 </ul>
 
-                <button className={styles.cardButton}>{service.buttonText}</button>
+                <Button label={service.buttonText} />
               </div>
             </div>
           ))}

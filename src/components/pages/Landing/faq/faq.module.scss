@@ -2,7 +2,6 @@
 
 .faqSection {
   background: $bg-dark-secondary;
-  padding: 6rem 0;
   position: relative;
   overflow: hidden;
 
@@ -27,7 +26,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: 
+    background-image:
       radial-gradient(circle at 30% 70%, $phoenix-purple-light 0%, transparent 50%),
       radial-gradient(circle at 70% 30%, $phoenix-pink-light 0%, transparent 50%),
       radial-gradient(circle at 50% 50%, $phoenix-blue-light 0%, transparent 50%);
@@ -58,10 +57,6 @@
     -webkit-text-fill-color: transparent;
     background-clip: text;
     line-height: $line-height-tight;
-
-    @media (max-width: 768px) {
-      font-size: $font-size-3xl;
-    }
   }
 
   .subtitle {
@@ -73,10 +68,6 @@
   }
 }
 
-.faqContainer {
-  margin-bottom: 4rem;
-}
-
 .faqItem {
   margin-bottom: 1rem;
   border-radius: 16px;
@@ -84,7 +75,6 @@
   background: $glass-bg-medium;
   backdrop-filter: blur(20px);
   border: 1px solid $glass-border-medium;
-  transition: all $duration-normal $ease-out;
 
   &:hover {
     border-color: $glass-border-light;
@@ -100,12 +90,11 @@
   width: 100%;
   background: none;
   border: none;
-  padding: 1.5rem 2rem;
+  padding: 1rem 1.5rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
   cursor: pointer;
-  transition: all $duration-normal $ease-out;
   text-align: left;
   color: $text-white;
   font-family: $font-primary;
@@ -118,18 +107,16 @@
     outline: 2px solid $primary-blue;
     outline-offset: -2px;
   }
-
+  .questionText {
+    font-size: $font-size-base;
+  }
   &.active {
     background: rgba(102, 126, 234, 0.1);
     border-bottom: 1px solid $glass-border-light;
 
     .questionText {
-      color: $primary-blue;
+      color: $text-white;
       font-weight: $font-weight-semibold;
-    }
-
-    .icon {
-      color: $primary-blue;
     }
   }
 }
@@ -149,7 +136,7 @@
 }
 
 .icon {
-  color: $text-gray-medium;
+  color: $text-white;
   transition: all $duration-normal $ease-out;
   flex-shrink: 0;
   display: flex;
@@ -170,19 +157,91 @@
 }
 
 .answer {
-  padding: 0 2rem 1.5rem 2rem;
+  padding: 1rem 1.5rem;
   font-size: $font-size-base;
   line-height: $line-height-relaxed;
   color: $text-gray-light;
   font-weight: $font-weight-normal;
+}
 
-  @media (max-width: 768px) {
-    padding: 0 1.5rem 1.25rem 1.5rem;
-    font-size: $font-size-sm;
+// Feedback Section Styles
+.feedbackSection {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.6rem 1.5rem;
+  border-top: 1px solid $glass-border-medium;
+}
+
+.feedbackText {
+  font-size: $font-size-sm;
+  color: $text-gray-light;
+  font-weight: $font-weight-medium;
+}
+
+.feedbackButtons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.feedbackButton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid $glass-border-medium;
+  border-radius: 8px;
+  background: transparent;
+  color: $text-white;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  cursor: pointer;
+  transition: all $duration-normal $ease-out;
+
+  &:hover:not(:disabled) {
+    border-color: $primary-blue;
+    color: $primary-blue;
+    background: rgba(102, 126, 234, 0.1);
+  }
+
+  &:focus {
+    outline: 2px solid $primary-blue;
+    outline-offset: 2px;
+  }
+
+  svg {
+    width: 16px;
+    height: 16px;
+    fill: none;
+    stroke: currentColor;
   }
 }
 
+.feedbackYes {
+  &.active {
+    background: #fbbf24;
+    border-color: #fbbf24;
+    color: #1f2937;
 
+    svg {
+      fill: #1f2937;
+      stroke: #1f2937;
+    }
+  }
+}
+
+.feedbackNo {
+  &.active {
+    background: #fbbf24;
+    border-color: #fbbf24;
+    color: #1f2937;
+
+    svg {
+      fill: #1f2937;
+      stroke: #1f2937;
+    }
+  }
+}
 
 // Responsive adjustments
 @media (max-width: 1024px) {
@@ -192,38 +251,34 @@
 }
 
 @media (max-width: 768px) {
-  .faqSection {
-    padding: 4rem 0;
-  }
-
   .container {
     padding: 0 1rem;
   }
 
   .header {
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
 
     .title {
       font-size: $font-size-2xl;
     }
 
     .subtitle {
-      font-size: $font-size-base;
+      font-size: $font-size-sm;
     }
+  }
+  .answer {
+    font-size: $font-size-sm;
   }
 
   .questionButton {
-    padding: 1.25rem 1.5rem;
+    padding: 0.6rem 1.2rem;
   }
-
-
+  .questionText {
+    font-size: $font-size-sm !important;
+  }
 }
 
 @media (max-width: 480px) {
-  .faqSection {
-    padding: 3rem 0;
-  }
-
   .header {
     margin-bottom: 2rem;
 
@@ -235,17 +290,12 @@
   .questionButton {
     padding: 1rem 1.25rem;
   }
-
-  .answer {
-    padding: 0 1.25rem 1rem 1.25rem;
-  }
-
-
 }
 
 // Animation keyframes for additional effects
 @keyframes pulse {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 1;
   }
   50% {
@@ -263,9 +313,6 @@
 }
 
 // Optional: Add subtle animations
-.faqItem:hover {
-  animation: pulse 2s ease-in-out infinite;
-}
 
 .questionButton.active {
   animation: none;

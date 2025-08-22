@@ -1,18 +1,15 @@
 @use '../../../../styles/variables' as *;
 
 .heroSection {
-  min-height: 100vh;
   background: $gradient-background;
   position: relative;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 130px 0 50px;
   font-family: $font-primary;
   cursor: none; // Hide default cursor for better effect
 }
-
 
 // Phoenix Wings
 .phoenixWings {
@@ -315,9 +312,8 @@
 
 .emailInput {
   flex: 1;
-  min-width: 250px;
-  padding: 1rem 1.5rem;
-  border: 2px solid $glass-border-light;
+  padding: 0.6rem 1.5rem;
+  border: 1px solid $glass-border-light;
   border-radius: 50px;
   background: $glass-bg-light;
   color: $text-white;
@@ -338,7 +334,7 @@
 
 .submitButton {
   padding: 1rem 2rem;
-  background: $gradient-secondary;
+  background: $gradient-primary;
   border: none;
   border-radius: 50px;
   color: $text-white;
@@ -349,7 +345,7 @@
   white-space: nowrap;
 
   &:hover {
-    transform: translateY(-2px);
+    background: $gradient-secondary;
     box-shadow: $shadow-lg;
   }
 
@@ -406,6 +402,8 @@
   .rating {
     display: flex;
     align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
     gap: 0.5rem;
 
     .stars {
@@ -565,12 +563,15 @@
 
 // Responsive Design
 @media (max-width: 768px) {
-  .heroSection {
-    padding: 130px 0 60px;
-  }
-
   .container {
     padding: 0 1rem;
+  }
+  .emailInput {
+    padding: 8px 20px;
+    font-size: $font-size-sm;
+  }
+  .statNumber {
+    font-size: $font-size-2xl !important;
   }
   .badge {
     padding: 5px 15px;
@@ -597,6 +598,7 @@
 
   .subscriptionCard {
     padding: 2rem 1.5rem;
+    margin-bottom: 2rem;
   }
 
   .communityProof {

@@ -51,9 +51,17 @@ const faqData: FAQItem[] = [
 
 const FAQ = () => {
   const [openItem, setOpenItem] = useState<number | null>(null);
+  const [feedback, setFeedback] = useState<{ [key: number]: 'yes' | 'no' | null }>({});
 
   const toggleItem = (id: number) => {
     setOpenItem(openItem === id ? null : id);
+  };
+
+  const handleFeedback = (faqId: number, value: 'yes' | 'no') => {
+    setFeedback((prev) => ({
+      ...prev,
+      [faqId]: value,
+    }));
   };
 
   const containerVariants = {
@@ -78,7 +86,7 @@ const FAQ = () => {
       y: 0,
       scale: 1,
       transition: {
-        duration: 0.5,
+        duration: 0.2,
         ease: [0.25, 0.46, 0.45, 0.94],
       },
     },
@@ -94,11 +102,11 @@ const FAQ = () => {
       opacity: 1,
       transition: {
         height: {
-          duration: 0.3,
+          duration: 0.1,
           ease: 'easeOut',
         },
         opacity: {
-          duration: 0.2,
+          duration: 0.1,
           delay: 0.1,
         },
       },
@@ -108,11 +116,11 @@ const FAQ = () => {
       opacity: 0,
       transition: {
         height: {
-          duration: 0.3,
+          duration: 0.1,
           ease: 'easeIn',
         },
         opacity: {
-          duration: 0.2,
+          duration: 0.1,
         },
       },
     },
@@ -193,6 +201,59 @@ const FAQ = () => {
                     id={`faq-answer-${item.id}`}
                   >
                     <div className={styles.answer}>{item.answer}</div>
+
+                    {/* Feedback Section */}
+                    <div className={styles.feedbackSection}>
+                      <span className={styles.feedbackText}>Was this helpful?</span>
+                      <div className={styles.feedbackButtons}>
+                        <button
+                          className={`${styles.feedbackButton} ${styles.feedbackYes} ${feedback[item.id] === 'yes' ? styles.active : ''}`}
+                          onClick={() => handleFeedback(item.id, 'yes')}
+                          disabled={feedback[item.id] !== null}
+                        >
+                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                            <path
+                              d="M14 9V5a3 3 0 0 0-6 0v4H7a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6a2 2 0 0 0-2-2h-1z"
+                              stroke="currentColor"
+                              strokeWidth="2"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            />
+                            <path
+                              d="M9 9h.01"
+                              stroke="currentColor"
+                              strokeWidth="2"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            />
+                          </svg>
+                          <span>Yes</span>
+                        </button>
+                        <button
+                          className={`${styles.feedbackButton} ${styles.feedbackNo} ${feedback[item.id] === 'no' ? styles.active : ''}`}
+                          onClick={() => handleFeedback(item.id, 'no')}
+                          disabled={feedback[item.id] !== null}
+                        >
+                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                            <path
+                              d="M10 15v4a3 3 0 0 0 6 0v-4h1a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-10a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h1z"
+                              stroke="currentColor"
+                              strokeWidth="2"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            />
+                            <path
+                              d="M15 15h.01"
+                              stroke="currentColor"
+                              strokeWidth="2"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            />
+                          </svg>
+                          <span>No</span>
+                        </button>
+                      </div>
+                    </div>
                   </motion.div>
                 )}
               </AnimatePresence>

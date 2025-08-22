@@ -2,7 +2,6 @@
 
 .personalizedWishlistSection {
   background: $gradient-background;
-  padding: 6rem 0;
   position: relative;
   overflow: hidden;
 
@@ -13,8 +12,9 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: radial-gradient(circle at 20% 30%, $phoenix-blue-light 0%, transparent 50%),
-                radial-gradient(circle at 80% 70%, $phoenix-purple-light 0%, transparent 50%);
+    background:
+      radial-gradient(circle at 20% 30%, $phoenix-blue-light 0%, transparent 50%),
+      radial-gradient(circle at 80% 70%, $phoenix-purple-light 0%, transparent 50%);
     pointer-events: none;
   }
 }
@@ -156,7 +156,6 @@
 .formGroup {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
 }
 
 .label {
@@ -169,7 +168,7 @@
 
 .inputWrapper {
   position: relative;
-  
+
   &:focus-within .inputFocus {
     opacity: 1;
     transform: scale(1.02);
@@ -179,19 +178,19 @@
 .input,
 .select {
   width: 100%;
-  padding: 1rem 1.25rem;
-  background: $bg-dark-tertiary;
-  border: 1px solid $glass-border-medium;
-  border-radius: 12px;
+  padding: 0.7rem 1.25rem !important;
+  background: $bg-dark-tertiary !important;
+  border: 1px solid $glass-border-medium !important;
+  border-radius: 12px !important;
+  color: $text-white !important;
   font-family: $font-primary;
   font-size: $font-size-base;
   font-weight: $font-weight-normal;
-  color: $text-white;
   transition: all $duration-normal $ease-in-out;
   outline: none;
 
   &::placeholder {
-    color: $text-gray-medium;
+    color: $text-gray-medium !important;
   }
 
   &:focus {
@@ -218,7 +217,8 @@
 }
 
 .submitButton {
-  width: 100%;
+  width: max-content;
+  margin: 0 auto;
   padding: 1rem 2rem;
   background: $gradient-primary;
   border: none;
@@ -237,7 +237,7 @@
   &:hover {
     transform: translateY(-2px);
     box-shadow: $shadow-lg;
-    
+
     .buttonGlow {
       opacity: 1;
     }
@@ -249,10 +249,11 @@
 
   &:focus {
     outline: none;
-    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2), $shadow-lg;
+    box-shadow:
+      0 0 0 3px rgba(102, 126, 234, 0.2),
+      $shadow-lg;
   }
 }
-
 .buttonText {
   position: relative;
   z-index: 2;
@@ -293,20 +294,25 @@
 
 // Responsive Design
 @media (max-width: 768px) {
-  .personalizedWishlistSection {
-    padding: 4rem 0;
-  }
-
   .title {
-    font-size: $font-size-3xl;
+    font-size: $font-size-2xl;
   }
 
   .description {
-    font-size: $font-size-base;
+    font-size: $font-size-sm;
+    margin-bottom: 1.5rem;
   }
 
   .formCard {
     padding: 2rem 1.5rem;
+  }
+  .form {
+    gap: 1rem;
+  }
+  .input,
+  .select {
+    padding: 0.5rem 1rem !important;
+    font-size: $font-size-sm !important;
   }
 
   .featureText {
@@ -317,13 +323,12 @@
     width: 20px;
     height: 20px;
   }
+  .legalText {
+    margin-bottom: 0px;
+  }
 }
 
 @media (max-width: 480px) {
-  .title {
-    font-size: $font-size-2xl;
-  }
-
   .formCard {
     padding: 1.5rem 1rem;
   }

@@ -37,7 +37,7 @@ const PersonalizedWishlist: React.FC = () => {
       <div className="container">
         <div className="row align-items-center">
           {/* Left Section - Benefits and Description */}
-          <div className="col-lg-6 col-md-12 mb-5 mb-lg-0">
+          <div className="col-lg-6 col-md-12 mb-3 mb-md-5 mb-lg-0">
             <div className={styles.contentSection}>
               <div className={styles.titleWrapper}>
                 <h2 className={styles.title}>Build Your Personalized AI Wishlist</h2>
@@ -179,10 +179,8 @@ const PersonalizedWishlist: React.FC = () => {
                     <div className={styles.inputFocus}></div>
                   </div>
                 </Form.Group>
-
                 <Button type="submit" className={styles.submitButton}>
-                  <span className={styles.buttonText}>Create Free Account</span>
-                  <div className={styles.buttonGlow}></div>
+                  Create Free Account
                 </Button>
 
                 <p className={styles.legalText}>

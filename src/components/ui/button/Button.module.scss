@@ -1,19 +1,19 @@
-.button {
-  background: #3b82f6;
+@import '@/styles/variables.scss';
+
+.btnFill {
+  background: $gradient-primary;
+  max-width: max-content;
   color: white;
   border: none;
   padding: 0.75rem 1.5rem;
-  border-radius: 0.375rem;
-  font-weight: 500;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 0.9rem;
   cursor: pointer;
-  transition: background-color 0.2s;
-  
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+
   &:hover {
-    background: #2563eb;
-  }
-  
-  &:disabled {
-    background: #9ca3af;
-    cursor: not-allowed;
+    background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
   }
 }

@@ -15,7 +15,7 @@
   transition: all 0.4s ease;
   max-width: 1000px;
   position: fixed;
-  width: 100%;
+  width: 97%;
   margin: 0 auto;
   transform: translateX(-50%);
   top: 10px;
@@ -28,6 +28,7 @@
 
   @media (max-width: 768px) {
     padding: 8px 20px;
+    width: 100%;
   }
 }
 
@@ -51,6 +52,7 @@
   flex-direction: row;
   align-items: center;
   gap: 7px;
+  margin-left: 10px;
 }
 
 .logoImage {
@@ -133,7 +135,7 @@
 }
 
 .ctaButton {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: $gradient-primary;
   color: white;
   border: none;
   padding: 0.75rem 1.5rem;
@@ -145,7 +147,7 @@
   box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
 
   &:hover {
-    background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+    background: $gradient-secondary;
   }
 
   &:active {
@@ -255,5 +257,11 @@
     transform: translateY(-2px);
     box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
     background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+  }
+}
+
+@media (max-width: 768px) {
+  .logoContainer {
+    margin-left: 0;
   }
 }

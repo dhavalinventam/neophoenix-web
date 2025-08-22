@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './CtaBanner.module.scss';
+import Button from '@/components/ui/button';
 
 const CtaBanner: React.FC = () => {
   return (
@@ -17,9 +18,7 @@ const CtaBanner: React.FC = () => {
               <h2 className={styles.headline}>Turn Your Ideas Into Reality With AI</h2>
               <p className={styles.supportingText}>Sign up today and get started in minutes.</p>
               <div className={styles.buttonGroup}>
-                <button className={`${styles.ctaButton} ${styles.primaryButton}`}>
-                  Get Started Free
-                </button>
+                <Button label="Get Started Free" />
                 <button className={`${styles.ctaButton} ${styles.secondaryButton}`}>
                   Request a Demo
                 </button>

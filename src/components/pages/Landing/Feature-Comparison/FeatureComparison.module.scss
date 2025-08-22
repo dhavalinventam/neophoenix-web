@@ -2,7 +2,6 @@
 
 .featureComparison {
   position: relative;
-  padding: 5rem 0;
   background: $gradient-background;
   overflow: hidden;
 
@@ -142,7 +141,7 @@
   td {
     border: none;
     font-size: 14px;
-    padding: 1.2rem 1rem;
+    padding: 1.2rem 1rem !important;
     vertical-align: middle;
     text-align: center;
     background: transparent;
@@ -182,6 +181,7 @@
     td {
       color: $text-white;
       text-shadow: 0 0 5px rgba(255, 255, 255, 0.1);
+      background: unset !important;
 
       &:first-child {
         text-align: left;
@@ -339,10 +339,6 @@
 
 // Responsive Design
 @media (max-width: 768px) {
-  .featureComparison {
-    padding: 3rem 0;
-  }
-
   .comparisonTable {
     th,
     td {
@@ -370,18 +366,18 @@
       height: 14px;
     }
   }
+  .header {
+    .title {
+      font-size: $font-size-2xl;
+    }
+  
+    .subtitle {
+      font-size: $font-size-sm;
+    }
+  }
 }
 
 @media (max-width: 576px) {
-  .header {
-    .title {
-      font-size: 1.5rem;
-    }
-
-    .subtitle {
-      font-size: 0.875rem;
-    }
-  }
 
   .featureName {
     font-size: 0.875rem;

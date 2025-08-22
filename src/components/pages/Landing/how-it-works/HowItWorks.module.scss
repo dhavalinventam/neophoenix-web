@@ -2,7 +2,6 @@
 
 .howItWorksSection {
   background: $gradient-background;
-  padding: 6rem 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -94,13 +93,11 @@
     }
 
     .stepIcon {
-      transform: scale(1.1);
       background: $gradient-primary;
     }
 
     .stepNumber {
       background: $gradient-primary;
-      transform: scale(1.1);
     }
   }
 }
@@ -188,21 +185,20 @@
 
 // Responsive Design
 @media (max-width: 768px) {
-  .howItWorksSection {
-    padding: 4rem 0;
-  }
 
   .title {
-    font-size: $font-size-4xl;
+    font-size: $font-size-2xl;
+  }
+  .header {
+    margin-bottom: 2rem;
   }
 
   .description {
-    font-size: $font-size-base;
+    font-size: $font-size-sm;
   }
 
   .stepCard {
     padding: 2rem 1.5rem;
-    margin-bottom: 2rem;
   }
 
   .stepTitle {
@@ -227,10 +223,6 @@
 }
 
 @media (max-width: 480px) {
-  .title {
-    font-size: $font-size-3xl;
-  }
-
   .stepCard {
     padding: 1.5rem 1rem;
   }

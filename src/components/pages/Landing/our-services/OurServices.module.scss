@@ -82,7 +82,6 @@
 
     .cardIcon {
       background: $gradient-primary;
-      transform: scale(1.1);
     }
 
     .cardButton {
@@ -121,6 +120,8 @@
 }
 
 .iconText {
+  display: flex;
+  align-items: center;
   color: $text-white;
   width: 32px;
   height: 32px;
@@ -183,42 +184,20 @@
 }
 
 .cardButton {
-  font-family: $font-primary;
-  font-size: $font-size-base;
-  font-weight: $font-weight-medium;
-  color: $text-white;
-  background: $gradient-secondary;
-  border: none;
-  border-radius: 12px;
   padding: 1rem 2rem;
+  background: $gradient-primary;
+  border: none;
+  border-radius: 50px;
+  color: $text-white;
+  font-weight: $font-weight-semibold;
+  font-size: $font-size-base;
   cursor: pointer;
-  transition: all $duration-normal $ease-in-out;
-  position: relative;
-  overflow: hidden;
-  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-    transition: left $duration-slow $ease-in-out;
-  }
-
-  &:hover::before {
-    left: 100%;
-  }
+  transition: all $duration-normal $ease-out;
+  white-space: nowrap;
 
   &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
-  }
-
-  &:active {
-    transform: translateY(0);
+    background: $gradient-secondary !important;
+    box-shadow: $shadow-lg;
   }
 }
 
@@ -228,12 +207,16 @@
     padding: 4rem 0;
   }
 
+  .header {
+    margin-bottom: 2rem;
+  }
+
   .title {
-    font-size: $font-size-4xl;
+    font-size: $font-size-2xl;
   }
 
   .description {
-    font-size: $font-size-base;
+    font-size: $font-size-sm;
   }
 
   .serviceCard {
@@ -246,10 +229,6 @@
 }
 
 @media (max-width: 480px) {
-  .title {
-    font-size: $font-size-3xl;
-  }
-
   .serviceCard {
     padding: 1.5rem 1rem;
   }

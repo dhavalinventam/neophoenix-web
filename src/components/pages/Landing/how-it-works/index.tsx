@@ -7,7 +7,8 @@ const HowItWorks: React.FC = () => {
       id: 1,
       number: '01',
       title: 'Discovery & Analysis',
-      description: 'We analyze your business needs, current systems, and AI opportunities to create a tailored strategy.',
+      description:
+        'We analyze your business needs, current systems, and AI opportunities to create a tailored strategy.',
       icon: (
         <svg
           width="32"
@@ -27,7 +28,8 @@ const HowItWorks: React.FC = () => {
       id: 2,
       number: '02',
       title: 'Custom Solution Design',
-      description: 'Our team designs a bespoke AI solution that integrates seamlessly with your existing workflows.',
+      description:
+        'Our team designs a bespoke AI solution that integrates seamlessly with your existing workflows.',
       icon: (
         <svg
           width="32"
@@ -40,14 +42,8 @@ const HowItWorks: React.FC = () => {
             d="M8 4C5.79 4 4 5.79 4 8V24C4 26.21 5.79 28 8 28H24C26.21 28 28 26.21 28 24V8C28 5.79 26.21 4 24 4H8ZM8 6H24C25.1 6 26 6.9 26 8V24C26 25.1 25.1 26 24 26H8C6.9 26 6 25.1 6 24V8C6 6.9 6.9 6 8 6Z"
             fill="currentColor"
           />
-          <path
-            d="M10 10H22V12H10V10ZM10 14H18V16H10V14ZM10 18H20V20H10V18Z"
-            fill="currentColor"
-          />
-          <path
-            d="M12 22H20V24H12V22Z"
-            fill="currentColor"
-          />
+          <path d="M10 10H22V12H10V10ZM10 14H18V16H10V14ZM10 18H20V20H10V18Z" fill="currentColor" />
+          <path d="M12 22H20V24H12V22Z" fill="currentColor" />
         </svg>
       ),
     },
@@ -55,7 +51,8 @@ const HowItWorks: React.FC = () => {
       id: 3,
       number: '03',
       title: 'Implementation & Training',
-      description: 'We implement the solution and provide comprehensive training to your team for maximum adoption.',
+      description:
+        'We implement the solution and provide comprehensive training to your team for maximum adoption.',
       icon: (
         <svg
           width="32"
@@ -87,7 +84,8 @@ const HowItWorks: React.FC = () => {
       id: 4,
       number: '04',
       title: 'Ongoing Support',
-      description: 'Continuous monitoring, optimization, and support to ensure your AI solution delivers maximum value.',
+      description:
+        'Continuous monitoring, optimization, and support to ensure your AI solution delivers maximum value.',
       icon: (
         <svg
           width="32"
@@ -126,16 +124,16 @@ const HowItWorks: React.FC = () => {
             <span className={styles.underline}></span>
           </h2>
           <p className={styles.description}>
-            Our proven 4-step process ensures successful AI implementation and maximum ROI for your business.
+            Our proven 4-step process ensures successful AI implementation and maximum ROI for your
+            business.
           </p>
         </div>
 
-        <div className="row g-4 mt-5">
+        <div className="row mt-0">
           {steps.map((step, index) => (
-            <div key={step.id} className="col-lg-3 col-md-6 col-sm-12">
+            <div key={step.id} className="col-lg-3 col-md-6 col-sm-12 mb-4">
               <div className={styles.stepCard}>
                 <div className={styles.stepNumber}>{step.number}</div>
-                
                 <div className={styles.stepIcon}>
                   <span className={styles.iconWrapper}>{step.icon}</span>
                 </div>
@@ -144,7 +142,7 @@ const HowItWorks: React.FC = () => {
 
                 <p className={styles.stepDescription}>{step.description}</p>
 
-                {index < steps.length - 1 && (
+                {/* {index < steps.length - 1 && (
                   <div className={styles.connector}>
                     <svg
                       width="24"
@@ -159,7 +157,7 @@ const HowItWorks: React.FC = () => {
                       />
                     </svg>
                   </div>
-                )}
+                )} */}
               </div>
             </div>
           ))}

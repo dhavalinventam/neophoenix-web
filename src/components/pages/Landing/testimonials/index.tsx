@@ -2,6 +2,13 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay, Navigation, Pagination } from 'swiper/modules';
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 import styles from './testimonials.module.scss';
 
 interface Testimonial {
@@ -64,48 +71,33 @@ const testimonials: Testimonial[] = [
 ];
 
 const Testimonials = () => {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.1,
-      },
-    },
-  };
+  // const cardVariants = {
+  //   hidden: {
+  //     opacity: 0,
+  //     y: 50,
+  //     scale: 0.95,
+  //   },
+  //   visible: {
+  //     opacity: 1,
+  //     y: 0,
+  //     scale: 1,
+  //   },
+  // };
 
-  const cardVariants = {
-    hidden: {
-      opacity: 0,
-      y: 50,
-      scale: 0.95,
-    },
-    visible: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      transition: {
-        duration: 0.6,
-        ease: [0.25, 0.46, 0.45, 0.94],
-      },
-    },
-  };
-
-  const hoverVariants = {
-    hover: {
-      scale: 1.05,
-      y: -8,
-      transition: {
-        duration: 0.3,
-        ease: 'easeOut',
-      },
-    },
-  };
+  // const hoverVariants = {
+  //   hover: {
+  //     scale: 1.05,
+  //     y: -8,
+  //     transition: {
+  //       duration: 0.3,
+  //       ease: 'easeOut',
+  //     },
+  //   },
+  // };
 
   return (
     <section className={styles.testimonialsSection}>
-      <div className={styles.container}>
+      <div className="container">
         {/* Section Header */}
         <motion.div
           className={styles.header}
@@ -120,48 +112,83 @@ const Testimonials = () => {
           </p>
         </motion.div>
 
-        {/* Testimonials Grid */}
-        <motion.div
-          className={styles.testimonialsGrid}
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-100px' }}
-        >
-          {testimonials.map((testimonial) => (
-            <motion.div
-              key={testimonial.id}
-              className={styles.testimonialCard}
-              variants={cardVariants}
-              whileHover="hover"
-              hoverVariants={hoverVariants}
-            >
-              {/* Quote Icon */}
-              <div className={styles.quoteIcon}>
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                  <path
-                    d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"
-                    fill="currentColor"
-                  />
-                </svg>
-              </div>
+        {/* Swiper Slider */}
+        <div className={styles.swiperContainer}>
+          <Swiper
+            modules={[Autoplay, Navigation, Pagination]}
+            spaceBetween={30}
+            slidesPerView={1}
+            navigation={{
+              nextEl: '.swiper-button-next',
+              prevEl: '.swiper-button-prev',
+            }}
+            autoplay={{
+              delay: 2500,
+              disableOnInteraction: false,
+              pauseOnMouseEnter: true,
+            }}
+            loop={true}
+            breakpoints={{
+              640: {
+                slidesPerView: 1,
+                spaceBetween: 20,
+              },
+              768: {
+                slidesPerView: 2,
+                spaceBetween: 30,
+              },
+              1024: {
+                slidesPerView: 3,
+                spaceBetween: 30,
+              },
+            }}
+            className={styles.testimonialsSwiper}
+          >
+            {testimonials.map((testimonial) => (
+              <SwiperSlide key={testimonial.id} className={styles.swiperSlide}>
+                <motion.div
+                  className={styles.testimonialCard}
+                  initial="hidden"
+                  whileInView="visible"
+                  whileHover="hover"
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6 }}
+                >
+                  {/* Quote Icon */}
+                  <div className={styles.quoteIcon}>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                      <path
+                        d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </div>
 
-              {/* Testimonial Text */}
-              <p className={styles.testimonialText}>{testimonial.text}</p>
+                  {/* Testimonial Text */}
+                  <p className={styles.testimonialText}>{testimonial.text}</p>
 
-              {/* User Info */}
-              <div className={styles.userInfo}>
-                <div className={styles.avatar}>
-                  <img src={testimonial.avatar} alt={testimonial.name} loading="lazy" />
-                </div>
-                <div className={styles.userDetails}>
-                  <h4 className={styles.userName}>{testimonial.name}</h4>
-                  <p className={styles.userRole}>{testimonial.role}</p>
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
+                  {/* User Info */}
+                  <div className={styles.userInfo}>
+                    <div className={styles.avatar}>
+                      <img src={testimonial.avatar} alt={testimonial.name} loading="lazy" />
+                    </div>
+                    <div className={styles.userDetails}>
+                      <h4 className={styles.userName}>{testimonial.name}</h4>
+                      <p className={styles.userRole}>{testimonial.role}</p>
+                    </div>
+                  </div>
+                </motion.div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+
+          {/* Custom Navigation Buttons */}
+          <div className={`swiper-button-prev ${styles.customNavigation}`}></div>
+          <div className={`swiper-button-next ${styles.customNavigation}`}></div>
+
+          {/* Custom Pagination */}
+          {/* <div className={`swiper-pagination ${styles.customPagination}`}></div> */}
+        </div>
       </div>
     </section>
   );

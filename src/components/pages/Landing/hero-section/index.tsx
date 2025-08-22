@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import styles from './HeroSection.module.scss';
+import Button from '@/components/ui/button';
 
 const HeroSection = () => {
   const [email, setEmail] = useState('');
@@ -61,7 +62,7 @@ const HeroSection = () => {
   };
 
   return (
-    <section ref={heroRef} className={styles.heroSection}>
+    <section ref={heroRef} className={`${styles.heroSection} hero`}>
       {/* Phoenix Wings */}
 
       {/* Phoenix Rising Effect */}
@@ -113,37 +114,6 @@ const HeroSection = () => {
           </p>
         </div>
 
-        {/* Feature Cards */}
-        {/* <div className={styles.featureCards}>
-          <div className={styles.card}>
-            <div className={styles.cardIcon}>
-              <span>🔍</span>
-            </div>
-            <h3 className={styles.cardTitle}>Discover Best AI Tools</h3>
-            <p className={styles.cardDescription}>Curated reviews of cutting-edge AI solutions.</p>
-          </div>
-
-          <div className={styles.card}>
-            <div className={styles.cardIcon}>
-              <span>📚</span>
-            </div>
-            <h3 className={styles.cardTitle}>Guides, News, Actionable Strategies</h3>
-            <p className={styles.cardDescription}>
-              Read Our Blog for expert insights and tutorials.
-            </p>
-          </div>
-
-          <div className={styles.card}>
-            <div className={styles.cardIcon}>
-              <span>🎯</span>
-            </div>
-            <h3 className={styles.cardTitle}>Need Help Integrating AI Into Your Business?</h3>
-            <p className={styles.cardDescription}>
-              Checkout Our Service Offerings for custom solutions.
-            </p>
-          </div>
-        </div> */}
-
         {/* Email Subscription Section */}
         <div className={styles.subscriptionCard}>
           <h2 className={styles.subscriptionTitle}>Join 8,967+ AI Innovators</h2>
@@ -160,9 +130,7 @@ const HeroSection = () => {
               className={styles.emailInput}
               required
             />
-            <button type="submit" className={styles.submitButton}>
-              Get Started →
-            </button>
+            <Button label="Get Started →" />
           </form>
 
           <div className={styles.disclaimer}>

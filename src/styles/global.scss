@@ -54,4 +54,15 @@ a {
   z-index: 2;
   // padding: 2rem 0;
 }
-
+section {
+  padding: 80px 0 !important;
+  @media (max-width: 768px) {
+    padding: 40px 0 !important;
+  }
+}
+.hero {
+  padding: 130px 0 50px !important;
+  @media (max-width: 768px) {
+    padding: 110px 0 50px !important;
+  }
+}
