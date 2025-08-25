@@ -39,12 +39,24 @@
 }
 
 .title {
+  position: relative;
   font-family: $font-primary;
   font-size: $font-size-4xl;
   font-weight: $font-weight-bold;
   color: $text-white;
   margin-bottom: 1rem;
   line-height: $line-height-tight;
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -0.5rem;
+    left: 0;
+    width: 4rem;
+    height: 0.25rem;
+    background: $gradient-primary;
+    border-radius: 0.125rem;
+    box-shadow: 0 0 10px rgba(102, 126, 234, 0.5);
+  }
 }
 
 // .titleUnderline {
@@ -103,7 +115,7 @@
   background: $bg-dark-secondary;
   border: 1px solid $glass-border-medium;
   border-radius: 24px;
-  padding: 3rem 2.5rem;
+  padding: 2rem;
   box-shadow: $shadow-xl;
   position: relative;
   z-index: 1;
@@ -125,7 +137,7 @@
 
 .formHeader {
   text-align: center;
-  margin-bottom: 2.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .formIcon {
@@ -180,7 +192,6 @@
 
   &:focus-within .inputFocus {
     opacity: 1;
-    transform: scale(1.02);
   }
 }
 
@@ -225,68 +236,13 @@
   transition: all $duration-normal $ease-in-out;
 }
 
-.submitButton {
-  width: max-content;
-  margin: 0 auto;
-  padding: 1rem 2rem;
-  background: $gradient-primary;
-  border: none;
-  border-radius: 12px;
-  font-family: $font-primary;
-  font-size: $font-size-base;
-  font-weight: $font-weight-semibold;
-  color: $text-white;
-  cursor: pointer;
-  transition: all $duration-normal $ease-in-out;
-  margin-top: 0.5rem;
-  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
-  position: relative;
-  overflow: hidden;
-
-  &:hover {
-    transform: translateY(-2px);
-    box-shadow: $shadow-lg;
-
-    .buttonGlow {
-      opacity: 1;
-    }
-  }
-
-  &:active {
-    transform: translateY(0);
-  }
-
-  &:focus {
-    outline: none;
-    box-shadow:
-      0 0 0 3px rgba(102, 126, 234, 0.2),
-      $shadow-lg;
-  }
-}
-.buttonText {
-  position: relative;
-  z-index: 2;
-}
-
-.buttonGlow {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
-  opacity: 0;
-  transition: opacity $duration-normal $ease-in-out;
-  z-index: 1;
-}
-
 .legalText {
   font-family: $font-primary;
   font-size: $font-size-xs;
   font-weight: $font-weight-normal;
   color: $text-gray-light;
   text-align: center;
-  margin-top: 1rem;
+  margin-bottom: 0px;
   line-height: $line-height-normal;
 }
 

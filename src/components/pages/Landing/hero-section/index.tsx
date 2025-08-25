@@ -130,7 +130,9 @@ const HeroSection = () => {
               className={styles.emailInput}
               required
             />
-            <Button label="Get Started →" />
+            <div className="d-flex justify-content-center">
+              <Button label="Get Started →" />
+            </div>
           </form>
 
           <div className={styles.disclaimer}>

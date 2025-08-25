@@ -64,67 +64,67 @@ const FAQ = () => {
     }));
   };
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2,
-      },
-    },
-  };
+  // const containerVariants = {
+  //   hidden: { opacity: 0 },
+  //   visible: {
+  //     opacity: 1,
+  //     transition: {
+  //       staggerChildren: 0.1,
+  //       delayChildren: 0.1,
+  //     },
+  //   },
+  // };
 
-  const itemVariants = {
-    hidden: {
-      opacity: 0,
-      y: 20,
-      scale: 0.95,
-    },
-    visible: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      transition: {
-        duration: 0.2,
-        ease: [0.25, 0.46, 0.45, 0.94],
-      },
-    },
-  };
+  // const itemVariants = {
+  //   hidden: {
+  //     opacity: 0,
+  //     y: 20,
+  //     scale: 0.95,
+  //   },
+  //   visible: {
+  //     opacity: 1,
+  //     y: 0,
+  //     scale: 1,
+  //     transition: {
+  //       duration: 0.1,
+  //       ease: [0.25, 0.46, 0.45, 0.94],
+  //     },
+  //   },
+  // };
 
-  const contentVariants = {
-    hidden: {
-      height: 0,
-      opacity: 0,
-    },
-    visible: {
-      height: 'auto',
-      opacity: 1,
-      transition: {
-        height: {
-          duration: 0.1,
-          ease: 'easeOut',
-        },
-        opacity: {
-          duration: 0.1,
-          delay: 0.1,
-        },
-      },
-    },
-    exit: {
-      height: 0,
-      opacity: 0,
-      transition: {
-        height: {
-          duration: 0.1,
-          ease: 'easeIn',
-        },
-        opacity: {
-          duration: 0.1,
-        },
-      },
-    },
-  };
+  // const contentVariants = {
+  //   hidden: {
+  //     height: 0,
+  //     opacity: 0,
+  //   },
+  //   visible: {
+  //     height: 'auto',
+  //     opacity: 1,
+  //     transition: {
+  //       height: {
+  //         duration: 0.1,
+  //         ease: 'easeOut',
+  //       },
+  //       opacity: {
+  //         duration: 0.1,
+  //         delay: 0.1,
+  //       },
+  //     },
+  //   },
+  //   exit: {
+  //     height: 0,
+  //     opacity: 0,
+  //     transition: {
+  //       height: {
+  //         duration: 0.1,
+  //         ease: 'easeIn',
+  //       },
+  //       opacity: {
+  //         duration: 0.1,
+  //       },
+  //     },
+  //   },
+  // };
 
   return (
     <section className={styles.faq}>
@@ -146,13 +146,13 @@ const FAQ = () => {
         {/* FAQ Items */}
         <motion.div
           className={styles.faqContainer}
-          variants={containerVariants}
+          // variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-100px' }}
         >
           {faqData.map((item) => (
-            <motion.div key={item.id} className={styles.faqItem} variants={itemVariants as any}>
+            <motion.div key={item.id} className={styles.faqItem}>
               <button
                 className={`${styles.questionButton} ${openItem === item.id ? styles.active : ''}`}
                 onClick={() => toggleItem(item.id)}

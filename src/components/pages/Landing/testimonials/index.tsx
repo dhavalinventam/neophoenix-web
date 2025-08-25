@@ -25,7 +25,7 @@ const testimonials: Testimonial[] = [
     name: 'Sarah Johnson',
     role: 'Product Manager',
     avatar:
-      'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face',
+      'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face',
     text: 'Tech Pilot has been a game-changer for our AI adoption strategy. The detailed reviews and hands-on insights helped us choose the right tools for our workflow.',
   },
   {
@@ -106,7 +106,10 @@ const Testimonials = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className={styles.title}>What Our Users Say</h2>
+          <h2 className={styles.title}>
+            What Our Users Say
+            <span className={styles.underline}></span>
+          </h2>
           <p className={styles.subtitle}>
             Join thousands of professionals who trust Tech Pilot for their AI journey
           </p>
