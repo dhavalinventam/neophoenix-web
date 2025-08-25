@@ -1,4 +1,5 @@
 @use '../../../../styles/variables' as *;
+@import '../../../../styles/mixins';
 
 .heroSection {
   background: $gradient-background;
@@ -191,28 +192,16 @@
   animation: fadeInUp $duration-slower $ease-out 0.2s both;
 
   .title {
-    font-size: clamp($font-size-4xl, 5vw, $font-size-5xl);
-    font-weight: $font-weight-bold;
-    color: $text-white;
-    margin-bottom: 1.5rem;
-    line-height: $line-height-tight;
-    letter-spacing: $letter-spacing-tight;
+    @include section-title-responsive;
   }
 
   .gradientText {
-    background: $gradient-primary;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: $text-white;
     animation: gradientShift 3s $ease-in-out infinite;
   }
 
   .description {
-    font-size: $font-size-xl;
-    color: $text-gray-light;
-    max-width: 600px;
-    margin: 0 auto;
-    line-height: $line-height-relaxed;
+    @include section-subtitle-responsive;
   }
 }
 
@@ -452,10 +441,7 @@
     .statNumber {
       font-size: $font-size-4xl;
       font-weight: $font-weight-bold;
-      background: $gradient-primary;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      color: $text-white;
       animation: countUp 2s $ease-out;
       position: relative;
       display: inline-block;

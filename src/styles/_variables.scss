@@ -90,6 +90,28 @@ $shadow-lg: 0 5px 20px rgba(102, 126, 234, 0.2);
 $shadow-xl: 0 10px 30px rgba(0, 0, 0, 0.3);
 
 // =============================================================================
+// SECTION TITLE & SUBTITLE VARIABLES
+// =============================================================================
+
+// Common Section Title Styles
+$section-title-font-family: $font-secondary;
+$section-title-font-size: clamp(2rem, 4vw, 2.5rem);
+$section-title-font-weight: $font-weight-bold;
+$section-title-color: $text-white;
+$section-title-line-height: $line-height-tight;
+$section-title-letter-spacing: $letter-spacing-tight;
+$section-title-margin-bottom: 0.75rem;
+
+// Common Section Subtitle Styles
+$section-subtitle-font-family: $font-primary;
+$section-subtitle-font-size: $font-size-base;
+$section-subtitle-font-weight: $font-weight-normal;
+$section-subtitle-color: rgba(255, 255, 255, 0.8);
+$section-subtitle-line-height: $line-height-relaxed;
+$section-subtitle-max-width: 500px;
+$section-subtitle-margin-bottom: 0;
+
+// =============================================================================
 // ANIMATION DURATIONS
 // =============================================================================
 

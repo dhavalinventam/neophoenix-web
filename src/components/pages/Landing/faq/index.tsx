@@ -127,8 +127,8 @@ const FAQ = () => {
   };
 
   return (
-    <section className={styles.faqSection}>
-      <div className={styles.container}>
+    <section className={styles.faq}>
+      <div className="container">
         {/* Section Header */}
         <motion.div
           className={styles.header}
@@ -211,22 +211,6 @@ const FAQ = () => {
                           onClick={() => handleFeedback(item.id, 'yes')}
                           disabled={feedback[item.id] !== null}
                         >
-                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                            <path
-                              d="M14 9V5a3 3 0 0 0-6 0v4H7a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6a2 2 0 0 0-2-2h-1z"
-                              stroke="currentColor"
-                              strokeWidth="2"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                            />
-                            <path
-                              d="M9 9h.01"
-                              stroke="currentColor"
-                              strokeWidth="2"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                            />
-                          </svg>
                           <span>Yes</span>
                         </button>
                         <button
@@ -234,22 +218,6 @@ const FAQ = () => {
                           onClick={() => handleFeedback(item.id, 'no')}
                           disabled={feedback[item.id] !== null}
                         >
-                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                            <path
-                              d="M10 15v4a3 3 0 0 0 6 0v-4h1a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-10a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h1z"
-                              stroke="currentColor"
-                              strokeWidth="2"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                            />
-                            <path
-                              d="M15 15h.01"
-                              stroke="currentColor"
-                              strokeWidth="2"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                            />
-                          </svg>
                           <span>No</span>
                         </button>
                       </div>

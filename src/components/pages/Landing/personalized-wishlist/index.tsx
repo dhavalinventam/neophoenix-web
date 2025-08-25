@@ -41,7 +41,7 @@ const PersonalizedWishlist: React.FC = () => {
             <div className={styles.contentSection}>
               <div className={styles.titleWrapper}>
                 <h2 className={styles.title}>Build Your Personalized AI Wishlist</h2>
-                <div className={styles.titleUnderline}></div>
+                {/* <div className={styles.titleUnderline}></div> */}
               </div>
 
               <p className={styles.description}>
