@@ -13,13 +13,15 @@ const CtaBanner: React.FC = () => {
 
       <div className="container">
         <div className="row justify-content-center">
-          <div className="col-12 col-lg-8 col-xl-6 text-center">
+          <div className="col-12 col-lg-8 text-center">
             <div className={styles.content}>
-              <h2 className={styles.headline}>Turn Your Ideas Into Reality With AI</h2>
-              <p className={styles.supportingText}>Sign up today and get started in minutes.</p>
+              <h2 className={styles.headline}>Turn Your Data and Tasks Into AI-Powered Wins</h2>
+              <p className={styles.supportingText}>
+                Kickstart with the only tools built for speed, privacy, and real productivity.
+              </p>
               <div className={styles.buttonGroup}>
                 <Button label="Get Started Free" />
-                <Button label="Request a Demo" variant="outline" />
+                {/* <Button label="Request a Demo" variant="outline" /> */}
               </div>
             </div>
           </div>

@@ -46,38 +46,7 @@
   margin: 0 0 2rem;
 }
 
-.featuresList {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
 
-.featureItem {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.checkmark {
-  width: 24px;
-  height: 24px;
-  background: $primary-blue;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: $text-white;
-  flex-shrink: 0;
-  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
-}
-
-.featureText {
-  font-family: $font-primary;
-  font-size: $font-size-base;
-  font-weight: $font-weight-normal;
-  color: $text-gray-light;
-  line-height: $line-height-normal;
-}
 
 .formCard {
   background: $bg-dark-secondary;

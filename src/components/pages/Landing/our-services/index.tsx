@@ -6,7 +6,7 @@ const OurServices: React.FC = () => {
   const services = [
     {
       id: 1,
-      title: 'Private Workshop Training For Business',
+      title: 'Plug-and-Play RAG System',
       description:
         'Transform your team into AI power users with hands-on workshops tailored to your industry and specific use cases.',
       icon: (
@@ -32,16 +32,15 @@ const OurServices: React.FC = () => {
         </svg>
       ),
       features: [
-        'Custom AI training programs',
-        'Industry-specific use cases',
-        'Hands-on implementation',
-        'Ongoing support & resources',
+        'Seamlessly connect your existing databases with secure local embedding and instant AI-powered chat.',
+        'Maintain full control: your data stays in your environment with zero external storage.',
+        'Unlock powerful insights through real-time answers based on your proprietary data.',
       ],
       buttonText: 'Learn More →',
     },
     {
       id: 2,
-      title: 'Integration & Development Services',
+      title: 'Task Prompt AI Chrome Extension',
       description:
         'Seamlessly connect AI tools with your existing systems and workflows for maximum efficiency and minimal disruption.',
       icon: (
@@ -67,10 +66,9 @@ const OurServices: React.FC = () => {
         </svg>
       ),
       features: [
-        'API integrations & workflows',
-        'Custom AI tool development',
-        'Web Development Services',
-        'Technical support & maintenance',
+        'Integrate AI deeply into your Jira, ClickUp, Asana, and Trello workflows.',
+        'Generate contextual, role-specific prompts that cut task completion time in half.',
+        'Customize prompts to your team’s unique needs and industry jargon.',
       ],
       buttonText: 'Learn More →',
     },
