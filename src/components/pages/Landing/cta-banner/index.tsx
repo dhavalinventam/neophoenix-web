@@ -19,9 +19,7 @@ const CtaBanner: React.FC = () => {
               <p className={styles.supportingText}>Sign up today and get started in minutes.</p>
               <div className={styles.buttonGroup}>
                 <Button label="Get Started Free" />
-                <button className={`${styles.ctaButton} ${styles.secondaryButton}`}>
-                  Request a Demo
-                </button>
+                <Button label="Request a Demo" variant="outline" />
               </div>
             </div>
           </div>

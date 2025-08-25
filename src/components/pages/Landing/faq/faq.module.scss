@@ -47,24 +47,18 @@
   margin-bottom: 4rem;
 
   .title {
-    font-family: $font-secondary;
-    font-size: $font-size-4xl;
-    font-weight: $font-weight-bold;
     color: $text-white;
-    margin-bottom: 1rem;
-    background: $gradient-primary;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    line-height: $line-height-tight;
+    margin-bottom: 1.5rem;
+    font-weight: $font-weight-bold;
+    position: relative;
+    text-shadow: 0 0 20px rgba(102, 126, 234, 0.5);
   }
 
   .subtitle {
-    font-size: $font-size-lg;
     color: $text-gray-light;
-    max-width: 600px;
+    max-width: 40rem;
     margin: 0 auto;
-    line-height: $line-height-relaxed;
+    text-shadow: 0 0 10px rgba(160, 160, 160, 0.3);
   }
 }
 

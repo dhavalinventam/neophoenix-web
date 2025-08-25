@@ -64,67 +64,67 @@ const FAQ = () => {
     }));
   };
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2,
-      },
-    },
-  };
+  // const containerVariants = {
+  //   hidden: { opacity: 0 },
+  //   visible: {
+  //     opacity: 1,
+  //     transition: {
+  //       staggerChildren: 0.1,
+  //       delayChildren: 0.1,
+  //     },
+  //   },
+  // };
 
-  const itemVariants = {
-    hidden: {
-      opacity: 0,
-      y: 20,
-      scale: 0.95,
-    },
-    visible: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      transition: {
-        duration: 0.2,
-        ease: [0.25, 0.46, 0.45, 0.94],
-      },
-    },
-  };
+  // const itemVariants = {
+  //   hidden: {
+  //     opacity: 0,
+  //     y: 20,
+  //     scale: 0.95,
+  //   },
+  //   visible: {
+  //     opacity: 1,
+  //     y: 0,
+  //     scale: 1,
+  //     transition: {
+  //       duration: 0.1,
+  //       ease: [0.25, 0.46, 0.45, 0.94],
+  //     },
+  //   },
+  // };
 
-  const contentVariants = {
-    hidden: {
-      height: 0,
-      opacity: 0,
-    },
-    visible: {
-      height: 'auto',
-      opacity: 1,
-      transition: {
-        height: {
-          duration: 0.1,
-          ease: 'easeOut',
-        },
-        opacity: {
-          duration: 0.1,
-          delay: 0.1,
-        },
-      },
-    },
-    exit: {
-      height: 0,
-      opacity: 0,
-      transition: {
-        height: {
-          duration: 0.1,
-          ease: 'easeIn',
-        },
-        opacity: {
-          duration: 0.1,
-        },
-      },
-    },
-  };
+  // const contentVariants = {
+  //   hidden: {
+  //     height: 0,
+  //     opacity: 0,
+  //   },
+  //   visible: {
+  //     height: 'auto',
+  //     opacity: 1,
+  //     transition: {
+  //       height: {
+  //         duration: 0.1,
+  //         ease: 'easeOut',
+  //       },
+  //       opacity: {
+  //         duration: 0.1,
+  //         delay: 0.1,
+  //       },
+  //     },
+  //   },
+  //   exit: {
+  //     height: 0,
+  //     opacity: 0,
+  //     transition: {
+  //       height: {
+  //         duration: 0.1,
+  //         ease: 'easeIn',
+  //       },
+  //       opacity: {
+  //         duration: 0.1,
+  //       },
+  //     },
+  //   },
+  // };
 
   return (
     <section className={styles.faqSection}>
@@ -146,13 +146,13 @@ const FAQ = () => {
         {/* FAQ Items */}
         <motion.div
           className={styles.faqContainer}
-          variants={containerVariants}
+          // variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-100px' }}
         >
           {faqData.map((item) => (
-            <motion.div key={item.id} className={styles.faqItem} variants={itemVariants as any}>
+            <motion.div key={item.id} className={styles.faqItem}>
               <button
                 className={`${styles.questionButton} ${openItem === item.id ? styles.active : ''}`}
                 onClick={() => toggleItem(item.id)}
@@ -211,22 +211,6 @@ const FAQ = () => {
                           onClick={() => handleFeedback(item.id, 'yes')}
                           disabled={feedback[item.id] !== null}
                         >
-                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                            <path
-                              d="M14 9V5a3 3 0 0 0-6 0v4H7a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6a2 2 0 0 0-2-2h-1z"
-                              stroke="currentColor"
-                              strokeWidth="2"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                            />
-                            <path
-                              d="M9 9h.01"
-                              stroke="currentColor"
-                              strokeWidth="2"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                            />
-                          </svg>
                           <span>Yes</span>
                         </button>
                         <button
@@ -234,22 +218,6 @@ const FAQ = () => {
                           onClick={() => handleFeedback(item.id, 'no')}
                           disabled={feedback[item.id] !== null}
                         >
-                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                            <path
-                              d="M10 15v4a3 3 0 0 0 6 0v-4h1a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-10a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h1z"
-                              stroke="currentColor"
-                              strokeWidth="2"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                            />
-                            <path
-                              d="M15 15h.01"
-                              stroke="currentColor"
-                              strokeWidth="2"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                            />
-                          </svg>
                           <span>No</span>
                         </button>
                       </div>

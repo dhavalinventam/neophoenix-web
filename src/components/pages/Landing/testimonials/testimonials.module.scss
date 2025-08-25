@@ -4,6 +4,7 @@
   background: $bg-dark-primary;
   position: relative;
   overflow: hidden;
+  z-index: 1;
 
   // Background gradient effect
   &::before {
@@ -47,24 +48,28 @@
   margin-bottom: 4rem;
 
   .title {
-    font-family: $font-secondary;
-    font-size: $font-size-4xl;
-    font-weight: $font-weight-bold;
     color: $text-white;
-    margin-bottom: 1rem;
-    background: $gradient-primary;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    line-height: $line-height-tight;
+    margin-bottom: 1.5rem;
+    font-weight: $font-weight-bold;
+    position: relative;
+    text-shadow: 0 0 20px rgba(102, 126, 234, 0.5);
+    .underline {
+      position: absolute;
+      bottom: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: $gradient-primary;
+      border-radius: 2px;
+    }
   }
 
   .subtitle {
-    font-size: $font-size-lg;
     color: $text-gray-light;
-    max-width: 600px;
+    max-width: 40rem;
     margin: 0 auto;
-    line-height: $line-height-relaxed;
+    text-shadow: 0 0 10px rgba(160, 160, 160, 0.3);
   }
 }
 
@@ -96,6 +101,8 @@
 }
 
 .testimonialCard {
+  display: flex;
+  flex-direction: column;
   background: $glass-bg-medium;
   backdrop-filter: blur(20px);
   border: 1px solid $glass-border-medium;
@@ -153,6 +160,7 @@
 }
 
 .testimonialText {
+  padding-right: 28px;
   font-size: $font-size-base;
   line-height: $line-height-relaxed;
   color: $text-white;
@@ -160,6 +168,7 @@
   font-weight: $font-weight-normal;
   position: relative;
   z-index: 1;
+  flex: 1;
 }
 
 .userInfo {
@@ -169,8 +178,8 @@
 }
 
 .avatar {
-  width: 60px;
-  height: 60px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   overflow: hidden;
   border: 3px solid $glass-border-medium;
@@ -194,7 +203,7 @@
 
 .userName {
   font-family: $font-secondary;
-  font-size: $font-size-lg;
+  font-size: $font-size-base;
   font-weight: $font-weight-semibold;
   color: $text-white;
   margin: 0 0 0.25rem 0;
@@ -243,7 +252,6 @@
 .customNavigation {
   position: absolute;
   top: 50%;
-  // transform: translateY(-50%);
   width: 40px;
   height: 40px;
   background: $glass-bg-medium;
@@ -259,7 +267,7 @@
   justify-content: center;
 
   &::after {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: bold;
   }
 

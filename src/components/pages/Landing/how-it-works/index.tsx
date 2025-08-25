@@ -119,10 +119,7 @@ const HowItWorks: React.FC = () => {
     <section id="how-it-works" className={styles.howItWorksSection}>
       <div className="container text-center">
         <div className={styles.header}>
-          <h2 className={styles.title}>
-            How It Works
-            <span className={styles.underline}></span>
-          </h2>
+          <h2 className={styles.title}>How It Works</h2>
           <p className={styles.description}>
             Our proven 4-step process ensures successful AI implementation and maximum ROI for your
             business.

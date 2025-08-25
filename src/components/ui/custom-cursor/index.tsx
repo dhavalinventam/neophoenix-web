@@ -37,8 +37,8 @@ const CustomCursor = () => {
       }));
 
       setFollowerPosition((prev) => ({
-        x: prev.x + (mousePosition.x - prev.x) * 0.05,
-        y: prev.y + (mousePosition.y - prev.y) * 0.05,
+        x: prev.x + (mousePosition.x - prev.x) * 0.07,
+        y: prev.y + (mousePosition.y - prev.y) * 0.07,
       }));
 
       animationRef.current = requestAnimationFrame(animateCursor);

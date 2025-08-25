@@ -1,8 +1,12 @@
 @import '@/styles/variables.scss';
 
 .btnFill {
+  display: flex;
+  align-items: center;
+  line-height: 1;
   background: $gradient-primary;
   max-width: max-content;
+  max-height: max-content;
   color: white;
   border: none;
   padding: 0.75rem 1.5rem;
@@ -10,10 +14,33 @@
   font-weight: 600;
   font-size: 0.9rem;
   cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+  transition: background 0.3s ease-in-out;
+  min-height: 43px;
 
   &:hover {
     background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+  }
+}
+
+.btnOutline {
+  display: flex;
+  align-items: center;
+  line-height: 1;
+  background: transparent;
+  color: $text-white;
+  max-width: max-content;
+  max-height: max-content;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+  border: 2px solid $glass-border-light;
+  backdrop-filter: blur(10px);
+  border-radius: 50px;
+  min-height: 43px;
+
+  &:hover {
+    background: $glass-bg-light;
+    border-color: $glass-border-medium;
+    box-shadow: $shadow-glow-blue;
   }
 }

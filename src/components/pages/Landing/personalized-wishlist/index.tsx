@@ -1,7 +1,8 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Form, FormControl, FormSelect, Button } from 'react-bootstrap';
+import { Form, FormControl, FormSelect } from 'react-bootstrap';
+import Button from '@/components/ui/button';
 import styles from './PersonalizedWishlist.module.scss';
 
 const PersonalizedWishlist: React.FC = () => {
@@ -41,7 +42,6 @@ const PersonalizedWishlist: React.FC = () => {
             <div className={styles.contentSection}>
               <div className={styles.titleWrapper}>
                 <h2 className={styles.title}>Build Your Personalized AI Wishlist</h2>
-                <div className={styles.titleUnderline}></div>
               </div>
 
               <p className={styles.description}>
@@ -179,9 +179,9 @@ const PersonalizedWishlist: React.FC = () => {
                     <div className={styles.inputFocus}></div>
                   </div>
                 </Form.Group>
-                <Button type="submit" className={styles.submitButton}>
-                  Create Free Account
-                </Button>
+                <div className="d-flex justify-content-center mt-3">
+                  <Button label="Create Free Account" />
+                </div>
 
                 <p className={styles.legalText}>
                   By signing up, you agree to our{' '}

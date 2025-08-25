@@ -377,9 +377,9 @@
   .profiles {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-
+    
     .profile {
+      margin: 0 -4px;
       position: relative;
 
       .profileImage {
@@ -395,7 +395,7 @@
     .profileCount {
       color: $text-white;
       font-weight: $font-weight-semibold;
-      margin-left: 0.5rem;
+      margin-left: 0.8rem;
     }
   }
 
