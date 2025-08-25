@@ -55,7 +55,7 @@
 }
 
 .heroTitle {
-  font-family: $font-secondary;
+  font-family: $font-primary;
   font-size: clamp(2rem, 4vw, 3rem);
   font-weight: $font-weight-bold;
   color: $text-white;
@@ -140,7 +140,7 @@
 }
 
 .infoTitle {
-  font-family: $font-secondary;
+  font-family: $font-primary;
   font-size: $font-size-2xl;
   font-weight: $font-weight-bold;
   color: $text-white;
@@ -200,7 +200,7 @@
 }
 
 .methodTitle {
-  font-family: $font-secondary;
+  font-family: $font-primary;
   font-size: $font-size-base;
   font-weight: $font-weight-semibold;
   color: $text-white;
@@ -229,7 +229,7 @@
 }
 
 .socialTitle {
-  font-family: $font-secondary;
+  font-family: $font-primary;
   font-size: $font-size-lg;
   font-weight: $font-weight-semibold;
   color: $text-white;
@@ -297,7 +297,7 @@
 }
 
 .formTitle {
-  font-family: $font-secondary;
+  font-family: $font-primary;
   font-size: $font-size-2xl;
   font-weight: $font-weight-bold;
   color: $text-white;
@@ -321,7 +321,7 @@
 }
 
 .formLabel {
-  font-family: $font-secondary;
+  font-family: $font-primary;
   font-size: $font-size-xs;
   font-weight: $font-weight-medium;
   color: $text-white;

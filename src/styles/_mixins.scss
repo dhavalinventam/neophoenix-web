@@ -6,7 +6,7 @@
 
 // Common Section Title Mixin
 @mixin section-title {
-  font-family: vars.$section-title-font-family;
+  position: relative;
   font-size: vars.$section-title-font-size;
   font-weight: vars.$section-title-font-weight;
   color: vars.$section-title-color;
@@ -14,11 +14,22 @@
   letter-spacing: vars.$section-title-letter-spacing;
   margin-bottom: vars.$section-title-margin-bottom;
   text-align: center;
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -0.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4rem;
+    height: 0.25rem;
+    background: vars.$gradient-primary;
+    border-radius: 0.125rem;
+    box-shadow: 0 0 10px rgba(102, 126, 234, 0.5);
+  }
 }
 
 // Common Section Subtitle Mixin
 @mixin section-subtitle {
-  font-family: vars.$section-subtitle-font-family;
   font-size: vars.$section-subtitle-font-size;
   font-weight: vars.$section-subtitle-font-weight;
   color: vars.$section-subtitle-color;
@@ -32,11 +43,11 @@
 @mixin section-header {
   text-align: center;
   margin-bottom: 2rem;
-  
+
   .title {
     @include section-title;
   }
-  
+
   .subtitle {
     @include section-subtitle;
   }
@@ -45,27 +56,27 @@
 // Responsive Section Title Mixin
 @mixin section-title-responsive {
   @include section-title;
-  
+
   @include tablet {
     font-size: clamp(1.75rem, 3.5vw, 2rem);
     margin-bottom: 0.5rem;
   }
-  
+
   @include mobile {
     font-size: 1.5rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
   }
 }
 
 // Responsive Section Subtitle Mixin
 @mixin section-subtitle-responsive {
   @include section-subtitle;
-  
+
   @include tablet {
     font-size: vars.$font-size-sm;
     max-width: 450px;
   }
-  
+
   @include mobile {
     font-size: vars.$font-size-xs;
     max-width: 400px;
@@ -111,7 +122,7 @@
 
 @mixin hover-lift {
   transition: all vars.$duration-normal vars.$ease-out;
-  
+
   &:hover {
     transform: translateY(-5px);
   }
@@ -132,7 +143,7 @@
   border-radius: 20px;
   padding: 2rem;
   transition: all vars.$duration-normal vars.$ease-out;
-  
+
   &:hover {
     @include glass-effect(0.1);
     transform: translateY(-2px);

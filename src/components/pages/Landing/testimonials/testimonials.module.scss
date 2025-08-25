@@ -1,7 +1,7 @@
 @use '../../../../styles/variables' as *;
 @use '../../../../styles/mixins' as *;
 
-.testimonials {
+.testimonialsSection {
   background: $gradient-background;
   padding: 4rem 0;
   position: relative;
@@ -15,7 +15,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: 
+    background:
       radial-gradient(circle at 25% 25%, rgba(138, 43, 226, 0.1) 0%, transparent 50%),
       radial-gradient(circle at 75% 75%, rgba(255, 69, 0, 0.08) 0%, transparent 50%);
     pointer-events: none;
@@ -29,30 +29,13 @@
 
 .header {
   @include section-header;
-  
+
   .title {
-    color: $text-white;
-    margin-bottom: 1.5rem;
-    font-weight: $font-weight-bold;
-    position: relative;
-    text-shadow: 0 0 20px rgba(102, 126, 234, 0.5);
-    .underline {
-      position: absolute;
-      bottom: -8px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 80px;
-      height: 4px;
-      background: $gradient-primary;
-      border-radius: 2px;
-    }
+    @include section-title-responsive;
   }
-  
+
   .subtitle {
-    color: $text-gray-light;
-    max-width: 40rem;
-    margin: 0 auto;
-    text-shadow: 0 0 10px rgba(160, 160, 160, 0.3);
+    @include section-subtitle-responsive;
   }
 }
 
@@ -144,7 +127,7 @@
 
 .testimonialText {
   padding-right: 28px;
-  font-size: $font-size-base;
+  font-size: $font-size-sm;
   line-height: $line-height-relaxed;
   color: $text-white;
   margin-bottom: 2rem;

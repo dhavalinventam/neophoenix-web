@@ -1,7 +1,7 @@
 @use '../../../../styles/variables' as *;
 @use '../../../../styles/mixins' as *;
 
-.howItWorks {
+.howItWorksSection {
   background: $gradient-background;
   padding: 4rem 0;
   position: relative;
@@ -38,34 +38,6 @@
   }
 }
 
-.title {
-  color: $text-white;
-  margin-bottom: 1.5rem;
-  font-weight: $font-weight-bold;
-  position: relative;
-  display: inline-block;
-  text-shadow: 0 0 20px rgba(102, 126, 234, 0.5);
-
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: -0.5rem;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 4rem;
-    height: 0.25rem;
-    background: $gradient-primary;
-    border-radius: 0.125rem;
-    box-shadow: 0 0 10px rgba(102, 126, 234, 0.5);
-  }
-}
-
-.description {
-  color: $text-gray-light;
-  max-width: 40rem;
-  margin: 0 auto;
-  text-shadow: 0 0 10px rgba(160, 160, 160, 0.3);
-}
 
 .stepCard {
   background: $bg-dark-secondary;
