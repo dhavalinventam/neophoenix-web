@@ -47,6 +47,8 @@
 // Bootstrap grid is used instead of custom grid
 
 .serviceCard {
+  display: flex;
+  flex-direction: column;
   background: $bg-dark-secondary;
   border: 1px solid $glass-border-medium;
   border-radius: 20px;
@@ -55,6 +57,7 @@
   transition: all $duration-normal $ease-in-out;
   position: relative;
   overflow: hidden;
+  height: 100%;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 
   &::before {
@@ -149,6 +152,7 @@
   padding: 0;
   margin: 0 0 2.5rem;
   text-align: left;
+  flex: 1;
 }
 
 .featureItem {
