@@ -106,10 +106,7 @@ const Testimonials = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className={styles.title}>
-            What Our Users Say
-            <span className={styles.underline}></span>
-          </h2>
+          <h2 className={styles.title}>What Our Users Say</h2>
           <p className={styles.subtitle}>
             Join thousands of professionals who trust Tech Pilot for their AI journey
           </p>

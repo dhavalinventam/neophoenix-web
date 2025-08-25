@@ -1,7 +1,7 @@
 @use '../../../../styles/variables' as *;
 @use '../../../../styles/mixins' as *;
 
-.personalizedWishlist {
+.personalizedWishlistSection {
   background: $gradient-background;
   padding: 4rem 0;
   position: relative;
@@ -14,7 +14,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: 
+    background:
       radial-gradient(circle at 25% 25%, rgba(138, 43, 226, 0.1) 0%, transparent 50%),
       radial-gradient(circle at 75% 75%, rgba(255, 69, 0, 0.08) 0%, transparent 50%);
     pointer-events: none;
@@ -28,54 +28,22 @@
 
 .titleWrapper {
   @include section-header;
-  
+  margin-bottom: 0px !important;
+
   .title {
     @include section-title-responsive;
+    text-align: start;
+    &::after {
+      left: 0% !important;
+      transform: translateX(0%) !important;
+    }
   }
-  
-  .subtitle {
-    @include section-subtitle-responsive;
-  }
+
 }
-
-.title {
-  position: relative;
-  font-family: $font-primary;
-  font-size: $font-size-4xl;
-  font-weight: $font-weight-bold;
-  color: $text-white;
-  margin-bottom: 1rem;
-  line-height: $line-height-tight;
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: -0.5rem;
-    left: 0;
-    width: 4rem;
-    height: 0.25rem;
-    background: $gradient-primary;
-    border-radius: 0.125rem;
-    box-shadow: 0 0 10px rgba(102, 126, 234, 0.5);
-  }
-}
-
-// .titleUnderline {
-//   position: absolute;
-//   bottom: -10px;
-//   left: 0;
-//   width: 100px;
-//   height: 4px;
-//   background: $gradient-primary;
-//   border-radius: 2px;
-// }
-
 .description {
-  font-family: $font-primary;
-  font-size: $font-size-lg;
-  font-weight: $font-weight-normal;
-  color: $text-gray-light;
-  line-height: $line-height-relaxed;
-  margin-bottom: 2.5rem;
+  @include section-subtitle-responsive;
+  text-align: start;
+  margin: 0 0 2rem;
 }
 
 .featuresList {
@@ -259,10 +227,6 @@
 
 // Responsive Design
 @media (max-width: 768px) {
-  .title {
-    font-size: $font-size-2xl;
-  }
-
   .description {
     font-size: $font-size-sm;
     margin-bottom: 1.5rem;
