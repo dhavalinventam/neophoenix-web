@@ -107,8 +107,9 @@ const OurServices: React.FC = () => {
                     </li>
                   ))}
                 </ul>
-
-                <Button label={service.buttonText} />
+                <div className="d-flex justify-content-center">
+                  <Button label={service.buttonText} />
+                </div>
               </div>
             </div>
           ))}
