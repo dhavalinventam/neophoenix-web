@@ -6,9 +6,9 @@ const HowItWorks: React.FC = () => {
     {
       id: 1,
       number: '01',
-      title: 'Discovery & Analysis',
+      title: 'Deep-Dive Assessment',
       description:
-        'We analyze your business needs, current systems, and AI opportunities to create a tailored strategy.',
+        'Pinpoint real business bottlenecks and map integration points no cookie cutter analysis, just actionable insights.',
       icon: (
         <svg
           width="32"
@@ -17,8 +17,13 @@ const HowItWorks: React.FC = () => {
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
+          {/* Magnifying glass with chart/analytics */}
           <path
-            d="M21.5 19.5L28 26L26 28L19.5 21.5C17.8 22.8 15.6 23.5 13.25 23.5C7.5 23.5 2.75 18.75 2.75 13C2.75 7.25 7.5 2.5 13.25 2.5C19 2.5 23.75 7.25 23.75 13C23.75 15.35 23.05 17.55 21.75 19.25L21.5 19.5ZM13.25 5.5C9.1 5.5 5.75 8.85 5.75 13C5.75 17.15 9.1 20.5 13.25 20.5C17.4 20.5 20.75 17.15 20.75 13C20.75 8.85 17.4 5.5 13.25 5.5Z"
+            d="M14 4C8.48 4 4 8.48 4 14C4 19.52 8.48 24 14 24C16.39 24 18.68 23.21 20.47 21.77L26.59 27.89L28 26.47L21.88 20.35C23.22 18.56 24 16.35 24 14C24 8.48 19.52 4 14 4ZM14 6C18.42 6 22 9.58 22 14C22 18.42 18.42 22 14 22C9.58 22 6 18.42 6 14C6 9.58 9.58 6 14 6Z"
+            fill="currentColor"
+          />
+          <path
+            d="M10 12H12V18H10V12ZM13 10H15V18H13V10ZM16 14H18V18H16V14Z"
             fill="currentColor"
           />
         </svg>
@@ -27,9 +32,9 @@ const HowItWorks: React.FC = () => {
     {
       id: 2,
       number: '02',
-      title: 'Custom Solution Design',
+      title: 'Rapid Solution Blueprint',
       description:
-        'Our team designs a bespoke AI solution that integrates seamlessly with your existing workflows.',
+        'Architect a fit for purpose AI workflow built around your actual data, tech stack, and performance goals no wasted cycles.',
       icon: (
         <svg
           width="32"
@@ -38,21 +43,28 @@ const HowItWorks: React.FC = () => {
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
+          {/* Blueprint/planning icon */}
           <path
-            d="M8 4C5.79 4 4 5.79 4 8V24C4 26.21 5.79 28 8 28H24C26.21 28 28 26.21 28 24V8C28 5.79 26.21 4 24 4H8ZM8 6H24C25.1 6 26 6.9 26 8V24C26 25.1 25.1 26 24 26H8C6.9 26 6 25.1 6 24V8C6 6.9 6.9 6 8 6Z"
+            d="M6 4C4.9 4 4 4.9 4 6V26C4 27.1 4.9 28 6 28H26C27.1 28 28 27.1 28 26V6C28 4.9 27.1 4 26 4H6ZM6 6H26V26H6V6Z"
             fill="currentColor"
           />
-          <path d="M10 10H22V12H10V10ZM10 14H18V16H10V14ZM10 18H20V20H10V18Z" fill="currentColor" />
-          <path d="M12 22H20V24H12V22Z" fill="currentColor" />
+          <path
+            d="M8 8H24V10H8V8ZM8 12H20V14H8V12ZM8 16H24V18H8V16ZM8 20H16V22H8V20Z"
+            fill="currentColor"
+          />
+          <path
+            d="M22 12H24V14H22V12ZM22 16H24V18H22V16ZM22 20H24V22H22V20Z"
+            fill="currentColor"
+          />
         </svg>
       ),
     },
     {
       id: 3,
       number: '03',
-      title: 'Implementation & Training',
+      title: 'Fast Deployment & Enablement',
       description:
-        'We implement the solution and provide comprehensive training to your team for maximum adoption.',
+        'Plug in, go live, and upskill your team with hands on onboarding measurable impact from day one, not wishful promises.',
       icon: (
         <svg
           width="32"
@@ -61,20 +73,17 @@ const HowItWorks: React.FC = () => {
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
+          {/* Rocket/launch icon */}
           <path
-            d="M16 4C18.21 4 20 5.79 20 8C20 10.21 18.21 12 16 12C13.79 12 12 10.21 12 8C12 5.79 13.79 4 16 4ZM16 6C14.9 6 14 6.9 14 8C14 9.1 14.9 10 16 10C17.1 10 18 9.1 18 8C18 6.9 17.1 6 16 6Z"
+            d="M16 4L18.5 8.5L23 9L18.5 9.5L16 14L13.5 9.5L9 9L13.5 8.5L16 4Z"
             fill="currentColor"
           />
           <path
-            d="M24 8C25.1 8 26 8.9 26 10C26 11.1 25.1 12 24 12C22.9 12 22 11.1 22 10C22 8.9 22.9 8 24 8ZM24 10C24 10.55 24.45 11 25 11C25.55 11 26 10.55 26 10C26 9.45 25.55 9 25 9C24.45 9 24 9.45 24 10Z"
+            d="M8 20C8 18.9 8.9 18 10 18H22C23.1 18 24 18.9 24 20V26C24 27.1 23.1 28 22 28H10C8.9 28 8 27.1 8 26V20ZM10 20V26H22V20H10Z"
             fill="currentColor"
           />
           <path
-            d="M8 8C9.1 8 10 8.9 10 10C10 11.1 9.1 12 8 12C6.9 12 6 11.1 6 10C6 8.9 6.9 8 8 8ZM8 10C8 10.55 8.45 11 9 11C9.55 11 10 10.55 10 10C10 9.45 9.55 9 9 9C8.45 9 8 9.45 8 10Z"
-            fill="currentColor"
-          />
-          <path
-            d="M16 14C19.31 14 22 16.69 22 20V24H10V20C10 16.69 12.69 14 16 14ZM16 16C13.79 16 12 17.79 12 20V22H20V20C20 17.79 18.21 16 16 16Z"
+            d="M12 22H20V24H12V22ZM12 26H16V28H12V26Z"
             fill="currentColor"
           />
         </svg>
@@ -83,9 +92,9 @@ const HowItWorks: React.FC = () => {
     {
       id: 4,
       number: '04',
-      title: 'Ongoing Support',
+      title: 'Relentless Optimization',
       description:
-        'Continuous monitoring, optimization, and support to ensure your AI solution delivers maximum value.',
+        '24/7 monitoring, usage analytics, and ongoing updates so your AI solution gets smarter and more efficient over time.',
       icon: (
         <svg
           width="32"
@@ -94,20 +103,17 @@ const HowItWorks: React.FC = () => {
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
+          {/* Optimization/analytics dashboard */}
           <path
-            d="M8 12C6.9 12 6 12.9 6 14V20C6 21.1 6.9 22 8 22H10V26H14V22H16C17.1 22 18 21.1 18 20V14C18 12.9 17.1 12 16 12H8ZM8 14H16V20H14V24H10V20H8V14Z"
+            d="M6 4C4.9 4 4 4.9 4 6V26C4 27.1 4.9 28 6 28H26C27.1 28 28 27.1 28 26V6C28 4.9 27.1 4 26 4H6ZM6 6H26V26H6V6Z"
             fill="currentColor"
           />
           <path
-            d="M20 8C18.9 8 18 8.9 18 10V16C18 17.1 18.9 18 20 18H22V22H26V18H28C29.1 18 30 17.1 30 16V10C30 8.9 29.1 8 28 8H20ZM20 10H28V16H26V20H22V16H20V10Z"
+            d="M8 8H12V12H8V8ZM14 8H18V16H14V8ZM20 8H24V20H20V8Z"
             fill="currentColor"
           />
           <path
-            d="M12 16C12.55 16 13 16.45 13 17C13 17.55 12.55 18 12 18C11.45 18 11 17.55 11 17C11 16.45 11.45 16 12 16Z"
-            fill="currentColor"
-          />
-          <path
-            d="M24 16C24.55 16 25 16.45 25 17C25 17.55 24.55 18 24 18C23.45 18 23 17.55 23 17C23 16.45 23.45 16 24 16Z"
+            d="M8 14H12V20H8V14ZM14 18H18V20H14V18ZM20 22H24V24H20V22Z"
             fill="currentColor"
           />
         </svg>
@@ -121,8 +127,8 @@ const HowItWorks: React.FC = () => {
         <div className={styles.header}>
           <h2 className={styles.title}>How It Works</h2>
           <p className={styles.description}>
-            Our proven 4-step process ensures successful AI implementation and maximum ROI for your
-            business.
+            Our no-nonsense 4 step deployment gets you from Product to powerhouse - ready AI with
+            minimal hassle and maximum ROI.
           </p>
         </div>
 

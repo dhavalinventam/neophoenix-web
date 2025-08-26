@@ -8,7 +8,7 @@ const OurServices: React.FC = () => {
       id: 1,
       title: 'Plug-and-Play RAG System',
       description:
-        'Transform your team into AI power users with hands-on workshops tailored to your industry and specific use cases.',
+        'Instantly connect your database and deploy a secure AI chat: no data ever leaves your environment, setup in minutes.',
       icon: (
         <svg
           width="32"
@@ -42,7 +42,7 @@ const OurServices: React.FC = () => {
       id: 2,
       title: 'Task Prompt AI Chrome Extension',
       description:
-        'Seamlessly connect AI tools with your existing systems and workflows for maximum efficiency and minimal disruption.',
+        'Auto-generates task-specific AI actions inside JIRA, ClickUp, and Asana: save hours weekly without changing your workflow.',
       icon: (
         <svg
           width="32"
