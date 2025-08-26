@@ -1,4 +1,5 @@
 @use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
 
 // =============================================================================
 // MAIN CONTAINER
@@ -6,10 +7,8 @@
 
 .contactContainer {
   background: $gradient-background;
-  min-height: 100vh;
   position: relative;
   overflow: hidden;
-  padding-top: 80px; // Add top padding to account for fixed header
 
   &::before {
     content: '';
@@ -31,7 +30,6 @@
 // =============================================================================
 
 .heroSection {
-  padding: 2rem 0 1.5rem;
   position: relative;
   z-index: 2;
 
@@ -52,49 +50,25 @@
   text-align: center;
   max-width: 700px;
   margin: 0 auto;
-}
-
-.heroTitle {
-  font-family: $font-primary;
-  font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: $font-weight-bold;
-  color: $text-white;
-  margin-bottom: 1rem;
-  line-height: 1.1;
-  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-}
-
-.heroTitleAccent {
-  background: $gradient-primary;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  position: relative;
+  .headline {
+    margin-bottom: 4rem;
+    animation: fadeInUp $duration-slower $ease-out 0.2s both;
   
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: -3px;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: $gradient-primary;
-    border-radius: 1px;
+    .title {
+      @include section-title-responsive;
+    }
+  
+    .gradientText {
+      color: $text-white;
+      animation: gradientShift 3s $ease-in-out infinite;
+    }
+  
+    .description {
+      @include section-subtitle-responsive;
+    }
   }
 }
 
-.heroTitleDot {
-  color: $primary-pink;
-  animation: pulse 2s infinite;
-}
-
-.heroSubtitle {
-  font-size: clamp(1rem, 1.5vw, 1.125rem);
-  color: rgba(255, 255, 255, 0.8);
-  line-height: 1.5;
-  max-width: 500px;
-  margin: 0 auto;
-}
 
 // =============================================================================
 // MAIN SECTION
@@ -221,7 +195,7 @@
 }
 
 .socialSection {
-  margin-top: 2rem;
+  margin-top: 1.5rem;
   padding-top: 1.5rem;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   position: relative;
@@ -442,25 +416,13 @@
 // RESPONSIVE DESIGN
 // =============================================================================
 
-@media (max-width: 1200px) {
-  .contactContainer {
-    padding-top: 70px;
-  }
-  
-  .heroSection {
-    padding: 1.5rem 0 1rem;
-  }
-  
+@media (max-width: 1200px) {    
   .mainSection {
     padding: 0.5rem 0 3rem;
   }
 }
 
 @media (max-width: 992px) {
-  .contactContainer {
-    padding-top: 60px;
-  }
-  
   .infoSection,
   .formSection {
     padding: 1.5rem;
@@ -498,19 +460,14 @@
   }
 }
 
-@media (max-width: 768px) {
-  .contactContainer {
-    padding-top: 50px;
-  }
-  
-  .heroSection {
-    padding: 1rem 0 0.75rem;
-  }
+@media (max-width: 768px) {  
   
   .mainSection {
     padding: 0 0 2rem;
   }
-  
+  .headline {
+    margin-bottom: 2rem !important;
+  }
   .infoSection,
   .formSection {
     padding: 1.25rem;
@@ -568,9 +525,6 @@
 }
 
 @media (max-width: 576px) {
-  .contactContainer {
-    padding-top: 45px;
-  }
   
   .heroTitle {
     font-size: 1.75rem;
