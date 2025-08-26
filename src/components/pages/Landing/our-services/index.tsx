@@ -1,6 +1,5 @@
 import React from 'react';
 import styles from './OurServices.module.scss';
-import Button from '@/components/ui/button';
 
 const OurServices: React.FC = () => {
   const services = [
@@ -36,7 +35,6 @@ const OurServices: React.FC = () => {
         'Maintain full control: your data stays in your environment with zero external storage.',
         'Unlock powerful insights through real-time answers based on your proprietary data.',
       ],
-      buttonText: 'Learn More →',
     },
     {
       id: 2,
@@ -68,9 +66,8 @@ const OurServices: React.FC = () => {
       features: [
         'Integrate AI deeply into your Jira, ClickUp, Asana, and Trello workflows.',
         'Generate contextual, role-specific prompts that cut task completion time in half.',
-        'Customize prompts to your team’s unique needs and industry jargon.',
+        'Customize prompts to your team\'s unique needs and industry jargon.',
       ],
-      buttonText: 'Learn More →',
     },
   ];
 
@@ -105,9 +102,6 @@ const OurServices: React.FC = () => {
                     </li>
                   ))}
                 </ul>
-                <div className="d-flex justify-content-center">
-                  <Button label={service.buttonText} />
-                </div>
               </div>
             </div>
           ))}

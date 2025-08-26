@@ -85,12 +85,6 @@
     .cardIcon {
       background: $gradient-primary;
     }
-
-    .cardButton {
-      background: $gradient-primary;
-      transform: translateY(-2px);
-      box-shadow: $shadow-glow-blue;
-    }
   }
 }
 
@@ -150,7 +144,7 @@
 .featuresList {
   list-style: none;
   padding: 0;
-  margin: 0 0 2.5rem;
+  margin: 0;
   text-align: left;
   flex: 1;
 }
@@ -184,24 +178,6 @@
   font-weight: $font-weight-bold;
   flex-shrink: 0;
   box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
-}
-
-.cardButton {
-  padding: 1rem 2rem;
-  background: $gradient-primary;
-  border: none;
-  border-radius: 50px;
-  color: $text-white;
-  font-weight: $font-weight-semibold;
-  font-size: $font-size-base;
-  cursor: pointer;
-  transition: all $duration-normal $ease-out;
-  white-space: nowrap;
-
-  &:hover {
-    background: $gradient-secondary !important;
-    box-shadow: $shadow-lg;
-  }
 }
 
 // Responsive Design - Using Bootstrap grid system
