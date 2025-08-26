@@ -25,7 +25,7 @@ const faqData: FAQItem[] = [
   {
     id: 3,
     question: 'Who should sign up?',
-    answer: 'Tech and ops teams wanting to automate, secure, and lead—before everyone else.',
+    answer: 'Tech and ops teams wanting to automate, secure, and lead before everyone else.',
   },
 ];
 
