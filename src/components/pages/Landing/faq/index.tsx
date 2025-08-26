@@ -118,9 +118,7 @@ const FAQ = () => {
           transition={{ duration: 0.6 }}
         >
           <h2 className={styles.title}>Frequently Asked Questions</h2>
-          <p className={styles.subtitle}>
-            Everything you need to know about Tech Pilot and AI tools
-          </p>
+          <p className={styles.subtitle}>Everything you need to know about Neophoenix</p>
         </motion.div>
 
         {/* FAQ Items */}

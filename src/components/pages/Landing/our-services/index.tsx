@@ -80,8 +80,8 @@ const OurServices: React.FC = () => {
         <div className={styles.header}>
           <h2 className={styles.title}>Our AI-Powered Services</h2>
           <p className={styles.description}>
-            We don&apos;t just plug in cookie-cutter bots. We tailor solutions that speak to your
-            specific industry, challenges, goals and most importantly: deliver clear outcomes.
+            Empower your team with secure, AI-driven insights and workflow automation tailored to
+            your data, tools, and processes.
           </p>
         </div>
 

@@ -75,7 +75,7 @@ const FeatureComparison: React.FC = () => {
                 Why Choose <span className={styles.highlight}>Neophoenix</span>
               </h2>
               <p className={styles.subtitle}>
-                Discover what makes us the superior choice for your video creation needs
+                Discover what makes us the superior choice for your needs
               </p>
             </div>
           </div>
