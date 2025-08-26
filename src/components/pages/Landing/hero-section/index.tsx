@@ -55,8 +55,8 @@ const HeroSection = () => {
             Master AI Tools Designed to Transform Work From Data to Daily Tasks
           </h1>
           <p className={styles.description}>
-            Join 10,000+ innovators unlocking exclusive early access to our ever-expanding suite of
-            AI-powered solutions—secure, smart, and built for real impact.
+            Join 10,000+ innovators unlocking exclusive early access to our ever expanding suite of
+            AI-powered solutions secure, smart, and built for real impact.
           </p>
         </div>
 
