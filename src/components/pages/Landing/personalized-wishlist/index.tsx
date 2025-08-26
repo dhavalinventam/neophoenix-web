@@ -29,9 +29,9 @@ const PersonalizedWishlist: React.FC = () => {
   return (
     <section id="personalized-wishlist" className={styles.personalizedWishlistSection}>
       <div className="container">
-        <div className="row align-items-center">
-          {/* Left Section - Benefits and Description */}
-          <div className="col-lg-6 col-md-12 mb-3 mb-md-5 mb-lg-0">
+        <div className="row justify-content-center">
+          <div className="col-lg-8 col-md-10 col-12">
+            {/* Top Section - Title and Description */}
             <div className={styles.contentSection}>
               <div className={styles.titleWrapper}>
                 <h2 className={styles.title}>Build Your Personalized AI Wishlist</h2>
@@ -42,10 +42,8 @@ const PersonalizedWishlist: React.FC = () => {
                 recommendations, and stay updated on the latest additions.
               </p>
             </div>
-          </div>
 
-          {/* Right Section - Form */}
-          <div className="col-lg-6 col-md-12">
+            {/* Bottom Section - Form */}
             <div className={styles.formCard}>
               <div className={styles.formHeader}>
                 <div className={styles.formIcon}>
@@ -86,43 +84,52 @@ const PersonalizedWishlist: React.FC = () => {
               </div>
 
               <Form onSubmit={handleSubmit} className={styles.form}>
-                <Form.Group className={styles.formGroup}>
-                  <Form.Label htmlFor="fullName" className={styles.label}>
-                    Full Name
-                  </Form.Label>
-                  <div className={styles.inputWrapper}>
-                    <FormControl
-                      type="text"
-                      id="fullName"
-                      name="fullName"
-                      value={formData.fullName}
-                      onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange(e)}
-                      placeholder="Your name"
-                      className={styles.input}
-                      required
-                    />
-                    <div className={styles.inputFocus}></div>
+                <div className="row">
+                  <div className="col-md-6">
+                    <Form.Group className={styles.formGroup}>
+                      <Form.Label htmlFor="fullName" className={styles.label}>
+                        Full Name
+                      </Form.Label>
+                      <div className={styles.inputWrapper}>
+                        <FormControl
+                          type="text"
+                          id="fullName"
+                          name="fullName"
+                          value={formData.fullName}
+                          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                            handleInputChange(e)
+                          }
+                          placeholder="Your name"
+                          className={styles.input}
+                          required
+                        />
+                        <div className={styles.inputFocus}></div>
+                      </div>
+                    </Form.Group>
                   </div>
-                </Form.Group>
-
-                <Form.Group className={styles.formGroup}>
-                  <Form.Label htmlFor="email" className={styles.label}>
-                    Email Address
-                  </Form.Label>
-                  <div className={styles.inputWrapper}>
-                    <FormControl
-                      type="email"
-                      id="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange(e)}
-                      placeholder="your@email.com"
-                      className={styles.input}
-                      required
-                    />
-                    <div className={styles.inputFocus}></div>
+                  <div className="col-md-6">
+                    <Form.Group className={styles.formGroup}>
+                      <Form.Label htmlFor="email" className={styles.label}>
+                        Email Address
+                      </Form.Label>
+                      <div className={styles.inputWrapper}>
+                        <FormControl
+                          type="email"
+                          id="email"
+                          name="email"
+                          value={formData.email}
+                          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                            handleInputChange(e)
+                          }
+                          placeholder="your@email.com"
+                          className={styles.input}
+                          required
+                        />
+                        <div className={styles.inputFocus}></div>
+                      </div>
+                    </Form.Group>
                   </div>
-                </Form.Group>
+                </div>
 
                 <Form.Group className={styles.formGroup}>
                   <Form.Label htmlFor="aiInterests" className={styles.label}>
@@ -150,21 +157,10 @@ const PersonalizedWishlist: React.FC = () => {
                     <div className={styles.inputFocus}></div>
                   </div>
                 </Form.Group>
-                <div className="d-flex justify-content-center mt-3">
+
+                <div className={styles.buttonWrapper}>
                   <Button label="Create Free Account" />
                 </div>
-
-                <p className={styles.legalText}>
-                  By signing up, you agree to our{' '}
-                  <a href="/terms" className={styles.legalLink}>
-                    Terms of Service
-                  </a>{' '}
-                  and{' '}
-                  <a href="/privacy" className={styles.legalLink}>
-                    Privacy Policy
-                  </a>
-                  .
-                </p>
               </Form>
             </div>
           </div>
