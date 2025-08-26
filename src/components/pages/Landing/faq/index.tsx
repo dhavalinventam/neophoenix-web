@@ -13,39 +13,19 @@ interface FAQItem {
 const faqData: FAQItem[] = [
   {
     id: 1,
-    question: 'What makes Tech Pilot different from other AI tool review sites?',
+    question: 'How are these tools different from anything else?',
     answer:
-      'Tech Pilot stands out by providing hands-on, practical insights rather than just surface-level reviews. We test each tool extensively in real business scenarios, offer detailed integration guides, and maintain an active community of AI practitioners who share their experiences and best practices.',
+      'Binary: Your data never leaves your infra; prompts are always in your context, not generic.',
   },
   {
     id: 2,
-    question: 'How often do you update your AI tool reviews?',
-    answer:
-      'We update our reviews monthly to ensure accuracy and relevance. With AI technology evolving rapidly, we continuously monitor updates, new features, and pricing changes to keep our community informed with the latest information.',
+    question: 'What’s the risk in early access?',
+    answer: 'None, no credit card, no vendor lock-in, no data exposure.',
   },
   {
     id: 3,
-    question: 'Do you offer consulting services for AI implementation?',
-    answer:
-      'Yes! Our team of AI experts provides personalized consulting services to help businesses integrate AI tools effectively. We offer strategy development, tool selection, implementation support, and ongoing optimization to maximize your AI investment ROI.',
-  },
-  {
-    id: 4,
-    question: 'Is the content suitable for beginners in AI?',
-    answer:
-      'Absolutely! We cater to all skill levels, from complete beginners to advanced practitioners. Our content includes beginner-friendly explanations, step-by-step tutorials, and advanced strategies. We believe everyone should have access to quality AI education.',
-  },
-  {
-    id: 5,
-    question: 'How can I contribute to the Tech Pilot community?',
-    answer:
-      'We welcome contributions from our community! You can share your experiences with AI tools, submit guest articles, participate in our forums, or suggest tools for review. Join our Discord server to connect with fellow AI enthusiasts and share insights.',
-  },
-  {
-    id: 6,
-    question: 'What types of AI tools do you cover?',
-    answer:
-      'We cover a comprehensive range of AI tools including content creation, image generation, data analysis, automation, customer service, marketing, development, and productivity tools. Our focus is on practical, business-ready solutions that deliver real value.',
+    question: 'Who should sign up?',
+    answer: 'Tech and ops teams wanting to automate, secure, and lead—before everyone else.',
   },
 ];
 
