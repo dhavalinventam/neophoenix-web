@@ -200,21 +200,7 @@ export default function ContactPage() {
                           ></textarea>
                         </div>
                       </div>
-                      <div className="col-12">
-                        <div className={styles.formCheck}>
-                          <input className={styles.checkbox} type="checkbox" id="privacyPolicy" />
-                          <label className={styles.checkboxLabel} htmlFor="privacyPolicy">
-                            I agree to the{' '}
-                            <a href="#" className={styles.privacyLink}>
-                              Privacy Policy
-                            </a>{' '}
-                            and{' '}
-                            <a href="#" className={styles.privacyLink}>
-                              Terms of Service
-                            </a>
-                          </label>
-                        </div>
-                      </div>
+                      
                       <div className="col-12">
                         <div
                           className={styles.formSubmit}
