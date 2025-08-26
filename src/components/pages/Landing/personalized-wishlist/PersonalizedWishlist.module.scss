@@ -30,21 +30,18 @@
   margin-bottom: 2rem;
 }
 
-.titleWrapper {
+.header {
   @include section-header;
-  margin-bottom: 1rem !important;
 
   .title {
     @include section-title-responsive;
-    text-align: center;
-    margin-bottom: 0.5rem;
+  }
 
-    &::after {
-      left: 50% !important;
-      transform: translateX(-50%) !important;
-    }
+  .subtitle {
+    @include section-subtitle-responsive;
   }
 }
+
 
 .description {
   @include section-subtitle-responsive;

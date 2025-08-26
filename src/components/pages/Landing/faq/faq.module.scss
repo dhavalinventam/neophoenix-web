@@ -23,21 +23,13 @@
 
 .header {
   @include section-header;
-  
+
   .title {
     @include section-title-responsive;
-    color: $text-white;
-    margin-bottom: 1.5rem;
-    font-weight: $font-weight-bold;
-    position: relative;
-    text-shadow: 0 0 20px rgba(102, 126, 234, 0.5);
   }
-  
+
   .subtitle {
-    color: $text-gray-light;
-    max-width: 40rem;
-    margin: 0 auto;
-    text-shadow: 0 0 10px rgba(160, 160, 160, 0.3);
+    @include section-subtitle-responsive;
   }
 }
 

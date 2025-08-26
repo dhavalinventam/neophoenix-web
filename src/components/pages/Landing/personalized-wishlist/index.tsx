@@ -33,14 +33,13 @@ const PersonalizedWishlist: React.FC = () => {
           <div className="col-lg-8 col-md-10 col-12">
             {/* Top Section - Title and Description */}
             <div className={styles.contentSection}>
-              <div className={styles.titleWrapper}>
+              <div className={styles.header}>
                 <h2 className={styles.title}>Build Your Personalized AI Wishlist</h2>
+                <p className={styles.subtitle}>
+                  Create your account to save your favorite AI tools, get personalized
+                  recommendations, and stay updated on the latest additions.
+                </p>
               </div>
-
-              <p className={styles.description}>
-                Create your account to save your favorite AI tools, get personalized
-                recommendations, and stay updated on the latest additions.
-              </p>
             </div>
 
             {/* Bottom Section - Form */}
