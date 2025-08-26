@@ -27,6 +27,24 @@ const faqData: FAQItem[] = [
     question: 'Who should sign up?',
     answer: 'Tech and ops teams wanting to automate, secure, and lead before everyone else.',
   },
+  {
+    id: 4,
+    question: 'What support is available if we run into issues?',
+    answer:
+      'Direct Slack/Email support, detailed docs, and if you need priority an enterprise SLA with live debugging. No chatbots or ticket limbo.',
+  },
+  {
+    id: 5,
+    question: 'Is technical expertise required to get started?',
+    answer:
+      'Minimal. If you can connect to a database or install a browser extension, you’re good to go: no deep ML expertise needed.',
+  },
+  {
+    id: 6,
+    question: 'Is my business data ever sent to your servers?',
+    answer:
+      'No. All processing and storage happen entirely on your infrastructure: your data never leaves your environment.',
+  },
 ];
 
 const FAQ = () => {

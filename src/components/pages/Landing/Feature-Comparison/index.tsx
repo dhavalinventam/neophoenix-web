@@ -124,7 +124,7 @@ const FeatureComparison: React.FC = () => {
                             {feature.plugAndPlayRAG ? (
                               <div className={styles.available}>
                                 <CheckIcon />
-                                <span>Yas</span>
+                                <span>Yes</span>
                               </div>
                             ) : (
                               <div className={styles.unavailable}>

@@ -67,11 +67,33 @@
   position: relative;
   z-index: 1;
   overflow-x: auto;
+  overflow-y: hidden;
   border-radius: 1rem;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(102, 126, 234, 0.3) transparent;
+
+  &::-webkit-scrollbar {
+    height: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: rgba(102, 126, 234, 0.3);
+    border-radius: 4px;
+    
+    &:hover {
+      background: rgba(102, 126, 234, 0.5);
+    }
+  }
 }
 
 .comparisonTable {
   width: 100%;
+  min-width: 800px; // Ensure minimum width for content
   border-collapse: separate;
   border-spacing: 0;
   background: transparent;
@@ -83,6 +105,7 @@
     text-align: left;
     vertical-align: middle;
     position: relative;
+    white-space: nowrap;
   }
 
   th {
@@ -165,24 +188,6 @@
     color: $text-white;
     text-shadow: 0 0 10px rgba(102, 126, 234, 0.5);
   }
-}
-
-.accentGlow {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(circle,
-      rgba(102, 126, 234, 0.4) 0%,
-      rgba(118, 75, 162, 0.2) 50%,
-      transparent 70%);
-  border-radius: 0.5rem;
-  opacity: 0.6;
-  animation: pulse 3s ease-in-out infinite;
-  pointer-events: none;
-  filter: blur(1px);
 }
 
 // Feature Cells
@@ -273,11 +278,8 @@
   }
 }
 
-
-
 // Animations
 @keyframes pulse {
-
   0%,
   100% {
     opacity: 0.6;
@@ -290,20 +292,14 @@
   }
 }
 
-@keyframes rotate {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 // Responsive Design
 @media (max-width: 1200px) {
   .featureComparison {
     padding: 2.5rem 0;
+  }
+  
+  .comparisonTable {
+    min-width: 750px;
   }
 }
 
@@ -313,206 +309,200 @@
 
     .title {
       font-size: clamp(1.75rem, 3.5vw, 2rem);
-      transition: all $duration-normal $ease-in-out;
-      filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.3));
     }
   }
 
-      .featureCell {
-      .iconWrapper {
-        background: linear-gradient(135deg, $secondary-green, #16a34a);
-
-        &:hover {
-          transform: scale(1.15);
-        }
-
-        .subtitle {
-          font-size: $font-size-sm;
-        }
-      }
-
-    .tableWrapper {
-      padding: 1.25rem;
-    }
-
-    .comparisonTable {
-
-      th,
-      td {
-        padding: 1rem 0.75rem;
-      }
-    }
-
-    .featureCell {
-      .featureInfo {
-        gap: 0.75rem;
-      }
-
-      .featureIcon {
-        width: 2.5rem;
-        height: 2.5rem;
-        font-size: 1.75rem;
-      }
-
-      .featureDetails {
-        .featureName {
-          font-size: $font-size-base;
-        }
-
-        .featureDescription {
-          font-size: $font-size-xs;
-        }
-      }
-    }
-
-
+  .tableWrapper {
+    padding: 1.25rem;
   }
 
-  @media (max-width: 768px) {
-    .featureComparison {
-      padding: 2rem 0;
+  .comparisonTable {
+    min-width: 700px;
+    
+    th,
+    td {
+      padding: 1rem 0.75rem;
+    }
+  }
+
+  .featureCell {
+    .featureInfo {
+      gap: 0.75rem;
     }
 
-    .tableWrapper {
-      padding: 1rem;
-      margin-bottom: 2rem;
-    }
-
-    .comparisonTable {
-
-      th,
-      td {
-        padding: 0.75rem 0.5rem;
+    .featureDetails {
+      .featureName {
+        font-size: $font-size-base;
       }
     }
+  }
+}
 
-    .featureHeader {
-      width: 40%;
-      min-width: 200px;
+@media (max-width: 768px) {
+  .featureComparison {
+    padding: 2rem 0;
+  }
+
+  .tableWrapper {
+    padding: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .comparisonTable {
+    min-width: 650px;
+    
+    th,
+    td {
+      padding: 0.75rem 0.5rem;
+    }
+  }
+
+  .featureHeader {
+    width: 40%;
+    min-width: 200px;
+  }
+
+  .plugAndPlayRAGHeader,
+  .taskPromptAIHeader,
+  .competitorsHeader {
+    width: 20%;
+  }
+
+  .platformName {
+    font-size: $font-size-sm;
+  }
+
+  .featureCell {
+    .featureInfo {
+      gap: 0.5rem;
     }
 
-    .plugAndPlayRAGHeader,
-    .taskPromptAIHeader,
-    .competitorsHeader {
-      width: 20%;
+    .featureDetails {
+      .featureName {
+        font-size: $font-size-sm;
+      }
+    }
+  }
+
+  .available,
+  .unavailable {
+    padding: 0.375rem 0.75rem;
+    font-size: $font-size-xs;
+  }
+}
+
+@media (max-width: 576px) {
+  .featureComparison {
+    padding: 1.5rem 0;
+  }
+
+  .header {
+    .title {
+      font-size: 1.5rem;
     }
 
-    .platformInfo {
-      gap: 0.25rem;
-    }
-
-    .platformName {
+    .subtitle {
       font-size: $font-size-xs;
     }
-
-    .featureCell {
-      .featureInfo {
-        gap: 0.5rem;
-      }
-
-      .featureIcon {
-        width: 2rem;
-        height: 2rem;
-        font-size: 1.5rem;
-      }
-
-      .featureDetails {
-        .featureName {
-          font-size: $font-size-sm;
-        }
-
-        .featureDescription {
-          font-size: $font-size-xs;
-        }
-      }
-    }
-
-    .available,
-    .unavailable {
-      padding: 0.375rem 0.75rem;
-      font-size: $font-size-xs;
-    }
-
-
   }
 
-  @media (max-width: 576px) {
-    .featureComparison {
-      padding: 1.5rem 0;
+  .tableWrapper {
+    padding: 0.75rem;
+    border-radius: 1rem;
+  }
+
+  .tableContainer {
+    border-radius: 0.75rem;
+    
+    &::-webkit-scrollbar {
+      height: 6px;
+    }
+  }
+
+  .comparisonTable {
+    min-width: 600px;
+    
+    th,
+    td {
+      padding: 0.5rem 0.25rem;
+    }
+  }
+
+  .featureHeader {
+    width: 45%;
+    min-width: 180px;
+  }
+
+  .plugAndPlayRAGHeader,
+  .taskPromptAIHeader,
+  .competitorsHeader {
+    width: 18.33%;
+  }
+
+  .platformName {
+    font-size: $font-size-xs;
+  }
+
+  .featureCell {
+    .featureInfo {
+      gap: 0.375rem;
     }
 
-    .header {
-      .title {
-        font-size: 1.5rem;
-      }
-
-      .subtitle {
+    .featureDetails {
+      .featureName {
         font-size: $font-size-xs;
       }
     }
+  }
 
-    .tableWrapper {
-      padding: 0.75rem;
+  .available,
+  .unavailable {
+    padding: 0.25rem 0.5rem;
+    font-size: $font-size-xs;
+
+    svg {
+      width: 0.875rem;
+      height: 0.875rem;
     }
+  }
+}
 
-    .comparisonTable {
+@media (max-width: 480px) {
+  .tableWrapper {
+    padding: 0.5rem;
+  }
 
-      th,
-      td {
-        padding: 0.5rem 0.25rem;
-      }
+  .comparisonTable {
+    min-width: 550px;
+    
+    th,
+    td {
+      padding: 0.375rem 0.125rem;
     }
+  }
 
-    .featureHeader {
-      width: 45%;
-      min-width: 150px;
-    }
+  .featureHeader {
+    min-width: 160px;
+  }
 
-    .plugAndPlayRAGHeader,
-    .taskPromptAIHeader,
-    .competitorsHeader {
-      width: 17.5%;
-    }
+  .platformName {
+    font-size: $font-size-xs;
+  }
 
+  .available,
+  .unavailable {
+    padding: 0.25rem 0.375rem;
+    font-size: $font-size-xs;
+    gap: 0.25rem;
+  }
+}
 
+@media (max-width: 375px) {
+  .comparisonTable {
+    min-width: 500px;
+  }
 
-    .platformName {
-      font-size: $font-size-xs;
-    }
-
-    .featureCell {
-      .featureInfo {
-        gap: 0.375rem;
-      }
-
-      .featureIcon {
-        width: 1.75rem;
-        height: 1.75rem;
-        font-size: 1.25rem;
-      }
-
-      .featureDetails {
-        .featureName {
-          font-size: $font-size-xs;
-        }
-
-        .featureDescription {
-          font-size: $font-size-xs;
-        }
-      }
-    }
-
-    .available,
-    .unavailable {
-      padding: 0.25rem 0.5rem;
-      font-size: $font-size-xs;
-
-      svg {
-        width: 0.875rem;
-        height: 0.875rem;
-      }
-    }
-
-
+  .featureHeader {
+    min-width: 140px;
   }
 }
