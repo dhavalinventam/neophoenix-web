@@ -15,9 +15,11 @@ const CtaBanner: React.FC = () => {
         <div className="row justify-content-center">
           <div className="col-12 col-lg-8 text-center">
             <div className={styles.content}>
-              <h2 className={styles.headline}>Turn Your Data and Tasks Into AI-Powered Wins</h2>
+              <h2 className={styles.headline}>Unleash Instant Results with Secure AI Automation</h2>
               <p className={styles.supportingText}>
-                Kickstart with the only tools built for speed, privacy, and real productivity.
+                Stop wasting time on manual tasks and scattered tools. Our platform transforms raw
+                data and complex workflows into private, production-grade automations backed by
+                enterprise-level privacy and real-time insights.
               </p>
               <div className={styles.buttonGroup}>
                 <Button label="Get Started Free" />
