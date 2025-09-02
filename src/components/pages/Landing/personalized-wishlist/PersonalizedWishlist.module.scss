@@ -1,0 +1,250 @@
+@use '../../../../styles/variables' as *;
+@use '../../../../styles/mixins' as *;
+
+.personalizedWishlistSection {
+  background: $gradient-background;
+  position: relative;
+  overflow: hidden;
+}
+
+.contentSection {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.header {
+  @include section-header;
+
+  .title {
+    @include section-title-responsive;
+  }
+
+  .subtitle {
+    @include section-subtitle-responsive;
+  }
+}
+
+.description {
+  @include section-subtitle-responsive;
+  text-align: center;
+  margin: 0 auto;
+  max-width: 600px;
+  color: $text-gray-light;
+  line-height: 1.6;
+}
+
+.formCard {
+  background: $bg-dark-secondary;
+  border: 1px solid $glass-border-medium;
+  border-radius: 20px;
+  padding: 2rem 2rem;
+  box-shadow: $shadow-xl;
+  position: relative;
+  z-index: 1;
+  backdrop-filter: blur(10px);
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.formHeader {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.formIcon {
+  width: 60px;
+  height: 60px;
+  background: $gradient-primary;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+  color: $text-white;
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+  transition: transform $duration-normal $ease-in-out;
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+}
+
+.formTitle {
+  font-family: $font-primary;
+  font-size: $font-size-2xl;
+  font-weight: $font-weight-bold;
+  color: $text-white;
+  margin-bottom: 0.5rem;
+}
+
+.formSubtitle {
+  font-family: $font-primary;
+  font-size: $font-size-base;
+  color: $text-gray-light;
+  line-height: $line-height-normal;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0;
+}
+
+.label {
+  font-family: $font-primary;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: $text-white;
+  margin-bottom: 0.25rem;
+}
+
+.inputWrapper {
+  position: relative;
+
+  &:focus-within .inputFocus {
+    opacity: 1;
+  }
+}
+
+.input,
+.select {
+  width: 100%;
+  padding: 0.75rem 1rem !important;
+  background: $bg-dark-tertiary !important;
+  border: 1px solid $glass-border-medium !important;
+  border-radius: 12px !important;
+  color: $text-white !important;
+  font-family: $font-primary;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-normal;
+  transition: all $duration-normal $ease-in-out;
+  outline: none;
+  min-height: 44px;
+
+  &::placeholder {
+    color: $text-gray-medium !important;
+  }
+
+  &:focus {
+    border-color: $primary-blue;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    transform: translateY(-1px);
+  }
+
+  &:hover {
+    border-color: $glass-border-light;
+    transform: translateY(-1px);
+  }
+}
+
+.inputFocus {
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: $gradient-primary;
+  border-radius: 14px;
+  opacity: 0;
+  z-index: -1;
+  transition: all $duration-normal $ease-in-out;
+}
+
+.buttonWrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 0.5rem;
+  padding-top: 0.5rem;
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+  .contentSection {
+    margin-bottom: 1.5rem;
+  }
+
+  .description {
+    font-size: $font-size-sm;
+    margin-bottom: 1rem;
+  }
+
+  .formCard {
+    padding: 1.5rem 1.25rem;
+    margin: 0 1rem;
+  }
+
+  .form {
+    gap: 1rem;
+  }
+
+  .formHeader {
+    margin-bottom: 1rem;
+  }
+
+  .formIcon {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 0.75rem;
+  }
+
+  .formTitle {
+    font-size: $font-size-xl;
+  }
+
+  .formSubtitle {
+    font-size: $font-size-sm;
+  }
+
+  .input,
+  .select {
+    padding: 0.625rem 0.875rem !important;
+    font-size: $font-size-sm !important;
+    min-height: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .formCard {
+    padding: 1.25rem 1rem;
+    margin: 0 0.5rem;
+  }
+
+  .form {
+    gap: 0.875rem;
+  }
+
+  .formHeader {
+    margin-bottom: 0.75rem;
+  }
+
+  .formIcon {
+    width: 45px;
+    height: 45px;
+    margin-bottom: 0.5rem;
+  }
+
+  .formTitle {
+    font-size: $font-size-lg;
+  }
+
+  .formSubtitle {
+    font-size: $font-size-xs;
+  }
+
+  .input,
+  .select {
+    padding: 0.5rem 0.75rem !important;
+    font-size: $font-size-xs !important;
+    min-height: 36px;
+  }
+
+  .buttonWrapper {
+    margin-top: 0.25rem;
+  }
+}

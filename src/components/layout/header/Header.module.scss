@@ -1,0 +1,214 @@
+@use '../../../styles/variables' as *;
+
+.header {
+  background: linear-gradient(
+    135deg,
+    rgba($bg-dark-primary, 0.4) 0%,
+    rgba($bg-dark-secondary, 0.4) 100%
+  );
+  border: 1px solid $glass-border-dark;
+  padding: 8px 12px;
+  border-radius: 40px;
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  max-width: 1000px;
+  position: fixed;
+  width: 97%;
+  margin: 0 auto;
+  transform: translateX(-50%);
+  top: 10px;
+  left: 50%;
+
+  &.scroll {
+    max-width: 1295px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+  }
+
+  @media (max-width: 768px) {
+    padding: 8px 20px;
+    width: 100%;
+  }
+}
+
+.inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+// Logo Styling
+.brand {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+.logoContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 7px;
+  margin-left: 10px;
+}
+
+.logoImage {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 50px;
+  width: 100%;
+}
+
+.phoenixImage {
+  width: 100%;
+  height: 100%;
+}
+
+.brandText {
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+}
+
+// Desktop Navigation
+.nav {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
+
+.link {
+  color: #e2e8f0;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  position: relative;
+
+  &:hover {
+    color: #4facfe;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    transition: width 0.3s ease;
+  }
+
+  &:hover::after {
+    width: 100%;
+  }
+}
+
+// CTA Button Container
+.ctaContainer {
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
+
+// Mobile Menu Button
+.mobileMenuButton {
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 18px;
+  height: 21px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1001;
+
+  @media (max-width: 768px) {
+    display: flex;
+  }
+}
+
+.hamburgerLine {
+  width: 22px;
+  height: 2px;
+  background: #e2e8f0;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  transform-origin: 1px;
+
+  &.active {
+    &:first-child {
+      transform: rotate(45deg);
+    }
+
+    &:nth-child(2) {
+      opacity: 0;
+    }
+
+    &:nth-child(3) {
+      transform: rotate(-45deg);
+    }
+  }
+}
+
+// Mobile Navigation
+.mobileNav {
+  position: fixed;
+  top: -11px;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 100%);
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-in-out;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &.open {
+    transform: translateX(0);
+  }
+
+  @media (min-width: 769px) {
+    display: none;
+  }
+}
+
+.mobileNavContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.6rem;
+  width: 100%;
+  padding: 2rem;
+}
+
+.mobileLink {
+  color: #e2e8f0;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.3s ease;
+
+  &:hover {
+    color: #4facfe;
+  }
+}
+
+@media (max-width: 768px) {
+  .logoContainer {
+    margin-left: 0;
+  }
+}

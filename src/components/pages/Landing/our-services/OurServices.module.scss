@@ -1,0 +1,157 @@
+@use '../../../../styles/variables' as *;
+@use '../../../../styles/mixins' as *;
+
+.servicesSection {
+  background: $gradient-background;
+  padding: 4rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.header {
+  @include section-header;
+
+  .title {
+    @include section-title-responsive;
+  }
+}
+
+.description {
+  @include section-subtitle-responsive;
+}
+
+.serviceCard {
+  display: flex;
+  flex-direction: column;
+  background: $bg-dark-secondary;
+  border: 1px solid $glass-border-medium;
+  border-radius: 20px;
+  padding: 3rem 2.5rem;
+  text-align: center;
+  transition: all $duration-normal $ease-in-out;
+  position: relative;
+  height: 100%;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: $shadow-lg;
+    border-color: $glass-border-light;
+
+    .cardIcon {
+      background: $gradient-primary;
+    }
+  }
+}
+
+.cardIcon {
+  width: 80px;
+  height: 80px;
+  background: $primary-blue;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 2rem;
+  transition: all $duration-normal $ease-in-out;
+  box-shadow: 0 4px 20px rgba(102, 126, 234, 0.3);
+}
+
+.iconText {
+  display: flex;
+  align-items: center;
+  color: $text-white;
+  width: 32px;
+  height: 32px;
+}
+
+.cardTitle {
+  font-family: $font-primary;
+  font-size: $font-size-2xl;
+  font-weight: $font-weight-semibold;
+  color: $text-white;
+  margin-bottom: 1.5rem;
+  line-height: $line-height-tight;
+}
+
+.cardDescription {
+  font-family: $font-primary;
+  font-size: $font-size-base;
+  font-weight: $font-weight-normal;
+  color: $text-gray-light;
+  line-height: $line-height-relaxed;
+  margin-bottom: 2rem;
+}
+
+.featuresList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+  flex: 1;
+}
+
+.featureItem {
+  font-family: $font-primary;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-normal;
+  color: $text-gray-light;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  line-height: $line-height-normal;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.checkmark {
+  width: 20px;
+  height: 20px;
+  background: $primary-blue;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $text-white;
+  font-size: 0.75rem;
+  font-weight: $font-weight-bold;
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+  .servicesSection {
+    padding: 4rem 0;
+  }
+
+  .header {
+    margin-bottom: 2rem;
+  }
+
+  .description {
+    font-size: $font-size-sm;
+  }
+
+  .serviceCard {
+    padding: 2rem 1.5rem;
+  }
+
+  .cardTitle {
+    font-size: $font-size-xl;
+  }
+}
+
+@media (max-width: 480px) {
+  .serviceCard {
+    padding: 1.5rem 1rem;
+  }
+
+  .cardIcon {
+    width: 60px;
+    height: 60px;
+  }
+}

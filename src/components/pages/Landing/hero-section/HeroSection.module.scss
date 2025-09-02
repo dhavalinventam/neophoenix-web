@@ -1,0 +1,269 @@
+@use '../../../../styles/variables' as *;
+@import '../../../../styles/mixins';
+
+.heroSection {
+  background: $gradient-background;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: $font-primary;
+  cursor: none;
+}
+
+// Phoenix Rising Effect
+.phoenixRising {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.phoenixGlow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 150px;
+  height: 150px;
+  background: radial-gradient(circle,
+      $phoenix-blue-medium 0%,
+      $phoenix-purple-medium 40%,
+      $phoenix-pink-medium 70%,
+      transparent 100%);
+  border-radius: 50%;
+  animation: phoenixGlow 8s $ease-in-out infinite;
+
+  @keyframes phoenixGlow {
+    0%, 100% {
+      opacity: 0.2;
+      transform: translate(-50%, -50%) scale(1);
+    }
+    50% {
+      opacity: 0.5;
+      transform: translate(-50%, -50%) scale(1.1);
+    }
+  }
+}
+
+.phoenixTrail {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.trailParticle {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: radial-gradient(circle, $primary-blue 0%, $primary-purple 50%, transparent 100%);
+  border-radius: 50%;
+  animation: trailRise 3s $ease-out infinite;
+
+  @keyframes trailRise {
+    0% {
+      opacity: 0;
+      transform: translateY(0) scale(0);
+    }
+    20% {
+      opacity: 1;
+      transform: translateY(-10px) scale(1);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(-60px) scale(0);
+    }
+  }
+}
+
+// Fire Rings
+.fireRings {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.fireRing {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: 300px;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  background: conic-gradient(from 0deg,
+      transparent 0deg,
+      $phoenix-blue-medium 90deg,
+      rgba(118, 75, 162, 0.25) 180deg,
+      $phoenix-pink-medium 270deg,
+      transparent 360deg);
+  animation: fireRingExpand 10s $ease-out infinite;
+
+  @keyframes fireRingExpand {
+    0% {
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(0) rotate(0deg);
+    }
+    20% {
+      opacity: 0.5;
+      transform: translate(-50%, -50%) scale(0.6) rotate(90deg);
+    }
+    80% {
+      opacity: 0.2;
+      transform: translate(-50%, -50%) scale(1.2) rotate(270deg);
+    }
+    100% {
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(1.5) rotate(360deg);
+    }
+  }
+}
+
+// Main Headline
+.headline {
+  margin-bottom: 3rem;
+  animation: fadeInUp $duration-slower $ease-out 0.2s both;
+
+  .title {
+    @include section-title-responsive;
+  }
+
+  .description {
+    @include section-subtitle-responsive;
+  }
+}
+
+// Email Subscription Section
+.subscriptionCard {
+  position: relative;
+  z-index: 1;
+  background: $glass-bg-medium;
+  backdrop-filter: blur(15px);
+  border: 1px solid $glass-border-medium;
+  border-radius: 25px;
+  padding: 2.5rem;
+  margin-bottom: 3rem;
+  animation: fadeInUp $duration-slower $ease-out 0.4s both;
+
+  .subscriptionTitle {
+    color: $text-white;
+    font-size: $font-size-2xl;
+    font-weight: $font-weight-bold;
+    margin-bottom: 0.5rem;
+  }
+
+  .subscriptionSubtitle {
+    color: $text-gray-light;
+    font-size: $font-size-lg;
+    margin-bottom: 2rem;
+  }
+}
+
+.emailForm {
+  display: flex;
+  gap: 1rem;
+  max-width: 500px;
+  margin: 0 auto 1.5rem;
+  flex-wrap: wrap;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+}
+
+.emailInput {
+  flex: 1;
+  padding: 0.6rem 1.5rem;
+  border: 1px solid $glass-border-light;
+  border-radius: 50px;
+  background: $glass-bg-light;
+  color: $text-white;
+  font-size: $font-size-base;
+  transition: all $duration-normal $ease-out;
+
+  &::placeholder {
+    color: $text-gray-light;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: $primary-blue;
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: $shadow-glow-blue;
+  }
+}
+
+.disclaimer {
+  color: $text-gray-light;
+  font-size: $font-size-sm;
+
+  .sparkle {
+    animation: sparkle 2s $ease-in-out infinite;
+    display: inline-block;
+    margin-right: 0.5rem;
+  }
+}
+
+// Animations
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes sparkle {
+  0%, 100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1) rotate(180deg);
+    opacity: 0.8;
+  }
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+  .headline {
+    margin-bottom: 2rem;
+  }
+
+  .headline .title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .headline .description {
+    font-size: 14px;
+  }
+
+  .subscriptionCard {
+    padding: 2rem 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .subscriptionCard .subscriptionTitle {
+    font-size: 1.5rem;
+  }
+
+  .emailInput {
+    padding: 8px 20px;
+    font-size: $font-size-sm;
+  }
+}

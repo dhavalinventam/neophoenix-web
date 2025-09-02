@@ -1,0 +1,152 @@
+@use './variables' as vars;
+
+// =============================================================================
+// SECTION TITLE & SUBTITLE MIXINS
+// =============================================================================
+
+// Common Section Title Mixin
+@mixin section-title {
+  position: relative;
+  font-size: vars.$section-title-font-size;
+  font-weight: vars.$section-title-font-weight;
+  color: vars.$section-title-color;
+  line-height: vars.$section-title-line-height;
+  letter-spacing: vars.$section-title-letter-spacing;
+  margin-bottom: vars.$section-title-margin-bottom;
+  text-align: center;
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -0.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4rem;
+    height: 0.25rem;
+    background: vars.$gradient-primary;
+    border-radius: 0.125rem;
+    box-shadow: 0 0 10px rgba(102, 126, 234, 0.5);
+  }
+}
+
+// Common Section Subtitle Mixin
+@mixin section-subtitle {
+  font-size: vars.$section-subtitle-font-size;
+  font-weight: vars.$section-subtitle-font-weight;
+  color: vars.$section-subtitle-color;
+  line-height: vars.$section-subtitle-line-height;
+  max-width: vars.$section-subtitle-max-width;
+  margin: 0 auto vars.$section-subtitle-margin-bottom;
+  text-align: center;
+}
+
+// Common Section Header Mixin (Title + Subtitle)
+@mixin section-header {
+  text-align: center;
+  margin-bottom: 2rem;
+
+  .title {
+    @include section-title;
+  }
+
+  .subtitle {
+    @include section-subtitle;
+  }
+}
+
+// Responsive Section Title Mixin
+@mixin section-title-responsive {
+  @include section-title;
+
+  @include tablet {
+    font-size: clamp(1.75rem, 3.5vw, 2rem);
+    margin-bottom: 0.5rem;
+  }
+
+  @include mobile {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+}
+
+// Responsive Section Subtitle Mixin
+@mixin section-subtitle-responsive {
+  @include section-subtitle;
+
+  @include tablet {
+    font-size: vars.$font-size-sm;
+    max-width: 450px;
+  }
+
+  @include mobile {
+    font-size: vars.$font-size-xs;
+    max-width: 400px;
+  }
+}
+
+// =============================================================================
+// RESPONSIVE MIXINS
+// =============================================================================
+
+// Mobile First Responsive Mixins
+@mixin mobile {
+  @media (max-width: 576px) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (max-width: 992px) {
+    @content;
+  }
+}
+
+@mixin large-desktop {
+  @media (max-width: 1200px) {
+    @content;
+  }
+}
+
+// =============================================================================
+// ANIMATION MIXINS
+// =============================================================================
+
+@mixin fade-in-up($delay: 0s) {
+  animation: fadeInUp vars.$duration-slower vars.$ease-out $delay both;
+}
+
+@mixin hover-lift {
+  transition: all vars.$duration-normal vars.$ease-out;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+}
+
+// =============================================================================
+// GLASS EFFECT MIXINS
+// =============================================================================
+
+@mixin glass-effect($opacity: 0.1) {
+  background: rgba(255, 255, 255, $opacity);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+@mixin glass-card {
+  @include glass-effect(0.05);
+  border-radius: 20px;
+  padding: 2rem;
+  transition: all vars.$duration-normal vars.$ease-out;
+
+  &:hover {
+    @include glass-effect(0.1);
+    transform: translateY(-2px);
+    box-shadow: vars.$shadow-lg;
+  }
+}
