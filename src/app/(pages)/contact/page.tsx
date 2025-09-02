@@ -16,11 +16,11 @@ export default function ContactPage() {
           <div className="container">
             <div className={styles.heroContent}>
               <div className={styles.headline}>
-                <h1 className={styles.title}>Let's Build Something Amazing.</h1>
-                <p className={styles.description}>
-                  Ready to transform your ideas into reality? We're here to help you create
-                  something extraordinary.
-                </p>
+                <h1 className={styles.title}>Let&apos;s Build Something Amazing.</h1>
+                                  <p className={styles.description}>
+                    Ready to transform your ideas into reality? We&apos;re here to help you create
+                    something extraordinary.
+                  </p>
               </div>
             </div>
           </div>
@@ -142,7 +142,7 @@ export default function ContactPage() {
                   <div className={styles.formHeader}>
                     <h2 className={styles.formTitle}>Send us a Message</h2>
                     <p className={styles.formSubtitle}>
-                      Tell us about your project and we'll get back to you
+                      Tell us about your project and we&apos;ll get back to you
                     </p>
                   </div>
 

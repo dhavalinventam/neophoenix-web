@@ -1,6 +1,6 @@
 import styles from './Footer.module.scss';
 import Image from 'next/image';
-import logo from '../../../../public/logo.png.png';
+import logo from '../../../../public/logo.png';
 import Link from 'next/link';
 
 export default function Footer() {
@@ -20,13 +20,13 @@ export default function Footer() {
                     <Image
                       src={logo}
                       alt="Neophoenix Logo"
-                      width={60}
-                      height={60}
+                      width={200}
+                      height={57}
                       loading="lazy"
                       className={styles.phoenixImage}
                     />
                   </div>
-                  <span className={styles.brandText}>NEOPHONIEX</span>
+                  {/* <span className={styles.brandText}>NEOPHONIEX</span> */}
                 </div>
                 <p className={styles.companyDescription}>
                   We create digital experiences for brands and companies by using cutting-edge

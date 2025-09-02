@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation } from 'swiper/modules';
+import Image from 'next/image';
 
 // Import Swiper styles
 import 'swiper/css';
@@ -135,7 +136,13 @@ const Testimonials = () => {
                   {/* User Info */}
                   <div className={styles.userInfo}>
                     <div className={styles.avatar}>
-                      <img src={testimonial.avatar} alt={testimonial.name} loading="lazy" />
+                      <Image
+                        src={testimonial.avatar}
+                        alt={testimonial.name}
+                        width={150}
+                        height={150}
+                        className={styles.avatarImage}
+                      />
                     </div>
                     <div className={styles.userDetails}>
                       <h4 className={styles.userName}>{testimonial.name}</h4>

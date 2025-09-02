@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useState } from 'react';
 import styles from './Header.module.scss';
-import logo from '../../../../public/logo.png.png';
+import logo from '../../../../public/logo.png';
 import Button from '@/components/ui/button';
 
 export default function Header() {
@@ -23,13 +23,13 @@ export default function Header() {
               <Image
                 src={logo}
                 alt="Neophoenix Logo"
-                width={60}
-                height={60}
+                width={200}
+                height={57}
                 priority
                 className={styles.phoenixImage}
               />
             </div>
-            <span className={styles.brandText}>NEOPHONIEX</span>
+            {/* <span className={styles.brandText}>NEOPHONIEX</span> */}
           </div>
         </Link>
 

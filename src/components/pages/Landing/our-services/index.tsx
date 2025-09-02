@@ -8,7 +8,13 @@ const OurServices = () => {
       description:
         'Instantly connect your database and deploy a secure AI chat: no data ever leaves your environment, setup in minutes.',
       icon: (
-        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg
+          width="32"
+          height="32"
+          viewBox="0 0 32 32"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
           <path
             d="M16 8C18.21 8 20 9.79 20 12C20 14.21 18.21 16 16 16C13.79 16 12 14.21 12 12C12 9.79 13.79 8 16 8ZM16 18C19.31 18 22 20.69 22 24H10C10 20.69 12.69 18 16 18Z"
             fill="currentColor"
@@ -35,7 +41,13 @@ const OurServices = () => {
       description:
         'Auto-generates task-specific AI actions inside JIRA, ClickUp, and Asana: save hours weekly without changing your workflow.',
       icon: (
-        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg
+          width="32"
+          height="32"
+          viewBox="0 0 32 32"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
           <path
             d="M16 4C9.37 4 4 9.37 4 16C4 22.63 9.37 28 16 28C22.63 28 28 22.63 28 16C28 9.37 22.63 4 16 4ZM16 26C10.48 26 6 21.52 6 16C6 10.48 10.48 6 16 6C21.52 6 26 10.48 26 16C26 21.52 21.52 26 16 26Z"
             fill="currentColor"
@@ -53,7 +65,7 @@ const OurServices = () => {
       features: [
         'Integrate AI deeply into your Jira, ClickUp, Asana, and Trello workflows.',
         'Generate contextual, role-specific prompts that cut task completion time in half.',
-        'Customize prompts to your team\'s unique needs and industry jargon.',
+        "Customize prompts to your team's unique needs and industry jargon.",
       ],
     },
   ];
