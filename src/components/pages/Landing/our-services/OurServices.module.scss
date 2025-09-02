@@ -6,27 +6,7 @@
   padding: 4rem 0;
   position: relative;
   overflow: hidden;
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background:
-      radial-gradient(circle at 25% 25%, rgba(138, 43, 226, 0.1) 0%, transparent 50%),
-      radial-gradient(circle at 75% 75%, rgba(255, 69, 0, 0.08) 0%, transparent 50%);
-    pointer-events: none;
-  }
-
-  .container {
-    position: relative;
-    z-index: 2;
-  }
 }
-
-// Bootstrap container is used instead of custom container
 
 .header {
   @include section-header;
@@ -34,17 +14,11 @@
   .title {
     @include section-title-responsive;
   }
-
-  .subtitle {
-    @include section-subtitle-responsive;
-  }
 }
 
 .description {
   @include section-subtitle-responsive;
 }
-
-// Bootstrap grid is used instead of custom grid
 
 .serviceCard {
   display: flex;
@@ -56,31 +30,13 @@
   text-align: center;
   transition: all $duration-normal $ease-in-out;
   position: relative;
-  overflow: hidden;
   height: 100%;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: $gradient-primary;
-    opacity: 0;
-    transition: opacity $duration-normal $ease-in-out;
-    z-index: -1;
-  }
 
   &:hover {
     transform: translateY(-2px);
     box-shadow: $shadow-lg;
     border-color: $glass-border-light;
-
-    &::before {
-      opacity: 0.05;
-    }
 
     .cardIcon {
       background: $gradient-primary;
@@ -98,21 +54,7 @@
   justify-content: center;
   margin: 0 auto 2rem;
   transition: all $duration-normal $ease-in-out;
-  position: relative;
   box-shadow: 0 4px 20px rgba(102, 126, 234, 0.3);
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
-    background: $gradient-primary;
-    border-radius: 50%;
-    z-index: -1;
-    opacity: 0.3;
-  }
 }
 
 .iconText {
@@ -180,7 +122,7 @@
   box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
 }
 
-// Responsive Design - Using Bootstrap grid system
+// Responsive Design
 @media (max-width: 768px) {
   .servicesSection {
     padding: 4rem 0;
@@ -211,9 +153,5 @@
   .cardIcon {
     width: 60px;
     height: 60px;
-  }
-
-  .iconText {
-    font-size: 1.5rem;
   }
 }

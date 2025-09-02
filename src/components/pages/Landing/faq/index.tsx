@@ -1,16 +1,10 @@
 'use client';
 
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import styles from './faq.module.scss';
 
-interface FAQItem {
-  id: number;
-  question: string;
-  answer: string;
-}
-
-const faqData: FAQItem[] = [
+const faqData = [
   {
     id: 1,
     question: 'How are these tools different from anything else?',
@@ -19,7 +13,7 @@ const faqData: FAQItem[] = [
   },
   {
     id: 2,
-    question: 'What’s the risk in early access?',
+    question: 'What\'s the risk in early access?',
     answer: 'None, no credit card, no vendor lock-in, no data exposure.',
   },
   {
@@ -37,7 +31,7 @@ const faqData: FAQItem[] = [
     id: 5,
     question: 'Is technical expertise required to get started?',
     answer:
-      'Minimal. If you can connect to a database or install a browser extension, you’re good to go: no deep ML expertise needed.',
+      'Minimal. If you can connect to a database or install a browser extension, you\'re good to go: no deep ML expertise needed.',
   },
   {
     id: 6,
@@ -62,68 +56,6 @@ const FAQ = () => {
     }));
   };
 
-  // const containerVariants = {
-  //   hidden: { opacity: 0 },
-  //   visible: {
-  //     opacity: 1,
-  //     transition: {
-  //       staggerChildren: 0.1,
-  //       delayChildren: 0.1,
-  //     },
-  //   },
-  // };
-
-  // const itemVariants = {
-  //   hidden: {
-  //     opacity: 0,
-  //     y: 20,
-  //     scale: 0.95,
-  //   },
-  //   visible: {
-  //     opacity: 1,
-  //     y: 0,
-  //     scale: 1,
-  //     transition: {
-  //       duration: 0.1,
-  //       ease: [0.25, 0.46, 0.45, 0.94],
-  //     },
-  //   },
-  // };
-
-  // const contentVariants = {
-  //   hidden: {
-  //     height: 0,
-  //     opacity: 0,
-  //   },
-  //   visible: {
-  //     height: 'auto',
-  //     opacity: 1,
-  //     transition: {
-  //       height: {
-  //         duration: 0.1,
-  //         ease: 'easeOut',
-  //       },
-  //       opacity: {
-  //         duration: 0.1,
-  //         delay: 0.1,
-  //       },
-  //     },
-  //   },
-  //   exit: {
-  //     height: 0,
-  //     opacity: 0,
-  //     transition: {
-  //       height: {
-  //         duration: 0.1,
-  //         ease: 'easeIn',
-  //       },
-  //       opacity: {
-  //         duration: 0.1,
-  //       },
-  //     },
-  //   },
-  // };
-
   return (
     <section className={styles.faq}>
       <div className="container">
@@ -142,10 +74,10 @@ const FAQ = () => {
         {/* FAQ Items */}
         <motion.div
           className={styles.faqContainer}
-          // variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-100px' }}
+          transition={{ duration: 0.6 }}
         >
           {faqData.map((item) => (
             <motion.div key={item.id} className={styles.faqItem}>

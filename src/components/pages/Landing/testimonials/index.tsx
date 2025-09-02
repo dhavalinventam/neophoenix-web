@@ -1,25 +1,15 @@
 'use client';
 
-import React from 'react';
 import { motion } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, Navigation, Pagination } from 'swiper/modules';
+import { Autoplay, Navigation } from 'swiper/modules';
 
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
-import 'swiper/css/pagination';
 import styles from './testimonials.module.scss';
 
-interface Testimonial {
-  id: number;
-  name: string;
-  role: string;
-  avatar: string;
-  text: string;
-}
-
-const testimonials: Testimonial[] = [
+const testimonials = [
   {
     id: 1,
     name: 'Sarah Johnson',
@@ -71,30 +61,6 @@ const testimonials: Testimonial[] = [
 ];
 
 const Testimonials = () => {
-  // const cardVariants = {
-  //   hidden: {
-  //     opacity: 0,
-  //     y: 50,
-  //     scale: 0.95,
-  //   },
-  //   visible: {
-  //     opacity: 1,
-  //     y: 0,
-  //     scale: 1,
-  //   },
-  // };
-
-  // const hoverVariants = {
-  //   hover: {
-  //     scale: 1.05,
-  //     y: -8,
-  //     transition: {
-  //       duration: 0.3,
-  //       ease: 'easeOut',
-  //     },
-  //   },
-  // };
-
   return (
     <section className={styles.testimonialsSection}>
       <div className="container">
@@ -115,7 +81,7 @@ const Testimonials = () => {
         {/* Swiper Slider */}
         <div className={styles.swiperContainer}>
           <Swiper
-            modules={[Autoplay, Navigation, Pagination]}
+            modules={[Autoplay, Navigation]}
             spaceBetween={30}
             slidesPerView={1}
             navigation={{
@@ -148,9 +114,8 @@ const Testimonials = () => {
               <SwiperSlide key={testimonial.id} className={styles.swiperSlide}>
                 <motion.div
                   className={styles.testimonialCard}
-                  initial="hidden"
-                  whileInView="visible"
-                  whileHover="hover"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6 }}
                 >
@@ -185,9 +150,6 @@ const Testimonials = () => {
           {/* Custom Navigation Buttons */}
           <div className={`swiper-button-prev ${styles.customNavigation}`}></div>
           <div className={`swiper-button-next ${styles.customNavigation}`}></div>
-
-          {/* Custom Pagination */}
-          {/* <div className={`swiper-pagination ${styles.customPagination}`}></div> */}
         </div>
       </div>
     </section>

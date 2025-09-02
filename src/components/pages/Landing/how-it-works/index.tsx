@@ -1,7 +1,6 @@
-import React from 'react';
 import styles from './HowItWorks.module.scss';
 
-const HowItWorks: React.FC = () => {
+const HowItWorks = () => {
   const steps = [
     {
       id: 1,
@@ -10,14 +9,7 @@ const HowItWorks: React.FC = () => {
       description:
         'Pinpoint real business bottlenecks and map integration points no cookie cutter analysis, just actionable insights.',
       icon: (
-        <svg
-          width="32"
-          height="32"
-          viewBox="0 0 32 32"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          {/* Magnifying glass with chart/analytics */}
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
             d="M14 4C8.48 4 4 8.48 4 14C4 19.52 8.48 24 14 24C16.39 24 18.68 23.21 20.47 21.77L26.59 27.89L28 26.47L21.88 20.35C23.22 18.56 24 16.35 24 14C24 8.48 19.52 4 14 4ZM14 6C18.42 6 22 9.58 22 14C22 18.42 18.42 22 14 22C9.58 22 6 18.42 6 14C6 9.58 9.58 6 14 6Z"
             fill="currentColor"
@@ -36,14 +28,7 @@ const HowItWorks: React.FC = () => {
       description:
         'Architect a fit for purpose AI workflow built around your actual data, tech stack, and performance goals no wasted cycles.',
       icon: (
-        <svg
-          width="32"
-          height="32"
-          viewBox="0 0 32 32"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          {/* Blueprint/planning icon */}
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
             d="M6 4C4.9 4 4 4.9 4 6V26C4 27.1 4.9 28 6 28H26C27.1 28 28 27.1 28 26V6C28 4.9 27.1 4 26 4H6ZM6 6H26V26H6V6Z"
             fill="currentColor"
@@ -66,14 +51,7 @@ const HowItWorks: React.FC = () => {
       description:
         'Plug in, go live, and upskill your team with hands on onboarding measurable impact from day one, not wishful promises.',
       icon: (
-        <svg
-          width="32"
-          height="32"
-          viewBox="0 0 32 32"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          {/* Rocket/launch icon */}
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
             d="M16 4L18.5 8.5L23 9L18.5 9.5L16 14L13.5 9.5L9 9L13.5 8.5L16 4Z"
             fill="currentColor"
@@ -96,14 +74,7 @@ const HowItWorks: React.FC = () => {
       description:
         '24/7 monitoring, usage analytics, and ongoing updates so your AI solution gets smarter and more efficient over time.',
       icon: (
-        <svg
-          width="32"
-          height="32"
-          viewBox="0 0 32 32"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          {/* Optimization/analytics dashboard */}
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
             d="M6 4C4.9 4 4 4.9 4 6V26C4 27.1 4.9 28 6 28H26C27.1 28 28 27.1 28 26V6C28 4.9 27.1 4 26 4H6ZM6 6H26V26H6V6Z"
             fill="currentColor"
@@ -133,34 +104,15 @@ const HowItWorks: React.FC = () => {
         </div>
 
         <div className="row mt-0">
-          {steps.map((step, index) => (
+          {steps.map((step) => (
             <div key={step.id} className="col-lg-3 col-md-6 col-sm-12 mb-4">
               <div className={styles.stepCard}>
                 <div className={styles.stepNumber}>{step.number}</div>
                 <div className={styles.stepIcon}>
                   <span className={styles.iconWrapper}>{step.icon}</span>
                 </div>
-
                 <h3 className={styles.stepTitle}>{step.title}</h3>
-
                 <p className={styles.stepDescription}>{step.description}</p>
-
-                {/* {index < steps.length - 1 && (
-                  <div className={styles.connector}>
-                    <svg
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M8.59 16.59L13.17 12L8.59 7.41L10 6L16 12L10 18L8.59 16.59Z"
-                        fill="currentColor"
-                      />
-                    </svg>
-                  </div>
-                )} */}
               </div>
             </div>
           ))}

@@ -1,8 +1,7 @@
-import React from 'react';
 import styles from './CtaBanner.module.scss';
 import Button from '@/components/ui/button';
 
-const CtaBanner: React.FC = () => {
+const CtaBanner = () => {
   return (
     <section className={styles.ctaBanner}>
       {/* Animated Background Elements */}
@@ -23,7 +22,6 @@ const CtaBanner: React.FC = () => {
               </p>
               <div className={styles.buttonGroup}>
                 <Button label="Get Started Free" />
-                {/* <Button label="Request a Demo" variant="outline" /> */}
               </div>
             </div>
           </div>

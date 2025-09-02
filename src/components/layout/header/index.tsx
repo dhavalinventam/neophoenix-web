@@ -1,31 +1,20 @@
 'use client';
 import Link from 'next/link';
 import Image from 'next/image';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import styles from './Header.module.scss';
 import logo from '../../../../public/logo.png.png';
 import Button from '@/components/ui/button';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollTop = window.scrollY;
-      setIsScrolled(scrollTop > 0);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
   return (
-    <header className={`${styles.header} ${isScrolled ? styles.scroll : ''}`}>
+    <header className={styles.header}>
       <div className={styles.inner}>
         {/* Logo */}
         <Link href="/" className={styles.brand}>
@@ -36,6 +25,7 @@ export default function Header() {
                 alt="Neophoenix Logo"
                 width={60}
                 height={60}
+                priority
                 className={styles.phoenixImage}
               />
             </div>

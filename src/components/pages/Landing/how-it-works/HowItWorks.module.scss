@@ -6,24 +6,6 @@
   padding: 4rem 0;
   position: relative;
   overflow: hidden;
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background:
-      radial-gradient(circle at 30% 20%, $phoenix-blue-light 0%, transparent 50%),
-      radial-gradient(circle at 70% 80%, $phoenix-purple-light 0%, transparent 50%);
-    pointer-events: none;
-  }
-
-  .container {
-    position: relative;
-    z-index: 2;
-  }
 }
 
 .header {
@@ -32,12 +14,11 @@
   .title {
     @include section-title-responsive;
   }
-  
-  .subtitle {
-    @include section-subtitle-responsive;
-  }
 }
 
+.description {
+  @include section-subtitle-responsive;
+}
 
 .stepCard {
   background: $bg-dark-secondary;
@@ -47,31 +28,13 @@
   text-align: center;
   transition: all $duration-normal $ease-in-out;
   position: relative;
-  overflow: hidden;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   height: 100%;
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: $gradient-primary;
-    opacity: 0;
-    transition: opacity $duration-normal $ease-in-out;
-    z-index: -1;
-  }
 
   &:hover {
     transform: translateY(-2px);
     box-shadow: $shadow-lg;
     border-color: $glass-border-light;
-
-    &::before {
-      opacity: 0.05;
-    }
 
     .stepIcon {
       background: $gradient-primary;
@@ -110,20 +73,6 @@
   justify-content: center;
   margin: 0 auto 1.5rem;
   transition: all $duration-normal $ease-in-out;
-  position: relative;
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
-    background: $gradient-primary;
-    border-radius: 50%;
-    z-index: -1;
-    opacity: 0.3;
-  }
 }
 
 .iconWrapper {
@@ -159,25 +108,12 @@
   margin-bottom: 0;
 }
 
-.connector {
-  position: absolute;
-  top: 50%;
-  right: 0px;
-  transform: translateY(-50%);
-  color: $primary-blue;
-  z-index: 10;
-  display: none;
-
-  @media (min-width: 992px) {
-    display: block;
-  }
-}
-
 // Responsive Design
 @media (max-width: 768px) {
   .title {
     font-size: $font-size-2xl;
   }
+  
   .header {
     margin-bottom: 2rem;
   }
@@ -217,35 +153,6 @@
   }
 }
 
-@media (max-width: 576px) {
-  .stepCard {
-    padding: 1.75rem 1.25rem;
-  }
-
-  .stepNumber {
-    width: 38px;
-    height: 38px;
-    font-size: $font-size-sm;
-    margin-bottom: 1.25rem;
-  }
-
-  .stepIcon {
-    width: 55px;
-    height: 55px;
-    margin-bottom: 1rem;
-  }
-
-  .iconWrapper {
-    width: 26px;
-    height: 26px;
-    
-    svg {
-      width: 26px;
-      height: 26px;
-    }
-  }
-}
-
 @media (max-width: 480px) {
   .stepCard {
     padding: 1.5rem 1rem;
@@ -281,32 +188,5 @@
   
   .stepDescription {
     font-size: $font-size-xs;
-  }
-}
-
-@media (max-width: 375px) {
-  .stepCard {
-    padding: 1.25rem 0.75rem;
-  }
-
-  .stepNumber {
-    width: 32px;
-    height: 32px;
-    font-size: $font-size-xs;
-  }
-
-  .stepIcon {
-    width: 45px;
-    height: 45px;
-  }
-
-  .iconWrapper {
-    width: 22px;
-    height: 22px;
-    
-    svg {
-      width: 22px;
-      height: 22px;
-    }
   }
 }

@@ -1,12 +1,11 @@
 'use client';
 
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import styles from './HeroSection.module.scss';
 import Button from '@/components/ui/button';
 
 const HeroSection = () => {
   const [email, setEmail] = useState('');
-  const heroRef = useRef<HTMLElement>(null);
 
   const handleEmailSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -15,19 +14,17 @@ const HeroSection = () => {
   };
 
   return (
-    <section ref={heroRef} className={`${styles.heroSection} hero`}>
-      {/* Phoenix Wings */}
-
+    <section className={`${styles.heroSection} hero`}>
       {/* Phoenix Rising Effect */}
       <div className={styles.phoenixRising}>
         <div className={styles.phoenixGlow} />
         <div className={styles.phoenixTrail}>
-          {[...Array(12)].map((_, i) => (
+          {[...Array(8)].map((_, i) => (
             <div
               key={i}
               className={styles.trailParticle}
               style={{
-                animationDelay: `${i * 0.15}s`,
+                animationDelay: `${i * 0.2}s`,
               }}
             />
           ))}
@@ -36,13 +33,13 @@ const HeroSection = () => {
 
       {/* Fire Rings */}
       <div className={styles.fireRings}>
-        {[...Array(3)].map((_, i) => (
+        {[...Array(2)].map((_, i) => (
           <div
             key={i}
             className={styles.fireRing}
             style={{
-              animationDelay: `${i * 2.5}s`,
-              animationDuration: `${6 + i}s`,
+              animationDelay: `${i * 3}s`,
+              animationDuration: `${8 + i * 2}s`,
             }}
           />
         ))}

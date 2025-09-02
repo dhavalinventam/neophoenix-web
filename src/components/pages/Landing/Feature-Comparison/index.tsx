@@ -1,7 +1,6 @@
-import React from 'react';
 import styles from './FeatureComparison.module.scss';
 
-const FeatureComparison: React.FC = () => {
+const FeatureComparison = () => {
   const features = [
     {
       name: 'Zero Data Migration',
@@ -67,10 +66,6 @@ const FeatureComparison: React.FC = () => {
         <div className="row">
           <div className="col-12">
             <div className={styles.header}>
-              {/* <div className={styles.badge}>
-                <span className={styles.badgeIcon}>⚡</span>
-                <span>Feature Comparison</span>
-              </div> */}
               <h2 className={styles.title}>
                 Why Choose <span className={styles.highlight}>Neophoenix</span>
               </h2>

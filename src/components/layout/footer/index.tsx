@@ -8,12 +8,6 @@ export default function Footer() {
 
   return (
     <footer className={styles.footer}>
-      <div className={styles.backgroundEffects}>
-        <div className={styles.gradientArc}></div>
-        <div className={styles.circularShape}></div>
-        <div className={styles.dottedPattern}></div>
-      </div>
-
       <div className="container">
         {/* Main Footer Content */}
         <div className={`row ${styles.mainContent}`}>
@@ -28,6 +22,7 @@ export default function Footer() {
                       alt="Neophoenix Logo"
                       width={60}
                       height={60}
+                      loading="lazy"
                       className={styles.phoenixImage}
                     />
                   </div>

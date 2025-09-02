@@ -6,25 +6,6 @@
   background: $gradient-background;
   padding: 3rem 0;
   overflow: hidden;
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background:
-      radial-gradient(circle at 20% 80%, rgba(102, 126, 234, 0.1) 0%, transparent 50%),
-      radial-gradient(circle at 80% 20%, rgba(118, 75, 162, 0.1) 0%, transparent 50%),
-      radial-gradient(circle at 40% 40%, rgba(240, 147, 251, 0.08) 0%, transparent 50%);
-    pointer-events: none;
-  }
-
-  .container {
-    position: relative;
-    z-index: 2;
-  }
 }
 
 // Header Section
@@ -50,17 +31,6 @@
   margin-bottom: 2.5rem;
   position: relative;
   overflow: hidden;
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
-    border-radius: 1.5rem;
-  }
 }
 
 .tableContainer {
@@ -93,7 +63,7 @@
 
 .comparisonTable {
   width: 100%;
-  min-width: 800px; // Ensure minimum width for content
+  min-width: 800px;
   border-collapse: separate;
   border-spacing: 0;
   background: transparent;
@@ -179,11 +149,6 @@
   background: linear-gradient(135deg, rgba(102, 126, 234, 0.15) 0%, rgba(118, 75, 162, 0.1) 100%);
   border: 1px solid rgba(102, 126, 234, 0.3);
 
-  .platformIcon {
-    background: $gradient-primary;
-    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
-  }
-
   .platformName {
     color: $text-white;
     text-shadow: 0 0 10px rgba(102, 126, 234, 0.5);
@@ -265,31 +230,6 @@
   background: linear-gradient(135deg, rgba(102, 126, 234, 0.15) 0%, rgba(118, 75, 162, 0.15) 100%);
   border: 1px solid rgba(102, 126, 234, 0.3);
   position: relative;
-  
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
-    pointer-events: none;
-  }
-}
-
-// Animations
-@keyframes pulse {
-  0%,
-  100% {
-    opacity: 0.6;
-    transform: translate(-50%, -50%) scale(1);
-  }
-
-  50% {
-    opacity: 0.9;
-    transform: translate(-50%, -50%) scale(1.1);
-  }
 }
 
 // Responsive Design

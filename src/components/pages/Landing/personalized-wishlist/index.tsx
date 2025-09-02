@@ -1,11 +1,11 @@
 'use client';
 
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Form, FormControl, FormSelect } from 'react-bootstrap';
 import Button from '@/components/ui/button';
 import styles from './PersonalizedWishlist.module.scss';
 
-const PersonalizedWishlist: React.FC = () => {
+const PersonalizedWishlist = () => {
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
@@ -46,13 +46,7 @@ const PersonalizedWishlist: React.FC = () => {
             <div className={styles.formCard}>
               <div className={styles.formHeader}>
                 <div className={styles.formIcon}>
-                  <svg
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
                       d="M12 2L2 7L12 12L22 7L12 2Z"
                       stroke="currentColor"
