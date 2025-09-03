@@ -1,6 +1,6 @@
 import styles from './Footer.module.scss';
 import Image from 'next/image';
-import logo from '../../../../public/logo.png.png';
+import logo from '../../../../public/logo.png';
 import Link from 'next/link';
 
 export default function Footer() {
@@ -20,13 +20,13 @@ export default function Footer() {
                     <Image
                       src={logo}
                       alt="Neophoenix Logo"
-                      width={60}
-                      height={60}
+                      width={200}
+                      height={57}
                       loading="lazy"
                       className={styles.phoenixImage}
                     />
                   </div>
-                  <span className={styles.brandText}>NEOPHONIEX</span>
+                  {/* <span className={styles.brandText}>NEOPHONIEX</span> */}
                 </div>
                 <p className={styles.companyDescription}>
                   We create digital experiences for brands and companies by using cutting-edge
@@ -50,18 +50,13 @@ export default function Footer() {
                           <h5 className={styles.columnTitle}>Products</h5>
                           <ul className={styles.linkList}>
                             <li>
-                              <Link href="#" className={styles.link}>
-                                NeoPhone
+                              <Link href="#services" className={styles.link}>
+                              RAG System
                               </Link>
                             </li>
                             <li>
-                              <Link href="#" className={styles.link}>
-                                NeoConnect
-                              </Link>
-                            </li>
-                            <li>
-                              <Link href="#" className={styles.link}>
-                                NeoCloud
+                              <Link href="#services" className={styles.link}>
+                              Task Prompt AI
                               </Link>
                             </li>
                           </ul>

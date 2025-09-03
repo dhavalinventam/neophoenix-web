@@ -2,7 +2,7 @@
 @use '../../../../styles/mixins' as *;
 
 .servicesSection {
-  background: $gradient-background;
+  background: $bg-dark-primary; // Dark navy background (#0A0E1A)
   padding: 4rem 0;
   position: relative;
   overflow: hidden;
@@ -23,23 +23,30 @@
 .serviceCard {
   display: flex;
   flex-direction: column;
-  background: $bg-dark-secondary;
+  background: $bg-dark-secondary; // Secondary background (#101528)
   border: 1px solid $glass-border-medium;
-  border-radius: 20px;
+  border-radius: 1.5rem; // Rounded corners as specified
   padding: 3rem 2.5rem;
   text-align: center;
   transition: all $duration-normal $ease-in-out;
   position: relative;
   height: 100%;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); // Soft shadows
 
   &:hover {
-    transform: translateY(-2px);
-    box-shadow: $shadow-lg;
-    border-color: $glass-border-light;
+    transform: scale(1.02); // Subtle scale-up animation
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+    border-color: $primary-cyan; // Cyan glowing border on hover (#2EC4B6)
+    box-shadow: 
+      0 15px 40px rgba(0, 0, 0, 0.4),
+      0 0 0 1px rgba(46, 196, 182, 0.3); // Thin glowing border effect
 
     .cardIcon {
-      background: $gradient-primary;
+      background: $gradient-button-primary; // Warm Phoenix glow gradient on hover
+      transform: scale(1.05);
+      box-shadow: 
+        0 8px 25px rgba(255, 107, 53, 0.4),
+        0 0 20px rgba(255, 159, 28, 0.3); // Enhanced glow on hover
     }
   }
 }
@@ -47,29 +54,32 @@
 .cardIcon {
   width: 80px;
   height: 80px;
-  background: $primary-blue;
-  border-radius: 50%;
+  background: $gradient-button-primary; // Warm Phoenix glow gradient
+  border-radius: 50%; // Circular container
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0 auto 2rem;
   transition: all $duration-normal $ease-in-out;
-  box-shadow: 0 4px 20px rgba(102, 126, 234, 0.3);
+  box-shadow: 
+    0 4px 20px rgba(255, 107, 53, 0.3),
+    0 0 15px rgba(255, 159, 28, 0.2); // Glowing effect
 }
 
 .iconText {
   display: flex;
   align-items: center;
-  color: $text-white;
+  color: $text-white; // White icons (#FFFFFF)
   width: 32px;
   height: 32px;
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.3)); // Subtle white glow
 }
 
 .cardTitle {
   font-family: $font-primary;
   font-size: $font-size-2xl;
-  font-weight: $font-weight-semibold;
-  color: $text-white;
+  font-weight: $font-weight-bold;
+  color: $text-white; // Bold white headings (#FFFFFF)
   margin-bottom: 1.5rem;
   line-height: $line-height-tight;
 }
@@ -78,9 +88,23 @@
   font-family: $font-primary;
   font-size: $font-size-base;
   font-weight: $font-weight-normal;
-  color: $text-gray-light;
+  color: $text-gray-light; // Soft gray body text (#C7D1E0)
   line-height: $line-height-relaxed;
   margin-bottom: 2rem;
+}
+
+// Highlight important keywords with Neophoenix colors
+.cardDescription {
+  strong {
+    color: $primary-cyan; // Cyan for important keywords (#2EC4B6)
+    font-weight: $font-weight-semibold;
+  }
+  
+  em {
+    color: $primary-orange; // Orange for emphasis (#FF6B35)
+    font-style: normal;
+    font-weight: $font-weight-medium;
+  }
 }
 
 .featuresList {
@@ -95,7 +119,7 @@
   font-family: $font-primary;
   font-size: $font-size-sm;
   font-weight: $font-weight-normal;
-  color: $text-gray-light;
+  color: $text-gray-light; // Soft gray text (#C7D1E0)
   margin-bottom: 1rem;
   display: flex;
   align-items: flex-start;
@@ -110,7 +134,7 @@
 .checkmark {
   width: 20px;
   height: 20px;
-  background: $primary-blue;
+  background: $gradient-button-primary; // Warm Phoenix glow gradient
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -119,7 +143,9 @@
   font-size: 0.75rem;
   font-weight: $font-weight-bold;
   flex-shrink: 0;
-  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+  box-shadow: 
+    0 2px 8px rgba(255, 107, 53, 0.3),
+    0 0 10px rgba(255, 159, 28, 0.2); // Glowing effect
 }
 
 // Responsive Design
@@ -138,6 +164,7 @@
 
   .serviceCard {
     padding: 2rem 1.5rem;
+    margin-bottom: 1.5rem; // Maintain spacing between cards
   }
 
   .cardTitle {
@@ -148,6 +175,7 @@
 @media (max-width: 480px) {
   .serviceCard {
     padding: 1.5rem 1rem;
+    margin-bottom: 1rem; // Maintain spacing between cards
   }
 
   .cardIcon {

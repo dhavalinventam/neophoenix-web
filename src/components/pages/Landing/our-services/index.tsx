@@ -6,9 +6,15 @@ const OurServices = () => {
       id: 1,
       title: 'Plug-and-Play RAG System',
       description:
-        'Instantly connect your database and deploy a secure AI chat: no data ever leaves your environment, setup in minutes.',
+        'Instantly connect your <strong>database</strong> and deploy a secure <em>AI chat</em>: no data ever leaves your environment, setup in minutes.',
       icon: (
-        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg
+          width="32"
+          height="32"
+          viewBox="0 0 32 32"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
           <path
             d="M16 8C18.21 8 20 9.79 20 12C20 14.21 18.21 16 16 16C13.79 16 12 14.21 12 12C12 9.79 13.79 8 16 8ZM16 18C19.31 18 22 20.69 22 24H10C10 20.69 12.69 18 16 18Z"
             fill="currentColor"
@@ -24,18 +30,24 @@ const OurServices = () => {
         </svg>
       ),
       features: [
-        'Seamlessly connect your existing databases with secure local embedding and instant AI-powered chat.',
-        'Maintain full control: your data stays in your environment with zero external storage.',
-        'Unlock powerful insights through real-time answers based on your proprietary data.',
+        'Seamlessly connect your existing <strong>databases</strong> with secure <em>local embedding</em> and instant AI-powered chat.',
+        'Maintain full <strong>control</strong>: your data stays in your environment with <em>zero external storage</em>.',
+        'Unlock powerful <strong>insights</strong> through real-time answers based on your <em>proprietary data</em>.',
       ],
     },
     {
       id: 2,
       title: 'Task Prompt AI Chrome Extension',
       description:
-        'Auto-generates task-specific AI actions inside JIRA, ClickUp, and Asana: save hours weekly without changing your workflow.',
+        'Auto-generates <strong>task-specific AI actions</strong> inside JIRA, ClickUp, and Asana: save <em>hours weekly</em> without changing your workflow.',
       icon: (
-        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg
+          width="32"
+          height="32"
+          viewBox="0 0 32 32"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
           <path
             d="M16 4C9.37 4 4 9.37 4 16C4 22.63 9.37 28 16 28C22.63 28 28 22.63 28 16C28 9.37 22.63 4 16 4ZM16 26C10.48 26 6 21.52 6 16C6 10.48 10.48 6 16 6C21.52 6 26 10.48 26 16C26 21.52 21.52 26 16 26Z"
             fill="currentColor"
@@ -51,20 +63,20 @@ const OurServices = () => {
         </svg>
       ),
       features: [
-        'Integrate AI deeply into your Jira, ClickUp, Asana, and Trello workflows.',
-        'Generate contextual, role-specific prompts that cut task completion time in half.',
-        'Customize prompts to your team\'s unique needs and industry jargon.',
+        'Integrate <strong>AI deeply</strong> into your Jira, ClickUp, Asana, and Trello <em>workflows</em>.',
+        'Generate <strong>contextual, role-specific prompts</strong> that cut <em>task completion time</em> in half.',
+        "Customize <strong>prompts</strong> to your team's unique needs and <em>industry jargon</em>.",
       ],
     },
   ];
 
   return (
-    <section className={styles.servicesSection}>
+    <section className={styles.servicesSection} id="services">
       <div className="container text-center">
         <div className={styles.header}>
-          <h2 className={styles.title}>Our AI-Powered Services</h2>
+          <h2 className={styles.title}>Our <em>AI-Powered</em> Services</h2>
           <p className={styles.description}>
-            Empower your team with secure, AI-driven insights and workflow automation tailored to
+            Empower your team with <strong>secure, AI-driven insights</strong> and <em>workflow automation</em> tailored to
             your data, tools, and processes.
           </p>
         </div>
@@ -78,13 +90,13 @@ const OurServices = () => {
                 </div>
 
                 <h3 className={styles.cardTitle}>{service.title}</h3>
-                <p className={styles.cardDescription}>{service.description}</p>
+                <p className={styles.cardDescription} dangerouslySetInnerHTML={{ __html: service.description }} />
 
                 <ul className={styles.featuresList}>
                   {service.features.map((feature, index) => (
                     <li key={index} className={styles.featureItem}>
                       <span className={styles.checkmark}>✓</span>
-                      {feature}
+                      <span dangerouslySetInnerHTML={{ __html: feature }} />
                     </li>
                   ))}
                 </ul>

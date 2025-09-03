@@ -31,9 +31,9 @@
   width: 150px;
   height: 150px;
   background: radial-gradient(circle,
-      $phoenix-blue-medium 0%,
-      $phoenix-purple-medium 40%,
-      $phoenix-pink-medium 70%,
+      $phoenix-orange-medium 0%,
+      $phoenix-gold-medium 40%,
+      $phoenix-cyan-medium 70%,
       transparent 100%);
   border-radius: 50%;
   animation: phoenixGlow 8s $ease-in-out infinite;
@@ -61,7 +61,7 @@
   position: absolute;
   width: 2px;
   height: 2px;
-  background: radial-gradient(circle, $primary-blue 0%, $primary-purple 50%, transparent 100%);
+  background: radial-gradient(circle, $primary-orange 0%, $primary-gold 50%, transparent 100%);
   border-radius: 50%;
   animation: trailRise 3s $ease-out infinite;
 
@@ -104,9 +104,9 @@
   border-radius: 50%;
   background: conic-gradient(from 0deg,
       transparent 0deg,
-      $phoenix-blue-medium 90deg,
-      rgba(118, 75, 162, 0.25) 180deg,
-      $phoenix-pink-medium 270deg,
+      $phoenix-orange-medium 90deg,
+      $phoenix-gold-medium 180deg,
+      $phoenix-cyan-medium 270deg,
       transparent 360deg);
   animation: fireRingExpand 10s $ease-out infinite;
 
@@ -198,9 +198,9 @@
 
   &:focus {
     outline: none;
-    border-color: $primary-blue;
+    border-color: $primary-orange; // Use new orange color
     background: rgba(255, 255, 255, 0.15);
-    box-shadow: $shadow-glow-blue;
+    box-shadow: $shadow-glow-orange; // Use new orange glow
   }
 }
 

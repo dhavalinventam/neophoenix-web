@@ -1,5 +1,4 @@
 import styles from './CtaBanner.module.scss';
-import Button from '@/components/ui/button';
 
 const CtaBanner = () => {
   return (
@@ -21,7 +20,9 @@ const CtaBanner = () => {
                 enterprise-level privacy and real-time insights.
               </p>
               <div className={styles.buttonGroup}>
-                <Button label="Get Started Free" />
+                <button className={styles.claimButton}>
+                  Get Started Free
+                </button>
               </div>
             </div>
           </div>
