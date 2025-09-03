@@ -16,7 +16,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background: $gradient-background; // This will use the updated gradient
   min-height: 100vh;
-  cursor: none; /* Hide default cursor */
+  // cursor: none; 
   position: relative;
   z-index: 1;
 }

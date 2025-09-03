@@ -112,17 +112,16 @@ const HowItWorks = () => {
           </p>
         </div>
 
-        <div className="row mt-0">
+        {/* Responsive Layout - Automatically switches between grid and horizontal scroll */}
+        <div className={styles.responsiveContainer}>
           {steps.map((step) => (
-            <div key={step.id} className="col-lg-3 col-md-6 col-sm-12 mb-4">
-              <div className={styles.stepCard}>
-                <div className={styles.stepNumber}>{step.number}</div>
-                <div className={styles.stepIcon}>
-                  <span className={styles.iconWrapper}>{step.icon}</span>
-                </div>
-                <h3 className={styles.stepTitle}>{step.title}</h3>
-                <p className={styles.stepDescription} dangerouslySetInnerHTML={{ __html: step.description }} />
+            <div key={step.id} className={styles.stepCard}>
+              <div className={styles.stepNumber}>{step.number}</div>
+              <div className={styles.stepIcon}>
+                <span className={styles.iconWrapper}>{step.icon}</span>
               </div>
+              <h3 className={styles.stepTitle}>{step.title}</h3>
+              <p className={styles.stepDescription} dangerouslySetInnerHTML={{ __html: step.description }} />
             </div>
           ))}
         </div>
