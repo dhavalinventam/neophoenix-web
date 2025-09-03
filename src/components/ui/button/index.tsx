@@ -4,14 +4,23 @@ import { ButtonHTMLAttributes } from 'react';
 
 type Props = ButtonHTMLAttributes<HTMLButtonElement> & {
   label: string;
-  variant?: 'filled' | 'outline';
+  variant?: 'filled' | 'outline' | 'secondary';
 };
 
 export default function Button({ label, variant = 'filled', ...props }: Props) {
-  const buttonClass = variant === 'outline' ? styles.btnOutline : styles.btnFill;
+  const getButtonClass = () => {
+    switch (variant) {
+      case 'outline':
+        return styles.btnOutline;
+      case 'secondary':
+        return styles.btnSecondary;
+      default:
+        return styles.btnFill;
+    }
+  };
 
   return (
-    <button className={buttonClass} {...props}>
+    <button className={getButtonClass()} {...props}>
       {label}
     </button>
   );

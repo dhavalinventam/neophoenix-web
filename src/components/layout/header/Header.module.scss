@@ -1,12 +1,8 @@
 @use '../../../styles/variables' as *;
 
 .header {
-  background: linear-gradient(
-    135deg,
-    rgba($bg-dark-primary, 0.4) 0%,
-    rgba($bg-dark-secondary, 0.4) 100%
-  );
-  border: 1px solid $glass-border-dark;
+  // background: $bg-dark-primary; 
+  border: 1px solid rgba(255, 255, 255, 0.1);
   padding: 8px 12px;
   border-radius: 40px;
   z-index: 1000;
@@ -55,10 +51,6 @@
 }
 
 .logoImage {
-  // position: relative;
-  // display: flex;
-  // align-items: center;
-  // justify-content: center;
   max-width: 180px;
   width: 100%;
 }
@@ -80,6 +72,7 @@
   display: flex;
   gap: 2rem;
   align-items: center;
+  margin: 0 auto; // Center the navigation
 
   @media (max-width: 768px) {
     display: none;
@@ -87,7 +80,7 @@
 }
 
 .link {
-  color: #e2e8f0;
+  color: $text-white; // White text for navigation links
   text-decoration: none;
   font-weight: 500;
   font-size: 0.9rem;
@@ -95,7 +88,7 @@
   position: relative;
 
   &:hover {
-    color: #4facfe;
+    color: $text-white; // Keep white on hover
   }
 
   &::after {
@@ -105,7 +98,7 @@
     height: 2px;
     bottom: -4px;
     left: 0;
-    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    background: linear-gradient(90deg, $primary-orange 0%, $primary-blue 100%); // Gradient underline effect
     transition: width 0.3s ease;
   }
 
@@ -142,7 +135,7 @@
 .hamburgerLine {
   width: 22px;
   height: 2px;
-  background: #e2e8f0;
+  background: $text-white; // White hamburger lines
   border-radius: 10px;
   transition: all 0.3s ease;
   transform-origin: 1px;
@@ -169,7 +162,7 @@
   left: 0;
   width: 100%;
   height: 100vh;
-  background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 100%);
+  background: $bg-dark-primary; // Deep navy background
   transform: translateX(-100%);
   transition: transform 0.3s ease-in-out;
   z-index: 1000;
@@ -196,14 +189,14 @@
 }
 
 .mobileLink {
-  color: #e2e8f0;
+  color: $text-white; // White text for mobile links
   text-decoration: none;
   font-weight: 600;
   font-size: 14px;
   transition: all 0.3s ease;
 
   &:hover {
-    color: #4facfe;
+    color: $primary-orange; // Orange on hover
   }
 }
 

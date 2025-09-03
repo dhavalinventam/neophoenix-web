@@ -7,7 +7,7 @@ const HowItWorks = () => {
       number: '01',
       title: 'Deep-Dive Assessment',
       description:
-        'Pinpoint real business bottlenecks and map integration points no cookie cutter analysis, just actionable insights.',
+        'Pinpoint real <strong>business bottlenecks</strong> and map <em>integration points</em> no cookie cutter analysis, just actionable insights.',
       icon: (
         <svg
           width="32"
@@ -17,7 +17,7 @@ const HowItWorks = () => {
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
-            d="M14 4C8.48 4 4 8.48 4 14C4 19.52 8.48 24 14 24C16.39 24 18.68 23.21 20.47 21.77L26.59 27.89L28 26.47L21.88 20.35C23.22 18.56 24 16.35 24 14C24 8.48 19.52 4 14 4ZM14 6C18.42 6 22 9.58 22 14C22 18.42 18.42 22 14 22C9.58 22 6 18.42 6 14C6 9.58 9.58 6 14 6Z"
+            d="M14 4C8.48 4 4 8.48 4 14C4 19.52 8.48 24 14 24C16.39 24 18.68 23.21 20.47 21.77L26.59 27.89L28 26.47L21.88 20.35C23.22 18.56 24 16.35 24 14C24 8.48 19.52 4 14 4ZM14 6C18.42 6 22 9.58 22 14C22 18.42 18.42 22 14 22C9.58 22 6 18.42 6 14C6 9.58 6.9 6 14 6Z"
             fill="currentColor"
           />
           <path d="M10 12H12V18H10V12ZM13 10H15V18H13V10ZM16 14H18V18H16V14Z" fill="currentColor" />
@@ -29,7 +29,7 @@ const HowItWorks = () => {
       number: '02',
       title: 'Rapid Solution Blueprint',
       description:
-        'Architect a fit for purpose AI workflow built around your actual data, tech stack, and performance goals no wasted cycles.',
+        'Architect a <strong>fit for purpose AI workflow</strong> built around your actual <em>data, tech stack, and performance goals</em> no wasted cycles.',
       icon: (
         <svg
           width="32"
@@ -55,7 +55,7 @@ const HowItWorks = () => {
       number: '03',
       title: 'Fast Deployment & Enablement',
       description:
-        'Plug in, go live, and upskill your team with hands on onboarding measurable impact from day one, not wishful promises.',
+        'Plug in, go live, and <strong>upskill your team</strong> with hands on <em>onboarding</em> measurable impact from day one, not wishful promises.',
       icon: (
         <svg
           width="32"
@@ -81,7 +81,7 @@ const HowItWorks = () => {
       number: '04',
       title: 'Relentless Optimization',
       description:
-        '24/7 monitoring, usage analytics, and ongoing updates so your AI solution gets smarter and more efficient over time.',
+        '<strong>24/7 monitoring</strong>, usage analytics, and ongoing <em>updates</em> so your AI solution gets smarter and more efficient over time.',
       icon: (
         <svg
           width="32"
@@ -107,7 +107,7 @@ const HowItWorks = () => {
         <div className={styles.header}>
           <h2 className={styles.title}>How It Works</h2>
           <p className={styles.description}>
-            Our no-nonsense 4 step deployment gets you from Product to powerhouse - ready AI with
+            Our no-nonsense <strong>4 step deployment</strong> gets you from Product to <em>powerhouse</em> - ready AI with
             minimal hassle and maximum ROI.
           </p>
         </div>
@@ -121,7 +121,7 @@ const HowItWorks = () => {
                   <span className={styles.iconWrapper}>{step.icon}</span>
                 </div>
                 <h3 className={styles.stepTitle}>{step.title}</h3>
-                <p className={styles.stepDescription}>{step.description}</p>
+                <p className={styles.stepDescription} dangerouslySetInnerHTML={{ __html: step.description }} />
               </div>
             </div>
           ))}

@@ -54,24 +54,25 @@ $letter-spacing-wide: 0.025em;
 // COLOR VARIABLES
 // =============================================================================
 
-// Primary Brand Colors
-$primary-blue: #667eea;
-$primary-purple: #764ba2;
-$primary-pink: #f093fb;
+// Primary Brand Colors - New Phoenix Fire Palette
+$primary-orange: #FF6B35; // Bright Orange-Red gradient start
+$primary-gold: #FF9F1C; // Golden-Orange highlight
+$primary-cyan: #2EC4B6; // Cyan/Teal highlight
+$primary-blue: #4361EE; // Vivid Electric Blue
 
 // Secondary Brand Colors
 $secondary-blue: #0ea5e9;
 $secondary-green: #22c55e;
 $secondary-orange: #f59e0b;
 
-// Background Colors
-$bg-dark-primary: #0f0f23;
-$bg-dark-secondary: #1a1a2e;
+// Background Colors - New Deep Navy Theme
+$bg-dark-primary: #0A0E1A; // Deep Navy Black – dark theme base
+$bg-dark-secondary: #101528; // Slightly lighter navy for cards/sections
 $bg-dark-tertiary: #16213e;
 
 // Text Colors
-$text-white: #ffffff;
-$text-gray-light: #a0a0a0;
+$text-white: #FFFFFF; // Text Primary
+$text-gray-light: #C7D1E0; // Text Secondary - Soft Cool Gray
 $text-gray-medium: #6b7280;
 $text-gray-dark: #374151;
 
@@ -83,22 +84,27 @@ $glass-border-light: rgba(255, 255, 255, 0.2);
 $glass-border-medium: rgba(255, 255, 255, 0.15);
 $glass-border-dark: rgba(255, 255, 255, 0.1);
 
-// Phoenix Animation Colors
-$phoenix-blue-light: rgba(102, 126, 234, 0.08);
-$phoenix-blue-medium: rgba(102, 126, 234, 0.2);
-$phoenix-purple-light: rgba(118, 75, 162, 0.1);
-$phoenix-purple-medium: rgba(118, 75, 162, 0.15);
-$phoenix-pink-light: rgba(240, 147, 251, 0.12);
-$phoenix-pink-medium: rgba(240, 147, 251, 0.1);
+// Phoenix Animation Colors - Updated with new palette
+$phoenix-orange-light: rgba(255, 107, 53, 0.08);
+$phoenix-orange-medium: rgba(255, 107, 53, 0.2);
+$phoenix-gold-light: rgba(255, 159, 28, 0.1);
+$phoenix-gold-medium: rgba(255, 159, 28, 0.15);
+$phoenix-cyan-light: rgba(46, 196, 182, 0.12);
+$phoenix-cyan-medium: rgba(46, 196, 182, 0.1);
 
-// Gradient Colors
+// Gradient Colors - New Phoenix Fire Gradients
 $gradient-primary: linear-gradient(
-  135deg,
-  $primary-blue 0%,
-  $primary-purple 50%,
-  $primary-pink 100%
+  90deg,
+  $primary-orange 0%,
+  $primary-gold 50%,
+  $primary-blue 100%
 );
-$gradient-secondary: linear-gradient(135deg, $primary-blue 0%, $primary-purple 100%);
+$gradient-secondary: linear-gradient(135deg, $primary-orange 0%, $primary-gold 100%);
+
+// New Softer Button Gradients
+$gradient-button-primary: linear-gradient(90deg, $primary-orange 0%, $primary-gold 100%); // Warm Phoenix glow
+$gradient-button-secondary: linear-gradient(90deg, $primary-cyan 0%, $primary-blue 100%); // Cool digital effect
+
 $gradient-background: linear-gradient(
   135deg,
   $bg-dark-primary 0%,
@@ -106,9 +112,11 @@ $gradient-background: linear-gradient(
   $bg-dark-tertiary 100%
 );
 
-// Shadow Colors
-$shadow-glow-blue: 0 0 20px rgba(102, 126, 234, 0.2);
-$shadow-lg: 0 5px 20px rgba(102, 126, 234, 0.2);
+// Shadow Colors - Updated with new accent colors
+$shadow-glow-orange: 0 0 20px rgba(255, 107, 53, 0.3);
+$shadow-glow-gold: 0 0 20px rgba(255, 159, 28, 0.3);
+$shadow-glow-blue: 0 0 20px rgba(67, 97, 238, 0.3);
+$shadow-lg: 0 5px 20px rgba(255, 107, 53, 0.2);
 $shadow-xl: 0 10px 30px rgba(0, 0, 0, 0.3);
 
 // =============================================================================

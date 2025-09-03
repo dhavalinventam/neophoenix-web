@@ -54,14 +54,14 @@
 .formIcon {
   width: 60px;
   height: 60px;
-  background: $gradient-primary;
+  background: $gradient-button-primary; // Warm Phoenix glow gradient
   border-radius: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0 auto 1rem;
   color: $text-white;
-  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+      box-shadow: 0 8px 25px rgba(255, 107, 53, 0.4);
   transition: transform $duration-normal $ease-in-out;
 
   &:hover {
@@ -133,7 +133,7 @@
 
   &:focus {
     border-color: $primary-blue;
-    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+          box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
     transform: translateY(-1px);
   }
 
@@ -149,7 +149,7 @@
   left: -2px;
   right: -2px;
   bottom: -2px;
-  background: $gradient-primary;
+  background: $gradient-button-primary; // Warm Phoenix glow gradient
   border-radius: 14px;
   opacity: 0;
   z-index: -1;

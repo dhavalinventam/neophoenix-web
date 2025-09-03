@@ -1,3 +1,5 @@
+@use '../../../styles/variables' as *;
+
 .gradientBackground {
   position: fixed;
   top: 0;
@@ -7,20 +9,20 @@
   z-index: 3;
   background: radial-gradient(
     circle at var(--gradient-x, 50%) var(--gradient-y, 50%),
-    rgba(59, 130, 246, 0.2) 7%,
-    rgba(147, 51, 234, 0.15) 10%,
-    rgba(236, 72, 153, 0.01) 15%,
-    rgba(59, 130, 246, 0.01) 15%,
+    rgba(255, 107, 53, 0.2) 7%, // Primary orange
+    rgba(255, 159, 28, 0.15) 10%, // Primary gold
+    rgba(67, 97, 238, 0.01) 15%, // Primary blue
+    rgba(46, 196, 182, 0.01) 15%, // Primary cyan
     transparent 40%
   );
   pointer-events: none;
   transition: all 0.15s ease-out;
-  filter: blur(80px);
+  filter: blur(120px);
 }
 
 .cursor {
   position: fixed;
-  background-color: white;
+  background-color: $text-white; // Use white from variables
   width: 10px;
   height: 10px;
   border-radius: 100%;
@@ -36,7 +38,7 @@
 
 .cursorFollower {
   position: fixed;
-  border: 1px solid white;
+  border: 1px solid $text-white; // Use white from variables
   width: 30px;
   height: 30px;
   border-radius: 100%;

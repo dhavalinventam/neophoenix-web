@@ -50,18 +50,13 @@ export default function Footer() {
                           <h5 className={styles.columnTitle}>Products</h5>
                           <ul className={styles.linkList}>
                             <li>
-                              <Link href="#" className={styles.link}>
-                                NeoPhone
+                              <Link href="#services" className={styles.link}>
+                              RAG System
                               </Link>
                             </li>
                             <li>
-                              <Link href="#" className={styles.link}>
-                                NeoConnect
-                              </Link>
-                            </li>
-                            <li>
-                              <Link href="#" className={styles.link}>
-                                NeoCloud
+                              <Link href="#services" className={styles.link}>
+                              Task Prompt AI
                               </Link>
                             </li>
                           </ul>
