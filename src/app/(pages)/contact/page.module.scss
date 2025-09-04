@@ -1,14 +1,13 @@
 @use '../../../styles/variables' as *;
 @use '../../../styles/mixins' as *;
 
-// =============================================================================
-// MAIN CONTAINER
-// =============================================================================
-
-.contactContainer {
-  background: $gradient-background;
+.contactPage {
   position: relative;
+  background: $bg-dark-primary; // Single solid background
+  min-height: 100vh;
+  padding: 3rem 0; // Consistent with global section spacing
   overflow: hidden;
+  z-index: 1;
 
   &::before {
     content: '';
@@ -137,7 +136,7 @@
   align-items: flex-start;
   gap: 1rem;
   padding: 1rem 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: none;
   transition: all $duration-normal $ease-out;
 
   &:last-child {
@@ -196,7 +195,7 @@
 .socialSection {
   margin-top: 1.5rem;
   padding-top: 1.5rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: none;
   position: relative;
   z-index: 1;
 }

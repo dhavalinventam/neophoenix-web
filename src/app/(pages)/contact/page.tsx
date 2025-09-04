@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import FAQ from '@/components/pages/Landing/faq';
 import styles from './page.module.scss';
 import Button from '@/components/ui/button';
 

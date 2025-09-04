@@ -58,7 +58,7 @@ const HeroSection = () => {
         </div>
 
         {/* Email Subscription Section */}
-        <div className="row justify-content-center">
+        {/* <div className="row justify-content-center">
           <div className="col-lg-8 col-md-12">
             <div className={styles.subscriptionCard}>
               <h2 className={styles.subscriptionTitle}>
@@ -88,7 +88,7 @@ const HeroSection = () => {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </section>
   );
