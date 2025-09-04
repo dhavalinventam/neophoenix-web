@@ -1,61 +1,102 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './HeroSection.module.scss';
 import Button from '@/components/ui/button';
 
 const HeroSection = () => {
-  const [email, setEmail] = useState('');
+  const [isVisible, setIsVisible] = useState(false);
 
-  const handleEmailSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Handle email subscription logic here
-    console.log('Email submitted:', email);
-  };
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
 
   return (
     <>
       <section className={`${styles.heroSection} hero`}>
-        {/* Phoenix Rising Effect */}
-        <div className={styles.phoenixRising}>
-          <div className={styles.phoenixGlow} />
-          <div className={styles.phoenixTrail}>
-            {[...Array(8)].map((_, i) => (
+        {/* Smart Background Animation */}
+        <div className={styles.backgroundAnimation}>
+          {/* Floating Geometric Shapes */}
+          <div className={styles.floatingShapes}>
+            {[...Array(6)].map((_, i) => (
               <div
                 key={i}
-                className={styles.trailParticle}
+                className={`${styles.shape} ${styles[`shape${i + 1}`]}`}
+                style={{
+                  animationDelay: `${i * 0.5}s`,
+                  animationDuration: `${8 + i * 2}s`,
+                }}
+              />
+            ))}
+          </div>
+
+          {/* Gradient Orbs */}
+          <div className={styles.gradientOrbs}>
+            <div className={`${styles.orb} ${styles.orb1}`} />
+            <div className={`${styles.orb} ${styles.orb2}`} />
+            <div className={`${styles.orb} ${styles.orb3}`} />
+          </div>
+
+          {/* Neural Network Grid */}
+          <div className={styles.neuralGrid}>
+            {[...Array(12)].map((_, i) => (
+              <div
+                key={i}
+                className={styles.gridNode}
+                style={{
+                  animationDelay: `${i * 0.3}s`,
+                }}
+              />
+            ))}
+          </div>
+
+          {/* Particle System */}
+          <div className={styles.particleSystem}>
+            {[...Array(20)].map((_, i) => (
+              <div
+                key={i}
+                className={styles.particle}
                 style={{
                   animationDelay: `${i * 0.2}s`,
+                  animationDuration: `${6 + i * 0.5}s`,
                 }}
               />
             ))}
           </div>
         </div>
 
-        {/* Fire Rings */}
-        <div className={styles.fireRings}>
-          {[...Array(2)].map((_, i) => (
-            <div
-              key={i}
-              className={styles.fireRing}
-              style={{
-                animationDelay: `${i * 3}s`,
-                animationDuration: `${8 + i * 2}s`,
-              }}
-            />
-          ))}
-        </div>
+        {/* Content Container */}
+        <div className={styles.contentContainer}>
+          <div className="container">
+            {/* Main Headline */}
+            <div className={`${styles.headline} ${isVisible ? styles.visible : ''}`}>
+              <div className={styles.badge}>
+                <span className={styles.badgeIcon}>🚀</span>
+                <span className={styles.badgeText}>Enterprise AI Solutions</span>
+              </div>
+              
+              <h1 className={styles.title}>
+                Reimagining Enterprise AI with{' '}
+                <span className={styles.highlight}>RAG & Prompting Innovation</span>
+              </h1>
+              
+              <p className={styles.subtitle}>
+                Secure. Scalable. Human-Centric AI Solutions.
+              </p>
+              
+              <p className={styles.description}>
+                At Neophoenix, we build next-generation AI products and enterprise solutions that combine the power of Retrieval-Augmented Generation (RAG) with precision-driven prompt engineering. From white-label platforms to plug-and-play extensions, we empower businesses to unlock real-time intelligence and transform workflows at scale.
+              </p>
+            </div>
 
-        <div className="container text-center">
-          {/* Main Headline */}
-          <div className={styles.headline}>
-            <h1 className={styles.title}>
-              Master AI Tools Designed to Transform Work From Data to Daily Tasks
-            </h1>
-            <p className={styles.description}>
-              Join 10,000+ innovators unlocking exclusive early access to our ever expanding suite
-              of AI-powered solutions secure, smart, and built for real impact.
-            </p>
+            {/* CTA Section */}
+            <div className={`${styles.ctaSection} ${isVisible ? styles.visible : ''}`}>
+              <Button 
+                variant="filled" 
+                label="Explore Our Solutions"
+                className={styles.exploreButton}
+              />
+            </div>
           </div>
         </div>
       </section>

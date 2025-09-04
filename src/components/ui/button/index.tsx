@@ -7,16 +7,20 @@ type Props = ButtonHTMLAttributes<HTMLButtonElement> & {
   variant?: 'filled' | 'outline' | 'secondary';
 };
 
-export default function Button({ label, variant = 'filled', ...props }: Props) {
+export default function Button({ label, variant = 'filled', className, ...props }: Props) {
   const getButtonClass = () => {
-    switch (variant) {
-      case 'outline':
-        return styles.btnOutline;
-      case 'secondary':
-        return styles.btnSecondary;
-      default:
-        return styles.btnFill;
-    }
+    const baseClass = (() => {
+      switch (variant) {
+        case 'outline':
+          return styles.btnOutline;
+        case 'secondary':
+          return styles.btnSecondary;
+        default:
+          return styles.btnFill;
+      }
+    })();
+    
+    return className ? `${baseClass} ${className}` : baseClass;
   };
 
   return (
