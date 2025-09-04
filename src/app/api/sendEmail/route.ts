@@ -49,7 +49,7 @@ export async function POST(req: Request) {
         <h3>New Contact Form Submission</h3>
         <p><strong>Full Name:</strong> ${fullName || 'Not provided'}</p>
         <p><strong>Email:</strong> ${email || 'Not provided'}</p>
-        <p><strong>Phone Number:</strong> ${phoneNumber || 'Not provided'}</p>
+        ${phoneNumber ? `<p><strong>Phone Number:</strong> ${phoneNumber}</p>` : ''}
         <p><strong>Message:</strong> ${message || 'Not provided'}</p>
       `;
     }

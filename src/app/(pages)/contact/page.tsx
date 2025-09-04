@@ -8,7 +8,6 @@ export default function ContactPage() {
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
-    phoneNumber: '',
     message: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -47,7 +46,7 @@ export default function ContactPage() {
           message: 'Thank you! Your message has been sent successfully.'
         });
         // Reset form
-        setFormData({ fullName: '', email: '', phoneNumber: '', message: '' });
+        setFormData({ fullName: '', email: '', message: '' });
       } else {
         setSubmitStatus({
           type: 'error',
@@ -205,25 +204,6 @@ export default function ContactPage() {
                             value={formData.email}
                             onChange={handleInputChange}
                             placeholder="Enter your email address"
-                            required
-                          />
-                        </div>
-                      </div>
-                    </div>
-                    
-                    <div className="row g-2">
-                      <div className="col-md-6">
-                        <div className={styles.formGroup}>
-                          <label htmlFor="phoneNumber" className={styles.formLabel}>
-                            Phone Number
-                          </label>
-                          <input
-                            type="tel"
-                            className={styles.formInput}
-                            id="phoneNumber"
-                            value={formData.phoneNumber}
-                            onChange={handleInputChange}
-                            placeholder="Enter your phone number"
                             required
                           />
                         </div>

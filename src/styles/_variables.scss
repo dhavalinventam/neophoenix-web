@@ -18,6 +18,7 @@ $font-secondary:
   Roboto,
   sans-serif;
 $font-mono: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+$font-title: 'Frederic', serif; // New font for titles
 
 // Font Sizes
 $font-size-xs: 0.75rem; // 12px
@@ -124,8 +125,8 @@ $shadow-xl: 0 10px 30px rgba(0, 0, 0, 0.3);
 // =============================================================================
 
 // Common Section Title Styles
-$section-title-font-family: $font-primary;
-$section-title-font-family-secondary: $font-secondary;
+$section-title-font-family: $font-title; // Updated to use Frederic
+$section-title-font-family-secondary: $font-title; // Updated to use Frederic
 $section-title-font-size: clamp(2rem, 4vw, 2rem);
 $section-title-font-weight: $font-weight-bold;
 $section-title-color: $text-white;
