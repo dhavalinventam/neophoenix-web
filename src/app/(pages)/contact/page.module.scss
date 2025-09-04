@@ -30,14 +30,14 @@
 // =============================================================================
 
 .heroSection {
-  background: 
-    radial-gradient(circle at 20% 80%, rgba(255, 107, 53, 0.15) 0%, transparent 50%), // Use new orange
-    radial-gradient(circle at 80% 20%, rgba(67, 97, 238, 0.15) 0%, transparent 50%), // Use new blue
-    $gradient-background;
+  // background: 
+  //   radial-gradient(circle at 20% 80%, rgba(255, 107, 53, 0.15) 0%, transparent 50%), // Use new orange
+  //   radial-gradient(circle at 80% 20%, rgba(67, 97, 238, 0.15) 0%, transparent 50%), // Use new blue
+  //   $gradient-background;
   position: relative;
   overflow: hidden;
   min-height: 400px;
-  padding: 4rem 0; // Add top and bottom padding for better spacing
+  padding: 0 0; // Add top and bottom padding for better spacing
   display: flex;
   align-items: center;
   justify-content: center;
@@ -414,6 +414,29 @@
       transform: translateY(-2px);
       box-shadow: 0 8px 25px rgba(255, 107, 53, 0.3);
     }
+  }
+}
+
+// Status Messages
+.statusMessage {
+  margin-top: 1rem;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  text-align: center;
+  animation: fadeInUp 0.3s $ease-out;
+  
+  &.success {
+    background: rgba(46, 196, 182, 0.2);
+    border: 1px solid rgba(46, 196, 182, 0.4);
+    color: #2ec4b6;
+  }
+  
+  &.error {
+    background: rgba(255, 107, 53, 0.2);
+    border: 1px solid rgba(255, 107, 53, 0.4);
+    color: #ff6b35;
   }
 }
 

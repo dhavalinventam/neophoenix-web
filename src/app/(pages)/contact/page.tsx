@@ -1,13 +1,69 @@
+'use client';
+
+import { useState } from 'react';
 import FAQ from '@/components/pages/Landing/faq';
 import styles from './page.module.scss';
 import Button from '@/components/ui/button';
 
-export const metadata = {
-  title: 'Contact',
-  description: 'Get in touch with us.',
-};
-
 export default function ContactPage() {
+  const [formData, setFormData] = useState({
+    fullName: '',
+    email: '',
+    message: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<{
+    type: 'success' | 'error' | null;
+    message: string;
+  }>({ type: null, message: '' });
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { id, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [id]: value
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus({ type: null, message: '' });
+
+    try {
+      const response = await fetch('/api/sendEmail', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        setSubmitStatus({
+          type: 'success',
+          message: 'Thank you! Your message has been sent successfully.'
+        });
+        // Reset form
+        setFormData({ fullName: '', email: '', message: '' });
+      } else {
+        setSubmitStatus({
+          type: 'error',
+          message: result.error || 'Failed to send message. Please try again.'
+        });
+      }
+    } catch (error) {
+      setSubmitStatus({
+        type: 'error',
+        message: 'Network error. Please check your connection and try again.'
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <>
       <div className={`${styles.contactContainer} hero`}>
@@ -34,29 +90,7 @@ export default function ContactPage() {
                   </div>
 
                   <div className={styles.contactMethods}>
-                    <div className={styles.contactMethod}>
-                      <div className={styles.methodIcon}>
-                        <svg
-                          width="24"
-                          height="24"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"
-                            fill="currentColor"
-                          />
-                        </svg>
-                      </div>
-                      <div className={styles.methodContent}>
-                        <h3 className={styles.methodTitle}>Visit Us</h3>
-                        <p className={styles.methodText}>
-                          519, Universal Trade Center, Opp. Mahendra Showroom, near. Hari om Circle,
-                          L.P. Savani road, Surat.
-                        </p>
-                      </div>
-                    </div>
+
 
                     <div className={styles.contactMethod}>
                       <div className={styles.methodIcon}>
@@ -141,47 +175,40 @@ export default function ContactPage() {
                     </p>
                   </div>
 
-                  <form className={styles.contactForm}>
-                    <div className="row g-2">
-                      <div className="col-md-6">
-                        <div className={styles.formGroup}>
-                          <label htmlFor="firstName" className={styles.formLabel}>
-                            First Name
-                          </label>
-                          <input
-                            type="text"
-                            className={styles.formInput}
-                            id="firstName"
-                            placeholder="Enter your first name"
-                          />
-                        </div>
-                      </div>
-                      <div className="col-md-6">
-                        <div className={styles.formGroup}>
-                          <label htmlFor="lastName" className={styles.formLabel}>
-                            Last Name
-                          </label>
-                          <input
-                            type="text"
-                            className={styles.formInput}
-                            id="lastName"
-                            placeholder="Enter your last name"
-                          />
-                        </div>
-                      </div>
-                      <div className="col-12">
-                        <div className={styles.formGroup}>
-                          <label htmlFor="email" className={styles.formLabel}>
-                            Email Address
-                          </label>
-                          <input
-                            type="email"
-                            className={styles.formInput}
-                            id="email"
-                            placeholder="Enter your email address"
-                          />
-                        </div>
-                      </div>
+                  <form className={styles.contactForm} onSubmit={handleSubmit}>
+                                         <div className="row g-2">
+                       <div className="col-md-6">
+                         <div className={styles.formGroup}>
+                           <label htmlFor="fullName" className={styles.formLabel}>
+                             Full Name
+                           </label>
+                           <input
+                             type="text"
+                             className={styles.formInput}
+                             id="fullName"
+                             value={formData.fullName}
+                             onChange={handleInputChange}
+                             placeholder="Enter your full name"
+                             required
+                           />
+                         </div>
+                       </div>
+                       <div className="col-md-6">
+                         <div className={styles.formGroup}>
+                           <label htmlFor="email" className={styles.formLabel}>
+                             Email Address
+                           </label>
+                           <input
+                             type="email"
+                             className={styles.formInput}
+                             id="email"
+                             value={formData.email}
+                             onChange={handleInputChange}
+                             placeholder="Enter your email address"
+                             required
+                           />
+                         </div>
+                       </div>
                       <div className="col-12">
                         <div className={styles.formGroup}>
                           <label htmlFor="message" className={styles.formLabel}>
@@ -190,8 +217,11 @@ export default function ContactPage() {
                           <textarea
                             className={styles.formTextarea}
                             id="message"
+                            value={formData.message}
+                            onChange={handleInputChange}
                             rows={6}
                             placeholder="Tell us about your project, goals, or any questions you have..."
+                            required
                           ></textarea>
                         </div>
                       </div>
@@ -201,9 +231,19 @@ export default function ContactPage() {
                           className={styles.formSubmit}
                           style={{ display: 'flex', justifyContent: 'center' }}
                         >
-                          <Button label="Send Message" />
+                          <Button 
+                            label={isSubmitting ? "Sending..." : "Send Message"} 
+                            disabled={isSubmitting}
+                          />
                         </div>
                       </div>
+                      
+                      {/* Status Messages */}
+                      {submitStatus.type && (
+                        <div className={`${styles.statusMessage} ${styles[submitStatus.type]}`}>
+                          {submitStatus.message}
+                        </div>
+                      )}
                     </div>
                   </form>
                 </div>
@@ -212,7 +252,7 @@ export default function ContactPage() {
           </div>
         </div>
       </div>
-      <FAQ />
     </>
   );
 }
+

@@ -10,6 +10,7 @@
     "format": "prettier --write ."
   },
   "dependencies": {
+    "@aws-sdk/client-ses": "^3.879.0",
     "bootstrap": "^5.3.7",
     "framer-motion": "^12.23.12",
     "next": "14.2.0",
