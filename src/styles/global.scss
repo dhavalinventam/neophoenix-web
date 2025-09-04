@@ -26,7 +26,21 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: $font-primary;
+  font-family: $font-title;
+  font-weight: 700;
+}
+
+// Additional title font rules
+.title,
+.subtitle,
+.headline,
+.section-title,
+.form-title,
+.info-title,
+.method-title,
+.social-title {
+  font-family: $font-title;
+  font-weight: 700;
 }
 
 * {
@@ -74,4 +88,55 @@ section {
   @media (max-width: 992px) {
     padding: 130px 0 50px !important;
   }
+}
+
+// =============================================================================
+// FREDERIC FONT FAMILY
+// =============================================================================
+@font-face {
+  font-family: 'Frederic';
+  src: url('/fonts/Frederic/frederic regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Frederic';
+  src: url('/fonts/Frederic/frederic regular italic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Frederic';
+  src: url('/fonts/Frederic/frederic bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Frederic';
+  src: url('/fonts/Frederic/frederic bold italic.ttf') format('truetype');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Frederic';
+  src: url('/fonts/Frederic/frederic black.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Frederic';
+  src: url('/fonts/Frederic/frederic black italic.ttf') format('truetype');
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
 }

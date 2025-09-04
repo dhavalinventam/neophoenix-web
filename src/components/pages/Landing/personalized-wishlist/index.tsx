@@ -11,6 +11,11 @@ const PersonalizedWishlist = () => {
     email: '',
     aiInterests: '',
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<{
+    type: 'success' | 'error' | null;
+    message: string;
+  }>({ type: null, message: '' });
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -20,10 +25,46 @@ const PersonalizedWishlist = () => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission logic here
-    console.log('Form submitted:', formData);
+    setIsSubmitting(true);
+    setSubmitStatus({ type: null, message: '' });
+
+    try {
+      const response = await fetch('/api/sendEmail', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...formData,
+          message: `AI Interest: ${formData.aiInterests}`,
+        }),
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        setSubmitStatus({
+          type: 'success',
+          message: 'Thank you! Your request has been sent successfully. We\'ll get back to you soon!'
+        });
+        // Reset form
+        setFormData({ fullName: '', email: '', aiInterests: '' });
+      } else {
+        setSubmitStatus({
+          type: 'error',
+          message: result.error || 'Failed to send request. Please try again.'
+        });
+      }
+    } catch (error) {
+      setSubmitStatus({
+        type: 'error',
+        message: 'Network error. Please check your connection and try again.'
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -158,8 +199,18 @@ const PersonalizedWishlist = () => {
                 </Form.Group>
 
                 <div className={styles.buttonWrapper}>
-                  <Button label="Create Free Account" />
+                  <Button 
+                    label={isSubmitting ? "Creating Account..." : "Create Free Account"} 
+                    disabled={isSubmitting}
+                  />
                 </div>
+
+                {/* Status Messages */}
+                {submitStatus.type && (
+                  <div className={`${styles.statusMessage} ${styles[submitStatus.type]}`}>
+                    {submitStatus.message}
+                  </div>
+                )}
               </Form>
             </div>
           </div>

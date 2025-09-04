@@ -72,7 +72,7 @@
 }
 
 .formTitle {
-  font-family: $font-primary;
+  font-family: $font-title;
   font-size: $font-size-2xl;
   font-weight: $font-weight-bold;
   color: $text-white;
@@ -80,7 +80,7 @@
 }
 
 .formSubtitle {
-  font-family: $font-primary;
+  font-family: $font-title;
   font-size: $font-size-base;
   color: $text-gray-light;
   line-height: $line-height-normal;
@@ -156,6 +156,30 @@
   justify-content: center;
   margin-top: 0.5rem;
   padding-top: 0.5rem;
+}
+
+// Status Messages
+.statusMessage {
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  font-family: $font-primary;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  text-align: center;
+  margin-top: 1rem;
+  border: 1px solid transparent;
+  
+  &.success {
+    background-color: rgba(34, 197, 94, 0.1);
+    color: #22c55e;
+    border-color: rgba(34, 197, 94, 0.2);
+  }
+  
+  &.error {
+    background-color: rgba(239, 68, 68, 0.1);
+    color: #ef4444;
+    border-color: rgba(239, 68, 68, 0.2);
+  }
 }
 
 // Responsive Design

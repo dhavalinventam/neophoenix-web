@@ -14,12 +14,13 @@ interface EmailRequestBody {
   email?: string;
   fullName?: string;
   message?: string;
-  phoneNumber: string;
+  phoneNumber?: string;
+  aiInterests?: string;
 }
 
 export async function POST(req: Request) {
   try {
-    const { email, fullName, message }: EmailRequestBody = await req.json();
+    const { email, fullName, message, phoneNumber, aiInterests }: EmailRequestBody = await req.json();
 
     if (!ENV.SES_SENDER_EMAIL || !ENV.SES_RECEIVER_EMAIL) {
       return NextResponse.json(
@@ -28,25 +29,47 @@ export async function POST(req: Request) {
       );
     }
 
+    // Determine if this is an AI wishlist request or contact form
+    const isAIWishlist = aiInterests && !phoneNumber;
+    const subject = isAIWishlist ? 'AI Wishlist Request' : 'Contact Inquiry Form';
+    
+    // Build email content based on form type
+    let emailContent = '';
+    if (isAIWishlist) {
+      emailContent = `
+        <h3>AI Wishlist Request</h3>
+        <p><strong>Full Name:</strong> ${fullName || 'Not provided'}</p>
+        <p><strong>Email:</strong> ${email || 'Not provided'}</p>
+        <p><strong>AI Interest:</strong> ${aiInterests || 'Not provided'}</p>
+        <br/>
+        <p>This user has requested to join the AI wishlist program.</p>
+      `;
+    } else {
+      emailContent = `
+        <h3>New Contact Form Submission</h3>
+        <p><strong>Full Name:</strong> ${fullName || 'Not provided'}</p>
+        <p><strong>Email:</strong> ${email || 'Not provided'}</p>
+        ${phoneNumber ? `<p><strong>Phone Number:</strong> ${phoneNumber}</p>` : ''}
+        <p><strong>Message:</strong> ${message || 'Not provided'}</p>
+      `;
+    }
+
+    emailContent += `
+      <br/>
+      <br/>
+      <p>Your request has been received. Thank you. We will get in touch as soon as possible.</p>
+    `;
+
     const emailParams = {
       Source: ENV.SES_SENDER_EMAIL,
       Destination: {
         ToAddresses: [ENV.SES_RECEIVER_EMAIL],
-        // ENV.SES_RECEIVER_EMAIL
       },
       Message: {
-        Subject: { Data: 'Contact Inquiry Form' },
+        Subject: { Data: subject },
         Body: {
           Html: {
-            Data: `
-            <p>${fullName ? `Full Name: ` + fullName : ''}</p>
-        <p>${email ? `Email: ` + email : ''}</p>
-        <p>${message ? `Message: ` + message : ''}</p>
-       
-         <br/>
-         <br/>
-         <p>Your request has been received. Thank you. We will get in touch as soon as possible.</p>
-           `,
+            Data: emailContent,
           },
         },
       },
