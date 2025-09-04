@@ -1,10 +1,12 @@
 @use '../../../../styles/variables' as *;
 @use '../../../../styles/mixins' as *;
 
-.personalizedWishlistSection {
-  background: $gradient-background;
+.personalizedWishlist {
   position: relative;
+  background: $bg-dark-primary; // Single solid background
+  padding: 3rem 0; // Consistent with global section spacing
   overflow: hidden;
+  z-index: 1;
 }
 
 .contentSection {

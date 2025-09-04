@@ -3,7 +3,7 @@
 
 .faq {
   background: $bg-dark-secondary; // Secondary navy background (#101528)
-  padding: 4rem 0;
+  padding: 3rem 0; // Consistent with global section spacing
   position: relative;
   overflow: hidden;
 }
@@ -73,7 +73,7 @@
 
   &.active {
     background: rgb(99 207 233 / 8%);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: none;
 
     // Glowing orange underline for expanded questions
     &::after {
@@ -170,7 +170,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 0.6rem 1.5rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: none;
 }
 
 .feedbackText {

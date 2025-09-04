@@ -2,12 +2,14 @@
 @import '../../../../styles/mixins';
 
 .heroSection {
-  background: $gradient-background;
   position: relative;
-  overflow: hidden;
+  background: $bg-dark-primary; // Single solid background
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
+  z-index: 1;
   font-family: $font-primary;
   // cursor: none;
 }

@@ -3,9 +3,10 @@
 
 .featureComparison {
   position: relative;
-  background: $gradient-background;
-  padding: 3rem 0;
+  background: $bg-dark-primary; // Single solid background
+  padding: 3rem 0; // Consistent with global section spacing
   overflow: hidden;
+  z-index: 1;
 }
 
 // Header Section
@@ -83,7 +84,7 @@
     color: $text-white;
     font-weight: $font-weight-semibold;
     text-align: center;
-    border-bottom: 1px solid rgba(255, 107, 53, 0.2);
+    border-bottom: none;
     text-shadow: 0 0 10px rgba(255, 107, 53, 0.3);
     position: sticky;
     top: 0;
@@ -91,7 +92,7 @@
   }
 
   tbody tr {
-    border-bottom: 1px solid rgba(255, 107, 53, 0.1);
+    border-bottom: none;
     transition: all $duration-normal $ease-out;
     background: rgba(26, 26, 46, 0.3);
 
