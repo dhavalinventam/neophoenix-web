@@ -108,7 +108,7 @@ export default function ContactPage() {
                       </div>
                       <div className={styles.methodContent}>
                         <h3 className={styles.methodTitle}>Email Us</h3>
-                        <p className={styles.methodText}>hello@neophoenix.com</p>
+                        <p className={styles.methodText}>contact@neophoenix.com</p>
                       </div>
                     </div>
 
@@ -129,9 +129,7 @@ export default function ContactPage() {
                       </div>
                       <div className={styles.methodContent}>
                         <h3 className={styles.methodTitle}>Call Us</h3>
-                        <p className={styles.methodText}>+91 7383 921251 (HR)</p>
-                        <p className={styles.methodText}>+91 91575 94215 (Business)</p>
-                        <span className={styles.methodNote}>Mon-Fri from 8am to 5pm</span>
+                        <p className={styles.methodText}>+1 (XXX) XXX-XXXX</p>
                       </div>
                     </div>
                   </div>
@@ -221,7 +219,7 @@ export default function ContactPage() {
                             id="message"
                             value={formData.message}
                             onChange={handleInputChange}
-                            rows={6}
+                            rows={3}
                             placeholder="Tell us about your project, goals, or any questions you have..."
                             required
                           ></textarea>
@@ -236,7 +234,7 @@ export default function ContactPage() {
                           style={{ display: 'flex', justifyContent: 'center' }}
                         >
                           <Button 
-                            label={isSubmitting ? "Sending..." : "Send Message"} 
+                            label={isSubmitting ? "Submit..." : "Submit"} 
                             disabled={isSubmitting}
                           />
                         </div>

@@ -141,3 +141,7 @@ section {
   font-style: italic;
   font-display: swap;
 }
+
+.form-control:focus {
+  box-shadow: none !important;
+}

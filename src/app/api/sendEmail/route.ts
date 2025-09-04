@@ -31,13 +31,13 @@ export async function POST(req: Request) {
 
     // Determine if this is an AI wishlist request or contact form
     const isAIWishlist = aiInterests && !phoneNumber;
-    const subject = isAIWishlist ? 'AI Wishlist Request' : 'Contact Inquiry Form';
+    const subject = isAIWishlist ? 'Personalized AI Solution Request' : 'Contact Inquiry Form';
     
     // Build email content based on form type
     let emailContent = '';
     if (isAIWishlist) {
       emailContent = `
-        <h3>AI Wishlist Request</h3>
+        <h3>Personalized AI Solution Request Details</h3>
         <p><strong>Full Name:</strong> ${fullName || 'Not provided'}</p>
         <p><strong>Email:</strong> ${email || 'Not provided'}</p>
         <p><strong>AI Interest:</strong> ${aiInterests || 'Not provided'}</p>
@@ -46,7 +46,7 @@ export async function POST(req: Request) {
       `;
     } else {
       emailContent = `
-        <h3>New Contact Form Submission</h3>
+        <h3>Contact Form Details</h3>
         <p><strong>Full Name:</strong> ${fullName || 'Not provided'}</p>
         <p><strong>Email:</strong> ${email || 'Not provided'}</p>
         ${phoneNumber ? `<p><strong>Phone Number:</strong> ${phoneNumber}</p>` : ''}

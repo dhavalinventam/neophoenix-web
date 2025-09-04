@@ -75,10 +75,12 @@ const PersonalizedWishlist = () => {
             {/* Top Section - Title and Description */}
             <div className={styles.contentSection}>
               <div className={styles.header}>
-                <h2 className={styles.title}>Build Your Personalized AI Wishlist</h2>
+                <h2 className={styles.title}>AI That Adapts to Your Business</h2>
                 <p className={styles.subtitle}>
-                  Create your account to save your favorite AI tools, get personalized
-                  recommendations, and stay updated on the latest additions.
+                Every enterprise is unique. That’s why Neophoenix offers <b>tailored AI solutions—</b>
+from white-label platforms to custom-built integrations. We collaborate closely
+with your team to align AI adoption with your strategic goals, ensuring measurable
+impact across operations, customer experience, and decision-making.
                 </p>
               </div>
             </div>
@@ -200,7 +202,7 @@ const PersonalizedWishlist = () => {
 
                 <div className={styles.buttonWrapper}>
                   <Button 
-                    label={isSubmitting ? "Creating Account..." : "Create Free Account"} 
+                    label={isSubmitting ? "Request a Custom Solution..." : "Request a Custom Solution"} 
                     disabled={isSubmitting}
                   />
                 </div>

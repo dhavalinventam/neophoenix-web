@@ -250,16 +250,16 @@
   position: relative;
   overflow: hidden;
 
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, rgba(255, 159, 28, 0.05) 0%, rgba(255, 107, 53, 0.05) 100%);
-    border-radius: 1.5rem;
-  }
+  // &::before {
+  //   content: '';
+  //   position: absolute;
+  //   top: 0;
+  //   left: 0;
+  //   right: 0;
+  //   bottom: 0;
+  //   background: linear-gradient(135deg, rgba(255, 159, 28, 0.05) 0%, rgba(255, 107, 53, 0.05) 100%);
+  //   border-radius: 1.5rem;
+  // }
 }
 
 .formHeader {
@@ -326,7 +326,7 @@
 .formInput,
 .formTextarea {
   width: 100%;
-  background: rgba(26, 26, 46, 0.8);
+  background: rgb(25 29 40);
   border: 2px solid $glass-border-medium;
   border-radius: 0.75rem;
   color: $text-white;
@@ -341,18 +341,16 @@
     color: rgba(160, 160, 160, 0.6);
   }
 
-  &:hover {
-          border-color: rgba(255, 107, 53, 0.4);
-    background: rgba(26, 26, 46, 0.9);
-          box-shadow: 0 4px 15px rgba(255, 107, 53, 0.1);
-  }
+  // &:hover {
+  //         border-color: rgba(255, 107, 53, 0.4);
+  //   background: rgba(26, 26, 46, 0.9);
+  //         box-shadow: 0 4px 15px rgba(255, 107, 53, 0.1);
+  // }
 
   &:focus {
-    background: rgba(22, 33, 62, 0.95);
-    border-color: $primary-blue;
-    box-shadow: 
-              0 0 0 4px rgba(255, 107, 53, 0.15),
-              0 8px 25px rgba(255, 107, 53, 0.2);
+    background: rgb(25 29 40);
+    border-color: #2c3e7f;
+    box-shadow: none;
     color: $text-white;
     outline: none;
   }
