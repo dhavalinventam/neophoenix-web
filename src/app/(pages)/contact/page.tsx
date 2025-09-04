@@ -75,7 +75,7 @@ export default function ContactPage() {
                       </div>
                       <div className={styles.methodContent}>
                         <h3 className={styles.methodTitle}>Email Us</h3>
-                        <p className={styles.methodText}>hello@paysphere.com</p>
+                        <p className={styles.methodText}>hello@neophoenix.com</p>
                       </div>
                     </div>
 

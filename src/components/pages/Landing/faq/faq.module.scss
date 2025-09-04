@@ -17,7 +17,7 @@
     
     // Gradient underline effect
     &::after {
-      background: linear-gradient(90deg, $primary-orange 0%, $primary-blue 100%); // (#FF6B35 → #4361EE)
+      background: linear-gradient(90deg, #FF6B35 0%, #FF9F1C 50%, #dabb56 100%); // (#FF6B35 → #FF9F1C → #dabb56)
       height: 3px;
       bottom: -0.75rem;
     }
@@ -72,7 +72,7 @@
   }
 
   &.active {
-    background: rgba(255, 107, 53, 0.1); // Orange background when active
+    background: rgb(99 207 233 / 8%);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 
     // Glowing orange underline for expanded questions
@@ -83,8 +83,8 @@
       left: 0;
       right: 0;
       height: 2px;
-      background: $primary-orange; // Orange (#FF6B35)
-      box-shadow: 0 0 10px rgba(255, 107, 53, 0.6); // Glowing effect
+      background: #63cfe9; // Orange (#FF6B35)
+      // box-shadow: 0 0 10px rgba(255, 107, 53, 0.6); // Glowing effect
       animation: glowPulse 2s ease-in-out infinite alternate;
     }
 
@@ -153,12 +153,12 @@
 
   // Highlight important keywords
   strong {
-    color: $primary-cyan; // Cyan for important keywords (#2EC4B6)
+    color: #63cfe9; // Cyan for important keywords (#2EC4B6)
     font-weight: $font-weight-semibold;
   }
 
   em {
-    color: $primary-orange; // Orange for emphasis (#FF6B35)
+    color: #63cfe9; // Orange for emphasis (#FF6B35)
     font-style: normal;
     font-weight: $font-weight-medium;
   }
@@ -220,9 +220,10 @@
 
 .feedbackYes {
   &.active {
-    background: $primary-gold; // Use new gold color
+    background: linear-gradient(90deg, #FF6B35 0%, #FF9F1C 50%, #dabb56 100%);
     border-color: $primary-gold;
     color: $bg-dark-primary; // Use dark background for contrast
+    box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
 
     svg {
       fill: $bg-dark-primary;
@@ -233,9 +234,10 @@
 
 .feedbackNo {
   &.active {
-    background: $primary-gold; // Use new gold color
+    background: linear-gradient(90deg, #FF6B35 0%, #FF9F1C 50%, #dabb56 100%);
     border-color: $primary-gold;
     color: $bg-dark-primary; // Use dark background for contrast
+    box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
 
     svg {
       fill: $bg-dark-primary;

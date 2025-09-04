@@ -17,7 +17,7 @@
     
     // Gradient underline effect
     &::after {
-      background: linear-gradient(90deg, $primary-orange 0%, $primary-blue 100%); // (#FF6B35 → #4361EE)
+      background: linear-gradient(90deg, #FF6B35 0%, #FF9F1C 50%, #dabb56 100%); // (#FF6B35 → #FF9F1C → #dabb56)
       height: 3px;
       bottom: -0.75rem;
     }
@@ -156,7 +156,7 @@
   font-family: $font-secondary;
   font-size: $font-size-base;
   font-weight: $font-weight-semibold;
-  color: $primary-cyan; // Cyan user names (#2EC4B6)
+  color: #63cfe9; // Cyan user names (#2EC4B6)
   margin: 0 0 0.25rem 0;
   line-height: $line-height-tight;
 }
@@ -206,9 +206,9 @@
 
   &:hover {
     background: $glass-bg-light;
-    border-color: $primary-orange; // Orange on hover
-    color: $primary-orange;
-    box-shadow: 0 0 15px rgba(255, 107, 53, 0.3); // Orange glow
+    border-color: #63cfe9;
+    color: #63cfe9;
+    box-shadow: 0 0 15px rgb(99 207 233 / 20%);
   }
 
   &.swiper-button-disabled {

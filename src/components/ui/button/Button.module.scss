@@ -1,10 +1,10 @@
-@import '@/styles/variables.scss';
+@use '../../../styles/variables' as *;
 
 .btnFill {
   display: flex;
   align-items: center;
   line-height: 1;
-  background: $gradient-button-primary; // Warm Phoenix glow gradient
+  background: linear-gradient(90deg, #FF6B35 0%, #FF9F1C 50%, #dabb56 100%);
   max-width: max-content;
   max-height: max-content;
   color: $text-white; // White text (#FFFFFF)
@@ -21,12 +21,19 @@
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 
   &:hover {
-    background: $gradient-button-primary; // Keep the same gradient on hover
-    box-shadow: 
+    background: linear-gradient(90deg, #FF6B35 0%, #FF9F1C 50%, #dabb56 100%);
+    box-shadow:
       0 8px 25px rgba(0, 0, 0, 0.3),
       0 0 20px rgba(255, 107, 53, 0.3), // Soft orange glow
       0 0 40px rgba(255, 159, 28, 0.2); // Soft gold glow
     transform: translateY(-2px);
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow:
+      0 0 0 3px rgba(255, 107, 53, 0.3),
+      0 8px 25px rgba(0, 0, 0, 0.3);
   }
 
   &::before {
@@ -36,8 +43,13 @@
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-    transition: left 0.5s ease;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.2),
+      transparent
+    );
+    transition: left 0.5s;
   }
 
   &:hover::before {
@@ -50,40 +62,44 @@
   align-items: center;
   line-height: 1;
   background: transparent;
-  color: $text-white; // White text (#FFFFFF)
   max-width: max-content;
   max-height: max-content;
+  color: $text-white; // White text (#FFFFFF)
+  border: 2px solid $text-white;
   padding: 0.75rem 1.5rem;
+  border-radius: 2rem;
   font-weight: $font-weight-bold; // Bold typography
   font-size: 0.9rem;
-  border: 2px solid $glass-border-light;
-  backdrop-filter: blur(10px);
-  border-radius: 2rem; // Rounded corners as specified
-  min-height: 43px;
+  cursor: pointer;
   transition: all 0.3s ease-in-out;
+  min-height: 43px;
+  position: relative;
+  overflow: hidden;
 
   &:hover {
-    background: $glass-bg-light;
-    border-color: $primary-orange; // Orange border on hover
-    box-shadow: 
-      0 4px 15px rgba(0, 0, 0, 0.2),
-      0 0 15px rgba(255, 107, 53, 0.3); // Soft orange glow
+    background: $text-white;
+    color: $bg-dark-primary;
     transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255, 255, 255, 0.3);
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
   }
 }
 
-// Secondary button style with cool digital effect
 .btnSecondary {
   display: flex;
   align-items: center;
   line-height: 1;
-  background: $gradient-button-secondary; // Cool digital effect gradient
+  background: linear-gradient(90deg, #FF6B35 0%, #FF9F1C 50%, #dabb56 100%);
   max-width: max-content;
   max-height: max-content;
   color: $text-white; // White text (#FFFFFF)
   border: none;
   padding: 0.75rem 1.5rem;
-  border-radius: 2rem; // Rounded corners as specified
+  border-radius: 2rem;
   font-weight: $font-weight-bold; // Bold typography
   font-size: 0.9rem;
   cursor: pointer;
@@ -94,26 +110,18 @@
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 
   &:hover {
-    background: $gradient-button-secondary; // Keep the same gradient on hover
-    box-shadow: 
+    background: linear-gradient(90deg, #FF6B35 0%, #FF9F1C 50%, #dabb56 100%);
+    box-shadow:
       0 8px 25px rgba(0, 0, 0, 0.3),
-      0 0 20px rgba(46, 196, 182, 0.3), // Soft cyan glow
-      0 0 40px rgba(67, 97, 238, 0.2); // Soft blue glow
+      0 0 20px rgba(255, 107, 53, 0.3), // Soft orange glow
+      0 0 40px rgba(255, 159, 28, 0.2); // Soft gold glow
     transform: translateY(-2px);
   }
 
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-    transition: left 0.5s ease;
-  }
-
-  &:hover::before {
-    left: 100%;
+  &:focus {
+    outline: none;
+    box-shadow:
+      0 0 0 3px rgba(255, 107, 53, 0.3),
+      0 8px 25px rgba(0, 0, 0, 0.3);
   }
 }

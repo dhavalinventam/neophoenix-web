@@ -36,13 +36,11 @@
   &:hover {
     transform: scale(1.02); // Subtle scale-up animation
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
-    border-color: $primary-cyan; // Cyan glowing border on hover (#2EC4B6)
-    box-shadow: 
-      0 15px 40px rgba(0, 0, 0, 0.4),
-      0 0 0 1px rgba(46, 196, 182, 0.3); // Thin glowing border effect
+    border-color: #63cfe9;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4), 0 0 0 1px #63cfe96b;
 
     .cardIcon {
-      background: $gradient-button-primary; // Warm Phoenix glow gradient on hover
+      background: linear-gradient(90deg, #FF6B35 0%, #FF9F1C 50%, #dabb56 100%);
       transform: scale(1.05);
       box-shadow: 
         0 8px 25px rgba(255, 107, 53, 0.4),
@@ -54,7 +52,7 @@
 .cardIcon {
   width: 80px;
   height: 80px;
-  background: $gradient-button-primary; // Warm Phoenix glow gradient
+  background: linear-gradient(90deg, #FF6B35 0%, #FF9F1C 50%, #dabb56 100%);
   border-radius: 50%; // Circular container
   display: flex;
   align-items: center;
@@ -96,12 +94,12 @@
 // Highlight important keywords with Neophoenix colors
 .cardDescription {
   strong {
-    color: $primary-cyan; // Cyan for important keywords (#2EC4B6)
-    font-weight: $font-weight-semibold;
+    color: #63cfe9; // Cyan for important keywords (#2EC4B6)
+    font-weight: $font-weight-medium;
   }
   
   em {
-    color: $primary-orange; // Orange for emphasis (#FF6B35)
+    color: #63cfe9; // Orange for emphasis (#FF6B35)
     font-style: normal;
     font-weight: $font-weight-medium;
   }
@@ -134,7 +132,7 @@
 .checkmark {
   width: 20px;
   height: 20px;
-  background: $gradient-button-primary; // Warm Phoenix glow gradient
+  background: linear-gradient(90deg, #FF6B35 0%, #FF9F1C 50%, #dabb56 100%);
   border-radius: 50%;
   display: flex;
   align-items: center;

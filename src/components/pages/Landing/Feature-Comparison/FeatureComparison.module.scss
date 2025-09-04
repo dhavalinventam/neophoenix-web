@@ -204,9 +204,9 @@
 }
 
 .available {
-  background: rgba(46, 196, 182, 0.2); // Use new cyan color
-  color: $primary-cyan; // Use new cyan color
-  border: 1px solid rgba(46, 196, 182, 0.3);
+  background: rgb(99 207 233 / 30%);
+    color: #63cfe9;
+    border: 1px solid rgb(99 207 233 / 32%);
 
   &:hover {
     background: rgba(46, 196, 182, 0.3);

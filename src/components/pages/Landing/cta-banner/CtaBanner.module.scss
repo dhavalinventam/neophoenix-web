@@ -94,7 +94,7 @@
 }
 
 .claimButton {
-  background: $gradient-button-primary; // Warm Phoenix glow gradient (#FF6B35 → #FF9F1C)
+  background: linear-gradient(90deg, #FF6B35 0%, #FF9F1C 50%, #dabb56 100%);
   color: $text-white; // White text (#FFFFFF)
   border: none;
   padding: 1rem 2rem;
@@ -108,8 +108,8 @@
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 
   &:hover {
-    background: $gradient-button-primary; // Keep the same gradient on hover
-    box-shadow: 
+    background: linear-gradient(90deg, #FF6B35 0%, #FF9F1C 50%, #dabb56 100%);
+    box-shadow:
       0 8px 25px rgba(0, 0, 0, 0.3),
       0 0 20px rgba(255, 107, 53, 0.3), // Soft orange glow
       0 0 40px rgba(255, 159, 28, 0.2); // Soft gold glow
@@ -118,7 +118,7 @@
 
   &:focus {
     outline: none;
-    box-shadow: 
+    box-shadow:
       0 0 0 3px rgba(255, 107, 53, 0.3),
       0 8px 25px rgba(0, 0, 0, 0.3);
   }

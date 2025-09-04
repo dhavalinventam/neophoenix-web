@@ -54,7 +54,7 @@
 .formIcon {
   width: 60px;
   height: 60px;
-  background: $gradient-button-primary; // Warm Phoenix glow gradient
+  background: linear-gradient(90deg, #FF6B35 0%, #FF9F1C 50%, #dabb56 100%);
   border-radius: 16px;
   display: flex;
   align-items: center;
@@ -144,16 +144,9 @@
 }
 
 .inputFocus {
-  position: absolute;
-  top: -2px;
-  left: -2px;
-  right: -2px;
-  bottom: -2px;
-  background: $gradient-button-primary; // Warm Phoenix glow gradient
-  border-radius: 14px;
-  opacity: 0;
-  z-index: -1;
-  transition: all $duration-normal $ease-in-out;
+  background: linear-gradient(90deg, #FF6B35 0%, #FF9F1C 50%, #dabb56 100%);
+  border-color: $primary-orange;
+  box-shadow: none !important;
 }
 
 .buttonWrapper {

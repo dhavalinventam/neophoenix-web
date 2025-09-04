@@ -6,7 +6,7 @@ const OurServices = () => {
       id: 1,
       title: 'Plug-and-Play RAG System',
       description:
-        'Instantly connect your <strong>database</strong> and deploy a secure <em>AI chat</em>: no data ever leaves your environment, setup in minutes.',
+        'Instantly connect your <strong>database</strong> and deploy a secure <em>AI chat</em> : no data ever leaves your environment, setup in minutes.',
       icon: (
         <svg
           width="32"
@@ -74,7 +74,7 @@ const OurServices = () => {
     <section className={styles.servicesSection} id="services">
       <div className="container text-center">
         <div className={styles.header}>
-          <h2 className={styles.title}>Our <em>AI-Powered</em> Services</h2>
+          <h2 className={styles.title}>Our AI-Powered Services</h2>
           <p className={styles.description}>
             Empower your team with <strong>secure, AI-driven insights</strong> and <em>workflow automation</em> tailored to
             your data, tools, and processes.
