@@ -8,6 +8,7 @@ export default function ContactPage() {
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
+    phoneNumber: '',
     message: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -46,7 +47,7 @@ export default function ContactPage() {
           message: 'Thank you! Your message has been sent successfully.'
         });
         // Reset form
-        setFormData({ fullName: '', email: '', message: '' });
+        setFormData({ fullName: '', email: '', phoneNumber: '', message: '' });
       } else {
         setSubmitStatus({
           type: 'error',
@@ -175,39 +176,61 @@ export default function ContactPage() {
                   </div>
 
                   <form className={styles.contactForm} onSubmit={handleSubmit}>
-                                         <div className="row g-2">
-                       <div className="col-md-6">
-                         <div className={styles.formGroup}>
-                           <label htmlFor="fullName" className={styles.formLabel}>
-                             Full Name
-                           </label>
-                           <input
-                             type="text"
-                             className={styles.formInput}
-                             id="fullName"
-                             value={formData.fullName}
-                             onChange={handleInputChange}
-                             placeholder="Enter your full name"
-                             required
-                           />
-                         </div>
-                       </div>
-                       <div className="col-md-6">
-                         <div className={styles.formGroup}>
-                           <label htmlFor="email" className={styles.formLabel}>
-                             Email Address
-                           </label>
-                           <input
-                             type="email"
-                             className={styles.formInput}
-                             id="email"
-                             value={formData.email}
-                             onChange={handleInputChange}
-                             placeholder="Enter your email address"
-                             required
-                           />
-                         </div>
-                       </div>
+                    <div className="row g-2">
+                      <div className="col-md-6">
+                        <div className={styles.formGroup}>
+                          <label htmlFor="fullName" className={styles.formLabel}>
+                            Full Name
+                          </label>
+                          <input
+                            type="text"
+                            className={styles.formInput}
+                            id="fullName"
+                            value={formData.fullName}
+                            onChange={handleInputChange}
+                            placeholder="Enter your full name"
+                            required
+                          />
+                        </div>
+                      </div>
+                      <div className="col-md-6">
+                        <div className={styles.formGroup}>
+                          <label htmlFor="email" className={styles.formLabel}>
+                            Email Address
+                          </label>
+                          <input
+                            type="email"
+                            className={styles.formInput}
+                            id="email"
+                            value={formData.email}
+                            onChange={handleInputChange}
+                            placeholder="Enter your email address"
+                            required
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div className="row g-2">
+                      <div className="col-md-6">
+                        <div className={styles.formGroup}>
+                          <label htmlFor="phoneNumber" className={styles.formLabel}>
+                            Phone Number
+                          </label>
+                          <input
+                            type="tel"
+                            className={styles.formInput}
+                            id="phoneNumber"
+                            value={formData.phoneNumber}
+                            onChange={handleInputChange}
+                            placeholder="Enter your phone number"
+                            required
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div className="row g-2">
                       <div className="col-12">
                         <div className={styles.formGroup}>
                           <label htmlFor="message" className={styles.formLabel}>
@@ -224,7 +247,9 @@ export default function ContactPage() {
                           ></textarea>
                         </div>
                       </div>
+                    </div>
 
+                    <div className="row g-2">
                       <div className="col-12">
                         <div
                           className={styles.formSubmit}
