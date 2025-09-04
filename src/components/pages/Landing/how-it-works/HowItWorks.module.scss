@@ -102,7 +102,7 @@
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(99, 207, 233, 0.4196078431);
 
     .stepNumber {
-      background: linear-gradient(90deg, #FF6B35 0%, #FF9F1C 50%, #dabb56 100%);
+      background: linear-gradient(90deg, #FF6B35 0%, #FF9F1C 50%, #cf9c56 100%);
       transform: scale(1.05);
     }
   }
@@ -141,7 +141,7 @@
 .stepCard:nth-child(2) .stepIcon,
 .stepCard:nth-child(3) .stepIcon,
 .stepCard:nth-child(4) .stepIcon {
-  background: linear-gradient(90deg, #FF6B35 0%, #FF9F1C 50%, #dabb56 100%); // All steps: (#FF6B35 → #FF9F1C → #dabb56)
+  background: linear-gradient(90deg, #FF6B35 0%, #FF9F1C 50%, #cf9c56 100%); // All steps: (#FF6B35 → #FF9F1C → #cf9c56)
   box-shadow: 
     0 4px 15px rgba(255, 107, 53, 0.3),
     0 0 15px rgba(255, 159, 28, 0.2);
@@ -152,7 +152,7 @@
 .stepCard:nth-child(2):hover .stepIcon,
 .stepCard:nth-child(3):hover .stepIcon,
 .stepCard:nth-child(4):hover .stepIcon {
-  background: linear-gradient(90deg, #FF6B35 0%, #FF9F1C 50%, #dabb56 100%);
+  background: linear-gradient(90deg, #FF6B35 0%, #FF9F1C 50%, #cf9c56 100%);
   box-shadow: 
     0 6px 20px rgba(255, 107, 53, 0.4),
     0 0 25px rgba(255, 159, 28, 0.3);

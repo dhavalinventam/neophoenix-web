@@ -40,7 +40,7 @@
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4), 0 0 0 1px #63cfe96b;
 
     .cardIcon {
-      background: linear-gradient(90deg, #FF6B35 0%, #FF9F1C 50%, #dabb56 100%);
+      background: linear-gradient(90deg, #FF6B35 0%, #FF9F1C 50%, #cf9c56 100%);
       transform: scale(1.05);
       box-shadow: 
         0 8px 25px rgba(255, 107, 53, 0.4),
@@ -52,7 +52,7 @@
 .cardIcon {
   width: 80px;
   height: 80px;
-  background: linear-gradient(90deg, #FF6B35 0%, #FF9F1C 50%, #dabb56 100%);
+  background: linear-gradient(90deg, #FF6B35 0%, #FF9F1C 50%, #cf9c56 100%);
   border-radius: 50%; // Circular container
   display: flex;
   align-items: center;
@@ -132,7 +132,7 @@
 .checkmark {
   width: 20px;
   height: 20px;
-  background: linear-gradient(90deg, #FF6B35 0%, #FF9F1C 50%, #dabb56 100%);
+  background: linear-gradient(90deg, #FF6B35 0%, #FF9F1C 50%, #cf9c56 100%);
   border-radius: 50%;
   display: flex;
   align-items: center;

@@ -4,7 +4,7 @@
   display: flex;
   align-items: center;
   line-height: 1;
-  background: linear-gradient(90deg, #FF6B35 0%, #FF9F1C 50%, #dabb56 100%);
+  background: linear-gradient(90deg, #FF6B35 0%, #FF9F1C 50%, #cf9c56 100%);
   max-width: max-content;
   max-height: max-content;
   color: $text-white; // White text (#FFFFFF)
@@ -21,7 +21,7 @@
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 
   &:hover {
-    background: linear-gradient(90deg, #FF6B35 0%, #FF9F1C 50%, #dabb56 100%);
+    background: linear-gradient(90deg, #FF6B35 0%, #FF9F1C 50%, #cf9c56 100%);
     box-shadow:
       0 8px 25px rgba(0, 0, 0, 0.3),
       0 0 20px rgba(255, 107, 53, 0.3), // Soft orange glow
@@ -93,7 +93,7 @@
   display: flex;
   align-items: center;
   line-height: 1;
-  background: linear-gradient(90deg, #FF6B35 0%, #FF9F1C 50%, #dabb56 100%);
+  background: linear-gradient(90deg, #FF6B35 0%, #FF9F1C 50%, #cf9c56 100%);
   max-width: max-content;
   max-height: max-content;
   color: $text-white; // White text (#FFFFFF)
@@ -110,7 +110,7 @@
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 
   &:hover {
-    background: linear-gradient(90deg, #FF6B35 0%, #FF9F1C 50%, #dabb56 100%);
+    background: linear-gradient(90deg, #FF6B35 0%, #FF9F1C 50%, #cf9c56 100%);
     box-shadow:
       0 8px 25px rgba(0, 0, 0, 0.3),
       0 0 20px rgba(255, 107, 53, 0.3), // Soft orange glow
