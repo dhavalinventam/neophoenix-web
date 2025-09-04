@@ -6,10 +6,15 @@
   padding: 3rem 0; // Consistent with global section spacing
   position: relative;
   overflow: hidden;
+  min-height: 100vh; // Ensure full viewport height for pinning
 }
 
 .header {
   @include section-header;
+  margin-bottom: 3rem;
+  text-align: center;
+  z-index: 10;
+  position: relative;
 
   .title {
     @include section-title-responsive;
@@ -18,6 +23,80 @@
 
 .description {
   @include section-subtitle-responsive;
+  text-align: center;
+}
+
+// Progress container for overall scroll progress
+.progressContainer {
+  text-align: center;
+  margin-bottom: 2rem;
+  z-index: 10;
+  position: relative;
+}
+
+.progressBar {
+  width: 300px;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+  margin: 0 auto 1rem;
+  overflow: hidden;
+  position: relative;
+  backdrop-filter: blur(10px);
+}
+
+.progressFill {
+  height: 100%;
+  background: linear-gradient(90deg, #ff6b35 0%, #ff9f1c 50%, #dabb56 100%);
+  border-radius: 3px;
+  transition: width 0.1s ease-out;
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 30px;
+    height: 100%;
+    border-radius: 3px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4));
+    animation: shimmer 2.5s infinite;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.progressText {
+  color: $text-gray-light;
+  font-size: $font-size-sm;
+  margin: 0;
+  font-weight: $font-weight-medium;
+}
+
+// Horizontal scrolling wrapper and container
+.horizontalWrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.horizontalContainer {
+  display: flex;
+  gap: 2rem;
+  padding: 0 2rem;
+  width: max-content; // Allow container to expand to content width
+
+  // Center the cards initially
+  padding-left: calc(50vw - 450px);
+  padding-right: calc(50vw - 200px);
 }
 
 .serviceCard {
@@ -28,23 +107,33 @@
   border-radius: 1.5rem; // Rounded corners as specified
   padding: 3rem 2.5rem;
   text-align: center;
-  transition: all $duration-normal $ease-in-out;
   position: relative;
   height: 100%;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); // Soft shadows
+  max-width: 490px; // Fixed width for consistent horizontal scrolling
+  user-select: none;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 
   &:hover {
-    transform: scale(1.02); // Subtle scale-up animation
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
     border-color: #63cfe9;
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4), 0 0 0 1px #63cfe96b;
+    box-shadow:
+      0 20px 50px rgba(0, 0, 0, 0.5),
+      0 0 0 1px #63cfe96b;
 
     .cardIcon {
-      background: linear-gradient(90deg, #FF6B35 0%, #FF9F1C 50%, #cf9c56 100%);
-      transform: scale(1.05);
-      box-shadow: 
-        0 8px 25px rgba(255, 107, 53, 0.4),
-        0 0 20px rgba(255, 159, 28, 0.3); // Enhanced glow on hover
+      background: linear-gradient(90deg, #ff6b35 0%, #ff9f1c 50%, #dabb56 100%);
+      transform: scale(1.1) rotate(5deg);
+      box-shadow:
+        0 12px 35px rgba(255, 107, 53, 0.5),
+        0 0 25px rgba(255, 159, 28, 0.4);
+    }
+
+    .checkmark {
+      transform: scale(1.1);
+      box-shadow:
+        0 4px 15px rgba(255, 107, 53, 0.4),
+        0 0 15px rgba(255, 159, 28, 0.3);
     }
   }
 }
@@ -52,14 +141,14 @@
 .cardIcon {
   width: 80px;
   height: 80px;
-  background: linear-gradient(90deg, #FF6B35 0%, #FF9F1C 50%, #cf9c56 100%);
+  background: linear-gradient(90deg, #ff6b35 0%, #ff9f1c 50%, #dabb56 100%);
   border-radius: 50%; // Circular container
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0 auto 2rem;
   transition: all $duration-normal $ease-in-out;
-  box-shadow: 
+  box-shadow:
     0 4px 20px rgba(255, 107, 53, 0.3),
     0 0 15px rgba(255, 159, 28, 0.2); // Glowing effect
 }
@@ -80,6 +169,7 @@
   color: $text-white; // Bold white headings (#FFFFFF)
   margin-bottom: 1.5rem;
   line-height: $line-height-tight;
+  transition: color 0.3s ease;
 }
 
 .cardDescription {
@@ -89,6 +179,7 @@
   color: $text-gray-light; // Soft gray body text (#C7D1E0)
   line-height: $line-height-relaxed;
   margin-bottom: 2rem;
+  transition: color 0.3s ease;
 }
 
 // Highlight important keywords with Neophoenix colors
@@ -96,12 +187,14 @@
   strong {
     color: #63cfe9; // Cyan for important keywords (#2EC4B6)
     font-weight: $font-weight-medium;
+    transition: color 0.3s ease;
   }
-  
+
   em {
     color: #63cfe9; // Orange for emphasis (#FF6B35)
     font-style: normal;
     font-weight: $font-weight-medium;
+    transition: color 0.3s ease;
   }
 }
 
@@ -111,6 +204,7 @@
   margin: 0;
   text-align: left;
   flex: 1;
+  margin-bottom: 2rem;
 }
 
 .featureItem {
@@ -123,16 +217,27 @@
   align-items: flex-start;
   gap: 0.75rem;
   line-height: $line-height-normal;
+  transition: all 0.3s ease;
 
   &:last-child {
     margin-bottom: 0;
+  }
+
+  &:hover {
+    color: $text-white;
+    transform: translateX(5px);
+
+    strong,
+    em {
+      color: #63cfe9;
+    }
   }
 }
 
 .checkmark {
   width: 20px;
   height: 20px;
-  background: linear-gradient(90deg, #FF6B35 0%, #FF9F1C 50%, #cf9c56 100%);
+  background: linear-gradient(90deg, #ff6b35 0%, #ff9f1c 50%, #dabb56 100%);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -141,43 +246,162 @@
   font-size: 0.75rem;
   font-weight: $font-weight-bold;
   flex-shrink: 0;
-  box-shadow: 
+  box-shadow:
     0 2px 8px rgba(255, 107, 53, 0.3),
     0 0 10px rgba(255, 159, 28, 0.2); // Glowing effect
+  transition: all 0.3s ease;
+}
+
+// Enhanced focus states for accessibility
+.serviceCard:focus {
+  outline: 2px solid #63cfe9;
+  outline-offset: 2px;
+}
+
+// Loading state animation
+.serviceCard.loading {
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+// Enhanced animations for better performance
+.serviceCard {
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+// Smooth parallax effect for cards
+.horizontalContainer {
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+// Smooth entrance animations
+.serviceCard {
+  animation: fadeInUp 0.8s ease-out forwards;
+  animation-fill-mode: both;
+
+  @for $i from 1 through 6 {
+    &:nth-child(#{$i}) {
+      animation-delay: #{$i * 0.1}s;
+    }
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+// Remove horizontal scroll on screens smaller than 992px
+@media (max-width: 1200px) {
+  .horizontalContainer {
+    gap: 2rem;
+  }
+}
+@media (max-width: 992px) {
+  .servicesSection {
+    min-height: auto;
+    padding: 3rem 0;
+  }
+
+  .horizontalWrapper {
+    overflow: visible;
+  }
+
+  .horizontalContainer {
+    width: 100%;
+    padding: 0 1rem;
+    gap: 2rem;
+  }
+
+  .serviceCard {
+    max-width: 100%;
+    min-width: auto;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 500px;
+    padding: 2rem 1.5rem;
+  }
+
+  .progressContainer {
+    display: none; // Hide progress bar on mobile since no horizontal scroll
+  }
+
+  // Adjust header spacing
+  .header {
+    margin-bottom: 2rem;
+  }
+  .cardIcon {
+    width: 60px;
+    height: 60px;
+  }
+  .cardTitle {
+    font-size: $font-size-xl;
+  }
+  .cardDescription {
+    font-size: $font-size-sm;
+  }
 }
 
 // Responsive Design
 @media (max-width: 768px) {
   .servicesSection {
-    padding: 4rem 0;
+    padding: 2rem 0;
+  }
+  .horizontalContainer {
+    flex-direction: column;
   }
 
   .header {
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
   }
 
   .description {
     font-size: $font-size-sm;
   }
 
-  .serviceCard {
-    padding: 2rem 1.5rem;
-    margin-bottom: 1.5rem; // Maintain spacing between cards
+  .horizontalContainer {
+    gap: 1.5rem;
   }
 
-  .cardTitle {
-    font-size: $font-size-xl;
+  .serviceCard {
+    padding: 2rem 1.5rem;
+    max-width: 100%;
   }
 }
 
 @media (max-width: 480px) {
   .serviceCard {
     padding: 1.5rem 1rem;
-    margin-bottom: 1rem; // Maintain spacing between cards
   }
 
   .cardIcon {
     width: 60px;
     height: 60px;
+  }
+
+  .horizontalContainer {
+    gap: 1rem;
+  }
+
+  .featuresList {
+    margin-bottom: 1.5rem;
   }
 }
