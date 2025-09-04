@@ -1,4 +1,4 @@
-import FAQ from '@/components/pages/Landing/faq';
+// import FAQ from '@/components/pages/Landing/faq';
 import styles from './page.module.scss';
 import Button from '@/components/ui/button';
 
@@ -212,7 +212,7 @@ export default function ContactPage() {
           </div>
         </div>
       </div>
-      <FAQ />
+      {/* <FAQ /> */}
     </>
   );
 }
