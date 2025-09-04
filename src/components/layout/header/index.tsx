@@ -23,6 +23,24 @@ export default function Header() {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  // Close menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as Element;
+      if (isMenuOpen && !target.closest('[data-mobile-menu]')) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    if (isMenuOpen) {
+      document.addEventListener('click', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, [isMenuOpen]);
+
   return (
     <header className={`${styles.header} ${isScrolled ? styles.scroll : ''}`}>
       <div className={styles.inner}>
@@ -62,7 +80,12 @@ export default function Header() {
         </div>
 
         {/* Mobile Menu Button */}
-        <button className={styles.mobileMenuButton} onClick={toggleMenu} aria-label="Toggle menu">
+        <button 
+          className={styles.mobileMenuButton} 
+          onClick={toggleMenu} 
+          aria-label="Toggle menu"
+          data-mobile-menu
+        >
           <span className={`${styles.hamburgerLine} ${isMenuOpen ? styles.active : ''}`}></span>
           <span className={`${styles.hamburgerLine} ${isMenuOpen ? styles.active : ''}`}></span>
           <span className={`${styles.hamburgerLine} ${isMenuOpen ? styles.active : ''}`}></span>
@@ -70,7 +93,7 @@ export default function Header() {
       </div>
 
       {/* Mobile Navigation */}
-      <div className={`${styles.mobileNav} ${isMenuOpen ? styles.open : ''}`}>
+      <div className={`${styles.mobileNav} ${isMenuOpen ? styles.open : ''}`} data-mobile-menu>
         <nav className={styles.mobileNavContent}>
           <Link className={styles.mobileLink} href="/" onClick={() => setIsMenuOpen(false)}>
             Home

@@ -3,8 +3,8 @@
 
 .personalizedWishlistSection {
   position: relative;
-  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
-  padding: 6rem 0;
+  background: transparent; // Remove background to show global gradient
+  padding: 0; // Remove padding for seamless layout
   overflow: hidden;
   z-index: 1;
   min-height: 100vh;
@@ -105,6 +105,7 @@
   position: relative;
   z-index: 2;
   overflow: hidden;
+  margin: 4rem 2rem; // Add internal margin for content spacing
   
   &::before {
     content: '';
@@ -365,12 +366,12 @@
 // Responsive Design
 @media (max-width: 768px) {
   .personalizedWishlistSection {
-    padding: 4rem 0;
+    padding: 0; // Keep seamless layout
   }
   
   .mainCard {
     padding: 2.5rem 2rem;
-    margin: 0 1rem;
+    margin: 4rem 1rem; // Add internal margin for mobile
   }
   
   
@@ -390,7 +391,7 @@
 @media (max-width: 480px) {
   .mainCard {
     padding: 2rem 1.5rem;
-    margin: 0 0.5rem;
+    margin: 3rem 0.5rem; // Add internal margin for mobile
   }
   
   .formSection {

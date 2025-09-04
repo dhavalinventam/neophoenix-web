@@ -4,13 +4,14 @@
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
 
 :root {
-  --background: #{$bg-dark-primary}; // Single deep navy background
+  --background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%); // Hero gradient background
   --foreground: #{$text-white}; // White text
 }
 
 body {
   color: var(--foreground);
-  background: var(--background); // Single solid color background
+  background: var(--background); // Hero gradient background for entire page
+  background-attachment: fixed; // Keep gradient fixed during scroll
   font-family: $font-primary;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -66,28 +67,22 @@ a {
   flex-direction: column;
   position: relative;
   z-index: 2;
-  background: var(--background); // Ensure layout also has single background
+  background: transparent; // Remove background to show body gradient
 }
 
 .layout_main {
   flex: 1;
   position: relative;
   z-index: 2;
-  background: var(--background); // Ensure main content has single background
+  background: transparent; // Remove background to show body gradient
 }
 
 section {
-  padding: 80px 0 !important;
-  @media (max-width: 992px) {
-    padding: 40px 0 !important;
-  } 
+  padding: 0 !important; // Remove all section padding for seamless layout
 }
 
 .hero {
-  padding: 150px 0 50px !important;
-  @media (max-width: 992px) {
-    padding: 130px 0 50px !important;
-  }
+  padding: 0 !important; // Remove hero padding for seamless layout
 }
 
 // =============================================================================

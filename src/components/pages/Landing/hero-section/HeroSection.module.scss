@@ -3,7 +3,7 @@
 
 .heroSection {
   position: relative;
-  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+  background: transparent; // Remove background to show global gradient
   min-height: 100vh;
   display: flex;
   align-items: center;
@@ -11,6 +11,7 @@
   overflow: hidden;
   z-index: 1;
   font-family: $font-primary;
+  padding: 0; // Remove padding for seamless layout
 }
 
 // Smart Background Animation
@@ -259,7 +260,7 @@
   z-index: 2;
   width: 100%;
   text-align: center;
-  padding: 2rem 0;
+  padding: 4rem 2rem; // Add internal padding for content spacing
 }
 
 // Badge
@@ -391,7 +392,11 @@
 // Responsive Design
 @media (max-width: 768px) {
   .heroSection {
-    padding: 2rem 1rem;
+    padding: 0; // Keep seamless layout
+  }
+  
+  .contentContainer {
+    padding: 2rem 1rem; // Add internal padding for mobile
   }
   
   .headline {
@@ -426,7 +431,11 @@
 
 @media (max-width: 480px) {
   .heroSection {
-    padding: 1rem 0.5rem;
+    padding: 0; // Keep seamless layout
+  }
+  
+  .contentContainer {
+    padding: 1rem 0.5rem; // Add internal padding for mobile
   }
   
   .headline .title {

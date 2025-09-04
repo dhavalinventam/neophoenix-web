@@ -3,7 +3,7 @@
 
 .whoWeAre {
   position: relative;
-  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+  background: transparent; // Remove background to show global gradient
   min-height: 100vh;
   display: flex;
   align-items: center;
@@ -11,7 +11,7 @@
   overflow: hidden;
   z-index: 1;
   font-family: $font-primary;
-  padding: 6rem 0;
+  padding: 0; // Remove padding for seamless layout
 }
 
 // Smart Background Animation
@@ -334,7 +334,7 @@
   z-index: 2;
   width: 100%;
   text-align: center;
-  padding: 2rem 0;
+  padding: 4rem 2rem; // Add internal padding for content spacing
 }
 
 // Section Title
@@ -344,6 +344,14 @@
   justify-content: center;
   gap: 1rem;
   margin-bottom: 3rem;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s ease;
+  
+  &.animateIn {
+    opacity: 1;
+    transform: translateY(0);
+  }
   
   .sectionNumber {
     font-family: $font-title;
@@ -378,6 +386,14 @@
   margin-bottom: 2rem;
   letter-spacing: $letter-spacing-tight;
   text-align: center;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease 0.2s;
+  
+  &.animateIn {
+    opacity: 1;
+    transform: translateY(0);
+  }
   
   // Gradient text effect
   background: linear-gradient(135deg, $text-white 0%, $primary-gold 50%, $primary-orange 100%);
@@ -389,6 +405,14 @@
 // Description
 .description {
   margin-bottom: 3rem;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease 0.4s;
+  
+  &.animateIn {
+    opacity: 1;
+    transform: translateY(0);
+  }
   
   p {
     font-size: clamp(1.1rem, 2.2vw, 1.4rem);
@@ -416,6 +440,14 @@
   justify-content: center;
   align-items: center;
   margin-top: 2rem;
+  opacity: 0;
+  transform: translateY(30px) scale(0.9);
+  transition: all 0.6s ease 0.6s;
+  
+  &.animateIn {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 .meetTeamButton {
@@ -459,7 +491,11 @@
 // Responsive Design
 @media (max-width: 768px) {
   .whoWeAre {
-    padding: 4rem 0;
+    padding: 0; // Keep seamless layout
+  }
+  
+  .contentContainer {
+    padding: 4rem 1rem; // Add internal padding for mobile
   }
   
   .sectionTitle {
@@ -517,7 +553,11 @@
 
 @media (max-width: 480px) {
   .whoWeAre {
-    padding: 3rem 0;
+    padding: 0; // Keep seamless layout
+  }
+  
+  .contentContainer {
+    padding: 3rem 1rem; // Add internal padding for mobile
   }
   
   .sectionTitle {

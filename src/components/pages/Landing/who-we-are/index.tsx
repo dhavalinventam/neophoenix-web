@@ -1,14 +1,7 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Button from '../../../ui/button';
 import styles from './WhoWeAre.module.scss';
-
-// Register GSAP plugins
-if (typeof window !== 'undefined') {
-  gsap.registerPlugin(ScrollTrigger);
-}
 
 const WhoWeAre = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -21,46 +14,37 @@ const WhoWeAre = () => {
 
     if (!section || !content) return;
 
-    // Create scroll trigger animation
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: section,
-        start: 'top 80%',
-        end: 'bottom 20%',
-        onEnter: () => setIsVisible(true),
-        onLeave: () => setIsVisible(false),
-        onEnterBack: () => setIsVisible(true),
-        onLeaveBack: () => setIsVisible(false),
-      },
-    });
+    // Use Intersection Observer for scroll-based animations
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+            // Add animation classes to trigger CSS animations
+            const sectionTitle = content.querySelector('.section-title');
+            const headline = content.querySelector('.headline');
+            const description = content.querySelector('.description');
+            const ctaButton = content.querySelector('.cta-button');
 
-    // Animate content elements
-    tl.fromTo(
-      content.querySelector('.section-title'),
-      { opacity: 0, y: 50 },
-      { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' }
-    )
-    .fromTo(
-      content.querySelector('.headline'),
-      { opacity: 0, y: 30 },
-      { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' },
-      '-=0.4'
-    )
-    .fromTo(
-      content.querySelector('.description'),
-      { opacity: 0, y: 30 },
-      { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' },
-      '-=0.4'
-    )
-    .fromTo(
-      content.querySelector('.cta-button'),
-      { opacity: 0, y: 30, scale: 0.9 },
-      { opacity: 1, y: 0, scale: 1, duration: 0.6, ease: 'back.out(1.7)' },
-      '-=0.2'
+            if (sectionTitle) sectionTitle.classList.add(styles.animateIn);
+            if (headline) headline.classList.add(styles.animateIn);
+            if (description) description.classList.add(styles.animateIn);
+            if (ctaButton) ctaButton.classList.add(styles.animateIn);
+          } else {
+            setIsVisible(false);
+          }
+        });
+      },
+      {
+        threshold: 0.2,
+        rootMargin: '0px 0px -20% 0px',
+      }
     );
 
+    observer.observe(section);
+
     return () => {
-      tl.kill();
+      observer.disconnect();
     };
   }, []);
 

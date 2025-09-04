@@ -2,7 +2,7 @@
 
 .footer {
   position: relative;
-  background: $bg-dark-primary;
+  background: transparent; // Remove background to show global gradient
   color: $text-white;
   padding: 4rem 0 2rem;
   margin-top: auto;

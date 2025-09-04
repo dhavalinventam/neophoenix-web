@@ -1,20 +1,14 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 import styles from './OurServices.module.scss';
-
-// Register GSAP plugins
-if (typeof window !== 'undefined') {
-  gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
-}
 
 const OurServices = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const horizontalContainerRef = useRef<HTMLDivElement>(null);
   const progressBarRef = useRef<HTMLDivElement>(null);
   const [isMobile, setIsMobile] = useState(false);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [isVisible, setIsVisible] = useState(false);
 
   const services = [
     {
@@ -97,284 +91,151 @@ const OurServices = () => {
     return () => window.removeEventListener('resize', checkScreenSize);
   }, []);
 
+  // Mouse tracking for interactive background effects
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      if (sectionRef.current) {
+        const rect = sectionRef.current.getBoundingClientRect();
+        const x = ((e.clientX - rect.left) / rect.width) * 100;
+        const y = ((e.clientY - rect.top) / rect.height) * 100;
+        setMousePosition({ x, y });
+      }
+    };
+
+    if (sectionRef.current) {
+      sectionRef.current.addEventListener('mousemove', handleMouseMove);
+      return () => {
+        if (sectionRef.current) {
+          sectionRef.current.removeEventListener('mousemove', handleMouseMove);
+        }
+      };
+    }
+  }, []);
+
   // Smooth scroll to section function
   const scrollToSection = (target: string) => {
     const element = document.querySelector(target);
     if (element) {
-      gsap.to(window, {
-        duration: 1.5,
-        scrollTo: {
-          y: element,
-          offsetY: 0,
-        },
-        ease: 'power2.inOut',
-      });
-    }
-  };
-
-  // Smooth scroll to specific service
-  const scrollToService = (serviceId: number) => {
-    if (sectionRef.current) {
-      const sectionTop = sectionRef.current.offsetTop;
-      const cardIndex = serviceId - 1;
-      const cardWidth = 490 + 48; // card width + gap
-      const scrollOffset = cardIndex * cardWidth;
-
-      gsap.to(window, {
-        duration: 2,
-        scrollTo: {
-          y: sectionTop + scrollOffset,
-          offsetY: 0,
-        },
-        ease: 'power2.inOut',
+      element.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
       });
     }
   };
 
   useEffect(() => {
-    if (!sectionRef.current || !horizontalContainerRef.current || isMobile) return;
+    if (!sectionRef.current) return;
 
-    // Calculate the total width of the horizontal container
-    const horizontalContainer = horizontalContainerRef.current;
-    const totalWidth = horizontalContainer.scrollWidth;
-    const viewportWidth = window.innerWidth;
-    const scrollDistance = totalWidth - viewportWidth;
+    // Use Intersection Observer for scroll-based animations
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+            // Add animation classes to trigger CSS animations
+            const header = entry.target.querySelector('.header');
+            const serviceCards = entry.target.querySelectorAll('.serviceCard');
+            const progressContainer = entry.target.querySelector('.progressContainer');
 
-    // Create the horizontal scroll animation with smooth easing
-    const horizontalScroll = gsap.to(horizontalContainer, {
-      x: -scrollDistance,
-      ease: 'power2.inOut', // Smooth easing for better feel
-      scrollTrigger: {
-        trigger: sectionRef.current,
-        pin: true,
-        start: 'top top',
-        end: `+=${scrollDistance}`,
-        scrub: 1, // Smooth scrubbing with 1 second delay
-        onUpdate: (self) => {
-          // Update progress bar with smooth animation
-          if (progressBarRef.current) {
-            const progress = self.progress;
-            gsap.to(progressBarRef.current, {
-              width: `${progress * 100}%`,
-              duration: 0.1,
-              ease: 'power2.out',
-            });
-          }
-        },
-        onEnter: () => {
-          // Enhanced entrance animation with smooth transitions
-          gsap.fromTo(
-            '.serviceCard',
-            {
-              opacity: 0,
-              y: 80,
-              scale: 0.8,
-              rotationY: -15,
-            },
-            {
-              opacity: 1,
-              y: 0,
-              scale: 1,
-              rotationY: 0,
-              duration: 1.2,
-              stagger: 0.15,
-              ease: 'power3.out',
+            if (header) {
+              const title = header.querySelector('.title');
+              const description = header.querySelector('.description');
+              if (title) title.classList.add(styles.animateIn);
+              if (description) description.classList.add(styles.animateIn);
             }
-          );
 
-          // Animate header elements
-          gsap.fromTo(
-            '.header .title',
-            { y: -30, opacity: 0 },
-            { y: 0, opacity: 1, duration: 0.8, ease: 'power2.out' }
-          );
+            if (progressContainer) {
+              progressContainer.classList.add(styles.animateIn);
+            }
 
-          gsap.fromTo(
-            '.header .description',
-            { y: -20, opacity: 0 },
-            { y: 0, opacity: 1, duration: 0.8, delay: 0.2, ease: 'power2.out' }
-          );
-
-          gsap.fromTo(
-            '.progressContainer',
-            { y: 20, opacity: 0 },
-            { y: 0, opacity: 1, duration: 0.8, delay: 0.4, ease: 'power2.out' }
-          );
-        },
-        onLeave: () => {
-          // Smooth exit animation
-          gsap.to('.serviceCard', {
-            opacity: 0.7,
-            scale: 0.95,
-            duration: 0.5,
-            ease: 'power2.inOut',
-          });
-        },
-        onEnterBack: () => {
-          // Smooth re-entry animation
-          gsap.to('.serviceCard', {
-            opacity: 1,
-            scale: 1,
-            duration: 0.8,
-            ease: 'power2.out',
-          });
-        },
-        onLeaveBack: () => {
-          // Smooth exit when scrolling back up
-          gsap.to('.serviceCard', {
-            opacity: 0.7,
-            scale: 0.95,
-            duration: 0.5,
-            ease: 'power2.inOut',
-          });
-        },
-      },
-    });
-
-    // Create individual card animations with smooth transitions
-    services.forEach((service, index) => {
-      const card = horizontalContainer.querySelector(`[data-service-id="${service.id}"]`);
-      if (!card) return;
-
-      // Calculate when this card should animate (based on scroll progress)
-      const cardScrollPoint = index / (services.length - 1);
-
-      ScrollTrigger.create({
-        trigger: sectionRef.current,
-        start: `top+=${cardScrollPoint * scrollDistance} top`,
-        end: `top+=${(cardScrollPoint + 0.1) * scrollDistance} top`,
-        onEnter: () => {
-          // Enhanced icon animation with smooth rotation
-          const icon = card.querySelector('.cardIcon');
-          if (icon) {
-            gsap.to(icon, {
-              rotation: 360,
-              scale: 1.15,
-              duration: 1,
-              ease: 'back.out(1.7)',
+            // Animate service cards with stagger
+            serviceCards.forEach((card, index) => {
+              setTimeout(() => {
+                card.classList.add(styles.animateIn);
+              }, index * 200);
             });
+          } else {
+            setIsVisible(false);
           }
+        });
+      },
+      {
+        threshold: 0.2,
+        rootMargin: '0px 0px -10% 0px',
+      }
+    );
 
-          // Smooth title animation
-          const title = card.querySelector('.cardTitle');
-          if (title) {
-            gsap.fromTo(
-              title,
-              { y: 30, opacity: 0.6, scale: 0.9 },
-              { y: 0, opacity: 1, scale: 1, duration: 0.6, ease: 'power2.out' }
-            );
-          }
+    observer.observe(sectionRef.current);
 
-          // Animate features with stagger
-          const features = card.querySelectorAll('.featureItem');
-          gsap.fromTo(
-            features,
-            { x: -20, opacity: 0 },
-            { x: 0, opacity: 1, duration: 0.5, stagger: 0.1, ease: 'power2.out' }
-          );
-
-          // Add a subtle glow effect
-          gsap.to(card, {
-            duration: 0.8,
-            ease: 'power2.out',
-          });
-        },
-        onLeave: () => {
-          // Remove glow effect
-          gsap.to(card, {
-            duration: 0.4,
-            ease: 'power2.inOut',
-          });
-        },
-      });
-    });
-
-    // Add smooth scroll behavior to the entire page
-    gsap.set('html, body', { scrollBehavior: 'smooth' });
-
-    // Cleanup function
     return () => {
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-      horizontalScroll.kill();
+      observer.disconnect();
     };
-  }, [services.length, isMobile]);
+  }, []);
 
-  // Mobile-only animations
+  // Mobile-only animations - handled by CSS
   useEffect(() => {
     if (!isMobile) return;
 
-    // Simple fade-in animation for mobile
-    gsap.fromTo(
-      '.serviceCard',
-      { opacity: 0, y: 30 },
-      { opacity: 1, y: 0, duration: 0.8, stagger: 0.2, ease: 'power2.out' }
-    );
-
-    // Animate header
-    gsap.fromTo(
-      '.header .title',
-      { y: -20, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.6, ease: 'power2.out' }
-    );
-
-    gsap.fromTo(
-      '.header .description',
-      { y: -15, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.6, delay: 0.2, ease: 'power2.out' }
-    );
+    // Mobile animations are now handled by CSS classes
+    // The intersection observer will trigger the animations
   }, [isMobile]);
 
   return (
     <>
-      {/* GSAP Horizontal Scroll Section */}
-      <div ref={sectionRef} className={styles.servicesSection} id="services">
-        <div className={styles.header}>
-          <h2 className={styles.title}>Our AI-Powered Services</h2>
-          <p className={styles.description}>
+      {/* Services Section */}
+      <div 
+        ref={sectionRef} 
+        className={styles.servicesSection} 
+        id="services"
+        style={{
+          '--mouse-x': `${mousePosition.x}%`,
+          '--mouse-y': `${mousePosition.y}%`,
+        } as React.CSSProperties}
+      >
+        {/* Animated Background Elements */}
+        <div className={styles.backgroundElements}>
+          <div className={styles.floatingOrb1}></div>
+          <div className={styles.floatingOrb2}></div>
+          <div className={styles.floatingOrb3}></div>
+          <div className={styles.gridPattern}></div>
+          <div className={styles.gradientOverlay}></div>
+        </div>
+
+        <div className={`${styles.header} header`}>
+          <h2 className={`${styles.title} title`}>Our AI-Powered Services</h2>
+          <p className={`${styles.description} description`}>
             Empower your team with <strong>secure, AI-driven insights</strong> and{' '}
             <em>workflow automation</em> tailored to your data, tools, and processes.
           </p>
         </div>
 
-        {/* Progress Bar - Only show on desktop */}
-        {!isMobile && (
-          <div className={styles.progressContainer}>
-            <div className={styles.progressBar}>
-              <div
-                ref={progressBarRef}
-                className={styles.progressFill}
-                style={{ width: '0%' }}
-              ></div>
-            </div>
-          </div>
-        )}
-
-        {/* Horizontal Scrolling Container */}
-        <div className={styles.horizontalWrapper}>
-          <div ref={horizontalContainerRef} className={styles.horizontalContainer}>
-            {services.map((service) => (
-              <div key={service.id} data-service-id={service.id} className={styles.serviceCard}>
-                <div className={styles.cardIcon}>
-                  <span className={styles.iconText}>{service.icon}</span>
-                </div>
-
-                <h3 className={styles.cardTitle}>{service.title}</h3>
-                <p
-                  className={styles.cardDescription}
-                  dangerouslySetInnerHTML={{ __html: service.description }}
-                />
-
-                <ul className={styles.featuresList}>
-                  {service.features.map((feature, index) => (
-                    <li key={index} className={styles.featureItem}>
-                      <span className={styles.checkmark}>✓</span>
-                      <span dangerouslySetInnerHTML={{ __html: feature }} />
-                    </li>
-                  ))}
-                </ul>
+        {/* Services Grid */}
+        <div className={styles.servicesGrid}>
+          {services.map((service) => (
+            <div key={service.id} data-service-id={service.id} className={`${styles.serviceCard} serviceCard`}>
+              <div className={styles.cardIcon}>
+                <span className={styles.iconText}>{service.icon}</span>
+                <div className={styles.iconGlow}></div>
               </div>
-            ))}
-          </div>
+
+              <h3 className={styles.cardTitle}>{service.title}</h3>
+              <p
+                className={styles.cardDescription}
+                dangerouslySetInnerHTML={{ __html: service.description }}
+              />
+
+              <ul className={styles.featuresList}>
+                {service.features.map((feature, index) => (
+                  <li key={index} className={styles.featureItem}>
+                    <span className={styles.checkmark}>✓</span>
+                    <span dangerouslySetInnerHTML={{ __html: feature }} />
+                  </li>
+                ))}
+              </ul>
+
+              <div className={styles.cardHoverEffect}></div>
+            </div>
+          ))}
         </div>
       </div>
     </>

@@ -62,9 +62,18 @@ const CustomCursor = () => {
     // Cleanup
     return () => {
       window.removeEventListener('mousemove', updateMousePosition);
+      // Safely remove event listeners - check if element still exists in DOM
       interactiveElements.forEach((el) => {
-        el.removeEventListener('mouseenter', handleMouseEnter);
-        el.removeEventListener('mouseleave', handleMouseLeave);
+        try {
+          // Check if the element is still connected to the DOM
+          if (el.isConnected) {
+            el.removeEventListener('mouseenter', handleMouseEnter);
+            el.removeEventListener('mouseleave', handleMouseLeave);
+          }
+        } catch (error) {
+          // Silently handle any errors during cleanup
+          console.warn('Error removing event listener:', error);
+        }
       });
       if (animationRef.current) {
         cancelAnimationFrame(animationRef.current);
