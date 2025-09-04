@@ -76,7 +76,6 @@ a {
   background: var(--background); // Ensure main content has single background
 }
 
-// Fix section spacing with accurate gaps between every section
 section {
   padding: 80px 0 !important;
   @media (max-width: 992px) {

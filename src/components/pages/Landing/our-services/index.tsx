@@ -11,7 +11,7 @@ if (typeof window !== 'undefined') {
 }
 
 const OurServices = () => {
-  const sectionRef = useRef<HTMLElement>(null);
+  const sectionRef = useRef<HTMLDivElement>(null);
   const horizontalContainerRef = useRef<HTMLDivElement>(null);
   const progressBarRef = useRef<HTMLDivElement>(null);
   const [isMobile, setIsMobile] = useState(false);
@@ -327,7 +327,7 @@ const OurServices = () => {
   return (
     <>
       {/* GSAP Horizontal Scroll Section */}
-      <section ref={sectionRef} className={styles.servicesSection} id="services">
+      <div ref={sectionRef} className={styles.servicesSection} id="services">
         <div className={styles.header}>
           <h2 className={styles.title}>Our AI-Powered Services</h2>
           <p className={styles.description}>
@@ -376,7 +376,7 @@ const OurServices = () => {
             ))}
           </div>
         </div>
-      </section>
+      </div>
     </>
   );
 };

@@ -12,7 +12,7 @@
 // Main content - Three column layout
 .mainContent {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-columns: 2fr 1fr;
   gap: 3rem;
   margin-bottom: 3rem;
   align-items: start;
@@ -25,9 +25,9 @@
       .logoContainer {
         margin-bottom: 1.5rem;
       }
-      
+
       .logoImage {
-        max-width: 200px;
+        max-width: 210px;
       }
 
       .phoenixImage {
@@ -156,6 +156,11 @@
       }
     }
   }
+}
+
+.footer_rightColumn_section {
+  display: flex;
+  justify-content: space-between;
 }
 
 // Right Column - Let's Connect
