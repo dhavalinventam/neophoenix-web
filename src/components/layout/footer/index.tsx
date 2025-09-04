@@ -60,38 +60,41 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Middle Column - Products */}
-          <div className={styles.middleColumn}>
-            <div className={styles.productsSection}>
-              <h5 className={styles.sectionTitle}>Products</h5>
-              <ul className={styles.linkList}>
-                <li>
-                  <Link href="#services" className={styles.link}>
-                    RAG System
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#services" className={styles.link}>
-                    Task Prompt AI
-                  </Link>
-                </li>
-              </ul>
+          <div className={styles.footer_rightColumn_section}>
+            {/* Middle Column - Products */}
+            <div className={styles.middleColumn}>
+              <div className={styles.productsSection}>
+                <h5 className={styles.sectionTitle}>Products</h5>
+                <ul className={styles.linkList}>
+                  <li>
+                    <Link href="#services" className={styles.link}>
+                      RAG System
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="#services" className={styles.link}>
+                      Task Prompt AI
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            {/* Right Column - Let's Connect */}
+            <div className={styles.rightColumn}>
+              <div className={styles.connectSection}>
+                <h5 className={styles.sectionTitle}>Let's Connect</h5>
+                <ul className={styles.linkList}>
+                  <li>
+                    <Link href="/contact" className={styles.link}>
+                      Contact
+                    </Link>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
 
-          {/* Right Column - Let's Connect */}
-          <div className={styles.rightColumn}>
-            <div className={styles.connectSection}>
-              <h5 className={styles.sectionTitle}>Let's Connect</h5>
-              <ul className={styles.linkList}>
-                <li>
-                  <Link href="/contact" className={styles.link}>
-                    Contact
-                  </Link>
-                </li>
-              </ul>
-            </div>
-          </div>
         </div>
 
         {/* Bottom Section - Copyright and Social Media */}
