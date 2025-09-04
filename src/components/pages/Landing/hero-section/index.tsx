@@ -3,7 +3,6 @@
 import React, { useState } from 'react';
 import styles from './HeroSection.module.scss';
 import Button from '@/components/ui/button';
-import OurServices from '../our-services';
 
 const HeroSection = () => {
   const [email, setEmail] = useState('');
@@ -58,41 +57,7 @@ const HeroSection = () => {
               of AI-powered solutions secure, smart, and built for real impact.
             </p>
           </div>
-
-          {/* Email Subscription Section */}
-          {/* <div className="row justify-content-center">
-          <div className="col-lg-8 col-md-12">
-            <div className={styles.subscriptionCard}>
-              <h2 className={styles.subscriptionTitle}>
-                Get Early Access to All Upcoming AI Tools
-              </h2>
-              <p className={styles.subscriptionSubtitle}>
-                Get weekly AI insights delivered to your inbox
-              </p>
-
-              <form onSubmit={handleEmailSubmit} className={styles.emailForm}>
-                <input
-                  type="email"
-                  placeholder="Enter your email address"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className={styles.emailInput}
-                  required
-                />
-                <div className="d-flex justify-content-center">
-                  <Button label="Get Started →" />
-                </div>
-              </form>
-
-              <div className={styles.disclaimer}>
-                <span className={styles.sparkle}>✨</span>
-                Every Tuesday. No spam. Unsubscribe anytime.
-              </div>
-            </div>
-          </div>
-        </div> */}
         </div>
-        <OurServices />
       </section>
     </>
   );

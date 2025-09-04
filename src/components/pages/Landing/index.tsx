@@ -1,6 +1,6 @@
 import React from 'react';
 import HeroSection from './hero-section';
-// import OurServices from './our-services';
+import OurServices from './our-services';
 // import HowItWorks from './how-it-works';
 import PersonalizedWishlist from './personalized-wishlist';
 // import Testimonials from './testimonials';
@@ -12,7 +12,7 @@ const LandingPage = () => {
   return (
     <>
       <HeroSection />
-      {/* <OurServices /> */}
+      <OurServices />
       {/* <HowItWorks /> */}
       {/* <Testimonials /> */}
       {/* <FAQ /> */}
