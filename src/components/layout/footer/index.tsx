@@ -95,6 +95,16 @@ export default function Footer() {
                       Contact
                     </Link>
                   </li>
+                  <li>
+                    <Link href="/privacy-policy" className={styles.link}>
+                      Privacy Policy
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/terms-conditions" className={styles.link}>
+                      Terms & Conditions
+                    </Link>
+                  </li>
                 </ul>
               </div>
             </div>

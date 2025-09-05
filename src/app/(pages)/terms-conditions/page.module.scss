@@ -1,0 +1,266 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.termsContainer {
+  position: relative;
+  background: $bg-dark-primary;
+  min-height: 100vh;
+  padding: 48px 0;
+  overflow: hidden;
+  z-index: 1;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+  }
+}
+
+// =============================================================================
+// HERO SECTION
+// =============================================================================
+
+.heroSection {
+  position: relative;
+  overflow: hidden;
+  min-height: 400px;
+  padding-bottom: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: $font-primary;
+}
+
+.heroContent {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+  
+  .headline {
+    margin-bottom: 64px;
+    animation: fadeInUp $duration-slower $ease-out 0.2s both;
+  
+    .title {
+      @include section-title-responsive;
+      margin-bottom: 24px;
+    }
+  
+    .description {
+      @include section-subtitle-responsive;
+      margin-bottom: 16px;
+    }
+
+    .lastUpdated {
+      font-size: $font-size-sm;
+      color: rgba(255, 255, 255, 0.6);
+      font-style: italic;
+      margin: 0;
+    }
+  }
+}
+
+// =============================================================================
+// MAIN SECTION
+// =============================================================================
+
+.mainSection {
+  padding: 16px 0 64px;
+  position: relative;
+  z-index: 2;
+}
+
+.contentWrapper {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.contentSection {
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 24px;
+  padding: 48px;
+  backdrop-filter: blur(20px);
+  border: 1px solid $glass-border-light;
+  box-shadow: $shadow-xl;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 24px;
+  }
+}
+
+.sectionTitle {
+  font-family: $font-title;
+  font-size: $font-size-2xl;
+  font-weight: $font-weight-bold;
+  color: $text-white;
+  margin: 48px 0 24px 0;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  position: relative;
+  z-index: 1;
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: $gradient-primary;
+    border-radius: 2px;
+  }
+}
+
+.sectionContent {
+  position: relative;
+  z-index: 1;
+}
+
+.paragraph {
+  font-size: $font-size-base;
+  line-height: $line-height-relaxed;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 20px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.list {
+  margin: 16px 0 24px 0;
+  padding-left: 24px;
+  position: relative;
+  z-index: 1;
+
+  li {
+    font-size: $font-size-base;
+    line-height: $line-height-relaxed;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 12px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+
+    &::marker {
+      color: $primary-orange;
+    }
+
+    strong {
+      color: $text-white;
+      font-weight: $font-weight-semibold;
+    }
+  }
+}
+
+.contactInfo {
+  background: rgba(255, 107, 53, 0.1);
+  border: 1px solid rgba(255, 107, 53, 0.2);
+  border-radius: 16px;
+  padding: 24px;
+  margin-top: 24px;
+  position: relative;
+  z-index: 1;
+
+  p {
+    margin: 8px 0;
+    font-size: $font-size-base;
+    color: rgba(255, 255, 255, 0.9);
+
+    strong {
+      color: $primary-orange;
+      font-weight: $font-weight-semibold;
+    }
+  }
+}
+
+// =============================================================================
+// RESPONSIVE DESIGN
+// =============================================================================
+
+@media (max-width: 992px) {
+  .contentSection {
+    padding: 32px;
+  }
+  
+  .sectionTitle {
+    font-size: $font-size-xl;
+  }
+}
+
+@media (max-width: 768px) {
+  .mainSection {
+    padding: 0 0 32px;
+  }
+  
+  .heroContent .headline {
+    margin-bottom: 32px !important;
+  }
+  
+  .contentSection {
+    padding: 24px;
+    margin-bottom: 24px;
+  }
+  
+  .sectionTitle {
+    font-size: $font-size-lg;
+    margin: 32px 0 16px 0;
+  }
+  
+  .paragraph {
+    font-size: $font-size-sm;
+  }
+  
+  .list li {
+    font-size: $font-size-sm;
+  }
+  
+  .contactInfo {
+    padding: 16px;
+    
+    p {
+      font-size: $font-size-sm;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .contentSection {
+    padding: 20px;
+  }
+  
+  .sectionTitle {
+    font-size: $font-size-base;
+    margin: 24px 0 12px 0;
+  }
+  
+  .paragraph {
+    font-size: $font-size-xs;
+  }
+  
+  .list {
+    padding-left: 16px;
+    
+    li {
+      font-size: $font-size-xs;
+      margin-bottom: 8px;
+    }
+  }
+  
+  .contactInfo {
+    padding: 12px;
+    
+    p {
+      font-size: $font-size-xs;
+    }
+  }
+}
