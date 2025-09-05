@@ -3,7 +3,6 @@
 
 // Scroll-Animated Section Styles
 .scrollSection {
-  min-height: 100vh; // Reduced to viewport height only
   position: relative;
   overflow: hidden;
   padding: 0;
@@ -12,7 +11,7 @@
 }
 
 .scrollContainer {
-  position: sticky;
+  position: relative; // Changed from sticky to relative - GSAP will handle pinning
   top: 0;
   height: 100vh;
   width: 100%;
