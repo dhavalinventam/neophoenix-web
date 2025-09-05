@@ -3,34 +3,22 @@
 // =============================================================================
 
 // Font Families
-$font-primary:
-  'Poppins',
-  -apple-system,
-  BlinkMacSystemFont,
-  'Segoe UI',
-  Roboto,
-  sans-serif;
-$font-secondary:
-  'Inter',
-  -apple-system,
-  BlinkMacSystemFont,
-  'Segoe UI',
-  Roboto,
-  sans-serif;
-$font-mono: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
-$font-title: 'Frederic', serif; // New font for titles
+$font-primary: 'Frederic', sans-serif;
+$font-secondary: 'Frederic', sans-serif;
+$font-mono: 'Frederic', monospace;
+$font-title: 'Frederic', sans-serif; // New font for titles
 
 // Font Sizes
-$font-size-xs: 0.75rem; // 12px
-$font-size-sm: 0.875rem; // 14px
-$font-size-base: 1rem; // 16px
-$font-size-lg: 1.125rem; // 18px
-$font-size-xl: 1.25rem; // 20px
-$font-size-2xl: 1.5rem; // 24px
-$font-size-3xl: 1.875rem; // 30px
-$font-size-4xl: 2.25rem; // 36px
-$font-size-5xl: 3rem; // 48px
-$font-size-6xl: 3.75rem; // 60px
+$font-size-xs: 12px; // 0.75rem
+$font-size-sm: 14px; // 0.875rem
+$font-size-base: 16px; // 1rem
+$font-size-lg: 18px; // 1.125rem
+$font-size-xl: 20px; // 1.25rem
+$font-size-2xl: 24px; // 1.5rem
+$font-size-3xl: 30px; // 1.875rem
+$font-size-4xl: 36px; // 2.25rem
+$font-size-5xl: 48px; // 3rem
+$font-size-6xl: 60px; // 3.75rem
 
 // Font Weights
 $font-weight-light: 300;
@@ -127,12 +115,12 @@ $shadow-xl: 0 10px 30px rgba(0, 0, 0, 0.3);
 // Common Section Title Styles
 $section-title-font-family: $font-title; // Updated to use Frederic
 $section-title-font-family-secondary: $font-title; // Updated to use Frederic
-$section-title-font-size: clamp(2rem, 4vw, 2.5rem);
+$section-title-font-size: clamp(32px, 4vw, 40px);
 $section-title-font-weight: $font-weight-bold;
 $section-title-color: #ffffff; // Pure white color for all section titles
 $section-title-line-height: $line-height-tight;
 $section-title-letter-spacing: $letter-spacing-tight;
-$section-title-margin-bottom: 1.3rem;
+$section-title-margin-bottom: 20.8px;
 
 // Common Section Subtitle Styles
 $section-subtitle-font-family: $font-primary;

@@ -5,7 +5,7 @@
   position: relative;
   background: $bg-dark-primary; // Single solid background
   min-height: 100vh;
-  padding: 3rem 0; // Consistent with global section spacing
+  padding: 48px 0; // Consistent with global section spacing
   overflow: hidden;
   z-index: 1;
 
@@ -50,7 +50,7 @@
   max-width: 700px;
   margin: 0 auto;
   .headline {
-    margin-bottom: 4rem;
+    margin-bottom: 64px;
     animation: fadeInUp $duration-slower $ease-out 0.2s both;
   
     .title {
@@ -74,7 +74,7 @@
 // =============================================================================
 
 .mainSection {
-  padding: 1rem 0 4rem;
+  padding: 16px 0 64px;
   position: relative;
   z-index: 2;
 }
@@ -85,8 +85,8 @@
 
 .infoSection {
   background: rgba(255, 255, 255, 0.03);
-  border-radius: 1.5rem;
-  padding: 2rem;
+  border-radius: 24px;
+  padding: 32px;
   backdrop-filter: blur(20px);
   border: 1px solid $glass-border-light;
   box-shadow: $shadow-xl;
@@ -102,12 +102,12 @@
     right: 0;
     bottom: 0;
     // background: linear-gradient(135deg, rgba(255, 107, 53, 0.05) 0%, rgba(255, 159, 28, 0.05) 100%);
-    border-radius: 1.5rem;
+    border-radius: 24px;
   }
 }
 
 .infoHeader {
-  margin-bottom: 2rem;
+  margin-bottom: 32px;
   position: relative;
   z-index: 1;
 }
@@ -117,7 +117,7 @@
   font-size: $font-size-2xl;
   font-weight: $font-weight-bold;
   color: $text-white;
-  margin-bottom: 0.25rem;
+  margin-bottom: 4px;
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
@@ -135,8 +135,8 @@
 .contactMethod {
   display: flex;
   align-items: flex-start;
-  gap: 1rem;
-  padding: 1rem 0;
+  gap: 16px;
+  padding: 16px 0;
   border-bottom: none;
   transition: all $duration-normal $ease-out;
 
@@ -158,10 +158,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 40px;
+  height: 40px;
         background: rgba(255, 107, 53, 0.2);
-  border-radius: 0.75rem;
+  border-radius: 12px;
   color: $text-white;
   transition: all $duration-normal $ease-out;
   flex-shrink: 0;
@@ -177,13 +177,13 @@
   font-size: $font-size-base;
   font-weight: $font-weight-semibold;
   color: $text-white;
-  margin-bottom: 0.25rem;
+  margin-bottom: 4px;
 }
 
 .methodText {
   font-size: $font-size-sm;
   color: rgba(255, 255, 255, 0.8);
-  margin-bottom: 0.125rem;
+  margin-bottom: 2px;
   line-height: 1.4;
 }
 
@@ -194,8 +194,8 @@
 }
 
 .socialSection {
-  margin-top: 1.5rem;
-  padding-top: 1.5rem;
+  margin-top: 24px;
+  padding-top: 24px;
   border-top: none;
   position: relative;
   z-index: 1;
@@ -206,22 +206,22 @@
   font-size: $font-size-lg;
   font-weight: $font-weight-semibold;
   color: $text-white;
-  margin-bottom: 1rem;
+  margin-bottom: 16px;
 }
 
 .socialIcons {
   display: flex;
-  gap: 0.75rem;
+  gap: 12px;
 }
 
 .socialIcon {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 40px;
+  height: 40px;
   background: rgba(255, 255, 255, 0.1);
-  border-radius: 0.75rem;
+  border-radius: 12px;
   color: $text-white;
   text-decoration: none;
   transition: all $duration-normal $ease-out;
@@ -243,8 +243,8 @@
 
 .formSection {
   background: rgba(255, 255, 255, 0.03);
-  border-radius: 1.5rem;
-  padding: 2rem;
+  border-radius: 24px;
+  padding: 32px;
   backdrop-filter: blur(20px);
   border: 1px solid $glass-border-light;
   box-shadow: $shadow-xl;
@@ -264,7 +264,7 @@
 }
 
 .formHeader {
-  margin-bottom: 2rem;
+  margin-bottom: 32px;
   position: relative;
   z-index: 1;
 }
@@ -274,7 +274,7 @@
   font-size: $font-size-2xl;
   font-weight: $font-weight-bold;
   color: $text-white;
-  margin-bottom: 0.25rem;
+  margin-bottom: 4px;
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
@@ -289,19 +289,19 @@
   backdrop-filter: blur(15px);
   border: 1px solid $glass-border-medium;
   border-radius: 25px;
-  padding: 2rem;
+  padding: 32px;
   position: relative;
   z-index: 2;
 }
 
 .formGroup {
-  margin-bottom: 1rem;
+  margin-bottom: 16px;
 
   .inputWrapper {
     position: relative;
     background: rgba(255, 107, 53, 0.2); // Use new orange
     border-radius: 12px;
-    padding: 0.5rem;
+    padding: 8px;
     transition: all $duration-normal $ease-out;
 
     &:focus-within {
@@ -317,7 +317,7 @@
   font-size: $font-size-xs;
   font-weight: $font-weight-medium;
   color: $text-white;
-  margin-bottom: 0.375rem;
+  margin-bottom: 6px;
   display: block;
   text-transform: uppercase;
   letter-spacing: $letter-spacing-wide;
@@ -329,10 +329,10 @@
   width: 100%;
   background: rgb(25 29 40);
   border: 2px solid $glass-border-medium;
-  border-radius: 0.75rem;
+  border-radius: 12px;
   color: $text-white;
   font-size: $font-size-sm;
-  padding: 0.625rem 0.875rem;
+  padding: 10px 14px;
   transition: all $duration-normal $ease-out;
   backdrop-filter: blur(10px);
   font-family: $font-primary;
@@ -366,14 +366,14 @@
 .formCheck {
   display: flex;
   align-items: flex-start;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
+  gap: 8px;
+  margin-bottom: 16px;
 }
 
 .checkbox {
-  width: 1rem;
-  height: 1rem;
-  margin-top: 0.125rem;
+  width: 16px;
+  height: 16px;
+  margin-top: 2px;
   accent-color: $primary-blue;
   cursor: pointer;
 }
@@ -402,7 +402,7 @@
   text-align: center;
   
   button {
-    padding: 0.75rem 2rem;
+    padding: 12px 32px;
     font-size: $font-size-base;
     font-weight: $font-weight-semibold;
     border-radius: 50px;
@@ -417,9 +417,9 @@
 
 // Status Messages
 .statusMessage {
-  margin-top: 1rem;
-  padding: 0.75rem 1rem;
-  border-radius: 0.5rem;
+  margin-top: 16px;
+  padding: 12px 16px;
+  border-radius: 8px;
   font-size: $font-size-sm;
   font-weight: $font-weight-medium;
   text-align: center;
@@ -442,10 +442,10 @@
   background: linear-gradient(90deg, #FF6B35 0%, #FF9F1C 50%, #cf9c56 100%);
   color: $text-white;
   border: none;
-  padding: 1rem 2rem;
-  border-radius: 2rem;
+  padding: 16px 32px;
+  border-radius: 32px;
   font-weight: $font-weight-bold;
-  font-size: 1.1rem;
+  font-size: 17.6px;
   cursor: pointer;
   transition: all 0.3s ease;
   position: relative;
@@ -488,22 +488,22 @@
 
 @media (max-width: 1200px) {    
   .mainSection {
-    padding: 0.5rem 0 3rem;
+    padding: 8px 0 48px;
   }
 }
 
 @media (max-width: 992px) {
   .infoSection,
   .formSection {
-    padding: 1.5rem;
+    padding: 24px;
   }
   
   .heroTitle {
-    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+    font-size: clamp(28px, 3.5vw, 40px);
   }
   
   .heroSubtitle {
-    font-size: clamp(0.9rem, 1.25vw, 1rem);
+    font-size: clamp(14.4px, 1.25vw, 16px);
   }
   
   .infoTitle,
@@ -512,7 +512,7 @@
   }
   
   .contactMethod {
-    padding: 0.75rem 0;
+    padding: 12px 0;
     
     &:hover {
       transform: none;
@@ -520,37 +520,37 @@
   }
   
   .methodIcon {
-    width: 2rem;
-    height: 2rem;
+    width: 32px;
+    height: 32px;
   }
   
   .socialIcon {
-    width: 2rem;
-    height: 2rem;
+    width: 32px;
+    height: 32px;
   }
 }
 
 @media (max-width: 768px) {  
   
   .mainSection {
-    padding: 0 0 2rem;
+    padding: 0 0 32px;
   }
   .headline {
-    margin-bottom: 2rem !important;
+    margin-bottom: 32px !important;
   }
   .infoSection,
   .formSection {
-    padding: 1.25rem;
-    margin-bottom: 1.5rem;
+    padding: 20px;
+    margin-bottom: 24px;
   }
   
   .contactMethod {
-    gap: 0.75rem;
+    gap: 12px;
   }
   
   .methodIcon {
-    width: 1.75rem;
-    height: 1.75rem;
+    width: 28px;
+    height: 28px;
   }
   
   .methodTitle {
@@ -562,34 +562,34 @@
   }
   
   .socialIcons {
-    gap: 0.5rem;
+    gap: 8px;
   }
   
   .socialIcon {
-    width: 1.75rem;
-    height: 1.75rem;
+    width: 28px;
+    height: 28px;
   }
   
   .formGroup {
-    margin-bottom: 0.5rem;
+    margin-bottom: 8px;
   }
   
   .formLabel {
-    margin-bottom: 0.25rem;
+    margin-bottom: 4px;
   }
   
   .formInput,
   .formTextarea {
-    padding: 0.5rem 0.75rem;
+    padding: 8px 12px;
     font-size: $font-size-xs;
   }
   
   .formCheck {
-    margin-bottom: 0.75rem;
+    margin-bottom: 12px;
   }
   
   .formSubmit button {
-    padding: 0.625rem 1.5rem;
+    padding: 10px 24px;
     font-size: $font-size-sm;
   }
 }
@@ -597,11 +597,11 @@
 @media (max-width: 576px) {
   
   .heroTitle {
-    font-size: 1.75rem;
+    font-size: 28px;
   }
   
   .heroSubtitle {
-    font-size: 0.9rem;
+    font-size: 14.4px;
   }
   
   .infoTitle,
@@ -617,7 +617,7 @@
   .contactMethod {
     flex-direction: column;
     align-items: flex-start;
-    gap: 0.5rem;
+    gap: 8px;
   }
   
   .methodIcon {
@@ -625,10 +625,10 @@
   }
   
   .formGroup {
-    margin-bottom: 0.375rem;
+    margin-bottom: 6px;
   }
   
   .formLabel {
-    margin-bottom: 0.25rem;
+    margin-bottom: 4px;
   }
 }

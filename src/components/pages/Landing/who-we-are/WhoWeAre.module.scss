@@ -334,7 +334,7 @@
   z-index: 2;
   width: 100%;
   text-align: center;
-  padding: 4rem 2rem; // Add internal padding for content spacing
+  padding: 64px 32px; // Add internal padding for content spacing
 }
 
 // Section Title
@@ -342,8 +342,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
-  margin-bottom: 1rem;
+  gap: 16px;
+  margin-bottom: 16px;
   opacity: 0;
   transform: translateY(50px);
   transition: all 0.8s ease;
@@ -355,7 +355,7 @@
   
   .sectionNumber {
     font-family: $font-title;
-    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-size: clamp(24px, 3vw, 32px);
     font-weight: $font-weight-bold;
     color: $primary-orange;
     letter-spacing: $letter-spacing-tight;
@@ -363,7 +363,7 @@
   
   .sectionLabel {
     font-family: $font-title;
-    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-size: clamp(24px, 3vw, 32px);
     font-weight: $font-weight-bold;
     color: $text-white;
     letter-spacing: $letter-spacing-tight;

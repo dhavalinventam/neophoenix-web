@@ -4,7 +4,7 @@
   position: relative;
   background: transparent; // Remove background to show global gradient
   color: $text-white;
-  padding: 4rem 0 2rem;
+  padding: 64px 0 32px;
   margin-top: auto;
   overflow: hidden;
 }
@@ -13,8 +13,8 @@
 .mainContent {
   display: grid;
   grid-template-columns: 2fr 1fr;
-  gap: 3rem;
-  margin-bottom: 3rem;
+  gap: 48px;
+  margin-bottom: 48px;
   align-items: start;
 }
 
@@ -23,7 +23,7 @@
   .companySection {
     .logoSection {
       .logoContainer {
-        margin-bottom: 1.5rem;
+        margin-bottom: 24px;
       }
 
       .logoImage {
@@ -39,7 +39,7 @@
         color: $text-white;
         font-size: $font-size-base;
         line-height: $line-height-relaxed;
-        margin: 0 0 2rem 0;
+        margin: 0 0 32px 0;
         max-width: 400px;
       }
     }
@@ -116,7 +116,7 @@
       font-size: $font-size-lg;
       font-weight: $font-weight-bold;
       color: $text-white;
-      margin: 0 0 1rem 0;
+      margin: 0 0 16px 0;
       position: relative;
       line-height: 1.2;
 
@@ -138,7 +138,7 @@
       margin: 0;
 
       li {
-        margin-bottom: 0.75rem;
+        margin-bottom: 12px;
 
         .link {
           color: $text-white;
@@ -146,7 +146,7 @@
           font-size: $font-size-sm;
           transition: all $duration-normal $ease-in-out;
           display: block;
-          padding: 0.25rem 0;
+          padding: 4px 0;
 
           &:hover {
             color: $primary-orange;
@@ -170,7 +170,7 @@
       font-size: $font-size-lg;
       font-weight: $font-weight-bold;
       color: $text-white;
-      margin: 0 0 1rem 0;
+      margin: 0 0 16px 0;
       position: relative;
       line-height: 1.2;
 
@@ -192,7 +192,7 @@
       margin: 0;
 
       li {
-        margin-bottom: 0.75rem;
+        margin-bottom: 12px;
 
         .link {
           color: $text-white;
@@ -200,7 +200,7 @@
           font-size: $font-size-sm;
           transition: all $duration-normal $ease-in-out;
           display: block;
-          padding: 0.25rem 0;
+          padding: 4px 0;
 
           &:hover {
             color: $primary-orange;
@@ -215,14 +215,14 @@
 // Bottom Section - Copyright and Social Media
 .bottomSection {
   border-top: 1px solid rgba(255, 255, 255, 0.1);
-  padding-top: 2rem;
+  padding-top: 32px;
 
   .copyrightContent {
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    gap: 1rem;
+    gap: 16px;
   }
 
   .copyrightText {
@@ -234,7 +234,7 @@
   .socialIcons {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 16px;
 
     .socialIcon {
       display: flex;
@@ -272,7 +272,7 @@
 @media (max-width: 1024px) {
   .mainContent {
     grid-template-columns: 1fr 1fr;
-    gap: 2rem;
+    gap: 32px;
   }
 
   .leftColumn {
@@ -282,13 +282,13 @@
 
 @media (max-width: 768px) {
   .footer {
-    padding: 3rem 0 1.5rem;
+    padding: 48px 0 24px;
   }
 
   .mainContent {
     grid-template-columns: 1fr;
-    gap: 2rem;
-    margin-bottom: 2rem;
+    gap: 32px;
+    margin-bottom: 32px;
   }
 
   .leftColumn {
@@ -327,7 +327,7 @@
     .copyrightContent {
       flex-direction: column;
       text-align: center;
-      gap: 1rem;
+      gap: 16px;
     }
 
     .socialIcons {
@@ -338,20 +338,20 @@
 
 @media (max-width: 576px) {
   .footer {
-    padding: 2rem 0 1rem;
+    padding: 32px 0 16px;
   }
 
   .mainContent {
-    gap: 1.5rem;
-    margin-bottom: 1.5rem;
+    gap: 24px;
+    margin-bottom: 24px;
   }
 
   .leftColumn {
     .companySection {
       .logoSection {
         .companyDescription {
-          font-size: 0.9rem;
-          margin-bottom: 1.5rem;
+          font-size: 14.4px;
+          margin-bottom: 24px;
         }
       }
 
@@ -359,7 +359,7 @@
         .emailForm .emailInputGroup {
           .emailInput {
             padding: 10px 14px;
-            font-size: 0.9rem;
+            font-size: 14.4px;
           }
 
           .emailButton {
@@ -374,28 +374,28 @@
   .middleColumn,
   .rightColumn {
     .sectionTitle {
-      font-size: 1rem;
-      margin-bottom: 0.75rem;
+      font-size: 16px;
+      margin-bottom: 12px;
     }
 
     .linkList li {
-      margin-bottom: 0.5rem;
+      margin-bottom: 8px;
 
       .link {
-        font-size: 0.9rem;
+                    font-size: 14.4px;
       }
     }
   }
 
   .bottomSection {
-    padding-top: 1.5rem;
+    padding-top: 24px;
 
     .copyrightText {
-      font-size: 0.85rem;
+      font-size: 13.6px;
     }
 
     .socialIcons {
-      gap: 0.75rem;
+      gap: 12px;
 
       .socialIcon {
         width: 36px;

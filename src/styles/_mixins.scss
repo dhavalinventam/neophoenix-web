@@ -17,13 +17,13 @@
   &::after {
     content: '';
     position: absolute;
-    bottom: -0.5rem;
+    bottom: -8px;
     left: 50%;
     transform: translateX(-50%);
-    width: 4rem;
-    height: 0.25rem;
+    width: 64px;
+    height: 4px;
     background: vars.$gradient-primary;
-    border-radius: 0.125rem;
+    border-radius: 2px;
     box-shadow: 0 0 10px rgba(255, 107, 53, 0.5);
   }
 }
@@ -43,7 +43,7 @@
 // Common Section Header Mixin (Title + Subtitle)
 @mixin section-header {
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 32px;
 
   .title {
     @include section-title;
@@ -60,14 +60,14 @@
   color: #ffffff; // Force white color for responsive titles
 
   @include tablet {
-    font-size: clamp(1.75rem, 3.5vw, 2rem);
-    margin-bottom: 1.3rem;
+    font-size: clamp(28px, 3.5vw, 32px);
+    margin-bottom: 20.8px;
     color: #ffffff; // Ensure white color on tablet
   }
 
   @include mobile {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
+    font-size: 24px;
+    margin-bottom: 16px;
     color: #ffffff; // Ensure white color on mobile
   }
 }
@@ -148,7 +148,7 @@
 @mixin glass-card {
   @include glass-effect(0.05);
   border-radius: 20px;
-  padding: 2rem;
+  padding: 32px;
   transition: all vars.$duration-normal vars.$ease-out;
 
   &:hover {

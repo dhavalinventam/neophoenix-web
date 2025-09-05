@@ -23,6 +23,22 @@ export default function Header() {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  // Handle smooth scrolling to sections
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (href.startsWith('#')) {
+      e.preventDefault();
+      const element = document.querySelector(href);
+      if (element) {
+        element.scrollIntoView({ 
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    }
+    // Close mobile menu after navigation
+    setIsMenuOpen(false);
+  };
+
   // Close menu when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -63,13 +79,13 @@ export default function Header() {
 
         {/* Desktop Navigation */}
         <nav className={styles.nav}>
-          <Link className={styles.link} href="/">
+          <Link className={styles.link} href="/" onClick={(e) => handleNavClick(e, '/')}>
             Home
           </Link>
-          <Link className={styles.link} href="#services">
+          <Link className={styles.link} href="#services" onClick={(e) => handleNavClick(e, '#services')}>
             Services
           </Link>
-          <Link className={styles.link} href="/contact">
+          <Link className={styles.link} href="/contact" onClick={(e) => handleNavClick(e, '/contact')}>
             Contact
           </Link>
         </nav>
@@ -95,13 +111,13 @@ export default function Header() {
       {/* Mobile Navigation */}
       <div className={`${styles.mobileNav} ${isMenuOpen ? styles.open : ''}`} data-mobile-menu>
         <nav className={styles.mobileNavContent}>
-          <Link className={styles.mobileLink} href="/" onClick={() => setIsMenuOpen(false)}>
+          <Link className={styles.mobileLink} href="/" onClick={(e) => handleNavClick(e, '/')}>
             Home
           </Link>
-          <Link className={styles.mobileLink} href="/services" onClick={() => setIsMenuOpen(false)}>
+          <Link className={styles.mobileLink} href="#services" onClick={(e) => handleNavClick(e, '#services')}>
             Services
           </Link>
-          <Link className={styles.mobileLink} href="/contact" onClick={() => setIsMenuOpen(false)}>
+          <Link className={styles.mobileLink} href="/contact" onClick={(e) => handleNavClick(e, '/contact')}>
             Contact
           </Link>
           <Button label="Join Waitlist" />

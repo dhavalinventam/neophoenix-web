@@ -136,11 +136,11 @@
 
 .header {
   @include section-header;
-  margin-bottom: 3rem;
+  margin-bottom: 48px;
   text-align: center;
   z-index: 10;
   position: relative;
-  padding: 4rem 2rem 0; // Add internal padding for content spacing
+  padding: 64px 32px 0; // Add internal padding for content spacing
 
   .title {
     @include section-title-responsive;
@@ -192,7 +192,7 @@
 // Progress container for overall scroll progress
 .progressContainer {
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 32px;
   z-index: 10;
   position: relative;
 }
@@ -202,7 +202,7 @@
   height: 6px;
   background: rgba(255, 255, 255, 0.1);
   border-radius: 3px;
-  margin: 0 auto 1rem;
+  margin: 0 auto 16px;
   overflow: hidden;
   position: relative;
   backdrop-filter: blur(10px);
@@ -248,8 +248,8 @@
 .servicesGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-  gap: 2.5rem;
-  padding: 4rem 2rem; // Add internal padding for content spacing
+  gap: 40px;
+  padding: 64px 32px; // Add internal padding for content spacing
   max-width: 1400px;
   margin: 0 auto;
   position: relative;
@@ -262,8 +262,8 @@
   background: rgba(16, 21, 40, 0.8); // Semi-transparent background
   backdrop-filter: blur(20px);
   border: 1px solid rgba(99, 207, 233, 0.2);
-  border-radius: 2rem; // More rounded corners
-  padding: 3rem 2.5rem;
+  border-radius: 32px; // More rounded corners
+  padding: 48px 40px;
   text-align: center;
   position: relative;
   height: 100%;
@@ -342,7 +342,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto 2rem;
+  margin: 0 auto 32px;
   transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   box-shadow:
     0 8px 25px rgba(255, 107, 53, 0.4),
@@ -397,7 +397,7 @@
   font-size: $font-size-2xl;
   font-weight: $font-weight-bold;
   color: $text-white;
-  margin-bottom: 1.5rem;
+  margin-bottom: 24px;
   line-height: $line-height-tight;
   transition: all 0.3s ease;
   position: relative;
@@ -417,7 +417,7 @@
   font-weight: $font-weight-normal;
   color: $text-gray-light;
   line-height: $line-height-relaxed;
-  margin-bottom: 2rem;
+  margin-bottom: 32px;
   transition: all 0.3s ease;
   position: relative;
   z-index: 2;
@@ -447,7 +447,7 @@
   margin: 0;
   text-align: left;
   flex: 1;
-  margin-bottom: 2rem;
+  margin-bottom: 32px;
   position: relative;
   z-index: 2;
 }
@@ -457,10 +457,10 @@
   font-size: $font-size-sm;
   font-weight: $font-weight-normal;
   color: $text-gray-light;
-  margin-bottom: 1rem;
+  margin-bottom: 16px;
   display: flex;
   align-items: flex-start;
-  gap: 0.75rem;
+  gap: 12px;
   line-height: $line-height-normal;
   transition: all 0.3s ease;
   position: relative;
@@ -494,7 +494,7 @@
   align-items: center;
   justify-content: center;
   color: $text-white;
-  font-size: 0.8rem;
+  font-size: 12.8px;
   font-weight: $font-weight-bold;
   flex-shrink: 0;
   box-shadow:
@@ -553,7 +553,7 @@
 @media (max-width: 1200px) {
   .servicesGrid {
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 2rem;
+    gap: 32px;
   }
   
   .floatingOrb1, .floatingOrb2, .floatingOrb3 {
@@ -568,12 +568,12 @@
 
   .servicesGrid {
     grid-template-columns: 1fr;
-    gap: 2rem;
-    padding: 3rem 1rem; // Add internal padding for mobile
+    gap: 32px;
+    padding: 48px 16px; // Add internal padding for mobile
   }
 
   .serviceCard {
-    padding: 2rem 1.5rem;
+    padding: 32px 24px;
   }
 
   .progressContainer {
@@ -582,7 +582,7 @@
 
   // Adjust header spacing
   .header {
-    margin-bottom: 2rem;
+    margin-bottom: 32px;
   }
   
   .cardIcon {
@@ -612,13 +612,13 @@
 
   .servicesGrid {
     grid-template-columns: 1fr;
-    gap: 1.5rem;
-    padding: 2rem 1rem; // Add internal padding for mobile
+    gap: 24px;
+    padding: 32px 16px; // Add internal padding for mobile
   }
 
   .header {
-    margin-bottom: 1.5rem;
-    padding: 2rem 1rem 0; // Add internal padding for mobile
+    margin-bottom: 24px;
+    padding: 32px 16px 0; // Add internal padding for mobile
   }
 
   .description {
@@ -626,7 +626,7 @@
   }
 
   .serviceCard {
-    padding: 2rem 1.5rem;
+    padding: 32px 24px;
   }
   
   .cardIcon {
@@ -642,12 +642,12 @@
 
 @media (max-width: 480px) {
   .servicesGrid {
-    gap: 1rem;
-    padding: 1.5rem 0.5rem; // Add internal padding for mobile
+    gap: 16px;
+    padding: 24px 8px; // Add internal padding for mobile
   }
 
   .serviceCard {
-    padding: 1.5rem 1rem;
+    padding: 24px 16px;
   }
 
   .cardIcon {
@@ -661,12 +661,12 @@
   }
 
   .featuresList {
-    margin-bottom: 1.5rem;
+    margin-bottom: 24px;
   }
   
   .checkmark {
     width: 18px;
     height: 18px;
-    font-size: 0.7rem;
+    font-size: 11.2px;
   }
 }

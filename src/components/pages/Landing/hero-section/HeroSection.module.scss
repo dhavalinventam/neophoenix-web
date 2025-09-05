@@ -260,29 +260,29 @@
   z-index: 2;
   width: 100%;
   text-align: center;
-  padding: 4rem 2rem; // Add internal padding for content spacing
+  padding: 64px 32px; // Add internal padding for content spacing
 }
 
 // Badge
 .badge {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 8px;
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 50px;
-  padding: 0.75rem 1.5rem;
-  margin-bottom: 2rem;
+  padding: 12px 24px;
+  margin-bottom: 32px;
   animation: fadeInUp 0.8s ease-out 0.2s both;
   
   .badgeIcon {
-    font-size: 1.2rem;
+    font-size: 19.2px;
   }
   
   .badgeText {
     color: #ffffff;
-    font-size: 0.9rem;
+    font-size: 14.4px;
     font-weight: 500;
     letter-spacing: 0.5px;
   }
@@ -290,7 +290,7 @@
 
 // Main Headline
 .headline {
-  margin-bottom: 3rem;
+  margin-bottom: 48px;
   opacity: 0;
   transform: translateY(30px);
   transition: all 0.8s ease-out;
@@ -301,11 +301,11 @@
   }
   
   .title {
-    font-size: clamp(2rem, 4vw, 2.5rem); // Consistent with section title sizing
+    font-size: clamp(32px, 4vw, 40px); // Consistent with section title sizing
     font-weight: 700;
     color: #ffffff; // Pure white color
     line-height: 1.2;
-    margin-bottom: 1.5rem;
+    margin-bottom: 24px;
     letter-spacing: -0.02em;
     display: flex;
     flex-direction: column;
@@ -318,10 +318,10 @@
   }
   
   .subtitle {
-    font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+    font-size: clamp(19.2px, 2.5vw, 28.8px);
     color: rgba(255, 255, 255, 0.7); // Consistent with other sections
     font-weight: 600;
-    margin-bottom: 1.5rem;
+    margin-bottom: 24px;
     letter-spacing: 0.5px;
   }
   
@@ -338,7 +338,7 @@
 
 // CTA Section
 .ctaSection {
-  margin-bottom: 4rem;
+  margin-bottom: 64px;
   opacity: 0;
   transform: translateY(30px);
   transition: all 0.8s ease-out 0.4s;
@@ -352,8 +352,8 @@
   }
   
   .exploreButton {
-    padding: 1rem 2.5rem;
-    font-size: 1.1rem;
+    padding: 16px 40px;
+    font-size: 17.6px;
     font-weight: 600;
     border-radius: 50px;
     transition: all 0.3s ease;
@@ -386,35 +386,35 @@
   }
   
   .contentContainer {
-    padding: 2rem 1rem; // Add internal padding for mobile
+    padding: 32px 16px; // Add internal padding for mobile
   }
   
   .headline {
-    margin-bottom: 2rem;
+    margin-bottom: 32px;
     
     .title {
-      font-size: 2rem;
-      margin-bottom: 1rem;
+      font-size: 32px;
+      margin-bottom: 16px;
     }
     
     .subtitle {
-      font-size: 1.1rem;
+      font-size: 17.6px;
     }
     
     .description {
-      font-size: 0.95rem;
+      font-size: 15.2px;
     }
   }
   
   .ctaSection {
-    margin-bottom: 3rem;
+    margin-bottom: 48px;
   }
   
   .badge {
-    padding: 0.5rem 1rem;
+    padding: 8px 16px;
     
     .badgeText {
-      font-size: 0.8rem;
+      font-size: 12.8px;
     }
   }
 }
@@ -425,18 +425,18 @@
   }
   
   .contentContainer {
-    padding: 1rem 0.5rem; // Add internal padding for mobile
+    padding: 16px 8px; // Add internal padding for mobile
   }
   
   .headline .title {
-    font-size: 1.8rem;
+    font-size: 28.8px;
   }
   
   .headline .subtitle {
-    font-size: 1rem;
+    font-size: 16px;
   }
   
   .headline .description {
-    font-size: 0.9rem;
+    font-size: 14.4px;
   }
 }

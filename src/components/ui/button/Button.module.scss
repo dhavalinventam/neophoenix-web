@@ -9,10 +9,10 @@
   max-height: max-content;
   color: $text-white; // White text (#FFFFFF)
   border: none;
-  padding: 0.75rem 1.5rem;
-  border-radius: 2rem; // Rounded corners as specified
+  padding: 12px 24px;
+  border-radius: 32px; // Rounded corners as specified
   font-weight: $font-weight-bold; // Bold typography
-  font-size: 0.9rem;
+  font-size: 14.4px;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
   min-height: 43px;
@@ -66,10 +66,10 @@
   max-height: max-content;
   color: $text-white; // White text (#FFFFFF)
   border: 2px solid $text-white;
-  padding: 0.75rem 1.5rem;
-  border-radius: 2rem;
+  padding: 12px 24px;
+  border-radius: 32px;
   font-weight: $font-weight-bold; // Bold typography
-  font-size: 0.9rem;
+  font-size: 14.4px;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
   min-height: 43px;
@@ -98,10 +98,10 @@
   max-height: max-content;
   color: $text-white; // White text (#FFFFFF)
   border: none;
-  padding: 0.75rem 1.5rem;
-  border-radius: 2rem;
+  padding: 12px 24px;
+  border-radius: 32px;
   font-weight: $font-weight-bold; // Bold typography
-  font-size: 0.9rem;
+  font-size: 14.4px;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
   min-height: 43px;
