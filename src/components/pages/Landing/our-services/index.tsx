@@ -524,69 +524,6 @@ const OurServices = () => {
           </div>
         </div>
       </section>
-
-      {/* Services Section */}
-      <div
-        ref={sectionRef}
-        className={styles.servicesSection}
-        id="services"
-        style={
-          {
-            '--mouse-x': `${mousePosition.x}%`,
-            '--mouse-y': `${mousePosition.y}%`,
-          } as React.CSSProperties
-        }
-      >
-        {/* Animated Background Elements */}
-        <div className={styles.backgroundElements}>
-          <div className={styles.floatingOrb1}></div>
-          <div className={styles.floatingOrb2}></div>
-          <div className={styles.floatingOrb3}></div>
-          <div className={styles.gridPattern}></div>
-          <div className={styles.gradientOverlay}></div>
-        </div>
-
-        <div className={`${styles.header} header`}>
-          <h2 className={`${styles.title} title`}>Our AI-Powered Services</h2>
-          <p className={`${styles.description} description`}>
-            Empower your team with <strong>secure, AI-driven insights</strong> and{' '}
-            <em>workflow automation</em> tailored to your data, tools, and processes.
-          </p>
-        </div>
-
-        {/* Services Grid */}
-        <div className={styles.servicesGrid}>
-          {services.map((service) => (
-            <div
-              key={service.id}
-              data-service-id={service.id}
-              className={`${styles.serviceCard} serviceCard`}
-            >
-              <div className={styles.cardIcon}>
-                <span className={styles.iconText}>{service.icon}</span>
-                <div className={styles.iconGlow}></div>
-              </div>
-
-              <h3 className={styles.cardTitle}>{service.title}</h3>
-              <p
-                className={styles.cardDescription}
-                dangerouslySetInnerHTML={{ __html: service.description }}
-              />
-
-              <ul className={styles.featuresList}>
-                {service.features.map((feature, index) => (
-                  <li key={index} className={styles.featureItem}>
-                    <span className={styles.checkmark}>✓</span>
-                    <span dangerouslySetInnerHTML={{ __html: feature }} />
-                  </li>
-                ))}
-              </ul>
-
-              <div className={styles.cardHoverEffect}></div>
-            </div>
-          ))}
-        </div>
-      </div>
     </>
   );
 };
