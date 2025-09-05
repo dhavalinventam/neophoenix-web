@@ -27,8 +27,8 @@
 .heroSection {
   position: relative;
   overflow: hidden;
-  min-height: 400px;
-  padding-bottom: 70px;
+  min-height: 300px;
+  padding-bottom: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -41,7 +41,7 @@
   margin: 0 auto;
   
   .headline {
-    margin-bottom: 64px;
+    margin-bottom: 32px;
     animation: fadeInUp $duration-slower $ease-out 0.2s both;
   
     .title {
@@ -73,30 +73,10 @@
   z-index: 2;
 }
 
-.contentWrapper {
-  max-width: 800px;
-  margin: 0 auto;
-}
+// Removed contentWrapper - now using Bootstrap grid system
 
 .contentSection {
-  background: rgba(255, 255, 255, 0.03);
-  border-radius: 24px;
-  padding: 48px;
-  backdrop-filter: blur(20px);
-  border: 1px solid $glass-border-light;
-  box-shadow: $shadow-xl;
-  position: relative;
-  overflow: hidden;
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    border-radius: 24px;
-  }
+  // Removed box styling - now using standard Bootstrap container
 }
 
 .sectionTitle {
@@ -104,7 +84,7 @@
   font-size: $font-size-2xl;
   font-weight: $font-weight-bold;
   color: $text-white;
-  margin: 48px 0 24px 0;
+  margin: 32px 0 24px 0;
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
   position: relative;
   z-index: 1;
@@ -199,10 +179,6 @@
 // =============================================================================
 
 @media (max-width: 992px) {
-  .contentSection {
-    padding: 32px;
-  }
-  
   .sectionTitle {
     font-size: $font-size-xl;
   }
@@ -218,12 +194,7 @@
   }
   
   .heroContent .headline {
-    margin-bottom: 32px !important;
-  }
-  
-  .contentSection {
-    padding: 24px;
-    margin-bottom: 24px;
+    margin-bottom: 24px !important;
   }
   
   .sectionTitle {
@@ -254,10 +225,6 @@
 }
 
 @media (max-width: 576px) {
-  .contentSection {
-    padding: 20px;
-  }
-  
   .sectionTitle {
     font-size: $font-size-base;
     margin: 24px 0 12px 0;

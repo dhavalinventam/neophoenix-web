@@ -23,9 +23,9 @@ export default function PrivacyPolicyPage() {
 
         {/* Main Content */}
         <div className={styles.mainSection}>
-          <div className="container">
-            <div className={styles.contentWrapper}>
-              <div className={styles.contentSection}>
+          <div className="container-fluid">
+            <div className="row justify-content-center">
+              <div className="col-12 col-lg-10 col-xl-8">
                 <h2 className={styles.sectionTitle}>1. Information We Collect</h2>
                 <div className={styles.sectionContent}>
                   <h3 className={styles.subsectionTitle}>Personal Information</h3>

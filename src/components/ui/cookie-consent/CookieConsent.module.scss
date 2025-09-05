@@ -1,0 +1,150 @@
+@use '../../../styles/variables' as *;
+
+.cookieConsent {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+  max-width: 500px;
+  margin: 0 auto;
+  background: rgba(10, 14, 26, 0.95);
+  backdrop-filter: blur(10px);
+  border: 1px solid $glass-border-light;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: $shadow-xl;
+  z-index: 1000;
+  transform: translateY(100px);
+  opacity: 0;
+  transition: all $duration-normal $ease-out;
+  font-family: $font-primary;
+
+  &.show {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  &.hide {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .text {
+    color: $text-white;
+    font-size: $font-size-sm;
+    line-height: $line-height-normal;
+    margin: 0;
+    font-weight: $font-weight-normal;
+
+    a {
+      color: $primary-gold;
+      text-decoration: underline;
+      transition: color $duration-fast $ease-out;
+
+      &:hover {
+        color: $primary-orange;
+      }
+    }
+  }
+
+  .buttons {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-family: $font-primary;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    cursor: pointer;
+    transition: all $duration-fast $ease-out;
+    min-width: 100px;
+    text-align: center;
+
+    &.accept {
+      background: $gradient-button-primary;
+      color: $text-white;
+      box-shadow: 0 2px 8px rgba(255, 107, 53, 0.3);
+
+      &:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(255, 107, 53, 0.4);
+      }
+
+      &:active {
+        transform: translateY(0);
+      }
+    }
+
+    &.learnMore {
+      background: transparent;
+      color: $text-gray-light;
+      border: 1px solid $glass-border-medium;
+
+      &:hover {
+        background: $glass-bg-light;
+        color: $text-white;
+        border-color: $primary-gold;
+      }
+    }
+  }
+}
+
+// Mobile responsiveness
+@media (max-width: 768px) {
+  .cookieConsent {
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+    padding: 16px;
+    max-width: none;
+
+    .content {
+      gap: 12px;
+    }
+
+    .text {
+      font-size: $font-size-xs;
+    }
+
+    .buttons {
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .button {
+      width: 100%;
+      padding: 12px 20px;
+      font-size: $font-size-sm;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .cookieConsent {
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    padding: 14px;
+
+    .text {
+      font-size: 11px;
+      line-height: 1.4;
+    }
+
+    .button {
+      padding: 10px 16px;
+      font-size: $font-size-xs;
+    }
+  }
+}

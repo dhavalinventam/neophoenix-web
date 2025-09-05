@@ -352,7 +352,7 @@
           font-size: $font-size-base;
           transition: all $duration-normal $ease-in-out;
           display: block;
-          padding: 4px 0;
+          padding: 0px 0;
           text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); // Add subtle shadow for better readability
 
           &:hover {
@@ -435,9 +435,8 @@
 
   .copyrightContent {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
+    justify-content: space-between;
     gap: 16px;
   }
 
@@ -448,6 +447,34 @@
     font-weight: $font-weight-normal;
     opacity: 0.9; // Slightly increase opacity for better readability
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3); // Add subtle shadow for better readability
+  }
+
+  .legalLinks {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 8px 0;
+
+    .legalLink {
+      color: $text-gray-light;
+      text-decoration: none;
+      font-size: $font-size-base;
+      transition: all $duration-normal $ease-in-out;
+      opacity: 0.9;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+
+      &:hover {
+        color: $primary-orange;
+        opacity: 1;
+        text-shadow: 0 0 10px rgba(255, 107, 53, 0.3);
+      }
+    }
+
+    .separator {
+      color: $text-gray-light;
+      opacity: 0.6;
+      font-size: $font-size-base;
+    }
   }
 
   .socialIcons {
@@ -634,6 +661,11 @@
       gap: 16px;
     }
 
+    .legalLinks {
+      justify-content: center;
+      gap: 8px;
+    }
+
     .socialIcons {
       justify-content: center;
       gap: 1rem;
@@ -723,7 +755,7 @@
     }
 
     .linkList li {
-      margin-bottom: 8px;
+      margin-bottom: 0px;
 
       .link {
         font-size: 14.4px;
@@ -736,6 +768,18 @@
 
     .copyrightText {
       font-size: 13.6px;
+    }
+
+    .legalLinks {
+      gap: 6px;
+
+      .legalLink {
+        font-size: 13.6px;
+      }
+
+      .separator {
+        font-size: 13.6px;
+      }
     }
 
     .socialIcons {

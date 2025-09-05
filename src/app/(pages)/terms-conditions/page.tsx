@@ -23,9 +23,9 @@ export default function TermsConditionsPage() {
 
         {/* Main Content */}
         <div className={styles.mainSection}>
-          <div className="container">
-            <div className={styles.contentWrapper}>
-              <div className={styles.contentSection}>
+          <div className="container-fluid">
+            <div className="row justify-content-center">
+              <div className="col-12 col-lg-10 col-xl-8">
                 <h2 className={styles.sectionTitle}>1. Acceptance of Terms</h2>
                 <div className={styles.sectionContent}>
                   <p className={styles.paragraph}>
