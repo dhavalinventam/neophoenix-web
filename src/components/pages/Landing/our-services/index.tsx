@@ -19,6 +19,7 @@ const OurServices = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isVisible, setIsVisible] = useState(false);
   const [currentSection, setCurrentSection] = useState(0);
+  const isMountedRef = useRef(true);
 
   // Scroll-animated section refs
   const scrollSectionRef = useRef<HTMLElement>(null);
@@ -172,6 +173,21 @@ const OurServices = () => {
   // GSAP ScrollTrigger animations for multiple vertical scroll sections
   useEffect(() => {
     if (!scrollSectionRef.current || !leftContentRef.current || !rightImageRef.current) return;
+
+    // Check if elements are still connected to DOM
+    const elements = [
+      scrollSectionRef.current,
+      leftContentRef.current,
+      rightImageRef.current,
+      titleRef.current,
+      subtitleRef.current,
+      descriptionRef.current,
+      buttonRef.current
+    ];
+
+    if (elements.some(el => !el || !el.isConnected)) {
+      return;
+    }
 
     // Ensure image/video is visible initially
     if (imageRef.current) {
@@ -424,28 +440,57 @@ const OurServices = () => {
       }
 
       if (videoRef.current) {
-        videoRef.current.addEventListener('mouseenter', () => {
+        const handleVideoMouseEnter = () => {
           gsap.to(videoRef.current, {
             rotation: 0,
             duration: 0.4,
             ease: 'power2.out',
           });
-        });
+        };
 
-        videoRef.current.addEventListener('mouseleave', () => {
+        const handleVideoMouseLeave = () => {
           gsap.to(videoRef.current, {
             rotation: 0,
             duration: 0.4,
             ease: 'power2.out',
           });
-        });
+        };
+
+        videoRef.current.addEventListener('mouseenter', handleVideoMouseEnter);
+        videoRef.current.addEventListener('mouseleave', handleVideoMouseLeave);
+
+        // Store the handlers for cleanup
+        (videoRef.current as any)._mouseEnterHandler = handleVideoMouseEnter;
+        (videoRef.current as any)._mouseLeaveHandler = handleVideoMouseLeave;
       }
     }, scrollSectionRef);
 
     return () => {
-      ctx.revert();
-      // Refresh ScrollTrigger to ensure proper cleanup
-      ScrollTrigger.refresh();
+      // Only cleanup if component is still mounted
+      if (!isMountedRef.current) return;
+      
+      // Clean up video event listeners
+      if (videoRef.current) {
+        const video = videoRef.current as any;
+        if (video._mouseEnterHandler && video._mouseLeaveHandler) {
+          video.removeEventListener('mouseenter', video._mouseEnterHandler);
+          video.removeEventListener('mouseleave', video._mouseLeaveHandler);
+          delete video._mouseEnterHandler;
+          delete video._mouseLeaveHandler;
+        }
+      }
+      
+      try {
+        ctx.revert();
+        // Clean up ScrollTrigger instances without refresh to avoid DOM issues
+        ScrollTrigger.getAll().forEach(trigger => {
+          if (trigger.trigger && trigger.trigger.isConnected) {
+            trigger.kill();
+          }
+        });
+      } catch (error) {
+        console.warn('Error during GSAP cleanup:', error);
+      }
     };
   }, [scrollSectionsData, currentSection]);
 
@@ -473,6 +518,13 @@ const OurServices = () => {
       }, 100);
     }
   }, [currentSection, scrollSectionsData]);
+
+  // Cleanup effect
+  useEffect(() => {
+    return () => {
+      isMountedRef.current = false;
+    };
+  }, []);
 
   return (
     <>

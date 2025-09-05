@@ -11,6 +11,7 @@ const CustomCursor = () => {
   const [gradientPosition, setGradientPosition] = useState({ x: 50, y: 50 });
   const animationRef = useRef<number>();
 
+  // Separate effect for mouse position updates
   useEffect(() => {
     const updateMousePosition = (e: MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
@@ -21,15 +22,15 @@ const CustomCursor = () => {
       setGradientPosition({ x, y });
     };
 
-    const handleMouseEnter = () => {
-      setIsHovering(true);
-    };
+    window.addEventListener('mousemove', updateMousePosition);
 
-    const handleMouseLeave = () => {
-      setIsHovering(false);
+    return () => {
+      window.removeEventListener('mousemove', updateMousePosition);
     };
+  }, []);
 
-    // Smooth cursor animation
+  // Separate effect for cursor animation
+  useEffect(() => {
     const animateCursor = () => {
       setCursorPosition((prev) => ({
         x: prev.x + (mousePosition.x - prev.x) * 0.1,
@@ -47,13 +48,28 @@ const CustomCursor = () => {
     // Start animation
     animateCursor();
 
-    // Add event listeners
-    window.addEventListener('mousemove', updateMousePosition);
+    return () => {
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+      }
+    };
+  }, [mousePosition]);
+
+  // Separate effect for hover interactions
+  useEffect(() => {
+    const handleMouseEnter = () => {
+      setIsHovering(true);
+    };
+
+    const handleMouseLeave = () => {
+      setIsHovering(false);
+    };
 
     // Add hover effects for interactive elements
     const interactiveElements = document.querySelectorAll(
       'a, button, input, textarea, [role="button"]'
     );
+    
     interactiveElements.forEach((el) => {
       el.addEventListener('mouseenter', handleMouseEnter);
       el.addEventListener('mouseleave', handleMouseLeave);
@@ -61,7 +77,6 @@ const CustomCursor = () => {
 
     // Cleanup
     return () => {
-      window.removeEventListener('mousemove', updateMousePosition);
       // Safely remove event listeners - check if element still exists in DOM
       interactiveElements.forEach((el) => {
         try {
@@ -75,11 +90,8 @@ const CustomCursor = () => {
           console.warn('Error removing event listener:', error);
         }
       });
-      if (animationRef.current) {
-        cancelAnimationFrame(animationRef.current);
-      }
     };
-  }, [mousePosition]);
+  }, []);
 
   return (
     <>
