@@ -524,6 +524,12 @@
   .description {
     opacity: 1 !important;
   }
+  .mobileSection {
+    max-height: 100% !important;
+  }
+  .pin-spacer {
+    height: 100% !important;
+  }
   .mobileServicesGrid {
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;

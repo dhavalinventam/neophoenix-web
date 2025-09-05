@@ -36,7 +36,7 @@
   position: absolute;
   opacity: 0.1;
   animation: floatShape 10s ease-in-out infinite;
-  
+
   &.shape1 {
     top: 20%;
     left: 10%;
@@ -45,7 +45,7 @@
     background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
     clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
   }
-  
+
   &.shape2 {
     top: 60%;
     right: 15%;
@@ -54,7 +54,7 @@
     background: linear-gradient(45deg, #a8e6cf, #dcedc1);
     border-radius: 50%;
   }
-  
+
   &.shape3 {
     top: 30%;
     right: 25%;
@@ -63,7 +63,7 @@
     background: linear-gradient(45deg, #ffd93d, #ff6b6b);
     clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
   }
-  
+
   &.shape4 {
     bottom: 25%;
     left: 20%;
@@ -72,7 +72,7 @@
     background: linear-gradient(45deg, #6c5ce7, #a29bfe);
     clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
   }
-  
+
   &.shape5 {
     top: 15%;
     left: 60%;
@@ -81,7 +81,7 @@
     background: linear-gradient(45deg, #fd79a8, #fdcb6e);
     clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
   }
-  
+
   &.shape6 {
     bottom: 40%;
     right: 10%;
@@ -93,7 +93,8 @@
 }
 
 @keyframes floatShape {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0px) rotate(0deg);
     opacity: 0.1;
   }
@@ -115,7 +116,7 @@
   border-radius: 50%;
   filter: blur(40px);
   animation: orbFloat 15s ease-in-out infinite;
-  
+
   &.orb1 {
     top: 20%;
     left: 20%;
@@ -124,7 +125,7 @@
     background: radial-gradient(circle, rgba(255, 107, 107, 0.3) 0%, transparent 70%);
     animation-delay: 0s;
   }
-  
+
   &.orb2 {
     top: 60%;
     right: 20%;
@@ -133,7 +134,7 @@
     background: radial-gradient(circle, rgba(78, 205, 196, 0.3) 0%, transparent 70%);
     animation-delay: 5s;
   }
-  
+
   &.orb3 {
     bottom: 20%;
     left: 50%;
@@ -145,7 +146,8 @@
 }
 
 @keyframes orbFloat {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0px) scale(1);
     opacity: 0.3;
   }
@@ -169,7 +171,7 @@
   background: linear-gradient(45deg, #00b894, #00cec9);
   border-radius: 50%;
   animation: gridPulse 4s ease-in-out infinite;
-  
+
   &:nth-child(1) { top: 15%; left: 25%; }
   &:nth-child(2) { top: 25%; left: 45%; }
   &:nth-child(3) { top: 35%; left: 65%; }
@@ -185,7 +187,8 @@
 }
 
 @keyframes gridPulse {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 0.3;
     transform: scale(1);
   }
@@ -209,11 +212,11 @@
   background: linear-gradient(45deg, #fdcb6e, #e17055);
   border-radius: 50%;
   animation: particleFloat 8s linear infinite;
-  
+
   &:nth-child(odd) {
     background: linear-gradient(45deg, #fd79a8, #e84393);
   }
-  
+
   // Position particles across the screen
   &:nth-child(1) { left: 10%; animation-delay: 0s; }
   &:nth-child(2) { left: 20%; animation-delay: 0.5s; }
@@ -275,11 +278,11 @@
   padding: 12px 24px;
   margin-bottom: 32px;
   animation: fadeInUp 0.8s ease-out 0.2s both;
-  
+
   .badgeIcon {
     font-size: 19.2px;
   }
-  
+
   .badgeText {
     color: #ffffff;
     font-size: 14.4px;
@@ -294,12 +297,12 @@
   opacity: 0;
   transform: translateY(30px);
   transition: all 0.8s ease-out;
-  
+
   &.visible {
     opacity: 1;
     transform: translateY(0);
   }
-  
+
   .title {
     font-size: clamp(32px, 4vw, 40px); // Consistent with section title sizing
     font-weight: 700;
@@ -311,12 +314,12 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    
+
     .highlight {
       color: #ffffff; // Keep highlight as white instead of gradient
     }
   }
-  
+
   .subtitle {
     font-size: clamp(19.2px, 2.5vw, 28.8px);
     color: rgba(255, 255, 255, 0.7); // Consistent with other sections
@@ -324,7 +327,7 @@
     margin-bottom: 24px;
     letter-spacing: 0.5px;
   }
-  
+
   .description {
     font-size: $font-size-lg; // Increased font size for better readability
     color: rgba(255, 255, 255, 0.7); // Consistent with other sections
@@ -345,27 +348,25 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  
+
   &.visible {
     opacity: 1;
     transform: translateY(0);
   }
-  
+
   .exploreButton {
     padding: 16px 40px;
     font-size: 17.6px;
     font-weight: 600;
     border-radius: 50px;
     transition: all 0.3s ease;
-    
+
     &:hover {
       transform: translateY(-2px);
       box-shadow: 0 10px 30px rgba(255, 107, 107, 0.3);
     }
   }
 }
-
-
 
 // Animations
 @keyframes fadeInUp {
@@ -380,39 +381,58 @@
 }
 
 // Responsive Design
+@media (max-width: 992px) {
+  .heroSection {
+    min-height: unset !important;
+  }
+  .contentContainer {
+    padding: 64px 32px 30px;
+    // Add internal padding for mobile
+  }
+  .ctaSection {
+    margin-bottom: 32px;
+  }
+}
+
+@media (max-width: 992px) {
+  .heroSection {
+    padding: 0; // Keep seamless layout
+  }
+}
+
 @media (max-width: 768px) {
   .heroSection {
     padding: 0; // Keep seamless layout
   }
-  
+
   .contentContainer {
     padding: 32px 16px; // Add internal padding for mobile
   }
-  
+
   .headline {
     margin-bottom: 32px;
-    
+
     .title {
       font-size: 32px;
       margin-bottom: 16px;
     }
-    
+
     .subtitle {
       font-size: 17.6px;
     }
-    
+
     .description {
       font-size: 15.2px;
     }
   }
-  
+
   .ctaSection {
     margin-bottom: 48px;
   }
-  
+
   .badge {
     padding: 8px 16px;
-    
+
     .badgeText {
       font-size: 12.8px;
     }
@@ -423,19 +443,19 @@
   .heroSection {
     padding: 0; // Keep seamless layout
   }
-  
+
   .contentContainer {
     padding: 16px 8px; // Add internal padding for mobile
   }
-  
+
   .headline .title {
     font-size: 28.8px;
   }
-  
+
   .headline .subtitle {
     font-size: 16px;
   }
-  
+
   .headline .description {
     font-size: 14.4px;
   }
