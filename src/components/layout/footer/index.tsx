@@ -100,7 +100,7 @@ export default function Footer() {
         <div className={styles.bottomSection}>
           <div className={styles.copyrightContent}>
             <p className={styles.copyrightText}>
-              © {year} Neophoenix. All rights reserved. | Privacy Policy | Terms of Service
+              © {year} Neophoenix. All rights reserved. 
             </p>
             <div className={styles.socialIcons}>
               <Link href="#" className={styles.socialIcon} aria-label="LinkedIn">

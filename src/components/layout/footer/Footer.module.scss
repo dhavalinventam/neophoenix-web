@@ -7,8 +7,9 @@
   padding: 64px 0 32px;
   margin-top: auto;
   overflow: hidden;
+  z-index: 1;
 
-  // Animated background effects
+  // Subtle background elements to enhance gradient integration
   &::before {
     content: '';
     position: absolute;
@@ -16,8 +17,12 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: #101528;
+    background: 
+      radial-gradient(circle at 20% 80%, rgba(255, 107, 53, 0.02) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(255, 159, 28, 0.02) 0%, transparent 50%),
+      radial-gradient(circle at 40% 40%, rgba(46, 196, 182, 0.01) 0%, transparent 50%);
     z-index: 0;
+    pointer-events: none;
   }
 }
 
@@ -81,10 +86,11 @@
   margin-bottom: 48px;
   align-items: start;
   padding: 2rem;
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(255, 255, 255, 0.02); // More subtle background to blend with gradient
   backdrop-filter: blur(20px);
   border-radius: 24px;
-  border: 1px solid $glass-border-dark;
+  border: 1px solid rgba(255, 255, 255, 0.08); // Softer border
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1); // Subtle shadow for depth
 }
 
 // Left Column - Company Information and Newsletter
@@ -117,6 +123,7 @@
         line-height: $line-height-relaxed;
         margin: 0 0 32px 0;
         max-width: 400px;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3); // Add subtle shadow for better readability
       }
     }
 
@@ -206,6 +213,7 @@
       position: relative;
       line-height: 1.2;
       font-family: $font-title;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4); // Add subtle shadow for better readability
 
       &::after {
         content: '';
@@ -235,6 +243,7 @@
           transition: all $duration-normal $ease-in-out;
           display: block;
           padding: 4px 0;
+          text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); // Add subtle shadow for better readability
 
           &:hover {
             color: $primary-orange;
@@ -264,6 +273,7 @@
       position: relative;
       line-height: 1.2;
       font-family: $font-title;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4); // Add subtle shadow for better readability
 
       &::after {
         content: '';
@@ -293,6 +303,7 @@
           transition: all $duration-normal $ease-in-out;
           display: block;
           padding: 4px 0;
+          text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); // Add subtle shadow for better readability
 
           &:hover {
             color: $primary-orange;
@@ -307,8 +318,10 @@
 
 // Bottom Section - Copyright and Social Media
 .bottomSection {
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid rgba(255, 255, 255, 0.05); // Softer border to blend with gradient
   padding-top: 32px;
+  position: relative;
+  z-index: 1;
 
   .copyrightContent {
     display: flex;
@@ -323,7 +336,8 @@
     font-size: $font-size-base;
     margin: 0;
     font-weight: $font-weight-normal;
-    opacity: 0.8;
+    opacity: 0.9; // Slightly increase opacity for better readability
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3); // Add subtle shadow for better readability
   }
 
   .socialIcons {
