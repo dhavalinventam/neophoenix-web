@@ -29,6 +29,7 @@ const OurServices = () => {
   const descriptionRef = useRef<HTMLParagraphElement>(null);
   const buttonRef = useRef<HTMLAnchorElement>(null);
   const imageRef = useRef<HTMLImageElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   // Multiple scroll sections data
   const scrollSectionsData = useMemo(
@@ -44,6 +45,7 @@ const OurServices = () => {
         imageSrc:
           'https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
         imageAlt: 'AI Dashboard Preview',
+        videoSrc: '/video/Rag-product-video.mp4',
         backgroundColor: 'linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%)',
         textColor: '#ffffff',
         accentColor: '#63cfe9',
@@ -53,46 +55,14 @@ const OurServices = () => {
         title: 'Task Prompt AI Chrome Extension',
         subtitle: 'AI-Powered Prompts Where Work Happens.',
         description:
-          'Supercharge your workflows in Jira, ClickUp, Asana, and Trello with contextual, role-specific AI prompts. Cut task completion time in half while customizing prompts to match your team’s industry, style, and goals.',
+          "Supercharge your workflows in Jira, ClickUp, Asana, and Trello with contextual, role-specific AI prompts. Cut task completion time in half while customizing prompts to match your team's industry, style, and goals.",
         buttonText: 'Try the Extension',
         buttonLink: '#services',
-        imageSrc:
-          'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-        imageAlt: 'AI Technology Network',
+        videoSrc: '/video/task-prompt-ai-video.mp4',
         backgroundColor: 'linear-gradient(135deg, #1e293b 0%, #334155 50%, #475569 100%)',
         textColor: '#ffffff',
         accentColor: '#f59e0b',
       },
-      // {
-      //   id: 3,
-      //   title: 'Scale Your Success',
-      //   subtitle: 'AUTOMATED INTELLIGENCE',
-      //   description:
-      //     'Leverage our advanced machine learning algorithms to predict trends, optimize performance, and scale your business to new heights with intelligent automation.',
-      //   buttonText: 'Learn More',
-      //   buttonLink: '#about',
-      //   imageSrc:
-      //     'https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-      //   imageAlt: 'Machine Learning Visualization',
-      //   backgroundColor: 'linear-gradient(135deg, #334155 0%, #475569 50%, #64748b 100%)',
-      //   textColor: '#ffffff',
-      //   accentColor: '#10b981',
-      // },
-      // {
-      //   id: 4,
-      //   title: 'Future-Ready Technology',
-      //   subtitle: 'INNOVATION AT SCALE',
-      //   description:
-      //     'Stay ahead of the competition with our next-generation AI platform that adapts, learns, and evolves with your business needs in real-time.',
-      //   buttonText: 'Start Now',
-      //   buttonLink: '#contact',
-      //   imageSrc:
-      //   'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-      //   imageAlt: 'Future Technology Concept',
-      //   backgroundColor: 'linear-gradient(135deg, #475569 0%, #64748b 50%, #94a3b8 100%)',
-      //   textColor: '#ffffff',
-      //   accentColor: '#8b5cf6',
-      // },
     ],
     []
   );
@@ -270,12 +240,30 @@ const OurServices = () => {
   useEffect(() => {
     if (!scrollSectionRef.current || !leftContentRef.current || !rightImageRef.current) return;
 
-    // Ensure image is visible initially
+    // Ensure image/video is visible initially
     if (imageRef.current) {
       gsap.set(imageRef.current, {
         opacity: 1,
         display: 'block',
         visibility: 'visible',
+      });
+    }
+    if (videoRef.current) {
+      gsap.set(videoRef.current, {
+        opacity: 1,
+        display: 'block',
+        visibility: 'visible',
+      });
+    }
+
+    // Force video to be visible if it's the first section
+    if (currentSection === 0 && videoRef.current) {
+      gsap.set(videoRef.current, {
+        opacity: 1,
+        display: 'block',
+        visibility: 'visible',
+        scale: 1,
+        y: 0,
       });
     }
 
@@ -297,14 +285,18 @@ const OurServices = () => {
         clearProps: 'none',
       });
 
-      gsap.set(imageRef.current, {
-        scale: 0.85,
-        opacity: 0,
-        y: 100,
-        display: 'block',
-        rotation: 0,
-        clearProps: 'none',
-      });
+      // Set initial states for image and video refs (only if they exist)
+      const mediaElements = [imageRef.current, videoRef.current].filter(Boolean);
+      if (mediaElements.length > 0) {
+        gsap.set(mediaElements, {
+          scale: 0.85,
+          opacity: 0,
+          y: 100,
+          display: 'block',
+          rotation: 0,
+          clearProps: 'none',
+        });
+      }
 
       // Create main vertical scroll timeline with pin
       const mainTl = gsap.timeline({
@@ -323,101 +315,118 @@ const OurServices = () => {
             // Only update if section actually changed
             if (newSection !== currentSection) {
               // Fade out current content
-              gsap.to(
-                [
-                  titleRef.current,
-                  subtitleRef.current,
-                  descriptionRef.current,
-                  buttonRef.current,
-                  imageRef.current,
-                ],
-                {
-                  opacity: 0,
-                  duration: 0.3,
-                  ease: 'power2.inOut',
-                  onComplete: () => {
-                    // Update content after fade out
-                    setCurrentSection(newSection);
+              const fadeOutElements = [
+                titleRef.current,
+                subtitleRef.current,
+                descriptionRef.current,
+                buttonRef.current,
+                imageRef.current,
+                videoRef.current,
+              ].filter(Boolean);
 
-                    // Fade in new content
-                    gsap.fromTo(
-                      [
-                        titleRef.current,
-                        subtitleRef.current,
-                        descriptionRef.current,
-                        buttonRef.current,
-                        imageRef.current,
-                      ],
-                      {
-                        opacity: 0,
-                        y: 30,
-                        scale: 0.99,
-                      },
-                      {
-                        opacity: 1,
-                        y: 0,
-                        scale: 1,
-                        duration: 1.5,
-                        ease: 'power2.out',
-                        stagger: 0.1,
-                      }
-                    );
-                  },
-                }
-              );
+              gsap.to(fadeOutElements, {
+                opacity: 0,
+                duration: 0.3,
+                ease: 'power2.inOut',
+                onComplete: () => {
+                  // Update content after fade out
+                  setCurrentSection(newSection);
+
+                  // Fade in new content
+                  const fadeInElements = [
+                    titleRef.current,
+                    subtitleRef.current,
+                    descriptionRef.current,
+                    buttonRef.current,
+                    imageRef.current,
+                    videoRef.current,
+                  ].filter(Boolean);
+
+                  gsap.fromTo(
+                    fadeInElements,
+                    {
+                      opacity: 0,
+                      y: 30,
+                      scale: 0.99,
+                    },
+                    {
+                      opacity: 1,
+                      y: 0,
+                      scale: 1,
+                      duration: 1.5,
+                      ease: 'power2.out',
+                      stagger: 0.1,
+                    }
+                  );
+                },
+              });
             }
           },
         },
       });
 
       // Initial fade in animation for first load
-      gsap.fromTo(
-        [leftContentRef.current, rightImageRef.current],
-        {
-          opacity: 0,
-          y: 50,
-          scale: 0.95,
-        },
-        {
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          duration: 1.5,
-          ease: 'power3.out',
-          delay: 0.2,
-        }
-      );
+      const initialElements = [leftContentRef.current, rightImageRef.current].filter(Boolean);
+      if (initialElements.length > 0) {
+        gsap.fromTo(
+          initialElements,
+          {
+            opacity: 0,
+            y: 50,
+            scale: 0.95,
+          },
+          {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            duration: 1.5,
+            ease: 'power3.out',
+            delay: 0.2,
+          }
+        );
+      }
 
       // Initial content fade in
-      gsap.fromTo(
-        [titleRef.current, subtitleRef.current, descriptionRef.current, buttonRef.current],
-        {
-          opacity: 0,
-          y: 30,
-          scale: 0.95,
-        },
-        {
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          duration: 1.5,
-          ease: 'power3.out',
-          stagger: 0.2,
-          delay: 0.3,
-        }
-      );
+      const contentElements = [
+        titleRef.current,
+        subtitleRef.current,
+        descriptionRef.current,
+        buttonRef.current,
+      ].filter(Boolean);
+      if (contentElements.length > 0) {
+        gsap.fromTo(
+          contentElements,
+          {
+            opacity: 0,
+            y: 30,
+            scale: 0.95,
+          },
+          {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            duration: 1.5,
+            ease: 'power3.out',
+            stagger: 0.2,
+            delay: 0.3,
+          }
+        );
+      }
 
-      // Smooth parallax effect for image
-      gsap.to(imageRef.current, {
-        y: -50,
-        // rotation: 5,
-        scrollTrigger: {
-          trigger: scrollSectionRef.current,
-          start: 'top bottom',
-          end: 'bottom top',
-          scrub: 1,
-        },
-      });
+      // Smooth parallax effect for image/video
+      const parallaxElements = [imageRef.current, videoRef.current].filter(Boolean);
+      if (parallaxElements.length > 0) {
+        gsap.to(parallaxElements, {
+          y: -50,
+          // rotation: 5,
+          scrollTrigger: {
+            trigger: scrollSectionRef.current,
+            start: 'top bottom',
+            end: 'bottom top',
+            scrub: 1,
+          },
+        });
+      }
 
       // No fade effects on scroll - content stays fully visible
 
@@ -440,7 +449,7 @@ const OurServices = () => {
         });
       }
 
-      // Image hover effect
+      // Image/Video hover effect
       if (imageRef.current) {
         imageRef.current.addEventListener('mouseenter', () => {
           gsap.to(imageRef.current, {
@@ -458,10 +467,53 @@ const OurServices = () => {
           });
         });
       }
+
+      if (videoRef.current) {
+        videoRef.current.addEventListener('mouseenter', () => {
+          gsap.to(videoRef.current, {
+            rotation: 0,
+            duration: 0.4,
+            ease: 'power2.out',
+          });
+        });
+
+        videoRef.current.addEventListener('mouseleave', () => {
+          gsap.to(videoRef.current, {
+            rotation: 0,
+            duration: 0.4,
+            ease: 'power2.out',
+          });
+        });
+      }
     }, scrollSectionRef);
 
     return () => ctx.revert();
   }, [scrollSectionsData, currentSection]);
+
+  // Ensure video is visible when component mounts
+  useEffect(() => {
+    console.log(
+      'Current section:',
+      currentSection,
+      'VideoSrc:',
+      scrollSectionsData[currentSection]?.videoSrc
+    );
+
+    if (currentSection === 0 && videoRef.current) {
+      // Small delay to ensure video element is rendered
+      setTimeout(() => {
+        if (videoRef.current) {
+          gsap.set(videoRef.current, {
+            opacity: 1,
+            display: 'block',
+            visibility: 'visible',
+            scale: 1,
+            y: 0,
+          });
+        }
+      }, 100);
+    }
+  }, [currentSection, scrollSectionsData]);
 
   return (
     <>
@@ -495,28 +547,65 @@ const OurServices = () => {
                 </a>
               </div>
 
-              {/* Right Image */}
+              {/* Right Image/Video */}
               <div ref={rightImageRef} className={styles.rightImage}>
                 <div className={styles.imageContainer}>
-                  <Image
-                    ref={imageRef}
-                    src={
-                      scrollSectionsData[currentSection]?.imageSrc || scrollSectionsData[0].imageSrc
-                    }
-                    alt={
-                      scrollSectionsData[currentSection]?.imageAlt || scrollSectionsData[0].imageAlt
-                    }
-                    className={styles.scrollImage}
-                    fill
-                    priority
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    onLoad={() => {
-                      // Ensure image is visible after load
-                      if (imageRef.current) {
-                        gsap.set(imageRef.current, { opacity: 1 });
+                  {/* Video or Image based on data */}
+                  {scrollSectionsData[currentSection]?.videoSrc ? (
+                    <video
+                      ref={videoRef}
+                      className={styles.scrollVideo}
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      style={{ opacity: 1, display: 'block' }}
+                      onLoadedData={() => {
+                        console.log('Video loaded successfully');
+                        if (videoRef.current) {
+                          gsap.set(videoRef.current, {
+                            opacity: 1,
+                            display: 'block',
+                            visibility: 'visible',
+                          });
+                        }
+                      }}
+                      onError={(e) => {
+                        console.error('Video failed to load:', e);
+                      }}
+                    >
+                      <source
+                        src={
+                          scrollSectionsData[currentSection]?.videoSrc ||
+                          '/video/Rag-product-video.mp4'
+                        }
+                        type="video/mp4"
+                      />
+                      Your browser does not support the video tag.
+                    </video>
+                  ) : (
+                    <Image
+                      ref={imageRef}
+                      src={
+                        scrollSectionsData[currentSection]?.imageSrc ||
+                        scrollSectionsData[0].imageSrc
                       }
-                    }}
-                  />
+                      alt={
+                        scrollSectionsData[currentSection]?.imageAlt ||
+                        scrollSectionsData[0].imageAlt
+                      }
+                      className={styles.scrollImage}
+                      fill
+                      priority
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      onLoad={() => {
+                        // Ensure image is visible after load
+                        if (imageRef.current) {
+                          gsap.set(imageRef.current, { opacity: 1 });
+                        }
+                      }}
+                    />
+                  )}
                   <div className={styles.imageOverlay}></div>
                 </div>
               </div>
