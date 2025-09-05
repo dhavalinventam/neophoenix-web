@@ -42,15 +42,15 @@ export default function Footer() {
                      <div className={styles.emailInputGroup}>
                        <input
                          type="email"
-                         placeholder="Enter your email address"
+                         placeholder="Enter your email"
                          className={styles.emailInput}
                          required
                        />
                        <button type="submit" className={styles.subscribeButton}>
-                         <span>Subscribe to Newsletter</span>
+                          <span>Subscribe to Newsletter</span>
                          <svg
-                           width="16"
-                           height="16"
+                           width="18"
+                           height="18"
                            viewBox="0 0 24 24"
                            fill="currentColor"
                            className={styles.sendIcon}

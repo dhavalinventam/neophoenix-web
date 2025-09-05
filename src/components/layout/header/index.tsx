@@ -39,6 +39,19 @@ export default function Header() {
     setIsMenuOpen(false);
   };
 
+  // Handle Custom AI Solutions button click
+  const handleCustomAIClick = () => {
+    const element = document.querySelector('#personalized-wishlist');
+    if (element) {
+      element.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+    // Close mobile menu after navigation
+    setIsMenuOpen(false);
+  };
+
   // Close menu when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -92,7 +105,7 @@ export default function Header() {
 
         {/* Desktop CTA Button */}
         <div className={styles.ctaContainer}>
-          <Button label="Join Waitlist" />
+          <Button label="Custom AI Solutions" onClick={handleCustomAIClick} />
         </div>
 
         {/* Mobile Menu Button */}
@@ -120,7 +133,7 @@ export default function Header() {
           <Link className={styles.mobileLink} href="/contact" onClick={(e) => handleNavClick(e, '/contact')}>
             Contact
           </Link>
-          <Button label="Join Waitlist" />
+          <Button label="Custom AI Solutions" onClick={handleCustomAIClick} />
         </nav>
       </div>
     </header>

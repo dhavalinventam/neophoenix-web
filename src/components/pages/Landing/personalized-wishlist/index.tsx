@@ -108,10 +108,6 @@ const PersonalizedWishlist = () => {
               {/* Form Section */}
               <div className={styles.formSection}>
                 <div className={styles.formHeader}>
-                  <h3 className={styles.formTitle}>Get Your Custom AI Solution</h3>
-                  <p className={styles.formSubtitle}>
-                    Tell us about your needs and we'll create a personalized AI strategy for your business
-                  </p>
                 </div>
 
                 <Form onSubmit={handleSubmit} className={styles.form}>

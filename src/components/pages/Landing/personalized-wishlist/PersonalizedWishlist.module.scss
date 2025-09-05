@@ -65,10 +65,10 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: 
-    radial-gradient(circle at 20% 80%, rgba(255, 107, 53, 0.03) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(255, 159, 28, 0.03) 0%, transparent 50%),
-    radial-gradient(circle at 40% 40%, rgba(207, 156, 86, 0.02) 0%, transparent 50%);
+  // background: 
+  //   radial-gradient(circle at 20% 80%, rgba(255, 107, 53, 0.03) 0%, transparent 50%),
+  //   radial-gradient(circle at 80% 20%, rgba(255, 159, 28, 0.03) 0%, transparent 50%),
+  //   radial-gradient(circle at 40% 40%, rgba(207, 156, 86, 0.02) 0%, transparent 50%);
   animation: meshMove 20s ease-in-out infinite;
 }
 
@@ -175,11 +175,11 @@
 
 // Form Section
 .formSection {
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 20px;
-  padding: 24px;
-  backdrop-filter: blur(10px);
+  // background: rgba(255, 255, 255, 0.02);
+  // border: 1px solid rgba(255, 255, 255, 0.05);
+  // border-radius: 20px;
+  // padding: 24px;
+  // backdrop-filter: blur(10px);
 }
 
 .formHeader {
