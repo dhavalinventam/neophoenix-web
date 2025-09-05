@@ -1,6 +1,15 @@
 'use client';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useMemo } from 'react';
+import Image from 'next/image';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { TextPlugin } from 'gsap/TextPlugin';
 import styles from './OurServices.module.scss';
+
+// Register GSAP plugins
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger, TextPlugin);
+}
 
 const OurServices = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -9,6 +18,84 @@ const OurServices = () => {
   const [isMobile, setIsMobile] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isVisible, setIsVisible] = useState(false);
+  const [currentSection, setCurrentSection] = useState(0);
+
+  // Scroll-animated section refs
+  const scrollSectionRef = useRef<HTMLElement>(null);
+  const leftContentRef = useRef<HTMLDivElement>(null);
+  const rightImageRef = useRef<HTMLDivElement>(null);
+  const titleRef = useRef<HTMLHeadingElement>(null);
+  const subtitleRef = useRef<HTMLHeadingElement>(null);
+  const descriptionRef = useRef<HTMLParagraphElement>(null);
+  const buttonRef = useRef<HTMLAnchorElement>(null);
+  const imageRef = useRef<HTMLImageElement>(null);
+
+  // Multiple scroll sections data
+  const scrollSectionsData = useMemo(
+    () => [
+      {
+        id: 1,
+        title: 'Plug-and-Play RAG System',
+        subtitle: 'Your Data. Your Control. Smarter Insights.',
+        description:
+          'Seamlessly connect your databases with secure local embeddings and zero external storage. Our RAG system delivers instant AI-powered chat and real-time answers—keeping sensitive data fully in your environment while unlocking actionable intelligence.',
+        buttonText: 'Learn More About RAG System',
+        buttonLink: '#contact',
+        imageSrc:
+          'https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+        imageAlt: 'AI Dashboard Preview',
+        backgroundColor: 'linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%)',
+        textColor: '#ffffff',
+        accentColor: '#63cfe9',
+      },
+      {
+        id: 2,
+        title: 'Task Prompt AI Chrome Extension',
+        subtitle: 'AI-Powered Prompts Where Work Happens.',
+        description:
+          'Supercharge your workflows in Jira, ClickUp, Asana, and Trello with contextual, role-specific AI prompts. Cut task completion time in half while customizing prompts to match your team’s industry, style, and goals.',
+        buttonText: 'Try the Extension',
+        buttonLink: '#services',
+        imageSrc:
+          'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+        imageAlt: 'AI Technology Network',
+        backgroundColor: 'linear-gradient(135deg, #1e293b 0%, #334155 50%, #475569 100%)',
+        textColor: '#ffffff',
+        accentColor: '#f59e0b',
+      },
+      // {
+      //   id: 3,
+      //   title: 'Scale Your Success',
+      //   subtitle: 'AUTOMATED INTELLIGENCE',
+      //   description:
+      //     'Leverage our advanced machine learning algorithms to predict trends, optimize performance, and scale your business to new heights with intelligent automation.',
+      //   buttonText: 'Learn More',
+      //   buttonLink: '#about',
+      //   imageSrc:
+      //     'https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+      //   imageAlt: 'Machine Learning Visualization',
+      //   backgroundColor: 'linear-gradient(135deg, #334155 0%, #475569 50%, #64748b 100%)',
+      //   textColor: '#ffffff',
+      //   accentColor: '#10b981',
+      // },
+      // {
+      //   id: 4,
+      //   title: 'Future-Ready Technology',
+      //   subtitle: 'INNOVATION AT SCALE',
+      //   description:
+      //     'Stay ahead of the competition with our next-generation AI platform that adapts, learns, and evolves with your business needs in real-time.',
+      //   buttonText: 'Start Now',
+      //   buttonLink: '#contact',
+      //   imageSrc:
+      //   'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+      //   imageAlt: 'Future Technology Concept',
+      //   backgroundColor: 'linear-gradient(135deg, #475569 0%, #64748b 50%, #94a3b8 100%)',
+      //   textColor: '#ffffff',
+      //   accentColor: '#8b5cf6',
+      // },
+    ],
+    []
+  );
 
   const services = [
     {
@@ -102,12 +189,11 @@ const OurServices = () => {
       }
     };
 
-    if (sectionRef.current) {
-      sectionRef.current.addEventListener('mousemove', handleMouseMove);
+    const currentSection = sectionRef.current;
+    if (currentSection) {
+      currentSection.addEventListener('mousemove', handleMouseMove);
       return () => {
-        if (sectionRef.current) {
-          sectionRef.current.removeEventListener('mousemove', handleMouseMove);
-        }
+        currentSection.removeEventListener('mousemove', handleMouseMove);
       };
     }
   }, []);
@@ -116,9 +202,9 @@ const OurServices = () => {
   const scrollToSection = (target: string) => {
     const element = document.querySelector(target);
     if (element) {
-      element.scrollIntoView({ 
+      element.scrollIntoView({
         behavior: 'smooth',
-        block: 'start'
+        block: 'start',
       });
     }
   };
@@ -180,17 +266,276 @@ const OurServices = () => {
     // The intersection observer will trigger the animations
   }, [isMobile]);
 
+  // GSAP ScrollTrigger animations for multiple vertical scroll sections
+  useEffect(() => {
+    if (!scrollSectionRef.current || !leftContentRef.current || !rightImageRef.current) return;
+
+    // Ensure image is visible initially
+    if (imageRef.current) {
+      gsap.set(imageRef.current, {
+        opacity: 1,
+        display: 'block',
+        visibility: 'visible',
+      });
+    }
+
+    const ctx = gsap.context(() => {
+      // Set initial states - content starts hidden for enhanced bottom to top animation
+      gsap.set([titleRef.current, subtitleRef.current, descriptionRef.current, buttonRef.current], {
+        opacity: 0,
+        y: 120,
+        x: 0,
+        scale: 0.95,
+        clearProps: 'none',
+      });
+
+      gsap.set(rightImageRef.current, {
+        opacity: 0,
+        y: 150,
+        x: 0,
+        scale: 0.85,
+        clearProps: 'none',
+      });
+
+      gsap.set(imageRef.current, {
+        scale: 0.85,
+        opacity: 0,
+        y: 100,
+        display: 'block',
+        rotation: 0,
+        clearProps: 'none',
+      });
+
+      // Create main vertical scroll timeline with pin
+      const mainTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: scrollSectionRef.current,
+          start: 'top top',
+          end: `+=${scrollSectionsData.length * 100}vh`,
+          scrub: 0.5,
+          pin: true,
+          anticipatePin: 1,
+          onUpdate: (self) => {
+            const progress = self.progress;
+            const sectionIndex = Math.floor(progress * scrollSectionsData.length);
+            const newSection = Math.min(sectionIndex, scrollSectionsData.length - 1);
+
+            // Only update if section actually changed
+            if (newSection !== currentSection) {
+              // Fade out current content
+              gsap.to(
+                [
+                  titleRef.current,
+                  subtitleRef.current,
+                  descriptionRef.current,
+                  buttonRef.current,
+                  imageRef.current,
+                ],
+                {
+                  opacity: 0,
+                  duration: 0.3,
+                  ease: 'power2.inOut',
+                  onComplete: () => {
+                    // Update content after fade out
+                    setCurrentSection(newSection);
+
+                    // Fade in new content
+                    gsap.fromTo(
+                      [
+                        titleRef.current,
+                        subtitleRef.current,
+                        descriptionRef.current,
+                        buttonRef.current,
+                        imageRef.current,
+                      ],
+                      {
+                        opacity: 0,
+                        y: 30,
+                        scale: 0.99,
+                      },
+                      {
+                        opacity: 1,
+                        y: 0,
+                        scale: 1,
+                        duration: 1.5,
+                        ease: 'power2.out',
+                        stagger: 0.1,
+                      }
+                    );
+                  },
+                }
+              );
+            }
+          },
+        },
+      });
+
+      // Initial fade in animation for first load
+      gsap.fromTo(
+        [leftContentRef.current, rightImageRef.current],
+        {
+          opacity: 0,
+          y: 50,
+          scale: 0.95,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 1.5,
+          ease: 'power3.out',
+          delay: 0.2,
+        }
+      );
+
+      // Initial content fade in
+      gsap.fromTo(
+        [titleRef.current, subtitleRef.current, descriptionRef.current, buttonRef.current],
+        {
+          opacity: 0,
+          y: 30,
+          scale: 0.95,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 1.5,
+          ease: 'power3.out',
+          stagger: 0.2,
+          delay: 0.3,
+        }
+      );
+
+      // Smooth parallax effect for image
+      gsap.to(imageRef.current, {
+        y: -50,
+        // rotation: 5,
+        scrollTrigger: {
+          trigger: scrollSectionRef.current,
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: 1,
+        },
+      });
+
+      // No fade effects on scroll - content stays fully visible
+
+      // Hover animations
+      if (buttonRef.current) {
+        buttonRef.current.addEventListener('mouseenter', () => {
+          gsap.to(buttonRef.current, {
+            scale: 1,
+            duration: 0.3,
+            ease: 'power2.out',
+          });
+        });
+
+        buttonRef.current.addEventListener('mouseleave', () => {
+          gsap.to(buttonRef.current, {
+            scale: 1,
+            duration: 0.8,
+            ease: 'power2.out',
+          });
+        });
+      }
+
+      // Image hover effect
+      if (imageRef.current) {
+        imageRef.current.addEventListener('mouseenter', () => {
+          gsap.to(imageRef.current, {
+            rotation: 0,
+            duration: 0.4,
+            ease: 'power2.out',
+          });
+        });
+
+        imageRef.current.addEventListener('mouseleave', () => {
+          gsap.to(imageRef.current, {
+            rotation: 0,
+            duration: 0.4,
+            ease: 'power2.out',
+          });
+        });
+      }
+    }, scrollSectionRef);
+
+    return () => ctx.revert();
+  }, [scrollSectionsData, currentSection]);
+
   return (
     <>
+      {/* Scroll-Animated Section */}
+      <section ref={scrollSectionRef} className={styles.scrollSection}>
+        <div className={styles.scrollContainer}>
+          <div className={styles.stickyContainer}>
+            <div className={styles.contentPanel}>
+              {/* Left Content */}
+              <div ref={leftContentRef} className={styles.leftContent}>
+                <h2 ref={titleRef} className={styles.scrollTitle}>
+                  {scrollSectionsData[currentSection]?.title || scrollSectionsData[0].title}
+                </h2>
+                <h3 ref={subtitleRef} className={styles.scrollSubtitle}>
+                  {scrollSectionsData[currentSection]?.subtitle || scrollSectionsData[0].subtitle}
+                </h3>
+                <p ref={descriptionRef} className={styles.scrollDescription}>
+                  {scrollSectionsData[currentSection]?.description ||
+                    scrollSectionsData[0].description}
+                </p>
+                <a
+                  ref={buttonRef}
+                  href={
+                    scrollSectionsData[currentSection]?.buttonLink ||
+                    scrollSectionsData[0].buttonLink
+                  }
+                  className={styles.scrollButton}
+                >
+                  {scrollSectionsData[currentSection]?.buttonText ||
+                    scrollSectionsData[0].buttonText}
+                </a>
+              </div>
+
+              {/* Right Image */}
+              <div ref={rightImageRef} className={styles.rightImage}>
+                <div className={styles.imageContainer}>
+                  <Image
+                    ref={imageRef}
+                    src={
+                      scrollSectionsData[currentSection]?.imageSrc || scrollSectionsData[0].imageSrc
+                    }
+                    alt={
+                      scrollSectionsData[currentSection]?.imageAlt || scrollSectionsData[0].imageAlt
+                    }
+                    className={styles.scrollImage}
+                    fill
+                    priority
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    onLoad={() => {
+                      // Ensure image is visible after load
+                      if (imageRef.current) {
+                        gsap.set(imageRef.current, { opacity: 1 });
+                      }
+                    }}
+                  />
+                  <div className={styles.imageOverlay}></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Services Section */}
-      <div 
-        ref={sectionRef} 
-        className={styles.servicesSection} 
+      <div
+        ref={sectionRef}
+        className={styles.servicesSection}
         id="services"
-        style={{
-          '--mouse-x': `${mousePosition.x}%`,
-          '--mouse-y': `${mousePosition.y}%`,
-        } as React.CSSProperties}
+        style={
+          {
+            '--mouse-x': `${mousePosition.x}%`,
+            '--mouse-y': `${mousePosition.y}%`,
+          } as React.CSSProperties
+        }
       >
         {/* Animated Background Elements */}
         <div className={styles.backgroundElements}>
@@ -212,7 +557,11 @@ const OurServices = () => {
         {/* Services Grid */}
         <div className={styles.servicesGrid}>
           {services.map((service) => (
-            <div key={service.id} data-service-id={service.id} className={`${styles.serviceCard} serviceCard`}>
+            <div
+              key={service.id}
+              data-service-id={service.id}
+              className={`${styles.serviceCard} serviceCard`}
+            >
               <div className={styles.cardIcon}>
                 <span className={styles.iconText}>{service.icon}</span>
                 <div className={styles.iconGlow}></div>

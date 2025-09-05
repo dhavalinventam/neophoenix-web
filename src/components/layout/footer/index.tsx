@@ -94,13 +94,14 @@ export default function Footer() {
               </div>
             </div>
           </div>
-
         </div>
 
         {/* Bottom Section - Copyright and Social Media */}
         <div className={styles.bottomSection}>
           <div className={styles.copyrightContent}>
-            <p className={styles.copyrightText}>© {year} Neophoenix. All rights reserved.</p>
+            <p className={styles.copyrightText}>
+              © {year} Neophoenix. All rights reserved. | Privacy Policy | Terms of Service
+            </p>
             <div className={styles.socialIcons}>
               <Link href="#" className={styles.socialIcon} aria-label="LinkedIn">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
