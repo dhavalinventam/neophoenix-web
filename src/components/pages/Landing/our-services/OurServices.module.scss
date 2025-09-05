@@ -526,9 +526,9 @@
   }
   .mobileSection {
     max-height: 100% !important;
-  }
-  .pin-spacer {
     height: 100% !important;
+    position: unset !important;
+    transform: unset !important;
   }
   .mobileServicesGrid {
     grid-template-columns: repeat(2, 1fr);
@@ -556,7 +556,6 @@
   .mobileDescription {
     font-size: 14px;
   }
-
   .mobileButton {
     padding: 10px 20px;
     font-size: 13px;
@@ -1341,11 +1340,6 @@
     gap: 1rem;
   }
 
-  .mobileImageContainer {
-    height: 200px;
-    max-width: 350px;
-  }
-
   .mobileTitle {
     font-size: clamp(1.3rem, 4.5vw, 1.8rem);
   }
@@ -1377,7 +1371,6 @@
 
   .mobileImageContainer {
     height: 180px;
-    max-width: 300px;
   }
 
   .mobileTitle {

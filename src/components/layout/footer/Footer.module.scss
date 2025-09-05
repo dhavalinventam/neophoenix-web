@@ -572,7 +572,6 @@
           }
 
           .newsletterForm .emailInputGroup {
-            flex-direction: column;
             gap: 12px;
             padding: 16px;
             max-width: 100%;
@@ -580,7 +579,7 @@
             .emailInput {
               padding: 14px 20px;
               font-size: $font-size-base;
-              text-align: center;
+              text-align: start;
               border-radius: 50px;
             }
 
@@ -589,6 +588,9 @@
               height: 48px;
               align-self: center;
               margin-right: 0;
+              span {
+                display: none;
+              }
             }
           }
         }
