@@ -70,10 +70,10 @@ const OurServices = () => {
     ],
     []
   );
-  // Check if screen is mobile/tablet
+  // Check if screen is mobile/tablet (under 992px)
   useEffect(() => {
     const checkScreenSize = () => {
-      setIsMobile(window.innerWidth < 1200);
+      setIsMobile(window.innerWidth < 992);
     };
 
     checkScreenSize();
@@ -170,8 +170,9 @@ const OurServices = () => {
     // The intersection observer will trigger the animations
   }, [isMobile]);
 
-  // GSAP ScrollTrigger animations for multiple vertical scroll sections
+  // GSAP ScrollTrigger animations for multiple vertical scroll sections (desktop only)
   useEffect(() => {
+    if (isMobile) return; // Skip GSAP animations on mobile
     if (!scrollSectionRef.current || !leftContentRef.current || !rightImageRef.current) return;
 
     // Check if elements are still connected to DOM
@@ -492,10 +493,12 @@ const OurServices = () => {
         console.warn('Error during GSAP cleanup:', error);
       }
     };
-  }, [scrollSectionsData, currentSection]);
+  }, [scrollSectionsData, currentSection, isMobile]);
 
-  // Ensure video is visible when component mounts
+  // Ensure video is visible when component mounts (desktop only)
   useEffect(() => {
+    if (isMobile) return; // Skip on mobile
+
     console.log(
       'Current section:',
       currentSection,
@@ -517,7 +520,7 @@ const OurServices = () => {
         }
       }, 100);
     }
-  }, [currentSection, scrollSectionsData]);
+  }, [currentSection, scrollSectionsData, isMobile]);
 
   // Cleanup effect
   useEffect(() => {
@@ -528,112 +531,179 @@ const OurServices = () => {
 
   return (
     <>
-      {/* Scroll-Animated Section */}
-      <section ref={scrollSectionRef} className={styles.scrollSection}>
-        <div className={styles.scrollContainer}>
-          <div className={styles.stickyContainer}>
-            <div className={styles.contentPanel}>
-              {/* Left Content */}
-              <div ref={leftContentRef} className={styles.leftContent}>
-                <h2 ref={titleRef} className={styles.scrollTitle}>
-                  {scrollSectionsData[currentSection]?.title || scrollSectionsData[0].title}
-                </h2>
-                <h3 ref={subtitleRef} className={styles.scrollSubtitle}>
-                  {scrollSectionsData[currentSection]?.subtitle || scrollSectionsData[0].subtitle}
-                </h3>
-                <p ref={descriptionRef} className={styles.scrollDescription}>
-                  {scrollSectionsData[currentSection]?.description ||
-                    scrollSectionsData[0].description}
-                </p>
-                <a
-                  ref={buttonRef}
-                  href={
-                    scrollSectionsData[currentSection]?.buttonLink ||
-                    scrollSectionsData[0].buttonLink
-                  }
-                  className={styles.scrollButton}
-                >
-                  {scrollSectionsData[currentSection]?.buttonText ||
-                    scrollSectionsData[0].buttonText}
-                </a>
+      {isMobile ? (
+        // Mobile/Tablet Static Layout (under 992px) - Both Services
+        <section className={styles.mobileSection}>
+          <div className={styles.container}>
+            <div className={styles.header}>
+              <h2 className={styles.title}>Our AI-Powered Services</h2>
+              <p className={styles.description}>
+                Empower your team with <strong>secure, AI-driven insights</strong> and{' '}
+                <em>workflow automation</em> tailored to your data, tools, and processes.
+              </p>
+            </div>
+
+            <div className={styles.mobileServicesGrid}>
+              {/* RAG System Card */}
+              <div className={styles.mobileServiceCard}>
+                <div className={styles.mobileImageContainer}>
+                  <video className={styles.mobileVideo} autoPlay muted loop playsInline>
+                    <source src={scrollSectionsData[0]?.videoSrc} type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
+                <div className={styles.mobileTextContent}>
+                  <h2 className={styles.mobileTitle}>{scrollSectionsData[0]?.title}</h2>
+                  <h3 className={styles.mobileSubtitle}>{scrollSectionsData[0]?.subtitle}</h3>
+                  <p className={styles.mobileDescription}>{scrollSectionsData[0]?.description}</p>
+                  <a href={scrollSectionsData[0]?.buttonLink} className={styles.mobileButton}>
+                    {scrollSectionsData[0]?.buttonText}
+                  </a>
+                </div>
               </div>
 
-              {/* Right Image/Video */}
-              <div ref={rightImageRef} className={styles.rightImage}>
-                <div className={styles.imageContainer}>
-                  {/* Video or Image based on data */}
-                  {scrollSectionsData[currentSection]?.videoSrc ? (
-                    <video
-                      key={scrollSectionsData[currentSection]?.videoSrc}
-                      ref={videoRef}
-                      className={styles.scrollVideo}
-                      autoPlay
-                      muted
-                      loop
-                      playsInline
-                      style={{ opacity: 1, display: 'block' }}
-                      onLoadedData={() => {
-                        console.log(
-                          'Video loaded successfully:',
-                          scrollSectionsData[currentSection]?.videoSrc
-                        );
-                        if (videoRef.current) {
-                          gsap.set(videoRef.current, {
-                            opacity: 1,
-                            display: 'block',
-                            visibility: 'visible',
-                          });
-                        }
-                      }}
-                      onError={(e) => {
-                        console.error('Video failed to load:', e);
-                        console.error(
-                          'Video source:',
-                          scrollSectionsData[currentSection]?.videoSrc
-                        );
-                      }}
-                      onLoadStart={() => {
-                        console.log(
-                          'Video loading started:',
-                          scrollSectionsData[currentSection]?.videoSrc
-                        );
-                      }}
-                    >
-                      <source src={scrollSectionsData[currentSection]?.videoSrc} type="video/mp4" />
-                      Your browser does not support the video tag.
-                    </video>
-                  ) : (
-                    <Image
-                      ref={imageRef}
-                      src={
-                        scrollSectionsData[currentSection]?.imageSrc ||
-                        scrollSectionsData[0]?.imageSrc ||
-                        ''
-                      }
-                      alt={
-                        scrollSectionsData[currentSection]?.imageAlt ||
-                        scrollSectionsData[0]?.imageAlt ||
-                        ''
-                      }
-                      className={styles.scrollImage}
-                      fill
-                      priority
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                      onLoad={() => {
-                        // Ensure image is visible after load
-                        if (imageRef.current) {
-                          gsap.set(imageRef.current, { opacity: 1 });
-                        }
-                      }}
-                    />
-                  )}
-                  <div className={styles.imageOverlay}></div>
+              {/* Chrome Extension Card */}
+              <div className={styles.mobileServiceCard}>
+                <div className={styles.mobileImageContainer}>
+                  <video className={styles.mobileVideo} autoPlay muted loop playsInline>
+                    <source src={scrollSectionsData[1]?.videoSrc} type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
+                <div className={styles.mobileTextContent}>
+                  <h2 className={styles.mobileTitle}>{scrollSectionsData[1]?.title}</h2>
+                  <h3 className={styles.mobileSubtitle}>{scrollSectionsData[1]?.subtitle}</h3>
+                  <p className={styles.mobileDescription}>{scrollSectionsData[1]?.description}</p>
+                  <a href={scrollSectionsData[1]?.buttonLink} className={styles.mobileButton}>
+                    {scrollSectionsData[1]?.buttonText}
+                  </a>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      ) : (
+        // Desktop Scroll-Animated Section (992px and larger)
+        <section ref={scrollSectionRef} className={styles.scrollSection}>
+          <section ref={sectionRef} className={styles.section}>
+            <div className={styles.container}>
+              <div className={`${styles.header} header`}>
+                <h2 className={`${styles.title} title`}>Our AI-Powered Services</h2>
+                <p className={`${styles.description} description`}>
+                  Empower your team with <strong>secure, AI-driven insights</strong> and{' '}
+                  <em>workflow automation</em> tailored to your data, tools, and processes.
+                </p>
+              </div>
+            </div>
+          </section>
+          <div className={styles.scrollContainer}>
+            <div className={styles.stickyContainer}>
+              <div className={styles.contentPanel}>
+                {/* Left Content */}
+                <div ref={leftContentRef} className={styles.leftContent}>
+                  <h2 ref={titleRef} className={styles.scrollTitle}>
+                    {scrollSectionsData[currentSection]?.title || scrollSectionsData[0].title}
+                  </h2>
+                  <h3 ref={subtitleRef} className={styles.scrollSubtitle}>
+                    {scrollSectionsData[currentSection]?.subtitle || scrollSectionsData[0].subtitle}
+                  </h3>
+                  <p ref={descriptionRef} className={styles.scrollDescription}>
+                    {scrollSectionsData[currentSection]?.description ||
+                      scrollSectionsData[0].description}
+                  </p>
+                  <a
+                    ref={buttonRef}
+                    href={
+                      scrollSectionsData[currentSection]?.buttonLink ||
+                      scrollSectionsData[0].buttonLink
+                    }
+                    className={styles.scrollButton}
+                  >
+                    {scrollSectionsData[currentSection]?.buttonText ||
+                      scrollSectionsData[0].buttonText}
+                  </a>
+                </div>
+
+                {/* Right Image/Video */}
+                <div ref={rightImageRef} className={styles.rightImage}>
+                  <div className={styles.imageContainer}>
+                    {/* Video or Image based on data */}
+                    {scrollSectionsData[currentSection]?.videoSrc ? (
+                      <video
+                        key={scrollSectionsData[currentSection]?.videoSrc}
+                        ref={videoRef}
+                        className={styles.scrollVideo}
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                        style={{ opacity: 1, display: 'block' }}
+                        onLoadedData={() => {
+                          console.log(
+                            'Video loaded successfully:',
+                            scrollSectionsData[currentSection]?.videoSrc
+                          );
+                          if (videoRef.current) {
+                            gsap.set(videoRef.current, {
+                              opacity: 1,
+                              display: 'block',
+                              visibility: 'visible',
+                            });
+                          }
+                        }}
+                        onError={(e) => {
+                          console.error('Video failed to load:', e);
+                          console.error(
+                            'Video source:',
+                            scrollSectionsData[currentSection]?.videoSrc
+                          );
+                        }}
+                        onLoadStart={() => {
+                          console.log(
+                            'Video loading started:',
+                            scrollSectionsData[currentSection]?.videoSrc
+                          );
+                        }}
+                      >
+                        <source
+                          src={scrollSectionsData[currentSection]?.videoSrc}
+                          type="video/mp4"
+                        />
+                        Your browser does not support the video tag.
+                      </video>
+                    ) : (
+                      <Image
+                        ref={imageRef}
+                        src={
+                          scrollSectionsData[currentSection]?.imageSrc ||
+                          scrollSectionsData[0]?.imageSrc ||
+                          ''
+                        }
+                        alt={
+                          scrollSectionsData[currentSection]?.imageAlt ||
+                          scrollSectionsData[0]?.imageAlt ||
+                          ''
+                        }
+                        className={styles.scrollImage}
+                        fill
+                        priority
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        onLoad={() => {
+                          // Ensure image is visible after load
+                          if (imageRef.current) {
+                            gsap.set(imageRef.current, { opacity: 1 });
+                          }
+                        }}
+                      />
+                    )}
+                    <div className={styles.imageOverlay}></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
     </>
   );
 };

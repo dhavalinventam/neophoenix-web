@@ -13,7 +13,7 @@
 .scrollContainer {
   position: relative; // Changed from sticky to relative - GSAP will handle pinning
   top: 0;
-  height: 100vh;
+  height: 65vh;
   width: 100%;
   display: flex;
   align-items: center;
@@ -23,7 +23,7 @@
 
 .stickyContainer {
   position: relative;
-  height: 100vh;
+  height: 65vh;
   width: 100%;
   display: flex;
   align-items: center;
@@ -39,7 +39,7 @@
   margin: 0 auto;
   padding: 0 2rem;
   align-items: center;
-  min-height: 100vh;
+  min-height: 65vh;
   position: relative;
 }
 
@@ -340,9 +340,148 @@
   }
 }
 
+// Mobile Static Layout Styles (under 992px)
+.mobileSection {
+  position: relative;
+  padding: 2rem 0;
+  background: transparent;
+  min-height: auto;
+}
+
+.mobileServicesGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  padding: 2rem 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.mobileServiceCard {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2rem;
+  background: rgba(15, 23, 42, 0.8);
+  border-radius: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+  }
+}
+
+.mobileContent {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2rem 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.mobileImageContainer {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  height: 300px;
+  margin: 0 auto;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.mobileVideo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 1rem;
+}
+
+.mobileTextContent {
+  text-align: center;
+  padding: 1rem 0;
+}
+
+.mobileTitle {
+  font-family: $font-primary;
+  font-size: clamp(1.8rem, 6vw, 2.2rem);
+  font-weight: $font-weight-bold;
+  color: #ffffff;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+  background: linear-gradient(135deg, #ffffff 0%, #ff9f1c 50%, #ff6b35 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.mobileSubtitle {
+  font-family: $font-primary;
+  font-size: clamp(1rem, 4vw, 1.2rem);
+  font-weight: $font-weight-medium;
+  color: #c7d1e0;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.mobileDescription {
+  font-family: $font-primary;
+  font-size: clamp(0.9rem, 3vw, 1rem);
+  font-weight: $font-weight-normal;
+  color: #ffffff;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  opacity: 0.9;
+}
+
+.mobileButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px;
+  background: linear-gradient(90deg, #ff6b35 0%, #ff9f1c 100%);
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 50px;
+  font-family: $font-primary;
+  font-size: 14px;
+  font-weight: $font-weight-bold;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 25px rgba(99, 207, 233, 0.3);
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 35px rgba(99, 207, 233, 0.4);
+
+    &::before {
+      left: 100%;
+    }
+  }
+}
+
 @media (max-width: 992px) {
   .contentPanel {
-    grid-template-columns: 1fr;
     gap: 2rem;
     padding: 2rem 1rem;
     text-align: center;
@@ -373,6 +512,49 @@
   .scrollDescription {
     font-size: clamp(0.9rem, 3vw, 1.1rem);
   }
+  .title {
+    opacity: 1 !important;
+    &::after {
+      opacity: 1 !important;
+    }
+  }
+  .subtitle {
+    opacity: 1 !important;
+  }
+  .description {
+    opacity: 1 !important;
+  }
+  .mobileServicesGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    padding: 0 1.5rem 1rem;
+  }
+  .mobileServiceCard {
+    padding: 1.5rem;
+    gap: 1.5rem;
+  }
+
+  .mobileImageContainer {
+    height: 250px;
+    max-width: 100%;
+  }
+
+  .mobileTitle {
+    font-size: 22px;
+  }
+
+  .mobileSubtitle {
+    font-size: 16px;
+  }
+
+  .mobileDescription {
+    font-size: 14px;
+  }
+
+  .mobileButton {
+    padding: 10px 20px;
+    font-size: 13px;
+  }
 }
 
 @media (max-width: 768px) {
@@ -397,6 +579,9 @@
     padding: 0.8rem 2rem;
     font-size: 1rem;
     max-width: 200px;
+  }
+  .mobileServicesGrid {
+    grid-template-columns: repeat(1, 1fr);
   }
 }
 
@@ -1136,5 +1321,73 @@
     width: 18px;
     height: 18px;
     font-size: 11.2px;
+  }
+}
+
+@media (max-width: 480px) {
+  .mobileServicesGrid {
+    gap: 1.5rem;
+    padding: 1rem 0.5rem;
+  }
+
+  .mobileServiceCard {
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .mobileImageContainer {
+    height: 200px;
+    max-width: 350px;
+  }
+
+  .mobileTitle {
+    font-size: clamp(1.3rem, 4.5vw, 1.8rem);
+  }
+
+  .mobileSubtitle {
+    font-size: clamp(0.8rem, 3vw, 1rem);
+  }
+
+  .mobileDescription {
+    font-size: clamp(0.8rem, 2.5vw, 0.9rem);
+  }
+
+  .mobileButton {
+    padding: 8px 16px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 360px) {
+  .mobileServicesGrid {
+    gap: 1rem;
+    padding: 0.5rem;
+  }
+
+  .mobileServiceCard {
+    padding: 0.8rem;
+    gap: 0.8rem;
+  }
+
+  .mobileImageContainer {
+    height: 180px;
+    max-width: 300px;
+  }
+
+  .mobileTitle {
+    font-size: clamp(1.2rem, 4vw, 1.6rem);
+  }
+
+  .mobileSubtitle {
+    font-size: clamp(0.75rem, 2.8vw, 0.9rem);
+  }
+
+  .mobileDescription {
+    font-size: clamp(0.75rem, 2.2vw, 0.85rem);
+  }
+
+  .mobileButton {
+    padding: 6px 12px;
+    font-size: 11px;
   }
 }
