@@ -132,13 +132,10 @@ const WhoWeAre = () => {
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-12 col-lg-10">
-              {/* Section Title */}
-              <div className={`${styles.sectionTitle} section-title`}>
-                <span className={styles.sectionNumber}>3.</span>
-                <span className={styles.sectionLabel}>Who We Are</span>
-              </div>
-
               {/* Main Content */}
+              <h2 className={`${styles.sectionTitle} section-title`}>
+                Who We Are
+              </h2>
               <div className={styles.mainContent}>
                 {/* Headline */}
                 <h2 className={`${styles.headline} headline`}>
@@ -154,8 +151,8 @@ const WhoWeAre = () => {
 
                 {/* CTA Button */}
                 <div className={`${styles.ctaSection} cta-button`}>
-                  <Button 
-                    variant="filled" 
+                  <Button
+                    variant="filled"
                     label="Meet Our Team"
                     className={styles.meetTeamButton}
                   />

@@ -4,14 +4,14 @@
 .whoWeAre {
   position: relative;
   background: transparent; // Remove background to show global gradient
-  min-height: 100vh;
+  // min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
   z-index: 1;
   font-family: $font-primary;
-  padding: 0; // Remove padding for seamless layout
+  padding: 100px 0px !important; // Remove padding for seamless layout
 }
 
 // Smart Background Animation
@@ -343,7 +343,7 @@
   align-items: center;
   justify-content: center;
   gap: 1rem;
-  margin-bottom: 3rem;
+  margin-bottom: 1rem;
   opacity: 0;
   transform: translateY(50px);
   transition: all 0.8s ease;
@@ -379,9 +379,9 @@
 // Headline
 .headline {
   font-family: $font-title;
-  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-size: clamp(2rem, 4vw, 2.5rem); // Consistent with section title sizing
   font-weight: $font-weight-bold;
-  color: $text-white;
+  color: #ffffff; // Pure white color
   line-height: $line-height-tight;
   margin-bottom: 2rem;
   letter-spacing: $letter-spacing-tight;
@@ -394,12 +394,6 @@
     opacity: 1;
     transform: translateY(0);
   }
-  
-  // Gradient text effect
-  background: linear-gradient(135deg, $text-white 0%, $primary-gold 50%, $primary-orange 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
 }
 
 // Description
@@ -415,13 +409,14 @@
   }
   
   p {
-    font-size: clamp(1.1rem, 2.2vw, 1.4rem);
-    color: $text-gray-light;
-    line-height: $line-height-relaxed;
+    font-size: $font-size-lg; // Increased font size for better readability
+    color: rgba(255, 255, 255, 0.7); // Consistent with other sections
+    line-height: 1.6; // Consistent line height
     font-weight: $font-weight-normal;
     text-align: center;
-    max-width: 800px;
+    max-width: 700px; // Consistent max-width for info paragraphs
     margin: 0 auto;
+    font-family: $font-primary;
     
     strong {
       color: $primary-gold;

@@ -76,8 +76,8 @@ const HeroSection = () => {
               </div>
               
               <h1 className={styles.title}>
-                Reimagining Enterprise AI with{' '}
-                <span className={styles.highlight}>RAG & Prompting Innovation</span>
+                Reimagining Enterprise{' '}
+                <span className={styles.highlight}> AI with RAG & Prompting Innovation</span>
               </h1>
               
               <p className={styles.subtitle}>

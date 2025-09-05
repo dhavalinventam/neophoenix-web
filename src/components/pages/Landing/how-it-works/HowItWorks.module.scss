@@ -13,11 +13,13 @@
   
   .title {
     @include section-title-responsive;
+    color: #ffffff; // Pure white color
   }
 }
 
 .description {
   @include section-subtitle-responsive;
+  color: rgba(255, 255, 255, 0.7) !important; // Consistent with other sections
 }
 
 // Single responsive container that automatically switches between layouts

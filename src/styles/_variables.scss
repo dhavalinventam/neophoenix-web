@@ -127,9 +127,9 @@ $shadow-xl: 0 10px 30px rgba(0, 0, 0, 0.3);
 // Common Section Title Styles
 $section-title-font-family: $font-title; // Updated to use Frederic
 $section-title-font-family-secondary: $font-title; // Updated to use Frederic
-$section-title-font-size: clamp(2rem, 4vw, 2rem);
+$section-title-font-size: clamp(2rem, 4vw, 2.5rem);
 $section-title-font-weight: $font-weight-bold;
-$section-title-color: $text-white;
+$section-title-color: #ffffff; // Pure white color for all section titles
 $section-title-line-height: $line-height-tight;
 $section-title-letter-spacing: $letter-spacing-tight;
 $section-title-margin-bottom: 1.3rem;
@@ -137,11 +137,11 @@ $section-title-margin-bottom: 1.3rem;
 // Common Section Subtitle Styles
 $section-subtitle-font-family: $font-primary;
 $section-subtitle-font-family-secondary: $font-secondary;
-$section-subtitle-font-size: $font-size-base;
+$section-subtitle-font-size: $font-size-lg; // Increased font size for better readability
 $section-subtitle-font-weight: $font-weight-normal;
-$section-subtitle-color: rgba(255, 255, 255, 0.8);
-$section-subtitle-line-height: $line-height-relaxed;
-$section-subtitle-max-width: 700px;
+$section-subtitle-color: rgba(255, 255, 255, 0.7); // Consistent color across all sections
+$section-subtitle-line-height: 1.6; // Consistent line height for info paragraphs
+$section-subtitle-max-width: 700px; // Consistent max-width for info paragraphs
 $section-subtitle-margin-bottom: 0;
 
 // =============================================================================

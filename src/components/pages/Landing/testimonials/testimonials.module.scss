@@ -13,7 +13,7 @@
 
   .title {
     @include section-title-responsive;
-    color: $text-white; // White section heading (#FFFFFF)
+    color: #ffffff; // Pure white color
     
     // Gradient underline effect
     &::after {

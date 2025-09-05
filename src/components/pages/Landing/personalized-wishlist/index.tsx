@@ -102,13 +102,12 @@ const PersonalizedWishlist = () => {
                   AI That Adapts to Your Business
                 </h2>
                 <p className={styles.subtitle}>
-                  Every enterprise is unique. That's why Neophoenix offers <strong>tailored AI solutions</strong>—
+                  Every enterprise is unique. That's why Neophoenix offers <strong>Tailored AI Solutions </strong> 
                   from white-label platforms to custom-built integrations. We collaborate closely
                   with your team to align AI adoption with your strategic goals, ensuring measurable
                   impact across operations, customer experience, and decision-making.
                 </p>
               </div>
-
 
               {/* Form Section */}
               <div className={styles.formSection}>

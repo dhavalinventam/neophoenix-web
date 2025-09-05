@@ -4,10 +4,10 @@
 .personalizedWishlistSection {
   position: relative;
   background: transparent; // Remove background to show global gradient
-  padding: 0; // Remove padding for seamless layout
+  padding: 100px 0px !important; // Remove padding for seamless layout
   overflow: hidden;
   z-index: 1;
-  min-height: 100vh;
+  // min-height: 100vh;
   display: flex;
   align-items: center;
 }
@@ -96,8 +96,8 @@
 .mainCard {
   background: rgba(255, 255, 255, 0.02);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 32px;
-  padding: 4rem 3rem;
+  border-radius: 24px;
+  padding: 2.5rem 2rem;
   backdrop-filter: blur(20px);
   box-shadow: 
     0 25px 50px rgba(0, 0, 0, 0.3),
@@ -105,7 +105,7 @@
   position: relative;
   z-index: 2;
   overflow: hidden;
-  margin: 4rem 2rem; // Add internal margin for content spacing
+  margin: 2rem 1rem; // Reduced margin for content spacing
   
   &::before {
     content: '';
@@ -121,7 +121,7 @@
 // Header Section
 .headerSection {
   text-align: center;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
 }
 
 .badge {
@@ -148,25 +148,23 @@
 
 .title {
   font-family: $font-title;
-  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-size: clamp(1.75rem, 3.5vw, 2.25rem); // Slightly smaller title
   font-weight: $font-weight-bold;
-  color: $text-white;
-  margin-bottom: 1.5rem;
+  color: #ffffff; // Pure white color
+  margin-bottom: 1rem; // Reduced margin
   line-height: 1.2;
-  background: linear-gradient(135deg, #ffffff 0%, #e0e0e0 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
   animation: titleGlow 4s ease-in-out infinite;
 }
 
 .subtitle {
   font-family: $font-primary;
-  font-size: $font-size-lg;
-  color: rgba(255, 255, 255, 0.8);
-  line-height: 1.7;
-  max-width: 800px;
-  margin: 0 auto;
+  font-size: $font-size-lg; // Increased font size for better readability
+  color: rgba(255, 255, 255, 0.7); // Consistent with other sections
+  line-height: 1.6;
+  max-width: 700px; // Consistent max-width for info paragraphs
+  margin: 0 auto 1.5rem;
+  text-align: center;
+  font-weight: $font-weight-normal;
   
   strong {
     color: rgba(255, 107, 53, 0.9);
@@ -179,35 +177,36 @@
 .formSection {
   background: rgba(255, 255, 255, 0.02);
   border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 24px;
-  padding: 2.5rem;
+  border-radius: 20px;
+  padding: 1.5rem;
   backdrop-filter: blur(10px);
 }
 
 .formHeader {
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
 
 .formTitle {
   font-family: $font-title;
-  font-size: $font-size-2xl;
+  font-size: $font-size-xl;
   font-weight: $font-weight-bold;
   color: $text-white;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.5rem;
 }
 
 .formSubtitle {
   font-family: $font-primary;
-  font-size: $font-size-base;
-  color: rgba(255, 255, 255, 0.7);
+  font-size: $font-size-lg; // Increased font size for better readability
+  color: rgba(255, 255, 255, 0.7); // Consistent with other sections
   line-height: 1.6;
+  font-weight: $font-weight-normal;
 }
 
 .form {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1rem;
 }
 
 .formGroup {
@@ -219,9 +218,10 @@
 .label {
   font-family: $font-primary;
   font-size: $font-size-sm;
-  font-weight: $font-weight-medium;
-  color: $text-white;
+  font-weight: $font-weight-semibold;
+  color: #ffffff;
   margin-bottom: 0.5rem;
+  display: block;
 }
 
 .inputWrapper {
@@ -236,17 +236,17 @@
 .input,
 .select {
   width: 100%;
-  padding: 1rem 1.25rem !important;
+  padding: 0.75rem 1rem !important;
   background: rgba(255, 255, 255, 0.03) !important;
   border: 1px solid rgba(255, 255, 255, 0.1) !important;
-  border-radius: 16px !important;
+  border-radius: 12px !important;
   color: $text-white !important;
   font-family: $font-primary;
-  font-size: $font-size-base;
+  font-size: $font-size-sm;
   font-weight: $font-weight-normal;
   transition: all 0.3s ease;
   outline: none;
-  min-height: 56px;
+  min-height: 48px;
   backdrop-filter: blur(10px);
   
   &::placeholder {
@@ -264,7 +264,63 @@
     border-color: rgba(255, 255, 255, 0.2);
     transform: translateY(-1px);
   }
+  
+  // Ensure selected text is visible
+  &:not(:placeholder-shown) {
+    color: $text-white !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+  }
+  
+  // Dropdown options styling
+  option {
+    background: rgba(0, 0, 0, 0.8) !important;
+    color: $text-white !important;
+    padding: 0.75rem 1rem !important;
+    border: none !important;
+    font-family: $font-primary !important;
+    font-size: $font-size-base !important;
+    font-weight: $font-weight-normal !important;
+    
+    &:hover {
+      background: rgba(99, 207, 233, 0.8) !important; // Blue background for hover
+      color: $text-white !important;
+    }
+    
+    &:checked,
+    &:selected {
+      background: rgba(99, 207, 233, 0.9) !important; // Blue background for selected
+      color: $text-white !important;
+    }
+  }
 }
+
+// Ensure all form fields have identical styling
+.input,
+.select {
+  // Remove any specific overrides and ensure consistency
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  
+  // Custom dropdown arrow for select only
+  &.select {
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e") !important;
+    background-repeat: no-repeat !important;
+    background-position: right 1rem center !important;
+    background-size: 1rem !important;
+    padding-right: 3rem !important;
+    
+    // Ensure selected text is always visible
+    color: $text-white !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+    
+    // Override any browser default styling for selected values
+    option:checked {
+      color: $text-white !important;
+    }
+  }
+}
+
 
 .inputGlow {
   position: absolute;
@@ -283,7 +339,7 @@
 .buttonWrapper {
   display: flex;
   justify-content: center;
-  margin-top: 1rem;
+  margin-top: 0.5rem;
 }
 
 // Status Messages
@@ -370,42 +426,40 @@
   }
   
   .mainCard {
-    padding: 2.5rem 2rem;
-    margin: 4rem 1rem; // Add internal margin for mobile
+    padding: 1.5rem 1rem;
+    margin: 1rem 0.5rem; // Reduced margin for mobile
   }
   
-  
   .formSection {
-    padding: 2rem 1.5rem;
+    padding: 1rem;
   }
   
   .title {
-    font-size: clamp(2rem, 8vw, 3rem);
+    font-size: clamp(1.5rem, 6vw, 2rem);
   }
   
   .subtitle {
-    font-size: $font-size-base;
+    font-size: $font-size-sm;
   }
 }
 
 @media (max-width: 480px) {
   .mainCard {
-    padding: 2rem 1.5rem;
-    margin: 3rem 0.5rem; // Add internal margin for mobile
+    padding: 1rem 0.75rem;
+    margin: 0.5rem 0.25rem; // Further reduced margin for mobile
   }
   
   .formSection {
-    padding: 1.5rem 1rem;
+    padding: 0.75rem;
   }
-  
   
   .input,
   .select {
-    padding: 0.875rem 1rem !important;
-    min-height: 48px;
+    padding: 0.625rem 0.75rem !important;
+    min-height: 44px;
   }
   
   .title {
-    font-size: clamp(1.75rem, 10vw, 2.5rem);
+    font-size: clamp(1.25rem, 8vw, 1.75rem);
   }
 }
