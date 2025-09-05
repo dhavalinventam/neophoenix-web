@@ -94,10 +94,6 @@ const PersonalizedWishlist = () => {
             <div className={styles.mainCard}>
               {/* Header Section */}
               <div className={styles.headerSection}>
-                <div className={styles.badge}>
-                  <span className={styles.badgeIcon}>✨</span>
-                  <span>Personalized Solutions</span>
-                </div>
                 <h2 className={styles.title}>
                   AI That Adapts to Your Business
                 </h2>

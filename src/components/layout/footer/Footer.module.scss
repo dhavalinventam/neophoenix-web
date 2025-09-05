@@ -85,12 +85,12 @@
   gap: 48px;
   margin-bottom: 48px;
   align-items: start;
-  padding: 2rem;
-  background: rgba(255, 255, 255, 0.02); // More subtle background to blend with gradient
-  backdrop-filter: blur(20px);
-  border-radius: 24px;
-  border: 1px solid rgba(255, 255, 255, 0.08); // Softer border
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1); // Subtle shadow for depth
+  // padding: 2rem;
+  // background: rgba(255, 255, 255, 0.02); 
+  // backdrop-filter: blur(20px);
+  // border-radius: 24px;
+  // border: 1px solid rgba(255, 255, 255, 0.08); 
+  // box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1); 
 }
 
 // Left Column - Company Information and Newsletter
@@ -117,14 +117,116 @@
         height: auto;
       }
 
-      .companyDescription {
-        color: $text-gray-light;
-        font-size: $font-size-lg;
-        line-height: $line-height-relaxed;
-        margin: 0 0 32px 0;
-        max-width: 400px;
-        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3); // Add subtle shadow for better readability
-      }
+             .companyDescription {
+         color: $text-gray-light;
+         font-size: $font-size-lg;
+         line-height: $line-height-relaxed;
+         margin: 0 0 32px 0;
+         max-width: 400px;
+         text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3); // Add subtle shadow for better readability
+       }
+
+       // Newsletter Section
+       .newsletterSection {
+         margin-top: 50px;
+        //  padding: 24px;
+        //  background: rgba(255, 255, 255, 0.03);
+        //  backdrop-filter: blur(10px);
+        //  border-radius: 16px;
+        //  border: 1px solid rgba(255, 255, 255, 0.1);
+        //  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+         width: 100%;
+         max-width: 500px;
+
+         .newsletterTitle {
+           font-size: $font-size-lg;
+           font-weight: $font-weight-bold;
+           color: $text-white;
+           margin: 0 0 8px 0;
+           font-family: $font-title;
+           text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+         }
+
+         .newsletterDescription {
+           color: rgba(255, 255, 255, 0.7);
+           font-size: $font-size-sm;
+           line-height: $line-height-normal;
+           margin: 0 0 20px 0;
+           text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+         }
+
+         .newsletterForm {
+           .emailInputGroup {
+             position: relative;
+             display: flex;
+             align-items: center;
+             background: rgba(255, 255, 255, 0.05);
+             backdrop-filter: blur(10px);
+             border-radius: 12px;
+             padding: 4px;
+             border: 1px solid rgba(255, 255, 255, 0.1);
+             transition: all $duration-normal $ease-in-out;
+             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+
+             &:focus-within {
+               border-color: $primary-orange;
+               box-shadow: 
+                 0 0 0 2px rgba(255, 107, 53, 0.2),
+                 0 4px 20px rgba(255, 107, 53, 0.1);
+               transform: translateY(-1px);
+             }
+
+             .emailInput {
+               flex: 1;
+               background: transparent;
+               border: none;
+               color: $text-white;
+               padding: 12px 16px;
+               font-size: $font-size-sm;
+               outline: none;
+               font-weight: $font-weight-normal;
+
+               &::placeholder {
+                 color: rgba(255, 255, 255, 0.5);
+                 font-weight: $font-weight-normal;
+               }
+             }
+
+             .subscribeButton {
+               background: $gradient-button-primary;
+               border: none;
+               border-radius: 8px;
+               padding: 12px 20px;
+               display: flex;
+               align-items: center;
+               justify-content: center;
+               gap: 8px;
+               color: $text-white;
+               cursor: pointer;
+               transition: all $duration-normal $ease-in-out;
+               font-size: $font-size-sm;
+               font-weight: $font-weight-medium;
+               box-shadow: 0 2px 10px rgba(255, 107, 53, 0.3);
+               white-space: nowrap;
+
+               &:hover {
+                 transform: translateY(-2px) scale(1.02);
+                 box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4);
+               }
+
+               .sendIcon {
+                 transition: transform $duration-normal $ease-in-out;
+                 width: 14px;
+                 height: 14px;
+               }
+
+               &:hover .sendIcon {
+                 transform: translateX(2px);
+               }
+             }
+           }
+         }
+       }
     }
 
     .emailSection {
@@ -440,12 +542,45 @@
           transform: translateX(0%);
         }
 
-        .companyDescription {
-          max-width: 100%;
-          text-align: start;
-          font-size: $font-size-base;
-          margin-bottom: 1rem !important;
-        }
+                 .companyDescription {
+           max-width: 100%;
+           text-align: start;
+           font-size: $font-size-base;
+           margin-bottom: 1rem !important;
+         }
+
+         .newsletterSection {
+           margin-top: 24px;
+           padding: 20px;
+
+           .newsletterTitle {
+             font-size: $font-size-base;
+             text-align: center;
+           }
+
+           .newsletterDescription {
+             text-align: center;
+             font-size: 13px;
+           }
+
+           .newsletterForm .emailInputGroup {
+             flex-direction: column;
+             gap: 12px;
+             padding: 16px;
+
+             .emailInput {
+               padding: 14px 16px;
+               font-size: $font-size-base;
+               text-align: center;
+             }
+
+             .subscribeButton {
+               width: 100%;
+               padding: 14px 20px;
+               font-size: $font-size-base;
+             }
+           }
+         }
       }
 
       .emailSection {
@@ -512,10 +647,37 @@
           max-width: 200px;
         }
 
-        .companyDescription {
-          font-size: 14.4px;
-          margin-bottom: 24px;
-        }
+                 .companyDescription {
+           font-size: 14.4px;
+           margin-bottom: 24px;
+         }
+
+         .newsletterSection {
+           margin-top: 20px;
+           padding: 16px;
+
+           .newsletterTitle {
+             font-size: 15px;
+           }
+
+           .newsletterDescription {
+             font-size: 12px;
+           }
+
+           .newsletterForm .emailInputGroup {
+             padding: 12px;
+
+             .emailInput {
+               padding: 12px 14px;
+               font-size: 14px;
+             }
+
+             .subscribeButton {
+               padding: 12px 16px;
+               font-size: 14px;
+             }
+           }
+         }
       }
 
       .emailSection {
