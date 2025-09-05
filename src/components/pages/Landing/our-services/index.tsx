@@ -588,11 +588,13 @@ const OurServices = () => {
                       ref={imageRef}
                       src={
                         scrollSectionsData[currentSection]?.imageSrc ||
-                        scrollSectionsData[0].imageSrc
+                        scrollSectionsData[0]?.imageSrc ||
+                        ''
                       }
                       alt={
                         scrollSectionsData[currentSection]?.imageAlt ||
-                        scrollSectionsData[0].imageAlt
+                        scrollSectionsData[0]?.imageAlt ||
+                        ''
                       }
                       className={styles.scrollImage}
                       fill
