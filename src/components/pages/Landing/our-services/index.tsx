@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useRef, useState, useMemo } from 'react';
+import { useEffect, useRef, useState, useMemo, useCallback } from 'react';
 import Image from 'next/image';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -20,7 +20,10 @@ const OurServices = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isVisible, setIsVisible] = useState(false);
   const [currentSection, setCurrentSection] = useState(0);
+  const [isRefreshing, setIsRefreshing] = useState(false);
+  const [refreshCount, setRefreshCount] = useState(0);
   const isMountedRef = useRef(true);
+  const refreshIntervalRef = useRef<NodeJS.Timeout | null>(null);
 
   // Scroll-animated section refs
   const scrollSectionRef = useRef<HTMLElement>(null);
@@ -72,17 +75,127 @@ const OurServices = () => {
     ],
     []
   );
+  // Auto-refresh functions for mobile - defined early to avoid hoisting issues
+  const performRefresh = useCallback(async () => {
+    if (isRefreshing) {
+      console.log('Refresh already in progress, skipping...');
+      return;
+    }
+
+    console.log('Starting refresh...');
+    setIsRefreshing(true);
+    setRefreshCount((prev) => {
+      const newCount = prev + 1;
+      console.log('Refresh count updated to:', newCount);
+      return newCount;
+    });
+
+    try {
+      // Simulate content refresh - you can replace this with actual API calls
+      // For now, we'll just trigger a re-render with a subtle animation
+      const mobileCards = document.querySelectorAll(`.${styles.mobileServiceCard}`);
+      console.log('Found mobile cards:', mobileCards.length);
+
+      // Add refresh animation
+      mobileCards.forEach((card, index) => {
+        const element = card as HTMLElement;
+        element.style.transition = 'opacity 0.3s ease';
+        element.style.opacity = '0.7';
+
+        setTimeout(
+          () => {
+            element.style.opacity = '1';
+          },
+          150 + index * 100
+        );
+      });
+
+      // You can add actual data fetching here
+      // Example: await fetchLatestData();
+      console.log('Refresh animation completed');
+    } catch (error) {
+      console.error('Refresh failed:', error);
+    } finally {
+      setTimeout(() => {
+        setIsRefreshing(false);
+        console.log('Refresh completed');
+      }, 1000);
+    }
+  }, [isRefreshing]);
+
+  const stopAutoRefresh = useCallback(() => {
+    if (refreshIntervalRef.current) {
+      console.log('Stopping auto-refresh interval with ID:', refreshIntervalRef.current);
+      clearInterval(refreshIntervalRef.current);
+      refreshIntervalRef.current = null;
+      console.log('Auto-refresh stopped');
+    } else {
+      console.log('No auto-refresh interval to stop');
+    }
+  }, []);
+
+  const startAutoRefresh = useCallback(() => {
+    // Clear any existing interval
+    if (refreshIntervalRef.current) {
+      clearInterval(refreshIntervalRef.current);
+      refreshIntervalRef.current = null;
+    }
+
+    console.log('Starting auto-refresh interval...');
+
+    // Auto-refresh every 10 seconds for testing (change to 30000 for production)
+    refreshIntervalRef.current = setInterval(() => {
+      const isCurrentlyMobile = window.innerWidth < 993;
+      console.log(
+        'Auto-refresh tick - isMobile:',
+        isCurrentlyMobile,
+        'isMounted:',
+        isMountedRef.current
+      );
+
+      if (isCurrentlyMobile && isMountedRef.current) {
+        console.log('Performing auto-refresh...');
+        performRefresh();
+      } else {
+        console.log('Skipping auto-refresh - not mobile or not mounted');
+      }
+    }, 10000); // 10 seconds for testing, change to 30000 for production
+
+    console.log('Auto-refresh interval started with ID:', refreshIntervalRef.current);
+  }, [performRefresh]);
+
+  // Manual refresh function
+  const handleManualRefresh = useCallback(() => {
+    performRefresh();
+  }, [performRefresh]);
+
   // Check if screen is mobile/tablet (under 992px)
   useEffect(() => {
     const checkScreenSize = () => {
-      setIsMobile(window.innerWidth < 992);
+      const nowMobile = window.innerWidth < 993;
+      const wasMobile = isMobile;
+
+      setIsMobile(nowMobile);
+
+      // Start/stop auto-refresh based on mobile state
+      if (nowMobile && !wasMobile) {
+        console.log('Switching to mobile - starting auto-refresh');
+        startAutoRefresh();
+      } else if (!nowMobile && wasMobile) {
+        console.log('Switching to desktop - stopping auto-refresh');
+        stopAutoRefresh();
+      }
     };
 
+    // Initial check
     checkScreenSize();
     window.addEventListener('resize', checkScreenSize);
 
-    return () => window.removeEventListener('resize', checkScreenSize);
-  }, []);
+    return () => {
+      window.removeEventListener('resize', checkScreenSize);
+      stopAutoRefresh();
+    };
+  }, [isMobile, startAutoRefresh, stopAutoRefresh]);
 
   // Mouse tracking for interactive background effects
   useEffect(() => {
@@ -218,6 +331,9 @@ const OurServices = () => {
         y: 0,
       });
     }
+
+    // Capture video ref at effect start to avoid stale closure
+    const currentVideoRef = videoRef.current;
 
     const ctx = gsap.context(() => {
       // Set initial states - content starts visible to prevent blinking
@@ -403,10 +519,9 @@ const OurServices = () => {
       // Only cleanup if component is still mounted
       if (!isMountedRef.current) return;
 
-      // Clean up video event listeners
-      const videoElement = videoRef.current;
-      if (videoElement) {
-        const video = videoElement as any;
+      // Clean up video event listeners using captured ref
+      if (currentVideoRef) {
+        const video = currentVideoRef as any;
         if (video._mouseEnterHandler && video._mouseLeaveHandler) {
           video.removeEventListener('mouseenter', video._mouseEnterHandler);
           video.removeEventListener('mouseleave', video._mouseLeaveHandler);
@@ -456,12 +571,27 @@ const OurServices = () => {
     }
   }, [currentSection, scrollSectionsData, isMobile]);
 
+  // Start auto-refresh on mobile when component mounts
+  useEffect(() => {
+    // Check if we're on mobile and start auto-refresh
+    const isCurrentlyMobile = window.innerWidth < 992;
+    if (isCurrentlyMobile) {
+      console.log('Component mounted on mobile - starting auto-refresh');
+      startAutoRefresh();
+    }
+
+    return () => {
+      stopAutoRefresh();
+    };
+  }, [startAutoRefresh, stopAutoRefresh]);
+
   // Cleanup effect
   useEffect(() => {
     return () => {
       isMountedRef.current = false;
+      stopAutoRefresh();
     };
-  }, []);
+  }, [stopAutoRefresh]);
 
   return (
     <>
@@ -470,7 +600,9 @@ const OurServices = () => {
         <section className={styles.mobileSection}>
           <div className={styles.container}>
             <div className={styles.header}>
-              <h2 className={styles.title}>Our AI-Powered Services</h2>
+              <div className={styles.headerTop}>
+                <h2 className={styles.title}>Our AI-Powered Services</h2>
+              </div>
               <p className={styles.description}>
                 Empower your team with <strong>secure, AI-driven insights</strong> and{' '}
                 <em>workflow automation</em> tailored to your data, tools, and processes.

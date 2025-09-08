@@ -561,7 +561,7 @@
     max-width: 200px;
   }
   .mobileServicesGrid {
-    grid-template-columns: repeat(1, 1fr);
+    grid-template-columns: repeat(1, 1fr) !important;
   }
 }
 
@@ -772,52 +772,116 @@
   z-index: 10;
   position: relative;
   padding: 90px 32px 0; // Add internal padding for content spacing
+}
 
-  .title {
-    @include section-title-responsive;
-    opacity: 0;
-    transform: translateY(-30px);
-    transition: all 0.8s ease;
-    color: #ffffff; // Pure white color
-    position: relative;
+.headerTop {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
 
-    &::after {
-      content: '';
-      position: absolute;
-      bottom: -10px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 60px;
-      height: 3px;
-      background: linear-gradient(90deg, #ff6b35 0%, #ff9f1c 50%, #63cfe9 100%);
-      border-radius: 2px;
-      opacity: 0;
-      transition: opacity 0.5s ease 0.3s;
-    }
+.refreshControls {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
 
-    &.animateIn {
-      opacity: 1;
-      transform: translateY(0);
+.refreshButton {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
 
-      &::after {
-        opacity: 1;
-      }
-    }
+  &:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: scale(1.05);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  &.refreshing {
+    animation: spin 1s linear infinite;
+  }
+}
+
+.refreshIcon {
+  font-size: 18px;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.refreshCount {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.7);
+  white-space: nowrap;
+  font-style: italic;
+}
+
+.autoRefreshIndicator {
+  font-size: 11px;
+  color: #63cfe9;
+  white-space: nowrap;
+  font-weight: 500;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.title {
+  @include section-title-responsive;
+  color: #ffffff; // Pure white color
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, #ff6b35 0%, #ff9f1c 50%, #63cfe9 100%);
+    border-radius: 2px;
   }
 }
 
 .description {
   @include section-subtitle-responsive;
   text-align: center;
-  opacity: 0;
-  transform: translateY(-20px);
-  transition: all 0.8s ease 0.2s;
   color: rgba(255, 255, 255, 0.7) !important; // Consistent with other sections
-
-  &.animateIn {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 // Progress container for overall scroll progress
@@ -1195,6 +1259,86 @@
 }
 
 @media (max-width: 992px) {
+  .contentPanel {
+    gap: 2rem;
+    padding: 2rem 1rem;
+    text-align: center;
+  }
+
+  .leftContent {
+    order: 2;
+    padding: 1rem 0;
+  }
+
+  .rightImage {
+    order: 1;
+  }
+
+  .imageContainer {
+    height: 300px;
+    max-width: 400px;
+  }
+
+  .scrollTitle {
+    font-size: clamp(2rem, 8vw, 2.5rem);
+  }
+
+  .scrollSubtitle {
+    font-size: clamp(1rem, 4vw, 1.4rem);
+  }
+
+  .scrollDescription {
+    font-size: clamp(0.9rem, 3vw, 1.1rem);
+  }
+  .title {
+    opacity: 1 !important;
+    &::after {
+      opacity: 1 !important;
+    }
+  }
+  .subtitle {
+    opacity: 1 !important;
+  }
+  .description {
+    opacity: 1 !important;
+  }
+  .mobileSection {
+    max-height: 100% !important;
+    height: 100% !important;
+    position: unset !important;
+    transform: unset !important;
+  }
+  .mobileServicesGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    padding: 0 1.5rem 1rem;
+  }
+  .mobileServiceCard {
+    padding: 1.5rem;
+    gap: 1.5rem;
+  }
+
+  .mobileImageContainer {
+    height: 250px;
+    max-width: 100%;
+  }
+
+  .mobileTitle {
+    font-size: 22px;
+    margin-bottom: 20px;
+  }
+
+  .mobileSubtitle {
+    font-size: 16px;
+  }
+
+  .mobileDescription {
+    font-size: 14px;
+  }
+  .mobileButton {
+    padding: 10px 20px;
+    font-size: 13px;
+  }
   .servicesSection {
     padding: 0; // Keep seamless layout
   }
@@ -1215,7 +1359,14 @@
 
   // Adjust header spacing
   .header {
+    padding-top: 40px;
     margin-bottom: 32px;
+    .title {
+      font-size: 28px;
+    }
+    .description {
+      font-size: 16px;
+    }
   }
 
   .cardIcon {
@@ -1252,6 +1403,34 @@
   .header {
     margin-bottom: 24px;
     padding: 32px 16px 0; // Add internal padding for mobile
+  }
+
+  .headerTop {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .refreshControls {
+    gap: 0.5rem;
+  }
+
+  .refreshButton {
+    width: 36px;
+    height: 36px;
+  }
+
+  .refreshIcon {
+    font-size: 16px;
+  }
+
+  .refreshCount {
+    font-size: 11px;
+  }
+
+  .autoRefreshIndicator {
+    font-size: 10px;
   }
 
   .description {
