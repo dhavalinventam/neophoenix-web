@@ -32,71 +32,74 @@ export default function Footer() {
                   technology and innovative solutions.
                 </p>
 
-                {/* Newsletter Subscription Form */}
-                <div className={styles.newsletterSection}>
-                  <h6 className={styles.newsletterTitle}>Newsletter</h6>
-                  <p className={styles.newsletterDescription}>
-                    Stay ahead with insights on enterprise AI.
-                  </p>
-                  <form className={styles.newsletterForm}>
-                    <div className={styles.emailInputGroup}>
-                      <input
-                        type="email"
-                        placeholder="Enter your email"
-                        className={styles.emailInput}
-                        required
-                      />
-                      <button type="submit" className={styles.subscribeButton}>
-                        <span>Subscribe to Newsletter</span>
-                        <svg
-                          width="18"
-                          height="18"
-                          viewBox="0 0 24 24"
-                          fill="currentColor"
-                          className={styles.sendIcon}
-                        >
-                          <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" />
-                        </svg>
-                      </button>
-                    </div>
-                  </form>
-                </div>
               </div>
             </div>
           </div>
 
           <div className={styles.footer_rightColumn_section}>
-            {/* Middle Column - Products */}
-            <div className={styles.middleColumn}>
-              <div className={styles.productsSection}>
-                <h5 className={styles.sectionTitle}>Products</h5>
-                <ul className={styles.linkList}>
-                  <li>
-                    <Link href="#services" className={styles.link}>
-                      RAG System
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="#services" className={styles.link}>
-                      Task Prompt AI
-                    </Link>
-                  </li>
-                </ul>
+            <div className={styles.footer_rightColumn_section_inner}>
+              {/* Middle Column - Products */}
+              <div className={styles.middleColumn}>
+                <div className={styles.productsSection}>
+                  <h5 className={styles.sectionTitle}>Products</h5>
+                  <ul className={styles.linkList}>
+                    <li>
+                      <Link href="#services" className={styles.link}>
+                        RAG System
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="#services" className={styles.link}>
+                        Task Prompt AI
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              {/* Right Column - Let's Connect */}
+              <div className={styles.rightColumn}>
+                <div className={styles.connectSection}>
+                  <h5 className={styles.sectionTitle}>Let's Connect</h5>
+                  <ul className={styles.linkList}>
+                    <li>
+                      <Link href="/contact" className={styles.link}>
+                        Contact
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
 
-            {/* Right Column - Let's Connect */}
-            <div className={styles.rightColumn}>
-              <div className={styles.connectSection}>
-                <h5 className={styles.sectionTitle}>Let's Connect</h5>
-                <ul className={styles.linkList}>
-                  <li>
-                    <Link href="/contact" className={styles.link}>
-                      Contact
-                    </Link>
-                  </li>
-                </ul>
-              </div>
+            {/* Newsletter Subscription Form */}
+            <div className={styles.newsletterSection}>
+              <h6 className={styles.newsletterTitle}>Newsletter</h6>
+              <p className={styles.newsletterDescription}>
+                Stay ahead with insights on enterprise AI.
+              </p>
+              <form className={styles.newsletterForm}>
+                <div className={styles.emailInputGroup}>
+                  <input
+                    type="email"
+                    placeholder="Enter your email"
+                    className={styles.emailInput}
+                    required
+                  />
+                  <button type="submit" className={styles.subscribeButton}>
+                    <span> Subscribe to Newsletter </span>
+                    <svg
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      className={styles.sendIcon}
+                    >
+                      <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" />
+                    </svg>
+                  </button>
+                </div>
+              </form>
             </div>
           </div>
         </div>

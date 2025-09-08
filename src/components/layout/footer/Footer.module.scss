@@ -90,7 +90,7 @@
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: auto 500px;
   gap: 48px;
   margin-bottom: 48px;
   align-items: start;
@@ -135,106 +135,6 @@
         text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3); // Add subtle shadow for better readability
       }
 
-      // Newsletter Section
-      .newsletterSection {
-        margin-top: 50px;
-        //  padding: 24px;
-        //  background: rgba(255, 255, 255, 0.03);
-        //  backdrop-filter: blur(10px);
-        //  border-radius: 16px;
-        //  border: 1px solid rgba(255, 255, 255, 0.1);
-        //  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-        width: 100%;
-        max-width: 500px;
-
-        .newsletterTitle {
-          font-size: $font-size-lg;
-          font-weight: $font-weight-bold;
-          color: $text-white;
-          margin: 0 0 8px 0;
-          font-family: $font-title;
-          text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-        }
-
-        .newsletterDescription {
-          color: rgba(255, 255, 255, 0.7);
-          font-size: $font-size-sm;
-          line-height: $line-height-normal;
-          margin: 0 0 20px 0;
-          text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-        }
-
-        .newsletterForm {
-          .emailInputGroup {
-            position: relative;
-            display: flex;
-            align-items: center;
-            background: #2C2F33; // Dark charcoal gray background
-            border-radius: 50px; // Heavily rounded corners for pill shape
-            padding: 4px;
-            border: 1px solid #4A4D50; // Subtle lighter gray border
-            transition: all $duration-normal $ease-in-out;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            max-width: 500px;
-
-            &:focus-within {
-              border-color: $primary-orange;
-              box-shadow:
-                0 0 0 2px rgba(255, 107, 53, 0.2),
-                0 4px 20px rgba(255, 107, 53, 0.1);
-              transform: translateY(-1px);
-            }
-
-            .emailInput {
-              flex: 1;
-              background: transparent;
-              border: none;
-              color: $text-white;
-              padding: 12px 20px;
-              font-size: $font-size-sm;
-              outline: none;
-              font-weight: $font-weight-normal;
-              border-radius: 50px; // Match the pill shape
-
-              &::placeholder {
-                color: #8E9297; // Medium gray placeholder text
-                font-weight: $font-weight-normal;
-              }
-            }
-
-            .subscribeButton {
-              background: $gradient-button-primary;
-              border: none;
-              border-radius: 20px; // Circular button
-              padding: 7px 14px;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              gap: 8px;
-              color: $text-white;
-              cursor: pointer;
-              transition: all $duration-normal $ease-in-out;
-              box-shadow: 0 2px 10px rgba(255, 107, 53, 0.3);
-              margin-right: 4px;
-
-              &:hover {
-                transform: translateY(-2px) scale(1.05);
-                box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4);
-              }
-
-              .sendIcon {
-                transition: transform $duration-normal $ease-in-out;
-                width: 18px;
-                height: 18px;
-              }
-
-              &:hover .sendIcon {
-                transform: translateX(2px);
-              }
-            }
-          }
-        }
-      }
     }
 
     .emailSection {
@@ -366,10 +266,111 @@
   }
 }
 
-.footer_rightColumn_section {
+.footer_rightColumn_section_inner {
   display: flex;
   justify-content: space-between;
-  gap: 3rem;
+  gap: 42px;
+}
+
+.footer_rightColumn_section {
+  display: flex;
+  gap: 24px;
+  flex-direction: column;
+
+  // Newsletter Section
+  .newsletterSection {
+    margin-top: 10px;
+    width: 100%;
+    max-width: 500px;
+
+    .newsletterTitle {
+      font-size: $font-size-lg;
+      font-weight: $font-weight-bold;
+      color: $text-white;
+      margin: 0 0 8px 0;
+      font-family: $font-title;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    }
+
+    .newsletterDescription {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: $font-size-sm;
+      line-height: $line-height-normal;
+      margin: 0 0 20px 0;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    }
+
+    .newsletterForm {
+        .emailInputGroup {
+          position: relative;
+          display: flex;
+          align-items: center;
+          background: #2C2F33; // Dark charcoal gray background
+          border-radius: 50px; // Heavily rounded corners for pill shape
+          padding: 4px;
+          border: 1px solid #4A4D50; // Subtle lighter gray border
+          transition: all $duration-normal $ease-in-out;
+          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+          max-width: 500px;
+
+          &:focus-within {
+            border-color: $primary-orange;
+            box-shadow:
+              0 0 0 2px rgba(255, 107, 53, 0.2),
+              0 4px 20px rgba(255, 107, 53, 0.1);
+            transform: translateY(-1px);
+          }
+
+        .emailInput {
+          flex: 1;
+          background: transparent;
+          border: none;
+          color: $text-white;
+          padding: 12px 20px;
+          font-size: $font-size-sm;
+          outline: none;
+          font-weight: $font-weight-normal;
+          border-radius: 50px; // Match the pill shape
+
+          &::placeholder {
+            color: #8E9297; // Medium gray placeholder text
+            font-weight: $font-weight-normal;
+          }
+        }
+
+        .subscribeButton {
+          background: $gradient-button-primary;
+          border: none;
+          border-radius: 32px; // Perfectly circular button
+          padding: 8px 16px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 8px;
+          color: white;
+          cursor: pointer;
+          transition: all $duration-normal $ease-in-out;
+          box-shadow: 0 2px 10px rgba(255, 107, 53, 0.3);
+          margin-right: 4px;
+
+          &:hover {
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4);
+          }
+
+          .sendIcon {
+            transition: transform $duration-normal $ease-in-out;
+            width: 18px;
+            height: 18px;
+          }
+
+          &:hover .sendIcon {
+            transform: translateX(2px);
+          }
+        }
+      }
+    }
+  }
 }
 
 // Right Column - Let's Connect
@@ -584,41 +585,6 @@
           margin-bottom: 1rem !important;
         }
 
-        .newsletterSection {
-          margin-top: 24px;
-          padding: 20px;
-
-          .newsletterTitle {
-            font-size: $font-size-base;
-            text-align: center;
-          }
-
-          .newsletterDescription {
-            text-align: center;
-            font-size: 13px;
-          }
-
-          .newsletterForm .emailInputGroup {
-            flex-direction: column;
-            gap: 12px;
-            padding: 16px;
-            max-width: 100%;
-
-            .emailInput {
-              padding: 14px 20px;
-              font-size: $font-size-base;
-              text-align: center;
-              border-radius: 50px;
-            }
-
-            .subscribeButton {
-              width: 48px;
-              height: 48px;
-              align-self: center;
-              margin-right: 0;
-            }
-          }
-        }
       }
 
       .emailSection {
@@ -632,6 +598,42 @@
 
   .footer_rightColumn_section {
     gap: 2rem;
+
+    .newsletterSection {
+      margin-top: 24px;
+      padding: 20px;
+
+      .newsletterTitle {
+        font-size: $font-size-base;
+        text-align: center;
+      }
+
+      .newsletterDescription {
+        text-align: center;
+        font-size: 13px;
+      }
+
+      .newsletterForm .emailInputGroup {
+        flex-direction: column;
+        gap: 12px;
+        padding: 16px;
+        max-width: 100%;
+
+        .emailInput {
+          padding: 14px 20px;
+          font-size: $font-size-base;
+          text-align: center;
+          border-radius: 50px;
+        }
+
+        .subscribeButton {
+          width: 48px;
+          height: 48px;
+          align-self: center;
+          margin-right: 0;
+        }
+      }
+    }
   }
 
   .middleColumn,
@@ -695,36 +697,6 @@
           margin-bottom: 24px;
         }
 
-        .newsletterSection {
-          margin-top: 20px;
-          padding: 16px;
-
-          .newsletterTitle {
-            font-size: 15px;
-          }
-
-          .newsletterDescription {
-            font-size: 12px;
-          }
-
-          .newsletterForm .emailInputGroup {
-            padding: 12px;
-            max-width: 100%;
-
-            .emailInput {
-              padding: 12px 20px;
-              font-size: 14px;
-              border-radius: 50px;
-            }
-
-            .subscribeButton {
-              width: 44px;
-              height: 44px;
-              align-self: center;
-              margin-right: 0;
-            }
-          }
-        }
       }
 
       .emailSection {
@@ -745,6 +717,37 @@
 
   .footer_rightColumn_section {
     gap: 1.5rem;
+
+    .newsletterSection {
+      margin-top: 20px;
+      padding: 16px;
+
+      .newsletterTitle {
+        font-size: 15px;
+      }
+
+      .newsletterDescription {
+        font-size: 12px;
+      }
+
+      .newsletterForm .emailInputGroup {
+        padding: 12px;
+        max-width: 100%;
+
+        .emailInput {
+          padding: 12px 20px;
+          font-size: 14px;
+          border-radius: 50px;
+        }
+
+        .subscribeButton {
+          width: 44px;
+          height: 44px;
+          align-self: center;
+          margin-right: 0;
+        }
+      }
+    }
   }
 
   .middleColumn,
