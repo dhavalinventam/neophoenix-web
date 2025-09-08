@@ -8,12 +8,14 @@
   padding: 0;
   margin: 0;
   scroll-behavior: smooth;
+  transform: unset !important;
+  // height: 180vh !important;
 }
 
 .scrollContainer {
   position: relative; // Changed from sticky to relative - GSAP will handle pinning
   top: 0;
-  height: 65vh;
+  height: 60vh;
   width: 100%;
   display: flex;
   align-items: center;
@@ -23,7 +25,7 @@
 
 .stickyContainer {
   position: relative;
-  height: 65vh;
+  height: 60vh;
   width: 100%;
   display: flex;
   align-items: center;
@@ -39,7 +41,7 @@
   margin: 0 auto;
   padding: 0 2rem;
   align-items: center;
-  min-height: 65vh;
+  min-height: 60vh;
   position: relative;
 }
 
@@ -52,8 +54,10 @@
   padding: 2rem 0;
   position: relative;
   max-width: 600px;
-  transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   will-change: transform, opacity, scale;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
 }
 
 .rightImage {
@@ -61,8 +65,10 @@
   justify-content: center;
   align-items: center;
   position: relative;
-  transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   will-change: transform, opacity, scale;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
 }
 
 // Remove duplicate - already defined above
@@ -81,6 +87,9 @@
   position: relative;
   text-align: left;
   width: 100%;
+  transition: all 0.3s ease;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
 
   &::after {
     content: '';
@@ -91,6 +100,7 @@
     height: 4px;
     background: linear-gradient(90deg, #ff6b35 0%, #ff9f1c 50%, var(--accent-color, #63cfe9) 100%);
     border-radius: 2px;
+    transition: all 0.3s ease;
   }
 }
 
@@ -104,6 +114,9 @@
   letter-spacing: 0.1em;
   text-align: left;
   width: 100%;
+  transition: all 0.3s ease;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
 }
 
 .scrollDescription {
@@ -116,6 +129,9 @@
   opacity: 0.9;
   text-align: left;
   width: 100%;
+  transition: all 0.3s ease;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
 }
 
 .scrollButton {
@@ -137,6 +153,8 @@
   box-shadow: 0 8px 25px rgba(99, 207, 233, 0.3);
   position: relative;
   overflow: hidden;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
 
   &::before {
     content: '';
@@ -796,7 +814,7 @@
   text-align: center;
   z-index: 10;
   position: relative;
-  padding: 64px 32px 0; // Add internal padding for content spacing
+  padding: 90px 32px 0; // Add internal padding for content spacing
 
   .title {
     @include section-title-responsive;

@@ -25,6 +25,7 @@ const OurServices = () => {
   const scrollSectionRef = useRef<HTMLElement>(null);
   const leftContentRef = useRef<HTMLDivElement>(null);
   const rightImageRef = useRef<HTMLDivElement>(null);
+  const contentPanelRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const subtitleRef = useRef<HTMLHeadingElement>(null);
   const descriptionRef = useRef<HTMLParagraphElement>(null);
@@ -54,6 +55,38 @@ const OurServices = () => {
       {
         id: 2,
         title: 'Task Prompt AI Chrome Extension',
+        subtitle: 'AI-Powered Prompts Where Work Happens.',
+        description:
+          "Supercharge your workflows in Jira, ClickUp, Asana, and Trello with contextual, role-specific AI prompts. Cut task completion time in half while customizing prompts to match your team's industry, style, and goals.",
+        buttonText: 'Try the Extension',
+        buttonLink: '#services',
+        imageSrc:
+          'https://images.unsplash.com/photo-1611224923853-80b023f02d71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+        imageAlt: 'Chrome Extension Preview',
+        videoSrc: '/video/task-prompt-ai-video.mp4',
+        backgroundColor: 'linear-gradient(135deg, #1e293b 0%, #334155 50%, #475569 100%)',
+        textColor: '#ffffff',
+        accentColor: '#f59e0b',
+      },
+      {
+        id: 2,
+        title: '12312312312',
+        subtitle: 'AI-Powered Prompts Where Work Happens.',
+        description:
+          "Supercharge your workflows in Jira, ClickUp, Asana, and Trello with contextual, role-specific AI prompts. Cut task completion time in half while customizing prompts to match your team's industry, style, and goals.",
+        buttonText: 'Try the Extension',
+        buttonLink: '#services',
+        imageSrc:
+          'https://images.unsplash.com/photo-1611224923853-80b023f02d71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+        imageAlt: 'Chrome Extension Preview',
+        videoSrc: '/video/task-prompt-ai-video.mp4',
+        backgroundColor: 'linear-gradient(135deg, #1e293b 0%, #334155 50%, #475569 100%)',
+        textColor: '#ffffff',
+        accentColor: '#f59e0b',
+      },
+      {
+        id: 2,
+        title: '11111111',
         subtitle: 'AI-Powered Prompts Where Work Happens.',
         description:
           "Supercharge your workflows in Jira, ClickUp, Asana, and Trello with contextual, role-specific AI prompts. Cut task completion time in half while customizing prompts to match your team's industry, style, and goals.",
@@ -142,7 +175,7 @@ const OurServices = () => {
             serviceCards.forEach((card, index) => {
               setTimeout(() => {
                 card.classList.add(styles.animateIn);
-              }, index * 200);
+              }, index * 100);
             });
           } else {
             setIsVisible(false);
@@ -183,10 +216,10 @@ const OurServices = () => {
       titleRef.current,
       subtitleRef.current,
       descriptionRef.current,
-      buttonRef.current
+      buttonRef.current,
     ];
 
-    if (elements.some(el => !el || !el.isConnected)) {
+    if (elements.some((el) => !el || !el.isConnected)) {
       return;
     }
 
@@ -218,20 +251,20 @@ const OurServices = () => {
     }
 
     const ctx = gsap.context(() => {
-      // Set initial states - content starts hidden for enhanced bottom to top animation
+      // Set initial states - content starts visible to prevent blinking
       gsap.set([titleRef.current, subtitleRef.current, descriptionRef.current, buttonRef.current], {
-        opacity: 0,
-        y: 100,
+        opacity: 1,
+        y: 0,
         x: 0,
-        scale: 0.95,
+        scale: 1,
         clearProps: 'none',
       });
 
       gsap.set(rightImageRef.current, {
-        opacity: 0,
-        y: 100,
+        opacity: 1,
+        y: 0,
         x: 0,
-        scale: 0.85,
+        scale: 1,
         clearProps: 'none',
       });
 
@@ -239,35 +272,47 @@ const OurServices = () => {
       const mediaElements = [imageRef.current, videoRef.current].filter(Boolean);
       if (mediaElements.length > 0) {
         gsap.set(mediaElements, {
-          scale: 0.85,
-          opacity: 0,
-          y: 100,
+          scale: 1,
+          opacity: 1,
+          y: 0,
           display: 'block',
           rotation: 0,
           clearProps: 'none',
         });
       }
 
-      // Create main vertical scroll timeline with pin
-      const mainTl = gsap.timeline({
+      // Create main vertical scroll timeline with pinning via GSAP only
+      const computeEnd = () => {
+        const viewport = window.innerHeight || 1000;
+        const sections = Math.max(1, scrollSectionsData.length - 1);
+        const contentEl = contentPanelRef.current;
+        const contentScroll = contentEl ? Math.max(0, contentEl.scrollHeight - viewport) : 0;
+        const bySections = viewport * sections;
+        const distance = Math.max(bySections, contentScroll || viewport);
+        return `+=${distance}`;
+      };
+      gsap.timeline({
         scrollTrigger: {
           trigger: scrollSectionRef.current,
           start: 'top top',
-          end: 'bottom bottom', // This ensures it stays sticky until the very bottom
-          scrub: 0.5,
+          end: computeEnd(),
+          scrub: 0.2,
           pin: true,
-          pinSpacing: true, // Add proper spacing
-          anticipatePin: 1,
-          invalidateOnRefresh: true, // Recalculate on refresh
+          pinSpacing: true,
+          anticipatePin: 0.1,
+          invalidateOnRefresh: true,
+          onRefreshInit: () => {
+            // ensure end recalculates on refresh
+            // no-op; computeEnd will re-evaluate due to invalidateOnRefresh
+          },
           onUpdate: (self) => {
             const progress = self.progress;
             const sectionIndex = Math.floor(progress * scrollSectionsData.length);
             const newSection = Math.min(sectionIndex, scrollSectionsData.length - 1);
 
-            // Only update if section actually changed
             if (newSection !== currentSection) {
-              // Fade out current content
-              const fadeOutElements = [
+              // Smooth transition without complete fade out
+              const transitionElements = [
                 titleRef.current,
                 subtitleRef.current,
                 descriptionRef.current,
@@ -276,40 +321,25 @@ const OurServices = () => {
                 videoRef.current,
               ].filter(Boolean);
 
-              gsap.to(fadeOutElements, {
-                opacity: 0,
-                duration: 0.3,
+              // Create a smooth crossfade effect
+              gsap.to(transitionElements, {
+                opacity: 0.3,
+                y: -10,
+                scale: 0.98,
+                duration: 0.15,
                 ease: 'power2.inOut',
                 onComplete: () => {
-                  // Update content after fade out
                   setCurrentSection(newSection);
 
-                  // Fade in new content
-                  const fadeInElements = [
-                    titleRef.current,
-                    subtitleRef.current,
-                    descriptionRef.current,
-                    buttonRef.current,
-                    imageRef.current,
-                    videoRef.current,
-                  ].filter(Boolean);
-
-                  gsap.fromTo(
-                    fadeInElements,
-                    {
-                      opacity: 0,
-                      y: 30,
-                      scale: 0.99,
-                    },
-                    {
-                      opacity: 1,
-                      y: 0,
-                      scale: 1,
-                      duration: 1.2,
-                      ease: 'power2.out',
-                      stagger: 0.1,
-                    }
-                  );
+                  // Smooth fade back in with new content
+                  gsap.to(transitionElements, {
+                    opacity: 1,
+                    y: 0,
+                    scale: 1,
+                    duration: 0.25,
+                    ease: 'power2.out',
+                    stagger: 0.05,
+                  });
                 },
               });
             }
@@ -317,59 +347,13 @@ const OurServices = () => {
         },
       });
 
-      // Initial fade in animation for first load
-      const initialElements = [leftContentRef.current, rightImageRef.current].filter(Boolean);
-      if (initialElements.length > 0) {
-        gsap.fromTo(
-          initialElements,
-          {
-            opacity: 0,
-            y: 50,
-            scale: 0.95,
-          },
-          {
-            opacity: 1,
-            y: 0,
-            scale: 1,
-            duration: 1.2,
-            ease: 'power3.out',
-            delay: 0.2,
-          }
-        );
-      }
-
-      // Initial content fade in
-      const contentElements = [
-        titleRef.current,
-        subtitleRef.current,
-        descriptionRef.current,
-        buttonRef.current,
-      ].filter(Boolean);
-      if (contentElements.length > 0) {
-        gsap.fromTo(
-          contentElements,
-          {
-            opacity: 0,
-            y: 30,
-            scale: 0.95,
-          },
-          {
-            opacity: 1,
-            y: 0,
-            scale: 1,
-            duration: 1.2,
-            ease: 'power3.out',
-            stagger: 0.2,
-            delay: 0.3,
-          }
-        );
-      }
+      // Content is already visible, no initial fade needed
 
       // Smooth parallax effect for image/video
       const parallaxElements = [imageRef.current, videoRef.current].filter(Boolean);
       if (parallaxElements.length > 0) {
         gsap.to(parallaxElements, {
-          y: -50,
+          y: -30,
           // rotation: 5,
           scrollTrigger: {
             trigger: scrollSectionRef.current,
@@ -380,26 +364,6 @@ const OurServices = () => {
         });
       }
 
-      // Additional ScrollTrigger to ensure sticky behavior until page end
-      ScrollTrigger.create({
-        trigger: 'body',
-        start: 'top top',
-        end: 'bottom bottom',
-        onUpdate: (self) => {
-          // This ensures the section stays pinned until the very bottom
-          if (scrollSectionRef.current) {
-            const sectionRect = scrollSectionRef.current.getBoundingClientRect();
-            const isAtBottom = self.progress >= 0.99;
-
-            // Only unpin when we're truly at the bottom
-            if (isAtBottom && self.direction === 1) {
-              // Optional: Add any final state changes here
-              console.log('Reached bottom of page');
-            }
-          }
-        },
-      });
-
       // No fade effects on scroll - content stays fully visible
 
       // Hover animations
@@ -407,7 +371,7 @@ const OurServices = () => {
         buttonRef.current.addEventListener('mouseenter', () => {
           gsap.to(buttonRef.current, {
             scale: 1,
-            duration: 0.3,
+            duration: 0.2,
             ease: 'power2.out',
           });
         });
@@ -415,7 +379,7 @@ const OurServices = () => {
         buttonRef.current.addEventListener('mouseleave', () => {
           gsap.to(buttonRef.current, {
             scale: 1,
-            duration: 0.8,
+            duration: 0.2,
             ease: 'power2.out',
           });
         });
@@ -426,7 +390,7 @@ const OurServices = () => {
         imageRef.current.addEventListener('mouseenter', () => {
           gsap.to(imageRef.current, {
             rotation: 0,
-            duration: 0.4,
+            duration: 0.2,
             ease: 'power2.out',
           });
         });
@@ -434,7 +398,7 @@ const OurServices = () => {
         imageRef.current.addEventListener('mouseleave', () => {
           gsap.to(imageRef.current, {
             rotation: 0,
-            duration: 0.4,
+            duration: 0.2,
             ease: 'power2.out',
           });
         });
@@ -444,7 +408,7 @@ const OurServices = () => {
         const handleVideoMouseEnter = () => {
           gsap.to(videoRef.current, {
             rotation: 0,
-            duration: 0.4,
+            duration: 0.2,
             ease: 'power2.out',
           });
         };
@@ -452,7 +416,7 @@ const OurServices = () => {
         const handleVideoMouseLeave = () => {
           gsap.to(videoRef.current, {
             rotation: 0,
-            duration: 0.4,
+            duration: 0.2,
             ease: 'power2.out',
           });
         };
@@ -469,10 +433,11 @@ const OurServices = () => {
     return () => {
       // Only cleanup if component is still mounted
       if (!isMountedRef.current) return;
-      
+
       // Clean up video event listeners
-      if (videoRef.current) {
-        const video = videoRef.current as any;
+      const videoElement = videoRef.current;
+      if (videoElement) {
+        const video = videoElement as any;
         if (video._mouseEnterHandler && video._mouseLeaveHandler) {
           video.removeEventListener('mouseenter', video._mouseEnterHandler);
           video.removeEventListener('mouseleave', video._mouseLeaveHandler);
@@ -480,11 +445,11 @@ const OurServices = () => {
           delete video._mouseLeaveHandler;
         }
       }
-      
+
       try {
         ctx.revert();
         // Clean up ScrollTrigger instances without refresh to avoid DOM issues
-        ScrollTrigger.getAll().forEach(trigger => {
+        ScrollTrigger.getAll().forEach((trigger) => {
           if (trigger.trigger && trigger.trigger.isConnected) {
             trigger.kill();
           }
@@ -598,7 +563,7 @@ const OurServices = () => {
           </section>
           <div className={styles.scrollContainer}>
             <div className={styles.stickyContainer}>
-              <div className={styles.contentPanel}>
+              <div ref={contentPanelRef} className={styles.contentPanel}>
                 {/* Left Content */}
                 <div ref={leftContentRef} className={styles.leftContent}>
                   <h2 ref={titleRef} className={styles.scrollTitle}>
