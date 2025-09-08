@@ -68,38 +68,6 @@ const OurServices = () => {
         textColor: '#ffffff',
         accentColor: '#f59e0b',
       },
-      {
-        id: 3,
-        title: '12312312312',
-        subtitle: 'AI-Powered Prompts Where Work Happens.',
-        description:
-          "Supercharge your workflows in Jira, ClickUp, Asana, and Trello with contextual, role-specific AI prompts. Cut task completion time in half while customizing prompts to match your team's industry, style, and goals.",
-        buttonText: 'Try the Extension',
-        buttonLink: '#services',
-        imageSrc:
-          'https://images.unsplash.com/photo-1611224923853-80b023f02d71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-        imageAlt: 'Chrome Extension Preview',
-        videoSrc: '/video/task-prompt-ai-video.mp4',
-        backgroundColor: 'linear-gradient(135deg, #1e293b 0%, #334155 50%, #475569 100%)',
-        textColor: '#ffffff',
-        accentColor: '#f59e0b',
-      },
-      {
-        id: 4,
-        title: '11111111',
-        subtitle: 'AI-Powered Prompts Where Work Happens.',
-        description:
-          "Supercharge your workflows in Jira, ClickUp, Asana, and Trello with contextual, role-specific AI prompts. Cut task completion time in half while customizing prompts to match your team's industry, style, and goals.",
-        buttonText: 'Try the Extension',
-        buttonLink: '#services',
-        imageSrc:
-          'https://images.unsplash.com/photo-1611224923853-80b023f02d71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-        imageAlt: 'Chrome Extension Preview',
-        videoSrc: '/video/task-prompt-ai-video.mp4',
-        backgroundColor: 'linear-gradient(135deg, #1e293b 0%, #334155 50%, #475569 100%)',
-        textColor: '#ffffff',
-        accentColor: '#f59e0b',
-      },
     ],
     []
   );
