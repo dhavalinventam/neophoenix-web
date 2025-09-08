@@ -622,10 +622,12 @@ const OurServices = () => {
                   <h2 className={styles.mobileTitle}>{scrollSectionsData[0]?.title}</h2>
                   <h3 className={styles.mobileSubtitle}>{scrollSectionsData[0]?.subtitle}</h3>
                   <p className={styles.mobileDescription}>{scrollSectionsData[0]?.description}</p>
-                  <Button 
-                    label={scrollSectionsData[0]?.buttonText || ''} 
-                    onClick={() => window.open(scrollSectionsData[0]?.buttonLink, '_blank')}
-                  />
+                  <div className="d-flex justify-content-center">
+                    <Button
+                      label={scrollSectionsData[0]?.buttonText || ''}
+                      onClick={() => window.open(scrollSectionsData[0]?.buttonLink, '_blank')}
+                    />
+                  </div>
                 </div>
               </div>
 
@@ -641,10 +643,12 @@ const OurServices = () => {
                   <h2 className={styles.mobileTitle}>{scrollSectionsData[1]?.title}</h2>
                   <h3 className={styles.mobileSubtitle}>{scrollSectionsData[1]?.subtitle}</h3>
                   <p className={styles.mobileDescription}>{scrollSectionsData[1]?.description}</p>
-                  <Button 
-                    label={scrollSectionsData[1]?.buttonText || ''} 
-                    onClick={() => window.open(scrollSectionsData[1]?.buttonLink, '_blank')}
-                  />
+                  <div className="d-flex justify-content-center">
+                    <Button
+                      label={scrollSectionsData[1]?.buttonText || ''}
+                      onClick={() => window.open(scrollSectionsData[1]?.buttonLink, '_blank')}
+                    />
+                  </div>
                 </div>
               </div>
             </div>

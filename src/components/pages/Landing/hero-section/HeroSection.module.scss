@@ -263,7 +263,7 @@
   z-index: 2;
   width: 100%;
   text-align: center;
-  padding: 64px 32px; // Add internal padding for content spacing
+  padding: 64px 0; // Add internal padding for content spacing
 }
 
 // Badge
@@ -386,7 +386,7 @@
     min-height: unset !important;
   }
   .contentContainer {
-    padding: 20px 32px 30px;
+    padding: 20px 0px 30px;
     // Add internal padding for mobile
   }
   .ctaSection {
@@ -439,7 +439,7 @@
   }
 
   .contentContainer {
-    padding: 16px 8px; // Add internal padding for mobile
+    padding: 16px 0; // Add internal padding for mobile
   }
 
   .headline .title {

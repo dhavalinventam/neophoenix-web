@@ -370,7 +370,7 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: 3rem;
-  padding: 2rem 1rem;
+  padding: 2rem 16px;
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -458,7 +458,6 @@
   opacity: 0.9;
 }
 
-
 @media (max-width: 992px) {
   .contentPanel {
     gap: 2rem;
@@ -512,7 +511,7 @@
   .mobileServicesGrid {
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
-    padding: 0 1.5rem 1rem;
+    padding: 0 1rem 1rem;
   }
   .mobileServiceCard {
     padding: 1.5rem;
@@ -1311,7 +1310,7 @@
   .mobileServicesGrid {
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
-    padding: 0 1.5rem 1rem;
+    padding: 0 16px;
   }
   .mobileServiceCard {
     padding: 1.5rem;
@@ -1486,7 +1485,6 @@
 @media (max-width: 480px) {
   .mobileServicesGrid {
     gap: 1.5rem;
-    padding: 1rem 0.5rem;
   }
 
   .mobileServiceCard {
@@ -1505,13 +1503,11 @@
   .mobileDescription {
     font-size: clamp(0.8rem, 2.5vw, 0.9rem);
   }
-
 }
 
 @media (max-width: 360px) {
   .mobileServicesGrid {
     gap: 1rem;
-    padding: 0.5rem;
   }
 
   .mobileServiceCard {
@@ -1534,5 +1530,4 @@
   .mobileDescription {
     font-size: clamp(0.75rem, 2.2vw, 0.85rem);
   }
-
 }
