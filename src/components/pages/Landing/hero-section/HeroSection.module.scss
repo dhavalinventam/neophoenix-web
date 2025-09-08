@@ -386,7 +386,7 @@
     min-height: unset !important;
   }
   .contentContainer {
-    padding: 64px 32px 30px;
+    padding: 20px 32px 30px;
     // Add internal padding for mobile
   }
   .ctaSection {
@@ -405,9 +405,6 @@
     padding: 0; // Keep seamless layout
   }
 
-  .contentContainer {
-    padding: 32px 16px; // Add internal padding for mobile
-  }
 
   .headline {
     margin-bottom: 32px;
@@ -426,9 +423,6 @@
     }
   }
 
-  .ctaSection {
-    margin-bottom: 48px;
-  }
 
   .badge {
     padding: 8px 16px;

@@ -4,7 +4,12 @@
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
 
 :root {
-  --background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%); // Hero gradient background
+  --background: linear-gradient(
+    135deg,
+    #0a0a0a 0%,
+    #1a1a2e 50%,
+    #16213e 100%
+  ); // Hero gradient background
   --foreground: #{$text-white}; // White text
 }
 
@@ -20,7 +25,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   min-height: 100vh;
-  // cursor: none; 
+  // cursor: none;
   position: relative;
   z-index: 1;
 }
@@ -63,7 +68,7 @@ a {
 // Global select dropdown styling
 select {
   color: #ffffff !important; // Ensure selected text is always white
-  
+
   option {
     background: rgba(0, 0, 0, 0.9) !important;
     color: #ffffff !important;
@@ -73,20 +78,20 @@ select {
     font-size: 16px !important;
     font-weight: 400 !important;
   }
-  
+
   option:hover {
     background: rgba(99, 207, 233, 0.8) !important; // Blue background for hover
     color: #ffffff !important;
   }
-  
+
   option:checked,
   option:selected {
     background: rgba(99, 207, 233, 0.9) !important; // Blue background for selected
     color: #ffffff !important;
   }
-  
+
   // Ensure the select field text is always visible
-  &:not([value=""]) {
+  &:not([value='']) {
     color: #ffffff !important;
   }
 }
@@ -99,17 +104,17 @@ p {
   line-height: 1.6;
   font-weight: 400;
   margin: 0 0 16px 0;
-  
+
   &:last-child {
     margin-bottom: 0;
   }
 }
-.container{
+.container {
   max-width: 1220px;
   width: 100%;
   margin: 0 auto;
   padding: 0 16px;
-} 
+}
 
 .layout {
   min-height: 100vh;
@@ -188,4 +193,10 @@ section {
 
 .form-control:focus {
   box-shadow: none !important;
+}
+@media (max-width: 992px) {
+  .pin-spacer {
+    height: 100% !important;
+    padding-bottom: 0 !important;
+  }
 }

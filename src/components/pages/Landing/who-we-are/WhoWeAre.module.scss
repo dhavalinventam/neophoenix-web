@@ -36,7 +36,7 @@
   position: absolute;
   opacity: 0.08;
   animation: floatShape 12s ease-in-out infinite;
-  
+
   &.shape1 {
     top: 15%;
     left: 8%;
@@ -46,7 +46,7 @@
     clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
     animation-delay: 0s;
   }
-  
+
   &.shape2 {
     top: 70%;
     right: 12%;
@@ -56,7 +56,7 @@
     border-radius: 50%;
     animation-delay: 2s;
   }
-  
+
   &.shape3 {
     top: 25%;
     right: 20%;
@@ -66,7 +66,7 @@
     clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
     animation-delay: 4s;
   }
-  
+
   &.shape4 {
     bottom: 20%;
     left: 15%;
@@ -76,7 +76,7 @@
     clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
     animation-delay: 6s;
   }
-  
+
   &.shape5 {
     top: 10%;
     left: 65%;
@@ -86,7 +86,7 @@
     clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
     animation-delay: 8s;
   }
-  
+
   &.shape6 {
     bottom: 35%;
     right: 8%;
@@ -99,7 +99,8 @@
 }
 
 @keyframes floatShape {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0px) rotate(0deg) scale(1);
     opacity: 0.08;
   }
@@ -129,7 +130,7 @@
   border-radius: 50%;
   filter: blur(60px);
   animation: orbFloat 20s ease-in-out infinite;
-  
+
   &.orb1 {
     top: 15%;
     left: 15%;
@@ -138,7 +139,7 @@
     background: radial-gradient(circle, rgba(255, 107, 53, 0.15) 0%, transparent 70%);
     animation-delay: 0s;
   }
-  
+
   &.orb2 {
     top: 65%;
     right: 15%;
@@ -147,7 +148,7 @@
     background: radial-gradient(circle, rgba(46, 196, 182, 0.12) 0%, transparent 70%);
     animation-delay: 7s;
   }
-  
+
   &.orb3 {
     bottom: 15%;
     left: 45%;
@@ -159,7 +160,8 @@
 }
 
 @keyframes orbFloat {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0px) scale(1) rotate(0deg);
     opacity: 0.1;
   }
@@ -188,23 +190,72 @@
   border-radius: 50%;
   animation: gridPulse 6s ease-in-out infinite;
   box-shadow: 0 0 10px rgba(46, 196, 182, 0.3);
-  
-  &:nth-child(1) { top: 12%; left: 20%; animation-delay: 0s; }
-  &:nth-child(2) { top: 22%; left: 40%; animation-delay: 0.5s; }
-  &:nth-child(3) { top: 32%; left: 60%; animation-delay: 1s; }
-  &:nth-child(4) { top: 42%; left: 30%; animation-delay: 1.5s; }
-  &:nth-child(5) { top: 52%; left: 50%; animation-delay: 2s; }
-  &:nth-child(6) { top: 62%; left: 70%; animation-delay: 2.5s; }
-  &:nth-child(7) { top: 72%; left: 20%; animation-delay: 3s; }
-  &:nth-child(8) { top: 82%; left: 40%; animation-delay: 3.5s; }
-  &:nth-child(9) { top: 18%; left: 75%; animation-delay: 4s; }
-  &:nth-child(10) { top: 28%; left: 10%; animation-delay: 4.5s; }
-  &:nth-child(11) { top: 68%; left: 10%; animation-delay: 5s; }
-  &:nth-child(12) { top: 78%; left: 60%; animation-delay: 5.5s; }
+
+  &:nth-child(1) {
+    top: 12%;
+    left: 20%;
+    animation-delay: 0s;
+  }
+  &:nth-child(2) {
+    top: 22%;
+    left: 40%;
+    animation-delay: 0.5s;
+  }
+  &:nth-child(3) {
+    top: 32%;
+    left: 60%;
+    animation-delay: 1s;
+  }
+  &:nth-child(4) {
+    top: 42%;
+    left: 30%;
+    animation-delay: 1.5s;
+  }
+  &:nth-child(5) {
+    top: 52%;
+    left: 50%;
+    animation-delay: 2s;
+  }
+  &:nth-child(6) {
+    top: 62%;
+    left: 70%;
+    animation-delay: 2.5s;
+  }
+  &:nth-child(7) {
+    top: 72%;
+    left: 20%;
+    animation-delay: 3s;
+  }
+  &:nth-child(8) {
+    top: 82%;
+    left: 40%;
+    animation-delay: 3.5s;
+  }
+  &:nth-child(9) {
+    top: 18%;
+    left: 75%;
+    animation-delay: 4s;
+  }
+  &:nth-child(10) {
+    top: 28%;
+    left: 10%;
+    animation-delay: 4.5s;
+  }
+  &:nth-child(11) {
+    top: 68%;
+    left: 10%;
+    animation-delay: 5s;
+  }
+  &:nth-child(12) {
+    top: 78%;
+    left: 60%;
+    animation-delay: 5.5s;
+  }
 }
 
 @keyframes gridPulse {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 0.2;
     transform: scale(1);
     box-shadow: 0 0 10px rgba(46, 196, 182, 0.3);
@@ -231,33 +282,93 @@
   border-radius: 50%;
   animation: particleFloat 12s linear infinite;
   box-shadow: 0 0 6px rgba(255, 159, 28, 0.4);
-  
+
   &:nth-child(odd) {
     background: linear-gradient(45deg, $primary-cyan, $primary-blue);
     box-shadow: 0 0 6px rgba(46, 196, 182, 0.4);
   }
-  
+
   // Position particles across the screen
-  &:nth-child(1) { left: 8%; animation-delay: 0s; }
-  &:nth-child(2) { left: 18%; animation-delay: 0.6s; }
-  &:nth-child(3) { left: 28%; animation-delay: 1.2s; }
-  &:nth-child(4) { left: 38%; animation-delay: 1.8s; }
-  &:nth-child(5) { left: 48%; animation-delay: 2.4s; }
-  &:nth-child(6) { left: 58%; animation-delay: 3s; }
-  &:nth-child(7) { left: 68%; animation-delay: 3.6s; }
-  &:nth-child(8) { left: 78%; animation-delay: 4.2s; }
-  &:nth-child(9) { left: 88%; animation-delay: 4.8s; }
-  &:nth-child(10) { left: 13%; animation-delay: 5.4s; }
-  &:nth-child(11) { left: 23%; animation-delay: 6s; }
-  &:nth-child(12) { left: 33%; animation-delay: 6.6s; }
-  &:nth-child(13) { left: 43%; animation-delay: 7.2s; }
-  &:nth-child(14) { left: 53%; animation-delay: 7.8s; }
-  &:nth-child(15) { left: 63%; animation-delay: 8.4s; }
-  &:nth-child(16) { left: 73%; animation-delay: 9s; }
-  &:nth-child(17) { left: 83%; animation-delay: 9.6s; }
-  &:nth-child(18) { left: 93%; animation-delay: 10.2s; }
-  &:nth-child(19) { left: 3%; animation-delay: 10.8s; }
-  &:nth-child(20) { left: 53%; animation-delay: 11.4s; }
+  &:nth-child(1) {
+    left: 8%;
+    animation-delay: 0s;
+  }
+  &:nth-child(2) {
+    left: 18%;
+    animation-delay: 0.6s;
+  }
+  &:nth-child(3) {
+    left: 28%;
+    animation-delay: 1.2s;
+  }
+  &:nth-child(4) {
+    left: 38%;
+    animation-delay: 1.8s;
+  }
+  &:nth-child(5) {
+    left: 48%;
+    animation-delay: 2.4s;
+  }
+  &:nth-child(6) {
+    left: 58%;
+    animation-delay: 3s;
+  }
+  &:nth-child(7) {
+    left: 68%;
+    animation-delay: 3.6s;
+  }
+  &:nth-child(8) {
+    left: 78%;
+    animation-delay: 4.2s;
+  }
+  &:nth-child(9) {
+    left: 88%;
+    animation-delay: 4.8s;
+  }
+  &:nth-child(10) {
+    left: 13%;
+    animation-delay: 5.4s;
+  }
+  &:nth-child(11) {
+    left: 23%;
+    animation-delay: 6s;
+  }
+  &:nth-child(12) {
+    left: 33%;
+    animation-delay: 6.6s;
+  }
+  &:nth-child(13) {
+    left: 43%;
+    animation-delay: 7.2s;
+  }
+  &:nth-child(14) {
+    left: 53%;
+    animation-delay: 7.8s;
+  }
+  &:nth-child(15) {
+    left: 63%;
+    animation-delay: 8.4s;
+  }
+  &:nth-child(16) {
+    left: 73%;
+    animation-delay: 9s;
+  }
+  &:nth-child(17) {
+    left: 83%;
+    animation-delay: 9.6s;
+  }
+  &:nth-child(18) {
+    left: 93%;
+    animation-delay: 10.2s;
+  }
+  &:nth-child(19) {
+    left: 3%;
+    animation-delay: 10.8s;
+  }
+  &:nth-child(20) {
+    left: 53%;
+    animation-delay: 11.4s;
+  }
 }
 
 @keyframes particleFloat {
@@ -318,7 +429,8 @@
 }
 
 @keyframes circuitPulse {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 0.3;
     transform: scale(1);
   }
@@ -347,12 +459,12 @@
   opacity: 0;
   transform: translateY(50px);
   transition: all 0.8s ease;
-  
+
   &.animateIn {
     opacity: 1;
     transform: translateY(0);
   }
-  
+
   .sectionNumber {
     font-family: $font-title;
     font-size: clamp(24px, 3vw, 32px);
@@ -360,7 +472,7 @@
     color: $primary-orange;
     letter-spacing: $letter-spacing-tight;
   }
-  
+
   .sectionLabel {
     font-family: $font-title;
     font-size: clamp(24px, 3vw, 32px);
@@ -389,7 +501,7 @@
   opacity: 0;
   transform: translateY(30px);
   transition: all 0.8s ease 0.2s;
-  
+
   &.animateIn {
     opacity: 1;
     transform: translateY(0);
@@ -402,12 +514,12 @@
   opacity: 0;
   transform: translateY(30px);
   transition: all 0.8s ease 0.4s;
-  
+
   &.animateIn {
     opacity: 1;
     transform: translateY(0);
   }
-  
+
   p {
     font-size: $font-size-lg; // Increased font size for better readability
     color: rgba(255, 255, 255, 0.7); // Consistent with other sections
@@ -417,7 +529,7 @@
     max-width: 700px; // Consistent max-width for info paragraphs
     margin: 0 auto;
     font-family: $font-primary;
-    
+
     strong {
       color: $primary-gold;
       font-weight: $font-weight-semibold;
@@ -438,7 +550,7 @@
   opacity: 0;
   transform: translateY(30px) scale(0.9);
   transition: all 0.6s ease 0.6s;
-  
+
   &.animateIn {
     opacity: 1;
     transform: translateY(0) scale(1);
@@ -457,7 +569,7 @@
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
-  
+
   &::before {
     content: '';
     position: absolute;
@@ -468,77 +580,83 @@
     background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
     transition: left 0.5s ease;
   }
-  
+
   &:hover {
     transform: translateY(-3px);
     box-shadow: $shadow-glow-orange;
-    
+
     &::before {
       left: 100%;
     }
   }
-  
+
   &:active {
     transform: translateY(-1px);
   }
 }
 
 // Responsive Design
-@media (max-width: 768px) {
+@media (max-width: 992px) {
   .whoWeAre {
-    padding: 0; // Keep seamless layout
+    padding: 0 !important; // Keep seamless layout
   }
-  
+}
+@media (max-width: 768px) {
   .contentContainer {
-    padding: 4rem 1rem; // Add internal padding for mobile
+    padding: 3rem 1rem; // Add internal padding for mobile
   }
-  
+
   .sectionTitle {
     margin-bottom: 2rem;
     flex-direction: column;
     gap: 0.5rem;
   }
-  
+
   .headline {
     margin-bottom: 1.5rem;
+    font-size: 26px;
   }
-  
+
   .description {
     margin-bottom: 2rem;
-    
+
     p {
       font-size: 1rem;
     }
   }
-  
+
   .meetTeamButton {
     padding: 1rem 2.5rem;
     font-size: 1.1rem;
   }
-  
+
   .shape {
-    &.shape1, &.shape3, &.shape5 {
+    &.shape1,
+    &.shape3,
+    &.shape5 {
       width: 60px;
       height: 60px;
     }
-    
-    &.shape2, &.shape4, &.shape6 {
+
+    &.shape2,
+    &.shape4,
+    &.shape6 {
       width: 45px;
       height: 45px;
     }
   }
-  
+
   .orb {
     &.orb1 {
       width: 300px;
       height: 300px;
     }
-    
+
     &.orb2 {
       width: 250px;
       height: 250px;
     }
-    
+
     &.orb3 {
       width: 200px;
       height: 200px;
@@ -550,26 +668,26 @@
   .whoWeAre {
     padding: 0; // Keep seamless layout
   }
-  
+
   .contentContainer {
     padding: 3rem 1rem; // Add internal padding for mobile
   }
-  
+
   .sectionTitle {
     .sectionNumber,
     .sectionLabel {
       font-size: 1.3rem;
     }
   }
-  
+
   .headline {
     font-size: 2rem;
   }
-  
+
   .description p {
     font-size: 0.95rem;
   }
-  
+
   .meetTeamButton {
     padding: 0.9rem 2rem;
     font-size: 1rem;
