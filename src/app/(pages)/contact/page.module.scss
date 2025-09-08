@@ -438,36 +438,7 @@
   }
 }
 
-.sendButton {
-  background: linear-gradient(90deg, #FF6B35 0%, #FF9F1C 50%, #cf9c56 100%);
-  color: $text-white;
-  border: none;
-  padding: 16px 32px;
-  border-radius: 32px;
-  font-weight: $font-weight-bold;
-  font-size: 17.6px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-
-  &:hover {
-    background: linear-gradient(90deg, #FF6B35 0%, #FF9F1C 50%, #cf9c56 100%);
-    box-shadow:
-      0 8px 25px rgba(0, 0, 0, 0.3),
-      0 0 20px rgba(255, 107, 53, 0.3), // Soft orange glow
-      0 0 40px rgba(255, 159, 28, 0.2); // Soft gold glow
-    transform: translateY(-2px);
-  }
-
-  &:focus {
-    outline: none;
-    box-shadow:
-      0 0 0 3px rgba(255, 107, 53, 0.3),
-      0 8px 25px rgba(0, 0, 0, 0.3);
-  }
-}
+// Custom button styles removed - now using common Button component
 
 // =============================================================================
 // ANIMATIONS

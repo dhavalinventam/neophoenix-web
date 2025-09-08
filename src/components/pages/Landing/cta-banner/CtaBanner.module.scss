@@ -96,41 +96,7 @@
   }
 }
 
-.claimButton {
-  background: linear-gradient(90deg, #FF6B35 0%, #FF9F1C 50%, #cf9c56 100%);
-  color: $text-white; // White text (#FFFFFF)
-  border: none;
-  padding: 1rem 2rem;
-  border-radius: 2rem;
-  font-weight: $font-weight-bold; // Bold typography
-  font-size: 1.1rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-
-  &:hover {
-    background: linear-gradient(90deg, #FF6B35 0%, #FF9F1C 50%, #cf9c56 100%);
-    box-shadow:
-      0 8px 25px rgba(0, 0, 0, 0.3),
-      0 0 20px rgba(255, 107, 53, 0.3), // Soft orange glow
-      0 0 40px rgba(255, 159, 28, 0.2); // Soft gold glow
-    transform: translateY(-2px);
-  }
-
-  &:focus {
-    outline: none;
-    box-shadow:
-      0 0 0 3px rgba(255, 107, 53, 0.3),
-      0 8px 25px rgba(0, 0, 0, 0.3);
-  }
-
-  @media (max-width: 768px) {
-    padding: 0.875rem 1.75rem;
-    font-size: 1rem;
-  }
-}
+// Custom button styles removed - now using common Button component
 
 // Animations
 @keyframes wave {

@@ -2,6 +2,7 @@ import styles from './Footer.module.scss';
 import Image from 'next/image';
 import logo from '../../../../public/logo.png';
 import Link from 'next/link';
+import Button from '@/components/ui/button';
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -86,18 +87,11 @@ export default function Footer() {
                     className={styles.emailInput}
                     required
                   />
-                  <button type="submit" className={styles.subscribeButton}>
-                    <span> Subscribe to Newsletter </span>
-                    <svg
-                      width="18"
-                      height="18"
-                      viewBox="0 0 24 24"
-                      fill="currentColor"
-                      className={styles.sendIcon}
-                    >
-                      <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" />
-                    </svg>
-                  </button>
+                  <Button 
+                    label="Subscribe to Newsletter" 
+                    type="submit"
+                    className={styles.subscribeButton}
+                  />
                 </div>
               </form>
             </div>

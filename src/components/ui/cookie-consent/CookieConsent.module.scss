@@ -60,43 +60,9 @@
   }
 
   .button {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 8px;
-    font-family: $font-primary;
-    font-size: $font-size-sm;
-    font-weight: $font-weight-medium;
-    cursor: pointer;
-    transition: all $duration-fast $ease-out;
+    // Custom button styles removed - now using common Button component
     min-width: 100px;
     text-align: center;
-
-    &.accept {
-      background: $gradient-button-primary;
-      color: $text-white;
-      box-shadow: 0 2px 8px rgba(255, 107, 53, 0.3);
-
-      &:hover {
-        transform: translateY(-1px);
-        box-shadow: 0 4px 12px rgba(255, 107, 53, 0.4);
-      }
-
-      &:active {
-        transform: translateY(0);
-      }
-    }
-
-    &.learnMore {
-      background: transparent;
-      color: $text-gray-light;
-      border: 1px solid $glass-border-medium;
-
-      &:hover {
-        background: $glass-bg-light;
-        color: $text-white;
-        border-color: $primary-gold;
-      }
-    }
   }
 }
 

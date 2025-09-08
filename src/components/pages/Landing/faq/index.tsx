@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import styles from './faq.module.scss';
+import Button from '@/components/ui/button';
 
 const faqData = [
   {
@@ -134,20 +135,20 @@ const FAQ = () => {
                     <div className={styles.feedbackSection}>
                       <span className={styles.feedbackText}>Was this helpful?</span>
                       <div className={styles.feedbackButtons}>
-                        <button
-                          className={`${styles.feedbackButton} ${styles.feedbackYes} ${feedback[item.id] === 'yes' ? styles.active : ''}`}
+                        <Button
+                          label="Yes"
+                          variant={feedback[item.id] === 'yes' ? 'filled' : 'outline'}
                           onClick={() => handleFeedback(item.id, 'yes')}
                           disabled={feedback[item.id] !== null}
-                        >
-                          <span>Yes</span>
-                        </button>
-                        <button
-                          className={`${styles.feedbackButton} ${styles.feedbackNo} ${feedback[item.id] === 'no' ? styles.active : ''}`}
+                          className={`${styles.feedbackButton} ${styles.feedbackYes} ${feedback[item.id] === 'yes' ? styles.active : ''}`}
+                        />
+                        <Button
+                          label="No"
+                          variant={feedback[item.id] === 'no' ? 'filled' : 'outline'}
                           onClick={() => handleFeedback(item.id, 'no')}
                           disabled={feedback[item.id] !== null}
-                        >
-                          <span>No</span>
-                        </button>
+                          className={`${styles.feedbackButton} ${styles.feedbackNo} ${feedback[item.id] === 'no' ? styles.active : ''}`}
+                        />
                       </div>
                     </div>
                   </motion.div>

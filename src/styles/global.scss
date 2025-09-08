@@ -2,6 +2,7 @@
 @use './mixins' as *;
 @import 'bootstrap/dist/css/bootstrap.min.css';
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
 :root {
   --background: linear-gradient(
@@ -21,7 +22,7 @@ body {
   color: var(--foreground);
   background: var(--background); // Hero gradient background for entire page
   background-attachment: fixed; // Keep gradient fixed during scroll
-  font-family: $font-primary;
+  font-family: $font-primary; // Inter for body text
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   min-height: 100vh;
@@ -36,7 +37,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: $font-title;
+  font-family: $font-title; // Frederic for all headings
   font-weight: 700;
 }
 
@@ -49,7 +50,7 @@ h6 {
 .info-title,
 .method-title,
 .social-title {
-  font-family: $font-title;
+  font-family: $font-title; // Frederic for all title classes
   font-weight: 700;
   color: #ffffff; // Force white color for all title classes
 }
@@ -74,7 +75,7 @@ select {
     color: #ffffff !important;
     padding: 12px 16px !important;
     border: none !important;
-    font-family: 'Frederic', sans-serif !important;
+    font-family: $font-primary !important; // Inter for select options
     font-size: 16px !important;
     font-weight: 400 !important;
   }
@@ -98,7 +99,7 @@ select {
 
 // Global info paragraph styling for consistency
 p {
-  font-family: 'Frederic', sans-serif;
+  font-family: $font-primary; // Inter for paragraphs
   font-size: 18px; // Increased font size for better readability
   color: rgba(255, 255, 255, 0.7);
   line-height: 1.6;

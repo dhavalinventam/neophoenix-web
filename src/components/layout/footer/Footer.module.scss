@@ -339,34 +339,8 @@
         }
 
         .subscribeButton {
-          background: $gradient-button-primary;
-          border: none;
-          border-radius: 32px; // Perfectly circular button
-          padding: 8px 16px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 8px;
-          color: white;
-          cursor: pointer;
-          transition: all $duration-normal $ease-in-out;
-          box-shadow: 0 2px 10px rgba(255, 107, 53, 0.3);
+          // Custom button styles removed - now using common Button component
           margin-right: 4px;
-
-          &:hover {
-            transform: translateY(-2px) scale(1.05);
-            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4);
-          }
-
-          .sendIcon {
-            transition: transform $duration-normal $ease-in-out;
-            width: 18px;
-            height: 18px;
-          }
-
-          &:hover .sendIcon {
-            transform: translateX(2px);
-          }
         }
       }
     }
@@ -626,8 +600,8 @@
         }
 
         .subscribeButton {
-          width: 48px;
-          height: 48px;
+          width: 100%;
+          height: 100%;
           align-self: center;
           margin-right: 0;
         }
@@ -740,8 +714,8 @@
         }
 
         .subscribeButton {
-          width: 44px;
-          height: 44px;
+          width: 100%;
+          height: 100%;
           align-self: center;
           margin-right: 0;
         }

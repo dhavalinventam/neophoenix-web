@@ -3,10 +3,10 @@
 // =============================================================================
 
 // Font Families
-$font-primary: 'Frederic', sans-serif;
-$font-secondary: 'Frederic', sans-serif;
-$font-mono: 'Frederic', monospace;
-$font-title: 'Frederic', sans-serif; // New font for titles
+$font-primary: "Inter", sans-serif; // Body text font
+$font-secondary: "Inter", sans-serif; // Secondary text font
+$font-mono: "Inter", sans-serif; // Monospace font
+$font-title: 'Frederic', sans-serif; // Title font
 
 // Font Sizes
 $font-size-xs: 12px; // 0.75rem
@@ -25,7 +25,7 @@ $font-weight-light: 300;
 $font-weight-normal: 400;
 $font-weight-medium: 500;
 $font-weight-semibold: 600;
-$font-weight-bold: 700;
+$font-weight-bold: 600;
 $font-weight-extrabold: 800;
 
 // Line Heights
@@ -91,7 +91,7 @@ $gradient-primary: linear-gradient(
 $gradient-secondary: linear-gradient(135deg, $primary-orange 0%, $primary-gold 100%);
 
 // New Softer Button Gradients
-$gradient-button-primary: linear-gradient(90deg, $primary-orange 0%, $primary-gold 100%); // Warm Phoenix glow
+$gradient-button-primary: linear-gradient(90deg, #FF6B35 0%, #FF9F1C 50%, #cf9c56 100%); // Warm Phoenix glow
 $gradient-button-secondary: linear-gradient(90deg, $primary-cyan 0%, $primary-blue 100%); // Cool digital effect
 
 $gradient-background: linear-gradient(
@@ -123,8 +123,8 @@ $section-title-letter-spacing: $letter-spacing-tight;
 $section-title-margin-bottom: 20.8px;
 
 // Common Section Subtitle Styles
-$section-subtitle-font-family: $font-primary;
-$section-subtitle-font-family-secondary: $font-secondary;
+$section-subtitle-font-family: $font-primary; // Inter for subtitles
+$section-subtitle-font-family-secondary: $font-secondary; // Inter for secondary subtitles
 $section-subtitle-font-size: $font-size-lg; // Increased font size for better readability
 $section-subtitle-font-weight: $font-weight-normal;
 $section-subtitle-color: rgba(255, 255, 255, 0.7); // Consistent color across all sections

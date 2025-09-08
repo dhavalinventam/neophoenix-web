@@ -185,66 +185,11 @@
 }
 
 .feedbackButton {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem 1rem;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 8px;
-  background: transparent;
-  color: $text-white; // White text
+  // Custom button styles removed - now using common Button component
   font-size: $font-size-sm;
-  font-weight: $font-weight-medium;
-  cursor: pointer;
-  transition: all $duration-normal $ease-out;
-
-  &:hover:not(:disabled) {
-    border-color: $primary-orange; // Orange border on hover
-    color: $primary-orange; // Orange text on hover
-    background: rgba(255, 107, 53, 0.1); // Orange background on hover
-    box-shadow: 0 0 15px rgba(255, 107, 53, 0.2); // Orange glow on hover
-  }
-
-  &:focus {
-    outline: 2px solid $primary-orange; // Orange focus outline
-    outline-offset: 2px;
-  }
-
-  svg {
-    width: 16px;
-    height: 16px;
-    fill: none;
-    stroke: currentColor;
-  }
 }
 
-.feedbackYes {
-  &.active {
-    background: linear-gradient(90deg, #FF6B35 0%, #FF9F1C 50%, #cf9c56 100%);
-    border-color: $primary-gold;
-    color: $bg-dark-primary; // Use dark background for contrast
-    box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
-
-    svg {
-      fill: $bg-dark-primary;
-      stroke: $bg-dark-primary;
-    }
-  }
-}
-
-.feedbackNo {
-  &.active {
-    background: linear-gradient(90deg, #FF6B35 0%, #FF9F1C 50%, #cf9c56 100%);
-    border-color: $primary-gold;
-    color: $bg-dark-primary; // Use dark background for contrast
-    box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
-
-    svg {
-      fill: $bg-dark-primary;
-      stroke: $bg-dark-primary;
-    }
-  }
-}
+// Feedback button active states removed - now handled by Button component variants
 
 // Responsive adjustments
 @media (max-width: 768px) {

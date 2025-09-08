@@ -5,6 +5,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { TextPlugin } from 'gsap/TextPlugin';
 import styles from './OurServices.module.scss';
+import Button from '@/components/ui/button';
 
 // Register GSAP plugins
 if (typeof window !== 'undefined') {
@@ -489,9 +490,10 @@ const OurServices = () => {
                   <h2 className={styles.mobileTitle}>{scrollSectionsData[0]?.title}</h2>
                   <h3 className={styles.mobileSubtitle}>{scrollSectionsData[0]?.subtitle}</h3>
                   <p className={styles.mobileDescription}>{scrollSectionsData[0]?.description}</p>
-                  <a href={scrollSectionsData[0]?.buttonLink} className={styles.mobileButton}>
-                    {scrollSectionsData[0]?.buttonText}
-                  </a>
+                  <Button 
+                    label={scrollSectionsData[0]?.buttonText || ''} 
+                    onClick={() => window.open(scrollSectionsData[0]?.buttonLink, '_blank')}
+                  />
                 </div>
               </div>
 
@@ -507,9 +509,10 @@ const OurServices = () => {
                   <h2 className={styles.mobileTitle}>{scrollSectionsData[1]?.title}</h2>
                   <h3 className={styles.mobileSubtitle}>{scrollSectionsData[1]?.subtitle}</h3>
                   <p className={styles.mobileDescription}>{scrollSectionsData[1]?.description}</p>
-                  <a href={scrollSectionsData[1]?.buttonLink} className={styles.mobileButton}>
-                    {scrollSectionsData[1]?.buttonText}
-                  </a>
+                  <Button 
+                    label={scrollSectionsData[1]?.buttonText || ''} 
+                    onClick={() => window.open(scrollSectionsData[1]?.buttonLink, '_blank')}
+                  />
                 </div>
               </div>
             </div>

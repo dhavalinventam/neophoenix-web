@@ -558,10 +558,10 @@
 }
 
 .meetTeamButton {
-  padding: 1.2rem 3rem;
-  font-size: 1.2rem;
+  padding: 12px 24px;
+  font-size: 16px;
   font-weight: $font-weight-semibold;
-  border-radius: 50px;
+  border-radius: 32px;
   background: $gradient-button-primary;
   border: none;
   color: $text-white;
@@ -626,8 +626,8 @@
   }
 
   .meetTeamButton {
-    padding: 1rem 2.5rem;
-    font-size: 1.1rem;
+    padding: 12px 24px;
+    font-size: 16px;
   }
 
   .shape {
@@ -689,7 +689,7 @@
   }
 
   .meetTeamButton {
-    padding: 0.9rem 2rem;
-    font-size: 1rem;
+    padding: 12px 24px;
+    font-size: 14px;
   }
 }

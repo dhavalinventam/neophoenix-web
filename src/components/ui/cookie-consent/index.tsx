@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import styles from './CookieConsent.module.scss';
+import Button from '@/components/ui/button';
 
 const COOKIE_CONSENT_KEY = 'neophoenix-cookie-consent';
 
@@ -40,7 +41,7 @@ export default function CookieConsent() {
 
   const handleLearnMore = () => {
     // Navigate to privacy policy page
-    // The Link component will handle the navigation
+    window.location.href = '/privacy-policy';
   };
 
   if (!isVisible) {
@@ -63,21 +64,18 @@ export default function CookieConsent() {
         </p>
         
         <div className={styles.buttons}>
-          <button 
-            className={`${styles.button} ${styles.accept}`}
+          <Button 
+            label="Accept"
             onClick={handleAccept}
-            aria-label="Accept cookies"
-          >
-            Accept
-          </button>
+            className={`${styles.button} ${styles.accept}`}
+          />
           
-          <Link 
-            href="/privacy-policy"
+          <Button 
+            label="Learn More"
+            variant="outline"
+            onClick={handleLearnMore}
             className={`${styles.button} ${styles.learnMore}`}
-            aria-label="Learn more about our privacy policy"
-          >
-            Learn More
-          </Link>
+          />
         </div>
       </div>
     </div>
