@@ -69,7 +69,7 @@ const OurServices = () => {
         accentColor: '#f59e0b',
       },
       {
-        id: 2,
+        id: 3,
         title: '12312312312',
         subtitle: 'AI-Powered Prompts Where Work Happens.',
         description:
@@ -85,7 +85,7 @@ const OurServices = () => {
         accentColor: '#f59e0b',
       },
       {
-        id: 2,
+        id: 4,
         title: '11111111',
         subtitle: 'AI-Powered Prompts Where Work Happens.',
         description:
