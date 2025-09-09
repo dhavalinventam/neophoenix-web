@@ -1,13 +1,15 @@
 'use client';
 import styles from './Button.module.scss';
-import { ButtonHTMLAttributes } from 'react';
+import { ButtonHTMLAttributes, ReactNode } from 'react';
 
 type Props = ButtonHTMLAttributes<HTMLButtonElement> & {
   label: string;
   variant?: 'filled' | 'outline' | 'secondary';
+  icon?: ReactNode;
+  showIconOnly?: boolean;
 };
 
-export default function Button({ label, variant = 'filled', className, ...props }: Props) {
+export default function Button({ label, variant = 'filled', className, icon, showIconOnly = false, ...props }: Props) {
   const getButtonClass = () => {
     const baseClass = (() => {
       switch (variant) {
@@ -25,7 +27,8 @@ export default function Button({ label, variant = 'filled', className, ...props 
 
   return (
     <button className={getButtonClass()} {...props}>
-      {label}
+      {icon && <span className={styles.icon}>{icon}</span>}
+      {!showIconOnly && <span className={styles.label}>{label}</span>}
     </button>
   );
 }

@@ -127,9 +127,9 @@ export default function Header() {
           <Link className={styles.mobileLink} href="/" onClick={(e) => handleNavClick(e, '/')}>
             Home
           </Link>
-          <Link className={styles.mobileLink} href="#services" onClick={(e) => handleNavClick(e, '#services')}>
+          {/* <Link className={styles.mobileLink} href="#services" onClick={(e) => handleNavClick(e, '#services')}>
             Services
-          </Link>
+          </Link> */}
           <Link className={styles.mobileLink} href="/contact" onClick={(e) => handleNavClick(e, '/contact')}>
             Contact
           </Link>

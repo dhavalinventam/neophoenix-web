@@ -531,9 +531,9 @@
     font-family: $font-primary;
 
     strong {
-      color: $primary-gold;
+      color: $secondary-blue;
       font-weight: $font-weight-semibold;
-      background: linear-gradient(135deg, $primary-gold, $primary-orange);
+      background: #35ebff;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;

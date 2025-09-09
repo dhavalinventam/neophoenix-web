@@ -90,7 +90,18 @@ export default function Footer() {
                   <Button
                     label="Subscribe to Newsletter"
                     type="submit"
-                    className={styles.subscribeButton}
+                    className={`${styles.subscribeButton} ${styles.desktopButton}`}
+                  />
+                  <Button
+                    label="Subscribe to Newsletter"
+                    type="submit"
+                    className={`${styles.subscribeButton} ${styles.mobileButton}`}
+                    icon={
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+                      </svg>
+                    }
+                    showIconOnly={true}
                   />
                 </div>
               </form>

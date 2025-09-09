@@ -342,6 +342,15 @@
           // Custom button styles removed - now using common Button component
           margin-right: 4px;
         }
+
+        // Responsive button visibility
+        .desktopButton {
+          display: flex;
+        }
+
+        .mobileButton {
+          display: none;
+        }
       }
     }
   }
@@ -587,13 +596,13 @@
       }
 
       .newsletterForm .emailInputGroup {
-        flex-direction: column;
+        flex-direction: row;
         gap: 12px;
         padding: 16px;
         max-width: 100%;
 
         .emailInput {
-          padding: 14px 20px;
+          padding: 0px !important;
           font-size: $font-size-base;
           text-align: center;
           border-radius: 50px;
@@ -604,6 +613,15 @@
           height: 100%;
           align-self: center;
           margin-right: 0;
+        }
+
+        // Show mobile button and hide desktop button on mobile
+        .desktopButton {
+          display: none;
+        }
+
+        .mobileButton {
+          display: flex;
         }
       }
     }
@@ -718,6 +736,15 @@
           height: 100%;
           align-self: center;
           margin-right: 0;
+        }
+
+        // Show mobile button and hide desktop button on mobile
+        .desktopButton {
+          display: none;
+        }
+
+        .mobileButton {
+          display: flex;
         }
       }
     }
