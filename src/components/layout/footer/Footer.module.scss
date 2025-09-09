@@ -301,25 +301,25 @@
     }
 
     .newsletterForm {
-        .emailInputGroup {
-          position: relative;
-          display: flex;
-          align-items: center;
-          background: #2C2F33; // Dark charcoal gray background
-          border-radius: 50px; // Heavily rounded corners for pill shape
-          padding: 4px;
-          border: 1px solid #4A4D50; // Subtle lighter gray border
-          transition: all $duration-normal $ease-in-out;
-          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-          max-width: 500px;
+      .emailInputGroup {
+        position: relative;
+        display: flex;
+        align-items: center;
+        background: #2C2F33; // Dark charcoal gray background
+        border-radius: 50px; // Heavily rounded corners for pill shape
+        padding: 4px;
+        border: 1px solid #4A4D50; // Subtle lighter gray border
+        transition: all $duration-normal $ease-in-out;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        max-width: 500px;
 
-          &:focus-within {
-            border-color: $primary-orange;
-            box-shadow:
-              0 0 0 2px rgba(255, 107, 53, 0.2),
-              0 4px 20px rgba(255, 107, 53, 0.1);
-            transform: translateY(-1px);
-          }
+        &:focus-within {
+          border-color: $primary-orange;
+          box-shadow:
+            0 0 0 2px rgba(255, 107, 53, 0.2),
+            0 4px 20px rgba(255, 107, 53, 0.1);
+          transform: translateY(-1px);
+        }
 
         .emailInput {
           flex: 1;
@@ -340,6 +340,24 @@
 
         .subscribeButton {
           // Custom button styles removed - now using common Button component
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          line-height: 1;
+          background: linear-gradient(90deg, #FF6B35 0%, #FF9F1C 50%, #cf9c56 100%);
+          max-width: max-content;
+          max-height: max-content;
+          color: #FFFFFF;
+          border: none;
+          padding: 12px 24px;
+          border-radius: 32px;
+          font-weight: 600;
+          font-size: 16px;
+          cursor: pointer;
+          transition: all 0.3s ease-in-out;
+          position: relative;
+          overflow: hidden;
+          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
           margin-right: 4px;
         }
 
