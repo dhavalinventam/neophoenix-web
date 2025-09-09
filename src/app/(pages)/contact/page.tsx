@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import styles from './page.module.scss';
+import { Container, Row, Col } from 'react-bootstrap';
 import Button from '@/components/ui/button';
 
 export default function ContactPage() {
@@ -68,7 +69,7 @@ export default function ContactPage() {
       <div className={`${styles.contactContainer} hero`}>
         {/* Hero Section */}
         <div className={styles.heroSection}>
-          <div className="container">
+          <Container>
             <div className={styles.heroContent}>
               <div className={styles.headline}>
                 <h1 className={styles.title}>Let&apos;s Build Something Amazing.</h1>
@@ -79,9 +80,9 @@ export default function ContactPage() {
               </div>
             </div>
 
-            <div className="row">
+            <Row>
               {/* Contact Information */}
-              <div className="col-lg-4">
+              <Col lg={4}>
                 <div className={styles.infoSection}>
                   <div className={styles.infoHeader}>
                     <h2 className={styles.infoTitle}>Get in Touch</h2>
@@ -155,10 +156,10 @@ export default function ContactPage() {
                     </div>
                   </div>
                 </div>
-              </div>
+              </Col>
 
               {/* Contact Form */}
-              <div className="col-lg-8">
+              <Col lg={8}>
                 <div className={styles.formSection}>
                   <div className={styles.formHeader}>
                     <h2 className={styles.formTitle}>Send us a Message</h2>
@@ -168,8 +169,8 @@ export default function ContactPage() {
                   </div>
 
                   <form className={styles.contactForm} onSubmit={handleSubmit}>
-                    <div className="row g-2">
-                      <div className="col-md-6">
+                    <Row className="g-2">
+                      <Col md={6}>
                         <div className={styles.formGroup}>
                           <label htmlFor="fullName" className={styles.formLabel}>
                             Full Name
@@ -184,8 +185,8 @@ export default function ContactPage() {
                             required
                           />
                         </div>
-                      </div>
-                      <div className="col-md-6">
+                      </Col>
+                      <Col md={6}>
                         <div className={styles.formGroup}>
                           <label htmlFor="email" className={styles.formLabel}>
                             Email Address
@@ -200,11 +201,11 @@ export default function ContactPage() {
                             required
                           />
                         </div>
-                      </div>
-                    </div>
+                      </Col>
+                    </Row>
                     
-                    <div className="row g-2">
-                      <div className="col-12">
+                    <Row className="g-2">
+                      <Col xs={12}>
                         <div className={styles.formGroup}>
                           <label htmlFor="message" className={styles.formLabel}>
                             Message
@@ -219,11 +220,11 @@ export default function ContactPage() {
                             required
                           ></textarea>
                         </div>
-                      </div>
-                    </div>
+                      </Col>
+                    </Row>
 
-                    <div className="row g-2">
-                      <div className="col-12">
+                    <Row className="g-2">
+                      <Col xs={12}>
                         <div
                           className={styles.formSubmit}
                           style={{ display: 'flex', justifyContent: 'center' }}
@@ -233,7 +234,7 @@ export default function ContactPage() {
                             disabled={isSubmitting}
                           />
                         </div>
-                      </div>
+                      </Col>
                       
                       {/* Status Messages */}
                       {submitStatus.type && (
@@ -241,12 +242,12 @@ export default function ContactPage() {
                           {submitStatus.message}
                         </div>
                       )}
-                    </div>
+                    </Row>
                   </form>
                 </div>
-              </div>
-            </div>
-          </div>
+              </Col>
+            </Row>
+          </Container>
         </div>
       </div>
     </>

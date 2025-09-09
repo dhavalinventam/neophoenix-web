@@ -1,6 +1,7 @@
 'use client';
 
 import styles from './page.module.scss';
+import { Container, Row, Col } from 'react-bootstrap';
 
 export default function PrivacyPolicyPage() {
   return (
@@ -8,7 +9,7 @@ export default function PrivacyPolicyPage() {
       <div className={`${styles.privacyContainer} hero`}>
         {/* Hero Section */}
         <div className={styles.heroSection}>
-          <div className="container">
+          <Container>
             <div className={styles.heroContent}>
               <div className={styles.headline}>
                 <h1 className={styles.title}>Privacy Policy</h1>
@@ -18,14 +19,14 @@ export default function PrivacyPolicyPage() {
                 <p className={styles.lastUpdated}>Last updated: {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
               </div>
             </div>
-          </div>
+          </Container>
         </div>
 
         {/* Main Content */}
         <div className={styles.mainSection}>
-          <div className="container-fluid">
-            <div className="row justify-content-center">
-              <div className="col-12 col-lg-10 col-xl-8">
+          <Container fluid>
+            <Row className="justify-content-center">
+              <Col xs={12} lg={10} xl={8}>
                 <h2 className={styles.sectionTitle}>1. Information We Collect</h2>
                 <div className={styles.sectionContent}>
                   <h3 className={styles.subsectionTitle}>Personal Information</h3>
@@ -156,9 +157,9 @@ export default function PrivacyPolicyPage() {
                     <p><strong>Phone:</strong> [Your Contact Number]</p>
                   </div>
                 </div>
-              </div>
-            </div>
-          </div>
+              </Col>
+            </Row>
+          </Container>
         </div>
       </div>
     </>

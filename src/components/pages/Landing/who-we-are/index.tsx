@@ -1,6 +1,7 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
 import Button from '../../../ui/button';
+import { Container, Row, Col } from 'react-bootstrap';
 import styles from './WhoWeAre.module.scss';
 
 const WhoWeAre = () => {
@@ -129,9 +130,9 @@ const WhoWeAre = () => {
 
       {/* Content Container */}
       <div ref={contentRef} className={styles.contentContainer}>
-        <div className="container">
-          <div className="row justify-content-center">
-            <div className="col-12 col-lg-10">
+        <Container>
+          <Row className="justify-content-center">
+            <Col xs={12} lg={10}>
               {/* Main Content */}
               <h2 className={`${styles.sectionTitle} section-title`}>
                 Who We Are
@@ -158,9 +159,9 @@ const WhoWeAre = () => {
                   />
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
+            </Col>
+          </Row>
+        </Container>
       </div>
     </section>
   );

@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import styles from './HeroSection.module.scss';
 import Button from '@/components/ui/button';
+import { Container } from 'react-bootstrap';
 
 const HeroSection = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -67,7 +68,7 @@ const HeroSection = () => {
 
         {/* Content Container */}
         <div className={styles.contentContainer}>
-          <div className="container">
+          <Container>
             {/* Main Headline */}
             <div className={`${styles.headline} ${isVisible ? styles.visible : ''}`}>
               <div className={styles.badge}>
@@ -99,7 +100,7 @@ const HeroSection = () => {
                 }}
               />
             </div>
-          </div>
+          </Container>
         </div>
       </section>
     </>
