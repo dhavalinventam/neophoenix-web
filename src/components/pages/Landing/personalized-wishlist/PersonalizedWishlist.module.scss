@@ -105,7 +105,7 @@
   position: relative;
   z-index: 2;
   overflow: hidden;
-  margin: 32px 16px; // Reduced margin for content spacing
+  margin: 32px 0px; // Reduced margin for content spacing
 
   &::before {
     content: '';
@@ -484,7 +484,7 @@
 @media (max-width: 768px) {
   .mainCard {
     padding: 24px 16px;
-    margin: 16px 8px !important; // Reduced margin for mobile
+    margin: 16px 0px !important; // Reduced margin for mobile
   }
 
   .title {
@@ -499,7 +499,7 @@
 @media (max-width: 480px) {
   .mainCard {
     padding: 16px 12px;
-    margin: 8px 4px; // Further reduced margin for mobile
+    margin: 8px 0px; // Further reduced margin for mobile
   }
 
   .formSection {
