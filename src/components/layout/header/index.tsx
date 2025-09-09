@@ -95,9 +95,9 @@ export default function Header() {
           <Link className={styles.link} href="/" onClick={(e) => handleNavClick(e, '/')}>
             Home
           </Link>
-          <Link className={styles.link} href="#services" onClick={(e) => handleNavClick(e, '#services')}>
+          {/* <Link className={styles.link} href="#services" onClick={(e) => handleNavClick(e, '#services')}>
             Services
-          </Link>
+          </Link> */}
           <Link className={styles.link} href="/contact" onClick={(e) => handleNavClick(e, '/contact')}>
             Contact
           </Link>
