@@ -80,7 +80,7 @@
   color: var(--text-color, #ffffff);
   margin-bottom: 2rem;
   line-height: 1.1;
-  background: linear-gradient(135deg, #ffffff 0%, #ff9f1c 50%, #ff6b35 100%);
+  background: $text-white;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -98,7 +98,7 @@
     left: 0;
     width: 80px;
     height: 4px;
-    background: linear-gradient(90deg, #ff6b35 0%, #ff9f1c 50%, var(--accent-color, #63cfe9) 100%);
+    background: linear-gradient(90deg, #ff6b35 0%, #ff9f1c 100%);
     border-radius: 2px;
     transition: all 0.3s ease;
   }
@@ -150,7 +150,6 @@
   letter-spacing: 0.05em;
   transition: all 0.3s ease;
   align-self: flex-start;
-  box-shadow: 0 8px 25px rgba(99, 207, 233, 0.3);
   position: relative;
   overflow: hidden;
   backface-visibility: hidden;
@@ -169,7 +168,6 @@
 
   &:hover {
     transform: translateY(-2px);
-    box-shadow: 0 12px 35px rgba(99, 207, 233, 0.4);
 
     &::before {
       left: 100%;

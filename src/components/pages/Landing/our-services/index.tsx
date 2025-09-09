@@ -438,7 +438,7 @@ const OurServices = () => {
       const parallaxElements = [imageRef.current, videoRef.current].filter(Boolean);
       if (parallaxElements.length > 0) {
         gsap.to(parallaxElements, {
-          y: -30,
+          y: -20,
           // rotation: 5,
           scrollTrigger: {
             trigger: scrollSectionRef.current,
