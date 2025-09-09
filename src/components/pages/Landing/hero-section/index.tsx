@@ -94,7 +94,9 @@ const HeroSection = () => {
               <Button 
                 variant="filled" 
                 label="Explore Our Solutions"
-                className={styles.exploreButton}
+                onClick={() => {
+                  window.location.hash = "#personalized-wishlist";
+                }}
               />
             </div>
           </div>

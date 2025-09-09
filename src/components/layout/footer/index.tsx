@@ -87,8 +87,8 @@ export default function Footer() {
                     className={styles.emailInput}
                     required
                   />
-                  <Button 
-                    label="Subscribe to Newsletter" 
+                  <Button
+                    label="Subscribe to Newsletter"
                     type="submit"
                     className={styles.subscribeButton}
                   />
