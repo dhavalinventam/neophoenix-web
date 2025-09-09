@@ -3,41 +3,42 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import styles from './faq.module.scss';
+import Button from '@/components/ui/button';
 
 const faqData = [
   {
     id: 1,
-    question: 'How are these tools different from anything else?',
+    question: 'How are these <strong>AI tools</strong> different from anything else?',
     answer:
-      'Binary: Your data never leaves your infra; prompts are always in your context, not generic.',
+      '<strong>Neophoenix</strong> ensures your data never leaves your infrastructure; <em>prompts are always in your context</em>, not generic. We provide <strong>enterprise-grade security</strong> with <em>zero data exposure</em>.',
   },
   {
     id: 2,
-    question: 'What\'s the risk in early access?',
-    answer: 'None, no credit card, no vendor lock-in, no data exposure.',
+    question: 'What\'s the risk in <strong>early access</strong>?',
+    answer: 'None at all! <strong>No credit card required</strong>, <em>no vendor lock-in</em>, and <strong>complete data privacy</strong>. Start exploring our <em>AI solutions</em> risk-free.',
   },
   {
     id: 3,
-    question: 'Who should sign up?',
-    answer: 'Tech and ops teams wanting to automate, secure, and lead before everyone else.',
+    question: 'Who should sign up for <strong>Neophoenix</strong>?',
+    answer: '<strong>Tech and operations teams</strong> wanting to <em>automate processes</em>, <strong>secure their AI workflows</strong>, and <em>lead innovation</em> before everyone else. Perfect for <strong>enterprise teams</strong> and <em>startups alike</em>.',
   },
   {
     id: 4,
-    question: 'What support is available if we run into issues?',
+    question: 'What <strong>support</strong> is available if we run into issues?',
     answer:
-      'Direct Slack/Email support, detailed docs, and if you need priority an enterprise SLA with live debugging. No chatbots or ticket limbo.',
+      '<strong>Direct Slack/Email support</strong>, <em>comprehensive documentation</em>, and if you need priority assistance, an <strong>enterprise SLA</strong> with <em>live debugging sessions</em>. No chatbots or ticket limbo - just <strong>real human experts</strong>.',
   },
   {
     id: 5,
-    question: 'Is technical expertise required to get started?',
+    question: 'Is <strong>technical expertise</strong> required to get started?',
     answer:
-      'Minimal. If you can connect to a database or install a browser extension, you\'re good to go: no deep ML expertise needed.',
+      'Minimal technical knowledge needed. If you can <em>connect to a database</em> or <em>install a browser extension</em>, you\'re good to go. <strong>No deep ML expertise</strong> required - we handle the <em>complex AI integration</em> for you.',
   },
   {
     id: 6,
-    question: 'Is my business data ever sent to your servers?',
+    question: 'Is my <strong>business data</strong> ever sent to your servers?',
     answer:
-      'No. All processing and storage happen entirely on your infrastructure: your data never leaves your environment.',
+      'Absolutely not. <strong>All processing and storage</strong> happen entirely on your infrastructure. Your <em>sensitive business data</em> never leaves your environment, ensuring <strong>complete data sovereignty</strong> and <em>compliance</em>.',
   },
 ];
 
@@ -68,7 +69,7 @@ const FAQ = () => {
           transition={{ duration: 0.6 }}
         >
           <h2 className={styles.title}>Frequently Asked Questions</h2>
-          <p className={styles.subtitle}>Everything you need to know about Neophoenix</p>
+          <p className={styles.subtitle}>Everything you need to know about <strong>Neophoenix</strong></p>
         </motion.div>
 
         {/* FAQ Items */}
@@ -87,7 +88,7 @@ const FAQ = () => {
                 aria-expanded={openItem === item.id}
                 aria-controls={`faq-answer-${item.id}`}
               >
-                <span className={styles.questionText}>{item.question}</span>
+                <span className={styles.questionText} dangerouslySetInnerHTML={{ __html: item.question }} />
                 <motion.div
                   className={styles.icon}
                   animate={{ rotate: openItem === item.id ? 180 : 0 }}
@@ -128,26 +129,26 @@ const FAQ = () => {
                     }}
                     id={`faq-answer-${item.id}`}
                   >
-                    <div className={styles.answer}>{item.answer}</div>
+                    <div className={styles.answer} dangerouslySetInnerHTML={{ __html: item.answer }} />
 
                     {/* Feedback Section */}
                     <div className={styles.feedbackSection}>
                       <span className={styles.feedbackText}>Was this helpful?</span>
                       <div className={styles.feedbackButtons}>
-                        <button
-                          className={`${styles.feedbackButton} ${styles.feedbackYes} ${feedback[item.id] === 'yes' ? styles.active : ''}`}
+                        <Button
+                          label="Yes"
+                          variant={feedback[item.id] === 'yes' ? 'filled' : 'outline'}
                           onClick={() => handleFeedback(item.id, 'yes')}
                           disabled={feedback[item.id] !== null}
-                        >
-                          <span>Yes</span>
-                        </button>
-                        <button
-                          className={`${styles.feedbackButton} ${styles.feedbackNo} ${feedback[item.id] === 'no' ? styles.active : ''}`}
+                          className={`${styles.feedbackButton} ${styles.feedbackYes} ${feedback[item.id] === 'yes' ? styles.active : ''}`}
+                        />
+                        <Button
+                          label="No"
+                          variant={feedback[item.id] === 'no' ? 'filled' : 'outline'}
                           onClick={() => handleFeedback(item.id, 'no')}
                           disabled={feedback[item.id] !== null}
-                        >
-                          <span>No</span>
-                        </button>
+                          className={`${styles.feedbackButton} ${styles.feedbackNo} ${feedback[item.id] === 'no' ? styles.active : ''}`}
+                        />
                       </div>
                     </div>
                   </motion.div>

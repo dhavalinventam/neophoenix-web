@@ -1,77 +1,1106 @@
 @use '../../../../styles/variables' as *;
 @use '../../../../styles/mixins' as *;
 
-.servicesSection {
-  background: $gradient-background;
-  padding: 4rem 0;
+// Scroll-Animated Section Styles
+.scrollSection {
   position: relative;
   overflow: hidden;
+  padding: 0;
+  margin: 0;
+  scroll-behavior: smooth;
+  transform: unset !important;
+  // height: 180vh !important;
+}
+
+.scrollContainer {
+  position: relative; // Changed from sticky to relative - GSAP will handle pinning
+  top: 0;
+  height: 60vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.stickyContainer {
+  position: relative;
+  height: 60vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contentPanel {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 2rem;
+  align-items: center;
+  min-height: 60vh;
+  position: relative;
+}
+
+.leftContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  text-align: left;
+  padding: 2rem 0;
+  position: relative;
+  max-width: 600px;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: transform, opacity, scale;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
+
+.rightImage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: transform, opacity, scale;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
+
+// Remove duplicate - already defined above
+
+.scrollTitle {
+  font-family: $font-primary;
+  font-size: 34px;
+  font-weight: $font-weight-bold;
+  color: var(--text-color, #ffffff);
+  margin-bottom: 2rem;
+  line-height: 1.1;
+  background: $text-white;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  position: relative;
+  text-align: left;
+  width: 100%;
+  transition: all 0.3s ease;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 0;
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, #ff6b35 0%, #ff9f1c 100%);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+}
+
+.scrollSubtitle {
+  font-family: $font-primary;
+  font-size: 22px;
+  font-weight: $font-weight-medium;
+  color: #c7d1e0;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-align: left;
+  width: 100%;
+  transition: all 0.3s ease;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
+
+.scrollDescription {
+  font-family: $font-primary;
+  font-size: 16px;
+  font-weight: $font-weight-normal;
+  color: var(--text-color, #ffffff);
+  line-height: 1.6;
+  margin-bottom: 2.5rem;
+  opacity: 0.9;
+  text-align: left;
+  width: 100%;
+  transition: all 0.3s ease;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
+
+.scrollButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 20px;
+  background: linear-gradient(90deg, #ff6b35 0%, #ff9f1c 100%);
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 50px;
+  font-family: $font-primary;
+  font-size: 14px;
+  font-weight: $font-weight-bold;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: all 0.3s ease;
+  align-self: flex-start;
+  position: relative;
+  overflow: hidden;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+
+    &::before {
+      left: 100%;
+    }
+  }
+}
+
+.rightImage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: transform, opacity, scale;
+}
+
+.imageContainer {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  height: 500px;
+  border-radius: 2rem;
+  overflow: hidden;
+  box-shadow:
+    0 25px 50px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(99, 207, 233, 0.2);
+  // background:
+  //   linear-gradient(135deg, rgba(99, 207, 233, 0.1) 0%, rgba(255, 107, 53, 0.1) 100%),
+  //   url('https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 400px;
+  display: block;
+}
+
+.scrollImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(1.1) contrast(1.1);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  display: block !important;
+  visibility: visible !important;
+  transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: transform, opacity, scale;
+  transform: unset !important;
+}
+
+.scrollVideo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(1.1) contrast(1.1);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  display: block !important;
+  visibility: visible !important;
+  transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: transform, opacity, scale;
+  transform: unset !important;
+  border-radius: 1rem;
+}
+
+.imageOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(99, 207, 233, 0.1) 0%,
+    transparent 50%,
+    rgba(255, 107, 53, 0.1) 100%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.imageContainer:hover .imageOverlay {
+  opacity: 1;
+}
+
+// Background Elements for Scroll Section
+.scrollBackgroundElements {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.floatingShape1 {
+  position: absolute;
+  top: 15%;
+  left: 5%;
+  width: 120px;
+  height: 120px;
+  background: radial-gradient(circle, rgba(99, 207, 233, 0.15) 0%, transparent 70%);
+  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+  animation: floatShape1 12s ease-in-out infinite;
+  filter: blur(1px);
+}
+
+.floatingShape2 {
+  position: absolute;
+  top: 60%;
+  right: 10%;
+  width: 80px;
+  height: 80px;
+  background: radial-gradient(circle, rgba(255, 107, 53, 0.12) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: floatShape2 10s ease-in-out infinite;
+  filter: blur(1px);
+}
+
+.floatingShape3 {
+  position: absolute;
+  bottom: 20%;
+  left: 15%;
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(circle, rgba(255, 159, 28, 0.1) 0%, transparent 70%);
+  border-radius: 40% 60% 60% 40% / 60% 30% 70% 40%;
+  animation: floatShape3 14s ease-in-out infinite;
+  filter: blur(1px);
+}
+
+@keyframes floatShape1 {
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(0deg) scale(1);
+  }
+  25% {
+    transform: translate(20px, -30px) rotate(90deg) scale(1.1);
+  }
+  50% {
+    transform: translate(-10px, -20px) rotate(180deg) scale(0.9);
+  }
+  75% {
+    transform: translate(-20px, 10px) rotate(270deg) scale(1.05);
+  }
+}
+
+@keyframes floatShape2 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(-25px, 20px) scale(1.2);
+  }
+  66% {
+    transform: translate(15px, -15px) scale(0.8);
+  }
+}
+
+@keyframes floatShape3 {
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(0deg) scale(1);
+  }
+  40% {
+    transform: translate(30px, -25px) rotate(120deg) scale(1.15);
+  }
+  80% {
+    transform: translate(-20px, 20px) rotate(240deg) scale(0.85);
+  }
+}
+
+// Responsive Design for Scroll Section
+@media (max-width: 1200px) {
+  .floatingShape1,
+  .floatingShape2,
+  .floatingShape3 {
+    display: none; // Hide floating shapes on smaller screens for performance
+  }
+}
+
+// Mobile Static Layout Styles (under 992px)
+.mobileSection {
+  position: relative;
+  padding: 2rem 0;
+  background: transparent;
+  min-height: auto;
+}
+
+.mobileServicesGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  padding: 2rem 16px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.mobileServiceCard {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2rem;
+  background: rgba(15, 23, 42, 0.8);
+  border-radius: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+  }
+}
+
+.mobileContent {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2rem 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.mobileImageContainer {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  height: 300px;
+  margin: 0 auto;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.mobileVideo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 1rem;
+}
+
+.mobileTextContent {
+  text-align: center;
+  padding: 1rem 0;
+}
+
+.mobileTitle {
+  font-family: $font-primary;
+  font-size: clamp(1.8rem, 6vw, 2.2rem);
+  font-weight: $font-weight-bold;
+  color: #ffffff;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+  background: linear-gradient(135deg, #ffffff 0%, #ff9f1c 50%, #ff6b35 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.mobileSubtitle {
+  font-family: $font-primary;
+  font-size: clamp(1rem, 4vw, 1.2rem);
+  font-weight: $font-weight-medium;
+  color: #c7d1e0;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.mobileDescription {
+  font-family: $font-primary;
+  font-size: clamp(0.9rem, 3vw, 1rem);
+  font-weight: $font-weight-normal;
+  color: #ffffff;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  opacity: 0.9;
+}
+
+@media (max-width: 992px) {
+  .contentPanel {
+    gap: 2rem;
+    padding: 2rem 1rem;
+    text-align: center;
+  }
+
+  .leftContent {
+    order: 2;
+    padding: 1rem 0;
+  }
+
+  .rightImage {
+    order: 1;
+  }
+
+  .imageContainer {
+    height: 300px;
+    max-width: 400px;
+  }
+
+  .scrollTitle {
+    font-size: clamp(2rem, 8vw, 2.5rem);
+  }
+
+  .scrollSubtitle {
+    font-size: clamp(1rem, 4vw, 1.4rem);
+  }
+
+  .scrollDescription {
+    font-size: clamp(0.9rem, 3vw, 1.1rem);
+  }
+  .title {
+    opacity: 1 !important;
+    &::after {
+      opacity: 1 !important;
+    }
+  }
+  .subtitle {
+    opacity: 1 !important;
+  }
+  .description {
+    opacity: 1 !important;
+  }
+  .mobileSection {
+    max-height: 100% !important;
+    height: 100% !important;
+    position: unset !important;
+    transform: unset !important;
+  }
+  .mobileServicesGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    padding: 0 1rem 1rem;
+  }
+  .mobileServiceCard {
+    padding: 1.5rem;
+    gap: 1.5rem;
+  }
+
+  .mobileImageContainer {
+    height: 250px;
+    max-width: 100%;
+  }
+
+  .mobileTitle {
+    font-size: 22px;
+  }
+
+  .mobileSubtitle {
+    font-size: 16px;
+  }
+
+  .mobileDescription {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 768px) {
+  .scrollSection {
+    min-height: 100vh;
+  }
+
+  .contentPanel {
+    padding: 1.5rem 1rem;
+  }
+
+  .leftContent {
+    padding: 1rem 0;
+  }
+
+  .imageContainer {
+    height: 250px;
+    max-width: 350px;
+  }
+
+  .scrollButton {
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+    max-width: 200px;
+  }
+  .mobileServicesGrid {
+    grid-template-columns: repeat(1, 1fr) !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .contentPanel {
+    padding: 1rem 0.5rem;
+  }
+
+  .leftContent {
+    padding: 0.5rem 0;
+  }
+
+  .imageContainer {
+    height: 200px;
+    max-width: 300px;
+  }
+
+  .scrollButton {
+    padding: 0.7rem 1.5rem;
+    font-size: 0.9rem;
+    max-width: 180px;
+  }
+}
+
+@media (max-width: 768px) {
+  .sectionIndicators {
+    right: 1rem;
+    gap: 0.8rem;
+  }
+
+  .indicator {
+    width: 10px;
+    height: 10px;
+  }
+}
+
+.servicesSection {
+  background: transparent; // Remove background to show global gradient
+  padding: 0; // Remove padding for seamless layout
+  position: relative;
+  overflow: hidden;
+  min-height: auto; // Remove fixed height for grid layout
+
+  // CSS Custom Properties for mouse tracking
+  --mouse-x: 50%;
+  --mouse-y: 50%;
+
+  // Enhanced background with gradient overlay
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0.6;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    z-index: 1;
+  }
+}
+
+// Animated Background Elements
+.backgroundElements {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.floatingOrb1 {
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(99, 207, 233, 0.1) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: float1 8s ease-in-out infinite;
+  filter: blur(1px);
+}
+
+.floatingOrb2 {
+  position: absolute;
+  top: 60%;
+  right: 15%;
+  width: 150px;
+  height: 150px;
+  background: radial-gradient(circle, rgba(255, 107, 53, 0.08) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: float2 10s ease-in-out infinite;
+  filter: blur(1px);
+}
+
+.floatingOrb3 {
+  position: absolute;
+  bottom: 20%;
+  left: 20%;
+  width: 120px;
+  height: 120px;
+  background: radial-gradient(circle, rgba(255, 159, 28, 0.06) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: float3 12s ease-in-out infinite;
+  filter: blur(1px);
+}
+
+.gridPattern {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image:
+    linear-gradient(rgba(99, 207, 233, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(99, 207, 233, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+  animation: gridMove 20s linear infinite;
+  opacity: 0.3;
+}
+
+.gradientOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    45deg,
+    transparent 0%,
+    rgba(99, 207, 233, 0.02) 25%,
+    transparent 50%,
+    rgba(255, 107, 53, 0.02) 75%,
+    transparent 100%
+  );
+  animation: gradientShift 15s ease-in-out infinite;
+}
+
+@keyframes float1 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(20px, -30px) scale(1.1);
+  }
+  50% {
+    transform: translate(-10px, -20px) scale(0.9);
+  }
+  75% {
+    transform: translate(-20px, 10px) scale(1.05);
+  }
+}
+
+@keyframes float2 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(-25px, 20px) scale(1.2);
+  }
+  66% {
+    transform: translate(15px, -15px) scale(0.8);
+  }
+}
+
+@keyframes float3 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  40% {
+    transform: translate(30px, -25px) scale(1.15);
+  }
+  80% {
+    transform: translate(-20px, 20px) scale(0.85);
+  }
+}
+
+@keyframes gridMove {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(50px, 50px);
+  }
+}
+
+@keyframes gradientShift {
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: translateX(0);
+  }
+  50% {
+    opacity: 0.6;
+    transform: translateX(20px);
+  }
 }
 
 .header {
   @include section-header;
+  margin-bottom: 48px;
+  text-align: center;
+  z-index: 10;
+  position: relative;
+  padding: 90px 32px 0; // Add internal padding for content spacing
+}
 
-  .title {
-    @include section-title-responsive;
+.headerTop {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.refreshControls {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
+
+.refreshButton {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: scale(1.05);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  &.refreshing {
+    animation: spin 1s linear infinite;
+  }
+}
+
+.refreshIcon {
+  font-size: 18px;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.refreshCount {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.7);
+  white-space: nowrap;
+  font-style: italic;
+}
+
+.autoRefreshIndicator {
+  font-size: 11px;
+  color: #63cfe9;
+  white-space: nowrap;
+  font-weight: 500;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.title {
+  @include section-title-responsive;
+  color: #ffffff; // Pure white color
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, #ff6b35 0%, #ff9f1c 50%, #63cfe9 100%);
+    border-radius: 2px;
   }
 }
 
 .description {
   @include section-subtitle-responsive;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.7) !important; // Consistent with other sections
+}
+
+// Progress container for overall scroll progress
+.progressContainer {
+  text-align: center;
+  margin-bottom: 32px;
+  z-index: 10;
+  position: relative;
+}
+
+.progressBar {
+  width: 300px;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+  margin: 0 auto 16px;
+  overflow: hidden;
+  position: relative;
+  backdrop-filter: blur(10px);
+}
+
+.progressFill {
+  height: 100%;
+  background: linear-gradient(90deg, #ff6b35 0%, #ff9f1c 50%, #dabb56 100%);
+  border-radius: 3px;
+  transition: width 0.1s ease-out;
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 30px;
+    height: 100%;
+    border-radius: 3px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4));
+    animation: shimmer 2.5s infinite;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.progressText {
+  color: $text-gray-light;
+  font-size: $font-size-sm;
+  margin: 0;
+  font-weight: $font-weight-medium;
+}
+
+// Services Grid Layout
+.servicesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  gap: 40px;
+  padding: 64px 32px; // Add internal padding for content spacing
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 10;
 }
 
 .serviceCard {
   display: flex;
   flex-direction: column;
-  background: $bg-dark-secondary;
-  border: 1px solid $glass-border-medium;
-  border-radius: 20px;
-  padding: 3rem 2.5rem;
+  background: rgba(16, 21, 40, 0.8); // Semi-transparent background
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(99, 207, 233, 0.2);
+  border-radius: 32px; // More rounded corners
+  padding: 48px 40px;
   text-align: center;
-  transition: all $duration-normal $ease-in-out;
   position: relative;
   height: 100%;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(99, 207, 233, 0.1);
+  user-select: none;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  opacity: 0;
+  transform: translateY(50px) scale(0.9);
+  overflow: hidden;
+
+  // Glass morphism effect
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(99, 207, 233, 0.05) 0%, rgba(255, 107, 53, 0.05) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+  }
+
+  &.animateIn {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 
   &:hover {
-    transform: translateY(-2px);
-    box-shadow: $shadow-lg;
-    border-color: $glass-border-light;
+    transform: translateY(-10px) scale(1.02);
+    border-color: rgba(99, 207, 233, 0.4);
+    box-shadow:
+      0 30px 60px rgba(0, 0, 0, 0.6),
+      0 0 0 1px rgba(99, 207, 233, 0.3),
+      0 0 40px rgba(99, 207, 233, 0.2);
+
+    &::before {
+      opacity: 1;
+    }
 
     .cardIcon {
-      background: $gradient-primary;
+      transform: scale(1.15) rotate(5deg);
+      box-shadow:
+        0 15px 40px rgba(255, 107, 53, 0.6),
+        0 0 30px rgba(255, 159, 28, 0.5),
+        0 0 50px rgba(99, 207, 233, 0.3);
+    }
+
+    .iconGlow {
+      opacity: 1;
+      transform: scale(1.5);
+    }
+
+    .checkmark {
+      transform: scale(1.2);
+      box-shadow:
+        0 6px 20px rgba(255, 107, 53, 0.5),
+        0 0 20px rgba(255, 159, 28, 0.4);
+    }
+
+    .cardHoverEffect {
+      opacity: 1;
+      transform: scale(1);
     }
   }
 }
 
 .cardIcon {
-  width: 80px;
-  height: 80px;
-  background: $primary-blue;
+  width: 90px;
+  height: 90px;
+  background: linear-gradient(135deg, #ff6b35 0%, #ff9f1c 50%, #63cfe9 100%);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto 2rem;
-  transition: all $duration-normal $ease-in-out;
-  box-shadow: 0 4px 20px rgba(102, 126, 234, 0.3);
+  margin: 0 auto 32px;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  box-shadow:
+    0 8px 25px rgba(255, 107, 53, 0.4),
+    0 0 20px rgba(255, 159, 28, 0.3),
+    0 0 30px rgba(99, 207, 233, 0.2);
+  position: relative;
+  z-index: 2;
+}
+
+.iconGlow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.8);
+  width: 120px;
+  height: 120px;
+  background: radial-gradient(circle, rgba(99, 207, 233, 0.3) 0%, transparent 70%);
+  border-radius: 50%;
+  opacity: 0;
+  transition: all 0.4s ease;
+  z-index: -1;
 }
 
 .iconText {
   display: flex;
   align-items: center;
   color: $text-white;
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
+  filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.4));
+  transition: all 0.3s ease;
+  z-index: 3;
+  position: relative;
+}
+
+.cardHoverEffect {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent 30%, rgba(99, 207, 233, 0.1) 50%, transparent 70%);
+  opacity: 0;
+  transform: scale(0.8);
+  transition: all 0.4s ease;
+  z-index: 1;
+  pointer-events: none;
 }
 
 .cardTitle {
   font-family: $font-primary;
   font-size: $font-size-2xl;
-  font-weight: $font-weight-semibold;
+  font-weight: $font-weight-bold;
   color: $text-white;
-  margin-bottom: 1.5rem;
+  margin-bottom: 24px;
   line-height: $line-height-tight;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 2;
+
+  &:hover {
+    background: linear-gradient(135deg, #ffffff 0%, #63cfe9 50%, #ff6b35 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
 }
 
 .cardDescription {
@@ -80,7 +1109,28 @@
   font-weight: $font-weight-normal;
   color: $text-gray-light;
   line-height: $line-height-relaxed;
-  margin-bottom: 2rem;
+  margin-bottom: 32px;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 2;
+}
+
+// Highlight important keywords with Neophoenix colors
+.cardDescription {
+  strong {
+    color: #63cfe9;
+    font-weight: $font-weight-medium;
+    transition: all 0.3s ease;
+    text-shadow: 0 0 10px rgba(99, 207, 233, 0.3);
+  }
+
+  em {
+    color: #ff6b35;
+    font-style: normal;
+    font-weight: $font-weight-medium;
+    transition: all 0.3s ease;
+    text-shadow: 0 0 10px rgba(255, 107, 53, 0.3);
+  }
 }
 
 .featuresList {
@@ -89,6 +1139,9 @@
   margin: 0;
   text-align: left;
   flex: 1;
+  margin-bottom: 32px;
+  position: relative;
+  z-index: 2;
 }
 
 .featureItem {
@@ -96,40 +1149,285 @@
   font-size: $font-size-sm;
   font-weight: $font-weight-normal;
   color: $text-gray-light;
-  margin-bottom: 1rem;
+  margin-bottom: 16px;
   display: flex;
   align-items: flex-start;
-  gap: 0.75rem;
+  gap: 12px;
   line-height: $line-height-normal;
+  transition: all 0.3s ease;
+  position: relative;
 
   &:last-child {
     margin-bottom: 0;
   }
+
+  &:hover {
+    color: $text-white;
+    transform: translateX(8px);
+
+    strong {
+      color: #63cfe9;
+      text-shadow: 0 0 15px rgba(99, 207, 233, 0.5);
+    }
+
+    em {
+      color: #ff6b35;
+      text-shadow: 0 0 15px rgba(255, 107, 53, 0.5);
+    }
+  }
 }
 
 .checkmark {
-  width: 20px;
-  height: 20px;
-  background: $primary-blue;
+  width: 22px;
+  height: 22px;
+  background: linear-gradient(135deg, #ff6b35 0%, #ff9f1c 50%, #63cfe9 100%);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   color: $text-white;
-  font-size: 0.75rem;
+  font-size: 12.8px;
   font-weight: $font-weight-bold;
   flex-shrink: 0;
-  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+  box-shadow:
+    0 4px 12px rgba(255, 107, 53, 0.4),
+    0 0 15px rgba(255, 159, 28, 0.3),
+    0 0 20px rgba(99, 207, 233, 0.2);
+  transition: all 0.3s ease;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(135deg, #ff6b35 0%, #ff9f1c 50%, #63cfe9 100%);
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+  }
+}
+
+// Enhanced focus states for accessibility
+.serviceCard:focus {
+  outline: 2px solid #63cfe9;
+  outline-offset: 2px;
+}
+
+// Loading state animation
+.serviceCard.loading {
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+// Enhanced animations for better performance
+.serviceCard {
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+// CSS animations are now handled by the animateIn class
+
+// Responsive Grid Layout
+@media (max-width: 1200px) {
+  .servicesGrid {
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 32px;
+  }
+
+  .floatingOrb1,
+  .floatingOrb2,
+  .floatingOrb3 {
+    display: none; // Hide floating orbs on smaller screens for performance
+  }
+}
+
+@media (max-width: 992px) {
+  .contentPanel {
+    gap: 2rem;
+    padding: 2rem 1rem;
+    text-align: center;
+  }
+
+  .leftContent {
+    order: 2;
+    padding: 1rem 0;
+  }
+
+  .rightImage {
+    order: 1;
+  }
+
+  .imageContainer {
+    height: 300px;
+    max-width: 400px;
+  }
+
+  .scrollTitle {
+    font-size: clamp(2rem, 8vw, 2.5rem);
+  }
+
+  .scrollSubtitle {
+    font-size: clamp(1rem, 4vw, 1.4rem);
+  }
+
+  .scrollDescription {
+    font-size: clamp(0.9rem, 3vw, 1.1rem);
+  }
+  .title {
+    opacity: 1 !important;
+    &::after {
+      opacity: 1 !important;
+    }
+  }
+  .subtitle {
+    opacity: 1 !important;
+  }
+  .description {
+    opacity: 1 !important;
+  }
+  .mobileSection {
+    max-height: 100% !important;
+    height: 100% !important;
+    position: unset !important;
+    transform: unset !important;
+  }
+  .mobileServicesGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    padding: 0 16px;
+  }
+  .mobileServiceCard {
+    padding: 1.5rem;
+    gap: 1.5rem;
+  }
+
+  .mobileImageContainer {
+    height: 250px;
+    max-width: 100%;
+  }
+
+  .mobileTitle {
+    font-size: 22px;
+    margin-bottom: 20px;
+  }
+
+  .mobileSubtitle {
+    font-size: 16px;
+  }
+
+  .mobileDescription {
+    font-size: 14px;
+  }
+  .mobileButton {
+    padding: 10px 20px;
+    font-size: 13px;
+  }
+  .servicesSection {
+    padding: 0; // Keep seamless layout
+  }
+
+  .servicesGrid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding: 48px 16px; // Add internal padding for mobile
+  }
+
+  .serviceCard {
+    padding: 32px 24px;
+  }
+
+  .progressContainer {
+    display: none; // Hide progress bar since no horizontal scroll
+  }
+
+  // Adjust header spacing
+  .header {
+    padding-top: 40px;
+    margin-bottom: 32px;
+    .title {
+      font-size: 28px;
+    }
+    .description {
+      font-size: 16px;
+    }
+  }
+
+  .cardIcon {
+    width: 70px;
+    height: 70px;
+  }
+
+  .cardTitle {
+    font-size: $font-size-xl;
+  }
+
+  .cardDescription {
+    font-size: $font-size-sm;
+  }
+
+  // Simplify animations on mobile
+  .serviceCard:hover {
+    transform: translateY(-5px) scale(1.01);
+  }
 }
 
 // Responsive Design
 @media (max-width: 768px) {
   .servicesSection {
-    padding: 4rem 0;
+    padding: 0; // Keep seamless layout
+  }
+
+  .servicesGrid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 32px 16px; // Add internal padding for mobile
   }
 
   .header {
-    margin-bottom: 2rem;
+    margin-bottom: 24px;
+    padding: 32px 16px 0; // Add internal padding for mobile
+  }
+
+  .headerTop {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .refreshControls {
+    gap: 0.5rem;
+  }
+
+  .refreshButton {
+    width: 36px;
+    height: 36px;
+  }
+
+  .refreshIcon {
+    font-size: 16px;
+  }
+
+  .refreshCount {
+    font-size: 11px;
+  }
+
+  .autoRefreshIndicator {
+    font-size: 10px;
   }
 
   .description {
@@ -137,21 +1435,97 @@
   }
 
   .serviceCard {
-    padding: 2rem 1.5rem;
-  }
-
-  .cardTitle {
-    font-size: $font-size-xl;
-  }
-}
-
-@media (max-width: 480px) {
-  .serviceCard {
-    padding: 1.5rem 1rem;
+    padding: 32px 24px;
   }
 
   .cardIcon {
     width: 60px;
     height: 60px;
+  }
+
+  .iconText {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+@media (max-width: 480px) {
+  .servicesGrid {
+    gap: 16px;
+    padding: 24px 8px; // Add internal padding for mobile
+  }
+
+  .serviceCard {
+    padding: 24px 16px;
+  }
+
+  .cardIcon {
+    width: 50px;
+    height: 50px;
+  }
+
+  .iconText {
+    width: 24px;
+    height: 24px;
+  }
+
+  .featuresList {
+    margin-bottom: 24px;
+  }
+
+  .checkmark {
+    width: 18px;
+    height: 18px;
+    font-size: 11.2px;
+  }
+}
+
+@media (max-width: 480px) {
+  .mobileServicesGrid {
+    gap: 1.5rem;
+  }
+
+  .mobileServiceCard {
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .mobileTitle {
+    font-size: clamp(1.3rem, 4.5vw, 1.8rem);
+  }
+
+  .mobileSubtitle {
+    font-size: clamp(0.8rem, 3vw, 1rem);
+  }
+
+  .mobileDescription {
+    font-size: clamp(0.8rem, 2.5vw, 0.9rem);
+  }
+}
+
+@media (max-width: 360px) {
+  .mobileServicesGrid {
+    gap: 1rem;
+  }
+
+  .mobileServiceCard {
+    padding: 0.8rem;
+    gap: 0.8rem;
+  }
+
+  .mobileImageContainer {
+    height: 180px;
+  }
+
+  .mobileTitle {
+    font-size: clamp(1.2rem, 4vw, 1.6rem);
+  }
+
+  .mobileSubtitle {
+    font-size: clamp(0.75rem, 2.8vw, 0.9rem);
+  }
+
+  .mobileDescription {
+    font-size: clamp(0.75rem, 2.2vw, 0.85rem);
   }
 }

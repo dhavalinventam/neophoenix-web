@@ -1,16 +1,19 @@
-@import '@/styles/variables';
+@use '../../../../styles/variables' as *;
 
 .ctaBanner {
-  display: flex;
-  align-items: center;
   position: relative;
-  min-height: 400px;
-  background: $gradient-background;
+  background: $bg-dark-primary; // Single solid background
+  padding: 3rem 0; // Consistent with global section spacing
   overflow: hidden;
+  z-index: 1;
 
   @media (max-width: 768px) {
     min-height: 300px;
-    padding: 60px 0;
+    padding: 2.5rem 0;
+  }
+  
+  @media (max-width: 576px) {
+    padding: 2rem 0;
   }
 }
 
@@ -36,14 +39,14 @@
     top: 10%;
     right: 5%;
     animation-delay: 1s;
-    background: $phoenix-blue-medium;
+    background: $phoenix-orange-medium; // Use new orange color
   }
 
   &:nth-child(2) {
     bottom: 10%;
     left: 5%;
     animation-delay: 3s;
-    background: $phoenix-purple-medium;
+    background: $phoenix-gold-medium; // Use new gold color
   }
 
   @media (max-width: 768px) {
@@ -92,6 +95,8 @@
     gap: 15px;
   }
 }
+
+// Custom button styles removed - now using common Button component
 
 // Animations
 @keyframes wave {

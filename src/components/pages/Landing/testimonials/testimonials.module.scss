@@ -2,8 +2,8 @@
 @use '../../../../styles/mixins' as *;
 
 .testimonialsSection {
-  background: $gradient-background;
-  padding: 4rem 0;
+  background: $bg-dark-primary; // Deep navy background (#0A0E1A)
+  padding: 3rem 0; // Consistent with global section spacing
   position: relative;
   overflow: hidden;
 }
@@ -13,6 +13,14 @@
 
   .title {
     @include section-title-responsive;
+    color: #ffffff; // Pure white color
+    
+    // Gradient underline effect
+    &::after {
+      background: linear-gradient(90deg, #FF6B35 0%, #FF9F1C 50%, #cf9c56 100%); // (#FF6B35 → #FF9F1C → #cf9c56)
+      height: 3px;
+      bottom: -0.75rem;
+    }
   }
 
   .subtitle {
@@ -38,27 +46,52 @@
 .testimonialCard {
   display: flex;
   flex-direction: column;
-  background: $glass-bg-medium;
+  background: $bg-dark-secondary; // Secondary navy background (#101528)
   backdrop-filter: blur(20px);
-  border: 1px solid $glass-border-medium;
+  border: 1px solid transparent;
   border-radius: 20px;
   padding: 1.5rem;
   position: relative;
   cursor: pointer;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+
+  // Gradient border glow effect
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 20px;
+    padding: 1px;
+    background: linear-gradient(135deg, $primary-orange 0%, $primary-blue 100%); // (#FF6B35 → #4361EE)
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    opacity: 0.3;
+    transition: opacity $duration-normal $ease-out;
+  }
 
   // Hover effects
   &:hover {
-    border-color: $glass-border-light;
-    box-shadow: $shadow-lg;
+    transform: translateY(-2px);
+    box-shadow: 
+      0 12px 35px rgba(0, 0, 0, 0.4),
+      0 0 0 1px rgba(255, 107, 53, 0.2),
+      0 0 20px rgba(67, 97, 238, 0.2); // Gradient glow on hover
+
+    &::before {
+      opacity: 0.6;
+    }
 
     .quoteIcon {
-      color: $primary-blue;
+      color: $primary-orange; // Orange on hover
     }
   }
 
   // Focus state for accessibility
   &:focus-within {
-    outline: 2px solid $primary-blue;
+    outline: 2px solid $primary-orange;
     outline-offset: 2px;
   }
 }
@@ -81,7 +114,7 @@
   padding-right: 28px;
   font-size: $font-size-sm;
   line-height: $line-height-relaxed;
-  color: $text-white;
+  color: $text-white; // White testimonial text (#FFFFFF)
   margin-bottom: 2rem;
   font-weight: $font-weight-normal;
   position: relative;
@@ -123,16 +156,29 @@
   font-family: $font-secondary;
   font-size: $font-size-base;
   font-weight: $font-weight-semibold;
-  color: $text-white;
+  color: #63cfe9; // Cyan user names (#2EC4B6)
   margin: 0 0 0.25rem 0;
   line-height: $line-height-tight;
 }
 
 .userRole {
   font-size: $font-size-sm;
-  color: $text-gray-light;
+  color: $text-gray-light; // Soft gray user details (#C7D1E0)
   margin: 0;
   font-weight: $font-weight-normal;
+}
+
+// Star ratings styling
+.starRating {
+  display: flex;
+  gap: 0.25rem;
+  margin-top: 0.5rem;
+}
+
+.star {
+  color: $primary-gold; // Golden-orange star ratings (#FF9F1C)
+  font-size: 1rem;
+  filter: drop-shadow(0 0 4px rgba(255, 159, 28, 0.3)); // Subtle glow effect
 }
 
 // Custom Swiper Navigation Styles
@@ -160,8 +206,9 @@
 
   &:hover {
     background: $glass-bg-light;
-    border-color: $primary-blue;
-    color: $primary-blue;
+    border-color: #63cfe9;
+    color: #63cfe9;
+    box-shadow: 0 0 15px rgb(99 207 233 / 20%);
   }
 
   &.swiper-button-disabled {

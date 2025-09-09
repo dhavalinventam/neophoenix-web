@@ -2,8 +2,8 @@
 @use '../../../../styles/mixins' as *;
 
 .howItWorksSection {
-  background: $gradient-background;
-  padding: 4rem 0;
+  background: $bg-dark-primary; // Deep navy background (#0A0E1A)
+  padding: 3rem 0; // Consistent with global section spacing
   position: relative;
   overflow: hidden;
 }
@@ -13,15 +13,53 @@
   
   .title {
     @include section-title-responsive;
+    color: #ffffff; // Pure white color
   }
 }
 
 .description {
   @include section-subtitle-responsive;
+  color: rgba(255, 255, 255, 0.7) !important; // Consistent with other sections
+}
+
+// Single responsive container that automatically switches between layouts
+.responsiveContainer {
+  // Desktop: Grid layout using Bootstrap classes
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin-top: 0;
+  
+  @media (max-width: 1200px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+  
+  @media (max-width: 768px) {
+    // Mobile: Horizontal scroll layout
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch; // Smooth scrolling on iOS
+    scrollbar-width: none; // Hide scrollbar on Firefox
+    -ms-overflow-style: none; // Hide scrollbar on IE/Edge
+    gap: 1rem;
+    padding: 0 1rem 1rem 1rem;
+    margin: 0;
+    
+    &::-webkit-scrollbar {
+      display: none; // Hide scrollbar on Chrome/Safari
+    }
+  }
+  
+  @media (max-width: 480px) {
+    gap: 0.75rem;
+    padding: 0 0.75rem 0.75rem 0.75rem;
+  }
 }
 
 .stepCard {
-  background: $bg-dark-secondary;
+  background: $bg-dark-secondary; // Secondary navy background (#101528)
   border: 1px solid $glass-border-medium;
   border-radius: 20px;
   padding: 2.5rem 2rem;
@@ -30,18 +68,29 @@
   position: relative;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   height: 100%;
+  
+  // Mobile card sizing
+  @media (max-width: 768px) {
+    min-width: 280px; // Fixed width for mobile cards
+    max-width: 280px;
+    flex-shrink: 0; // Prevent cards from shrinking
+    padding: 1.5rem 1rem; // Reduce padding on mobile
+  }
+  
+  @media (max-width: 480px) {
+    min-width: 260px; // Slightly smaller cards on very small screens
+    max-width: 260px;
+    padding: 1.25rem 0.75rem;
+  }
 
   &:hover {
     transform: translateY(-2px);
-    box-shadow: $shadow-lg;
-    border-color: $glass-border-light;
-
-    .stepIcon {
-      background: $gradient-primary;
-    }
+    border-color: #63cfe9;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(99, 207, 233, 0.4196078431);
 
     .stepNumber {
-      background: $gradient-primary;
+      background: linear-gradient(90deg, #FF6B35 0%, #FF9F1C 50%, #cf9c56 100%);
+      transform: scale(1.05);
     }
   }
 }
@@ -49,7 +98,7 @@
 .stepNumber {
   width: 50px;
   height: 50px;
-  background: $primary-blue;
+  background: $text-white; // White background for step numbers (#FFFFFF)
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -58,15 +107,14 @@
   font-family: $font-primary;
   font-size: $font-size-lg;
   font-weight: $font-weight-bold;
-  color: $text-white;
+  color: $bg-dark-primary; // Dark text on white background for contrast
   transition: all $duration-normal $ease-in-out;
-  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
 }
 
 .stepIcon {
   width: 70px;
   height: 70px;
-  background: $bg-dark-tertiary;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -75,13 +123,37 @@
   transition: all $duration-normal $ease-in-out;
 }
 
+// Phoenix-inspired gradients for step icons - All steps use Warm Phoenix theme
+.stepCard:nth-child(1) .stepIcon,
+.stepCard:nth-child(2) .stepIcon,
+.stepCard:nth-child(3) .stepIcon,
+.stepCard:nth-child(4) .stepIcon {
+  background: linear-gradient(90deg, #FF6B35 0%, #FF9F1C 50%, #cf9c56 100%); // All steps: (#FF6B35 → #FF9F1C → #cf9c56)
+  box-shadow: 
+    0 4px 15px rgba(255, 107, 53, 0.3),
+    0 0 15px rgba(255, 159, 28, 0.2);
+}
+
+// Consistent hover effects that maintain the original gradient colors
+.stepCard:nth-child(1):hover .stepIcon,
+.stepCard:nth-child(2):hover .stepIcon,
+.stepCard:nth-child(3):hover .stepIcon,
+.stepCard:nth-child(4):hover .stepIcon {
+  background: linear-gradient(90deg, #FF6B35 0%, #FF9F1C 50%, #cf9c56 100%);
+  box-shadow: 
+    0 6px 20px rgba(255, 107, 53, 0.4),
+    0 0 25px rgba(255, 159, 28, 0.3);
+  transform: scale(1.05);
+}
+
 .iconWrapper {
-  color: $text-white;
+  color: $text-white; // White icons (#FFFFFF)
   width: 32px;
   height: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.3)); // Subtle white glow
   
   svg {
     width: 100%;
@@ -94,7 +166,7 @@
   font-family: $font-primary;
   font-size: $font-size-xl;
   font-weight: $font-weight-semibold;
-  color: $text-white;
+  color: $text-white; // White headings (#FFFFFF)
   margin-bottom: 1rem;
   line-height: $line-height-tight;
 }
@@ -103,43 +175,60 @@
   font-family: $font-primary;
   font-size: $font-size-sm;
   font-weight: $font-weight-normal;
-  color: $text-gray-light;
+  color: $text-gray-light; // Soft gray descriptions (#C7D1E0)
   line-height: $line-height-relaxed;
   margin-bottom: 0;
 }
 
+// Highlight important keywords with Neophoenix colors
+.stepDescription {
+  strong {
+    color: #63cfe9; // Cyan for important keywords (#2EC4B6)
+    font-weight: $font-weight-medium;
+  }
+  
+  em {
+    color: #63cfe9; // Orange for emphasis (#FF6B35)
+    font-style: normal;
+    font-weight: $font-weight-medium;
+  }
+}
+
 // Responsive Design
 @media (max-width: 768px) {
+  .howItWorksSection {
+    padding: 2rem 0; // Reduce padding on mobile
+  }
+  
   .title {
     font-size: $font-size-2xl;
   }
   
   .header {
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem; // Reduce margin on mobile
   }
 
   .description {
     font-size: $font-size-sm;
-  }
-
-  .stepCard {
-    padding: 2rem 1.5rem;
+    margin-bottom: 1.5rem; // Reduce margin on mobile
   }
 
   .stepTitle {
     font-size: $font-size-lg;
+    margin-bottom: 0.75rem; // Reduce margin on mobile
   }
 
   .stepNumber {
     width: 40px;
     height: 40px;
     font-size: $font-size-base;
+    margin-bottom: 1rem; // Reduce margin on mobile
   }
 
   .stepIcon {
     width: 60px;
     height: 60px;
-    margin-bottom: 1.25rem;
+    margin-bottom: 1rem; // Reduce margin on mobile
   }
 
   .iconWrapper {
@@ -154,21 +243,21 @@
 }
 
 @media (max-width: 480px) {
-  .stepCard {
-    padding: 1.5rem 1rem;
+  .howItWorksSection {
+    padding: 1.5rem 0; // Further reduce padding on small mobile
   }
-
+  
   .stepNumber {
     width: 35px;
     height: 35px;
     font-size: $font-size-sm;
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
   }
 
   .stepIcon {
     width: 50px;
     height: 50px;
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
   }
 
   .iconWrapper {
@@ -183,7 +272,7 @@
   
   .stepTitle {
     font-size: $font-size-base;
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.5rem;
   }
   
   .stepDescription {

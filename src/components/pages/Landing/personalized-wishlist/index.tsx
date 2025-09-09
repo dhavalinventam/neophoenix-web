@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Form, FormControl, FormSelect } from 'react-bootstrap';
 import Button from '@/components/ui/button';
 import styles from './PersonalizedWishlist.module.scss';
@@ -11,6 +11,11 @@ const PersonalizedWishlist = () => {
     email: '',
     aiInterests: '',
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<{
+    type: 'success' | 'error' | null;
+    message: string;
+  }>({ type: null, message: '' });
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -20,141 +25,181 @@ const PersonalizedWishlist = () => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission logic here
-    console.log('Form submitted:', formData);
+    setIsSubmitting(true);
+    setSubmitStatus({ type: null, message: '' });
+
+    try {
+      const response = await fetch('/api/sendEmail', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...formData,
+          message: `AI Interest: ${formData.aiInterests}`,
+        }),
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        setSubmitStatus({
+          type: 'success',
+          message: 'Thank you! Your request has been sent successfully. We\'ll get back to you soon!'
+        });
+        // Reset form
+        setFormData({ fullName: '', email: '', aiInterests: '' });
+      } else {
+        setSubmitStatus({
+          type: 'error',
+          message: result.error || 'Failed to send request. Please try again.'
+        });
+      }
+    } catch (error) {
+      setSubmitStatus({
+        type: 'error',
+        message: 'Network error. Please check your connection and try again.'
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
     <section id="personalized-wishlist" className={styles.personalizedWishlistSection}>
+      {/* Animated Background Elements */}
+      <div className={styles.backgroundElements}>
+        <div className={styles.floatingOrb1}></div>
+        <div className={styles.floatingOrb2}></div>
+        <div className={styles.floatingOrb3}></div>
+        <div className={styles.gradientMesh}></div>
+        <div className={styles.particleField}>
+          {[...Array(20)].map((_, i) => (
+            <div key={i} className={styles.particle} style={{
+              '--delay': `${i * 0.1}s`,
+              '--duration': `${3 + (i % 3)}s`,
+              '--x': `${Math.random() * 100}%`,
+              '--y': `${Math.random() * 100}%`,
+            } as React.CSSProperties}></div>
+          ))}
+        </div>
+      </div>
+
       <div className="container">
         <div className="row justify-content-center">
-          <div className="col-lg-8 col-md-10 col-12">
-            {/* Top Section - Title and Description */}
-            <div className={styles.contentSection}>
-              <div className={styles.header}>
-                <h2 className={styles.title}>Build Your Personalized AI Wishlist</h2>
+          <div className="col-lg-10 col-md-12 col-12">
+            {/* Main Content Card */}
+            <div className={styles.mainCard}>
+              {/* Header Section */}
+              <div className={styles.headerSection}>
+                <h2 className={styles.title}>
+                  AI That Adapts to Your Business
+                </h2>
                 <p className={styles.subtitle}>
-                  Create your account to save your favorite AI tools, get personalized
-                  recommendations, and stay updated on the latest additions.
-                </p>
-              </div>
-            </div>
-
-            {/* Bottom Section - Form */}
-            <div className={styles.formCard}>
-              <div className={styles.formHeader}>
-                <div className={styles.formIcon}>
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                      d="M12 2L2 7L12 12L22 7L12 2Z"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <path
-                      d="M2 17L12 22L22 17"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <path
-                      d="M2 12L12 17L22 12"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </div>
-                <h3 className={styles.formTitle}>Join the AI Revolution</h3>
-                <p className={styles.formSubtitle}>
-                  Start building your personalized AI toolkit today
+                  Every enterprise is unique. That's why Neophoenix offers <strong>Tailored AI Solutions </strong> 
+                  from white-label platforms to custom-built integrations. We collaborate closely
+                  with your team to align AI adoption with your strategic goals, ensuring measurable
+                  impact across operations, customer experience, and decision-making.
                 </p>
               </div>
 
-              <Form onSubmit={handleSubmit} className={styles.form}>
-                <div className="row">
-                  <div className="col-md-6">
-                    <Form.Group className={styles.formGroup}>
-                      <Form.Label htmlFor="fullName" className={styles.label}>
-                        Full Name
-                      </Form.Label>
-                      <div className={styles.inputWrapper}>
-                        <FormControl
-                          type="text"
-                          id="fullName"
-                          name="fullName"
-                          value={formData.fullName}
-                          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                            handleInputChange(e)
-                          }
-                          placeholder="Your name"
-                          className={styles.input}
-                          required
-                        />
-                        <div className={styles.inputFocus}></div>
-                      </div>
-                    </Form.Group>
-                  </div>
-                  <div className="col-md-6">
-                    <Form.Group className={styles.formGroup}>
-                      <Form.Label htmlFor="email" className={styles.label}>
-                        Email Address
-                      </Form.Label>
-                      <div className={styles.inputWrapper}>
-                        <FormControl
-                          type="email"
-                          id="email"
-                          name="email"
-                          value={formData.email}
-                          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                            handleInputChange(e)
-                          }
-                          placeholder="your@email.com"
-                          className={styles.input}
-                          required
-                        />
-                        <div className={styles.inputFocus}></div>
-                      </div>
-                    </Form.Group>
-                  </div>
+              {/* Form Section */}
+              <div className={styles.formSection}>
+                <div className={styles.formHeader}>
                 </div>
 
-                <Form.Group className={styles.formGroup}>
-                  <Form.Label htmlFor="aiInterests" className={styles.label}>
-                    AI Interests
-                  </Form.Label>
-                  <div className={styles.inputWrapper}>
-                    <FormSelect
-                      id="aiInterests"
-                      name="aiInterests"
-                      value={formData.aiInterests}
-                      onChange={handleInputChange}
-                      className={styles.select}
-                      required
-                    >
-                      <option value="">Select your primary interest</option>
-                      <option value="content-creation">Content Creation</option>
-                      <option value="data-analysis">Data Analysis</option>
-                      <option value="automation">Automation</option>
-                      <option value="design">Design & Creative</option>
-                      <option value="development">Development</option>
-                      <option value="marketing">Marketing</option>
-                      <option value="productivity">Productivity</option>
-                      <option value="research">Research</option>
-                    </FormSelect>
-                    <div className={styles.inputFocus}></div>
+                <Form onSubmit={handleSubmit} className={styles.form}>
+                  <div className="row">
+                    <div className="col-md-6">
+                      <Form.Group className={styles.formGroup}>
+                        <Form.Label htmlFor="fullName" className={styles.label}>
+                          Full Name
+                        </Form.Label>
+                        <div className={styles.inputWrapper}>
+                          <FormControl
+                            type="text"
+                            id="fullName"
+                            name="fullName"
+                            value={formData.fullName}
+                            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                              handleInputChange(e)
+                            }
+                            placeholder="Your name"
+                            className={styles.input}
+                            required
+                          />
+                          <div className={styles.inputGlow}></div>
+                        </div>
+                      </Form.Group>
+                    </div>
+                    <div className="col-md-6">
+                      <Form.Group className={styles.formGroup}>
+                        <Form.Label htmlFor="email" className={styles.label}>
+                          Email Address
+                        </Form.Label>
+                        <div className={styles.inputWrapper}>
+                          <FormControl
+                            type="email"
+                            id="email"
+                            name="email"
+                            value={formData.email}
+                            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                              handleInputChange(e)
+                            }
+                            placeholder="your@email.com"
+                            className={styles.input}
+                            required
+                          />
+                          <div className={styles.inputGlow}></div>
+                        </div>
+                      </Form.Group>
+                    </div>
                   </div>
-                </Form.Group>
 
-                <div className={styles.buttonWrapper}>
-                  <Button label="Create Free Account" />
-                </div>
-              </Form>
+                  <Form.Group className={styles.formGroup}>
+                    <Form.Label htmlFor="aiInterests" className={styles.label}>
+                      AI Interests
+                    </Form.Label>
+                    <div className={styles.inputWrapper}>
+                      <FormSelect
+                        id="aiInterests"
+                        name="aiInterests"
+                        value={formData.aiInterests}
+                        onChange={handleInputChange}
+                        className={styles.select}
+                        required
+                      >
+                        <option value="">Select your primary interest</option>
+                        <option value="content-creation">Content Creation</option>
+                        <option value="data-analysis">Data Analysis</option>
+                        <option value="automation">Automation</option>
+                        <option value="design">Design & Creative</option>
+                        <option value="development">Development</option>
+                        <option value="marketing">Marketing</option>
+                        <option value="productivity">Productivity</option>
+                        <option value="research">Research</option>
+                      </FormSelect>
+                      <div className={styles.inputGlow}></div>
+                    </div>
+                  </Form.Group>
+
+                  <div className={styles.buttonWrapper}>
+                    <Button 
+                      label={isSubmitting ? "Creating Your Solution..." : "Get Custom AI Solution"} 
+                      disabled={isSubmitting}
+                    />
+                  </div>
+
+                  {/* Status Messages */}
+                  {submitStatus.type && (
+                    <div className={`${styles.statusMessage} ${styles[submitStatus.type]}`}>
+                      {submitStatus.message}
+                    </div>
+                  )}
+                </Form>
+              </div>
             </div>
           </div>
         </div>

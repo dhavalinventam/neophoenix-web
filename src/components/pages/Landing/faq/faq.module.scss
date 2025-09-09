@@ -2,8 +2,8 @@
 @use '../../../../styles/mixins' as *;
 
 .faq {
-  background: $gradient-background;
-  padding: 4rem 0;
+  background: $bg-dark-secondary; // Secondary navy background (#101528)
+  padding: 3rem 0; // Consistent with global section spacing
   position: relative;
   overflow: hidden;
 }
@@ -13,6 +13,14 @@
 
   .title {
     @include section-title-responsive;
+    color: #ffffff; // Pure white color
+    
+    // Gradient underline effect
+    &::after {
+      background: linear-gradient(90deg, #FF6B35 0%, #FF9F1C 50%, #cf9c56 100%); // (#FF6B35 → #FF9F1C → #cf9c56)
+      height: 3px;
+      bottom: -0.75rem;
+    }
   }
 
   .subtitle {
@@ -24,13 +32,14 @@
   margin-bottom: 1rem;
   border-radius: 16px;
   overflow: hidden;
-  background: $glass-bg-medium;
+  background: rgba(255, 255, 255, 0.03); // Subtle light overlay
   backdrop-filter: blur(20px);
-  border: 1px solid $glass-border-medium;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all $duration-normal $ease-out;
 
   &:hover {
-    border-color: $glass-border-light;
-    box-shadow: $shadow-glow-blue;
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
   }
 
   &:last-child {
@@ -48,33 +57,62 @@
   justify-content: space-between;
   cursor: pointer;
   text-align: left;
-  color: $text-white;
+  color: $text-white; // White question text (#FFFFFF)
   font-family: $font-primary;
+  position: relative;
+  transition: all $duration-normal $ease-out;
 
   &:hover {
     background: rgba(255, 255, 255, 0.05);
   }
 
   &:focus {
-    outline: 2px solid $primary-blue;
+    outline: 2px solid $primary-orange; // Orange focus outline
     outline-offset: -2px;
   }
 
   &.active {
-    background: rgba(102, 126, 234, 0.1);
-    border-bottom: 1px solid $glass-border-light;
+    background: rgb(99 207 233 / 8%);
+    border-bottom: none;
+
+    // Glowing orange underline for expanded questions
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: #63cfe9; // Orange (#FF6B35)
+      // box-shadow: 0 0 10px rgba(255, 107, 53, 0.6); // Glowing effect
+      animation: glowPulse 2s ease-in-out infinite alternate;
+    }
 
     .questionText {
-      color: $text-white;
+      color: $text-white; // Keep white when active
       font-weight: $font-weight-semibold;
     }
+
+    .icon {
+      transform: rotate(180deg); // Rotate icon when expanded
+    }
+  }
+}
+
+// Glowing animation for active questions
+@keyframes glowPulse {
+  0% {
+    box-shadow: 0 0 10px rgba(255, 107, 53, 0.6);
+  }
+  100% {
+    box-shadow: 0 0 20px rgba(255, 107, 53, 0.8), 0 0 30px rgba(255, 107, 53, 0.4);
   }
 }
 
 .questionText {
   font-size: $font-size-lg;
   font-weight: $font-weight-medium;
-  color: $text-white;
+  color: $text-white; // White question text (#FFFFFF)
   line-height: $line-height-relaxed;
   flex: 1;
   margin-right: 1rem;
@@ -86,7 +124,7 @@
 }
 
 .icon {
-  color: $text-white;
+  color: $text-white; // White icon color
   transition: all $duration-normal $ease-out;
   flex-shrink: 0;
   display: flex;
@@ -110,8 +148,20 @@
   padding: 1rem 1.5rem;
   font-size: $font-size-base;
   line-height: $line-height-relaxed;
-  color: $text-gray-light;
+  color: $text-gray-light; // Soft gray answers (#C7D1E0)
   font-weight: $font-weight-normal;
+
+  // Highlight important keywords
+  strong {
+    color: #63cfe9; // Cyan for important keywords (#2EC4B6)
+    font-weight: $font-weight-semibold;
+  }
+
+  em {
+    color: #63cfe9; // Orange for emphasis (#FF6B35)
+    font-style: normal;
+    font-weight: $font-weight-medium;
+  }
 }
 
 // Feedback Section Styles
@@ -120,12 +170,12 @@
   align-items: center;
   justify-content: space-between;
   padding: 0.6rem 1.5rem;
-  border-top: 1px solid $glass-border-medium;
+  border-top: none;
 }
 
 .feedbackText {
   font-size: $font-size-sm;
-  color: $text-gray-light;
+  color: $text-gray-light; // Soft gray text
   font-weight: $font-weight-medium;
 }
 
@@ -135,63 +185,11 @@
 }
 
 .feedbackButton {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem 1rem;
-  border: 1px solid $glass-border-medium;
-  border-radius: 8px;
-  background: transparent;
-  color: $text-white;
+  // Custom button styles removed - now using common Button component
   font-size: $font-size-sm;
-  font-weight: $font-weight-medium;
-  cursor: pointer;
-  transition: all $duration-normal $ease-out;
-
-  &:hover:not(:disabled) {
-    border-color: $primary-blue;
-    color: $primary-blue;
-    background: rgba(102, 126, 234, 0.1);
-  }
-
-  &:focus {
-    outline: 2px solid $primary-blue;
-    outline-offset: 2px;
-  }
-
-  svg {
-    width: 16px;
-    height: 16px;
-    fill: none;
-    stroke: currentColor;
-  }
 }
 
-.feedbackYes {
-  &.active {
-    background: #fbbf24;
-    border-color: #fbbf24;
-    color: #1f2937;
-
-    svg {
-      fill: #1f2937;
-      stroke: #1f2937;
-    }
-  }
-}
-
-.feedbackNo {
-  &.active {
-    background: #fbbf24;
-    border-color: #fbbf24;
-    color: #1f2937;
-
-    svg {
-      fill: #1f2937;
-      stroke: #1f2937;
-    }
-  }
-}
+// Feedback button active states removed - now handled by Button component variants
 
 // Responsive adjustments
 @media (max-width: 768px) {

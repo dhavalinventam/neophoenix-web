@@ -1,13 +1,68 @@
-import FAQ from '@/components/pages/Landing/faq';
+'use client';
+
+import { useState } from 'react';
 import styles from './page.module.scss';
 import Button from '@/components/ui/button';
 
-export const metadata = {
-  title: 'Contact',
-  description: 'Get in touch with us.',
-};
-
 export default function ContactPage() {
+  const [formData, setFormData] = useState({
+    fullName: '',
+    email: '',
+    message: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<{
+    type: 'success' | 'error' | null;
+    message: string;
+  }>({ type: null, message: '' });
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { id, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [id]: value
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus({ type: null, message: '' });
+
+    try {
+      const response = await fetch('/api/sendEmail', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        setSubmitStatus({
+          type: 'success',
+          message: 'Thank you! Your message has been sent successfully.'
+        });
+        // Reset form
+        setFormData({ fullName: '', email: '', message: '' });
+      } else {
+        setSubmitStatus({
+          type: 'error',
+          message: result.error || 'Failed to send message. Please try again.'
+        });
+      }
+    } catch (error) {
+      setSubmitStatus({
+        type: 'error',
+        message: 'Network error. Please check your connection and try again.'
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <>
       <div className={`${styles.contactContainer} hero`}>
@@ -16,19 +71,14 @@ export default function ContactPage() {
           <div className="container">
             <div className={styles.heroContent}>
               <div className={styles.headline}>
-                <h1 className={styles.title}>Let's Build Something Amazing.</h1>
+                <h1 className={styles.title}>Let&apos;s Build Something Amazing.</h1>
                 <p className={styles.description}>
-                  Ready to transform your ideas into reality? We're here to help you create
+                  Ready to transform your ideas into reality? We&apos;re here to help you create
                   something extraordinary.
                 </p>
               </div>
             </div>
-          </div>
-        </div>
 
-        {/* Main Contact Section */}
-        <div className={styles.mainSection}>
-          <div className="container">
             <div className="row">
               {/* Contact Information */}
               <div className="col-lg-4">
@@ -39,29 +89,7 @@ export default function ContactPage() {
                   </div>
 
                   <div className={styles.contactMethods}>
-                    <div className={styles.contactMethod}>
-                      <div className={styles.methodIcon}>
-                        <svg
-                          width="24"
-                          height="24"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"
-                            fill="currentColor"
-                          />
-                        </svg>
-                      </div>
-                      <div className={styles.methodContent}>
-                        <h3 className={styles.methodTitle}>Visit Us</h3>
-                        <p className={styles.methodText}>
-                          519, Universal Trade Center, Opp. Mahendra Showroom, near. Hari om Circle,
-                          L.P. Savani road, Surat.
-                        </p>
-                      </div>
-                    </div>
+
 
                     <div className={styles.contactMethod}>
                       <div className={styles.methodIcon}>
@@ -80,7 +108,7 @@ export default function ContactPage() {
                       </div>
                       <div className={styles.methodContent}>
                         <h3 className={styles.methodTitle}>Email Us</h3>
-                        <p className={styles.methodText}>hello@paysphere.com</p>
+                        <p className={styles.methodText}>contact@neophoenix.com</p>
                       </div>
                     </div>
 
@@ -101,9 +129,7 @@ export default function ContactPage() {
                       </div>
                       <div className={styles.methodContent}>
                         <h3 className={styles.methodTitle}>Call Us</h3>
-                        <p className={styles.methodText}>+91 7383 921251 (HR)</p>
-                        <p className={styles.methodText}>+91 91575 94215 (Business)</p>
-                        <span className={styles.methodNote}>Mon-Fri from 8am to 5pm</span>
+                        <p className={styles.methodText}>+1 (XXX) XXX-XXXX</p>
                       </div>
                     </div>
                   </div>
@@ -111,11 +137,6 @@ export default function ContactPage() {
                   <div className={styles.socialSection}>
                     <h3 className={styles.socialTitle}>Follow Us</h3>
                     <div className={styles.socialIcons}>
-                      <a href="#" className={styles.socialIcon} aria-label="Facebook">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                          <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
-                        </svg>
-                      </a>
                       <a href="#" className={styles.socialIcon} aria-label="LinkedIn">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                           <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
@@ -142,39 +163,29 @@ export default function ContactPage() {
                   <div className={styles.formHeader}>
                     <h2 className={styles.formTitle}>Send us a Message</h2>
                     <p className={styles.formSubtitle}>
-                      Tell us about your project and we'll get back to you
+                      Tell us about your project and we&apos;ll get back to you
                     </p>
                   </div>
 
-                  <form className={styles.contactForm}>
+                  <form className={styles.contactForm} onSubmit={handleSubmit}>
                     <div className="row g-2">
                       <div className="col-md-6">
                         <div className={styles.formGroup}>
-                          <label htmlFor="firstName" className={styles.formLabel}>
-                            First Name
+                          <label htmlFor="fullName" className={styles.formLabel}>
+                            Full Name
                           </label>
                           <input
                             type="text"
                             className={styles.formInput}
-                            id="firstName"
-                            placeholder="Enter your first name"
+                            id="fullName"
+                            value={formData.fullName}
+                            onChange={handleInputChange}
+                            placeholder="Enter your full name"
+                            required
                           />
                         </div>
                       </div>
                       <div className="col-md-6">
-                        <div className={styles.formGroup}>
-                          <label htmlFor="lastName" className={styles.formLabel}>
-                            Last Name
-                          </label>
-                          <input
-                            type="text"
-                            className={styles.formInput}
-                            id="lastName"
-                            placeholder="Enter your last name"
-                          />
-                        </div>
-                      </div>
-                      <div className="col-12">
                         <div className={styles.formGroup}>
                           <label htmlFor="email" className={styles.formLabel}>
                             Email Address
@@ -183,10 +194,16 @@ export default function ContactPage() {
                             type="email"
                             className={styles.formInput}
                             id="email"
+                            value={formData.email}
+                            onChange={handleInputChange}
                             placeholder="Enter your email address"
+                            required
                           />
                         </div>
                       </div>
+                    </div>
+                    
+                    <div className="row g-2">
                       <div className="col-12">
                         <div className={styles.formGroup}>
                           <label htmlFor="message" className={styles.formLabel}>
@@ -195,20 +212,35 @@ export default function ContactPage() {
                           <textarea
                             className={styles.formTextarea}
                             id="message"
-                            rows={6}
+                            value={formData.message}
+                            onChange={handleInputChange}
+                            rows={3}
                             placeholder="Tell us about your project, goals, or any questions you have..."
+                            required
                           ></textarea>
                         </div>
                       </div>
-                      
+                    </div>
+
+                    <div className="row g-2">
                       <div className="col-12">
                         <div
                           className={styles.formSubmit}
                           style={{ display: 'flex', justifyContent: 'center' }}
                         >
-                          <Button label="Send Message" />
+                          <Button 
+                            label={isSubmitting ? "Submit..." : "Submit"} 
+                            disabled={isSubmitting}
+                          />
                         </div>
                       </div>
+                      
+                      {/* Status Messages */}
+                      {submitStatus.type && (
+                        <div className={`${styles.statusMessage} ${styles[submitStatus.type]}`}>
+                          {submitStatus.message}
+                        </div>
+                      )}
                     </div>
                   </form>
                 </div>
@@ -217,7 +249,7 @@ export default function ContactPage() {
           </div>
         </div>
       </div>
-      <FAQ />
     </>
   );
 }
+

@@ -1,20 +1,77 @@
 'use client';
 import Link from 'next/link';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './Header.module.scss';
-import logo from '../../../../public/logo.png.png';
+import logo from '../../../../public/logo.png';
 import Button from '@/components/ui/button';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      setIsScrolled(scrollTop > 0);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  // Handle smooth scrolling to sections
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (href.startsWith('#')) {
+      e.preventDefault();
+      const element = document.querySelector(href);
+      if (element) {
+        element.scrollIntoView({ 
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    }
+    // Close mobile menu after navigation
+    setIsMenuOpen(false);
+  };
+
+  // Handle Custom AI Solutions button click
+  const handleCustomAIClick = () => {
+    const element = document.querySelector('#personalized-wishlist');
+    if (element) {
+      element.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+    // Close mobile menu after navigation
+    setIsMenuOpen(false);
+  };
+
+  // Close menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as Element;
+      if (isMenuOpen && !target.closest('[data-mobile-menu]')) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    if (isMenuOpen) {
+      document.addEventListener('click', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, [isMenuOpen]);
+
   return (
-    <header className={styles.header}>
+    <header className={`${styles.header} ${isScrolled ? styles.scroll : ''}`}>
       <div className={styles.inner}>
         {/* Logo */}
         <Link href="/" className={styles.brand}>
@@ -23,36 +80,41 @@ export default function Header() {
               <Image
                 src={logo}
                 alt="Neophoenix Logo"
-                width={60}
-                height={60}
+                width={200}
+                height={57}
                 priority
                 className={styles.phoenixImage}
               />
             </div>
-            <span className={styles.brandText}>NEOPHONIEX</span>
+            {/* <span className={styles.brandText}>NEOPHONIEX</span> */}
           </div>
         </Link>
 
         {/* Desktop Navigation */}
         <nav className={styles.nav}>
-          <Link className={styles.link} href="/">
+          <Link className={styles.link} href="/" onClick={(e) => handleNavClick(e, '/')}>
             Home
           </Link>
-          <Link className={styles.link} href="/services">
+          {/* <Link className={styles.link} href="#services" onClick={(e) => handleNavClick(e, '#services')}>
             Services
-          </Link>
-          <Link className={styles.link} href="/contact">
+          </Link> */}
+          <Link className={styles.link} href="/contact" onClick={(e) => handleNavClick(e, '/contact')}>
             Contact
           </Link>
         </nav>
 
         {/* Desktop CTA Button */}
         <div className={styles.ctaContainer}>
-          <Button label="Join Waitlist" />
+          <Button label="Custom AI Solutions" onClick={handleCustomAIClick} />
         </div>
 
         {/* Mobile Menu Button */}
-        <button className={styles.mobileMenuButton} onClick={toggleMenu} aria-label="Toggle menu">
+        <button 
+          className={styles.mobileMenuButton} 
+          onClick={toggleMenu} 
+          aria-label="Toggle menu"
+          data-mobile-menu
+        >
           <span className={`${styles.hamburgerLine} ${isMenuOpen ? styles.active : ''}`}></span>
           <span className={`${styles.hamburgerLine} ${isMenuOpen ? styles.active : ''}`}></span>
           <span className={`${styles.hamburgerLine} ${isMenuOpen ? styles.active : ''}`}></span>
@@ -60,18 +122,18 @@ export default function Header() {
       </div>
 
       {/* Mobile Navigation */}
-      <div className={`${styles.mobileNav} ${isMenuOpen ? styles.open : ''}`}>
+      <div className={`${styles.mobileNav} ${isMenuOpen ? styles.open : ''}`} data-mobile-menu>
         <nav className={styles.mobileNavContent}>
-          <Link className={styles.mobileLink} href="/" onClick={() => setIsMenuOpen(false)}>
+          <Link className={styles.mobileLink} href="/" onClick={(e) => handleNavClick(e, '/')}>
             Home
           </Link>
-          <Link className={styles.mobileLink} href="/services" onClick={() => setIsMenuOpen(false)}>
+          <Link className={styles.mobileLink} href="#services" onClick={(e) => handleNavClick(e, '#services')}>
             Services
           </Link>
-          <Link className={styles.mobileLink} href="/contact" onClick={() => setIsMenuOpen(false)}>
+          <Link className={styles.mobileLink} href="/contact" onClick={(e) => handleNavClick(e, '/contact')}>
             Contact
           </Link>
-          <Button label="Join Waitlist" />
+          <Button label="Custom AI Solutions" onClick={handleCustomAIClick} />
         </nav>
       </div>
     </header>

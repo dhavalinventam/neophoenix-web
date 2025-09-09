@@ -1,12 +1,8 @@
 @use '../../../styles/variables' as *;
 
 .header {
-  background: linear-gradient(
-    135deg,
-    rgba($bg-dark-primary, 0.4) 0%,
-    rgba($bg-dark-secondary, 0.4) 100%
-  );
-  border: 1px solid $glass-border-dark;
+  background: rgba(15, 23, 42, 0.95); // Dark blue background with high opacity
+  border: 1px solid rgba(255, 255, 255, 0.1);
   padding: 8px 12px;
   border-radius: 40px;
   z-index: 1000;
@@ -22,13 +18,14 @@
   left: 50%;
 
   &.scroll {
-    max-width: 1295px;
+    max-width: 1200px;
+    background: rgba(15, 23, 42, 0.98); // More solid background when scrolled
     box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
   }
 
   @media (max-width: 768px) {
     padding: 8px 20px;
-    width: 100%;
+    width: 96%;
   }
 }
 
@@ -55,11 +52,7 @@
 }
 
 .logoImage {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  max-width: 50px;
+  max-width: 180px;
   width: 100%;
 }
 
@@ -78,8 +71,9 @@
 // Desktop Navigation
 .nav {
   display: flex;
-  gap: 2rem;
+  gap: 32px;
   align-items: center;
+  margin: 0 auto; // Center the navigation
 
   @media (max-width: 768px) {
     display: none;
@@ -87,15 +81,15 @@
 }
 
 .link {
-  color: #e2e8f0;
+  color: $text-white; // White text for navigation links
   text-decoration: none;
   font-weight: 500;
-  font-size: 0.9rem;
+  font-size: 14.4px;
   transition: all 0.3s ease;
   position: relative;
 
   &:hover {
-    color: #4facfe;
+    color: $text-white; // Keep white on hover
   }
 
   &::after {
@@ -105,7 +99,12 @@
     height: 2px;
     bottom: -4px;
     left: 0;
-    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    background: linear-gradient(
+      90deg,
+      #ff6b35 0%,
+      #ff9f1c 50%,
+      #cf9c56 100%
+    ); // Gradient underline effect
     transition: width 0.3s ease;
   }
 
@@ -142,7 +141,7 @@
 .hamburgerLine {
   width: 22px;
   height: 2px;
-  background: #e2e8f0;
+  background: $text-white; // White hamburger lines
   border-radius: 10px;
   transition: all 0.3s ease;
   transform-origin: 1px;
@@ -166,10 +165,10 @@
 .mobileNav {
   position: fixed;
   top: -11px;
-  left: 0;
+  left: -12px;
   width: 100%;
   height: 100vh;
-  background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 100%);
+  background: $bg-dark-primary; // Deep navy background
   transform: translateX(-100%);
   transition: transform 0.3s ease-in-out;
   z-index: 1000;
@@ -179,6 +178,7 @@
 
   &.open {
     transform: translateX(0);
+    width: calc(100% + 24px);
   }
 
   @media (min-width: 769px) {
@@ -190,24 +190,27 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.6rem;
+  gap: 25.6px;
   width: 100%;
-  padding: 2rem;
+  padding: 32px;
 }
 
 .mobileLink {
-  color: #e2e8f0;
+  color: $text-white; // White text for mobile links
   text-decoration: none;
   font-weight: 600;
   font-size: 14px;
   transition: all 0.3s ease;
 
   &:hover {
-    color: #4facfe;
+    color: $primary-orange; // Orange on hover
   }
 }
 
 @media (max-width: 768px) {
+  .logoImage {
+    max-width: 130px;
+  }
   .logoContainer {
     margin-left: 0;
   }

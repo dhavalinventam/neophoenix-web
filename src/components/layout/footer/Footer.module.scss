@@ -2,218 +2,162 @@
 
 .footer {
   position: relative;
-  background: linear-gradient(
-    135deg,
-    rgba($bg-dark-primary, 0.9) 0%,
-    rgba($bg-dark-secondary, 0.9) 100%
-  );
-  border-top: 1px solid $glass-border-dark;
+  background: transparent; // Remove background to show global gradient
   color: $text-white;
-  padding: 4rem 0 2rem;
+  padding: 64px 0 32px;
   margin-top: auto;
   overflow: hidden;
+  z-index: 1;
+
+  // Subtle background elements to enhance gradient integration
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    // background:
+    //   radial-gradient(circle at 20% 80%, rgba(255, 107, 53, 0.02) 0%, transparent 50%),
+    //   radial-gradient(circle at 80% 20%, rgba(255, 159, 28, 0.02) 0%, transparent 50%),
+    //   radial-gradient(circle at 40% 40%, rgba(46, 196, 182, 0.01) 0%, transparent 50%);
+    z-index: 0;
+    pointer-events: none;
+  }
 }
 
-// Main content
+@keyframes backgroundFloat {
+
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+    opacity: 1;
+  }
+
+  33% {
+    transform: translateY(-20px) rotate(1deg);
+    opacity: 0.8;
+  }
+
+  66% {
+    transform: translateY(10px) rotate(-1deg);
+    opacity: 0.9;
+  }
+}
+
+@keyframes backgroundShift {
+
+  0%,
+  100% {
+    transform: translateX(0px) scale(1);
+  }
+
+  50% {
+    transform: translateX(20px) scale(1.05);
+  }
+}
+
+@keyframes logoGlow {
+
+  0%,
+  100% {
+    box-shadow: 0 0 10px rgba(255, 107, 53, 0.3);
+    transform: scaleX(1);
+  }
+
+  50% {
+    box-shadow: 0 0 20px rgba(255, 107, 53, 0.6);
+    transform: scaleX(1.1);
+  }
+}
+
+@keyframes titleGlow {
+
+  0%,
+  100% {
+    box-shadow: 0 0 8px rgba(255, 107, 53, 0.4);
+    transform: scaleX(1);
+  }
+
+  50% {
+    box-shadow: 0 0 15px rgba(255, 107, 53, 0.7);
+    transform: scaleX(1.05);
+  }
+}
+
+// Main content - Modern layout with glass morphism
 .mainContent {
   position: relative;
-  z-index: 2;
-  margin-bottom: 3rem;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: auto 500px;
+  gap: 48px;
+  margin-bottom: 48px;
+  align-items: start;
+  // padding: 2rem;
+  // background: rgba(255, 255, 255, 0.02); 
+  // backdrop-filter: blur(20px);
+  // border-radius: 24px;
+  // border: 1px solid rgba(255, 255, 255, 0.08); 
+  // box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1); 
 }
 
-.companySection {
-  padding: 0 2rem 0 1rem;
+// Left Column - Company Information and Newsletter
+.leftColumn {
+  .companySection {
+    .logoSection {
+      .logoContainer {
+        margin-bottom: 24px;
+      }
 
-  .logoSection {
-    .logoContainer {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      gap: 7px;
-      margin-bottom: 1rem;
-    }
-    
-    .logoImage {
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      max-width: 50px;
-      width: 100%;
-    }
+      .logoImage {
+        max-width: 250px;
+        filter: drop-shadow(0 4px 20px rgba(255, 107, 53, 0.2));
+        transition: all $duration-normal $ease-in-out;
 
-    .phoenixImage {
-      width: 100%;
-      height: 100%;
-    }
+        &:hover {
+          transform: scale(1.02);
+          filter: drop-shadow(0 6px 25px rgba(255, 107, 53, 0.3));
+        }
+      }
 
-    .brandText {
-      font-size: 16px;
-      font-weight: 700;
-      letter-spacing: 0.5px;
-      transition: all 0.3s ease;
-    }
+      .phoenixImage {
+        width: 100%;
+        height: auto;
+      }
 
-    .companyDescription {
-      color: $text-gray-light;
-      font-size: $font-size-sm;
-      line-height: $line-height-relaxed;
-      margin: 0;
-    }
-  }
-}
-
-.rightSideContent {
-  padding-left: 1rem;
-
-  .navigationMenu {
-    .column {
-      padding: 0 0.5rem;
-
-      .columnTitle {
-        text-align: start;
+      .companyDescription {
+        color: $text-gray-light;
         font-size: $font-size-lg;
-        font-weight: $font-weight-bold;
-        margin-bottom: 1rem;
-        color: $text-white;
-        position: relative;
-
-        &::after {
-          content: '';
-          position: absolute;
-          bottom: -6px;
-          left: 0;
-          width: 25px;
-          height: 2px;
-          background: $gradient-secondary;
-          border-radius: 2px;
-        }
+        line-height: $line-height-relaxed;
+        margin: 0 0 32px 0;
+        max-width: 400px;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3); // Add subtle shadow for better readability
       }
 
-      .linkList {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-        text-align: start;
-
-        li {
-          margin-bottom: 0.5rem;
-
-          .link {
-            color: $text-gray-light;
-            text-decoration: none;
-            font-size: $font-size-sm;
-            transition: all $duration-normal $ease-in-out;
-            position: relative;
-            padding-left: 0;
-
-            &::before {
-              content: '';
-              position: absolute;
-              left: -12px;
-              top: 50%;
-              width: 0;
-              height: 2px;
-              background: $primary-blue;
-              transition: width $duration-normal $ease-in-out;
-              transform: translateY(-50%);
-            }
-
-            &:hover {
-              color: $text-white;
-              padding-left: 12px;
-
-              &::before {
-                width: 8px;
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-
-  .socialEmailSection {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    align-items: flex-end;
-
-    .socialSection {
-      text-align: start;
-      width: 100%;
-
-      .socialTitle {
-        font-size: $font-size-base;
-        font-weight: $font-weight-semibold;
-        margin-bottom: 1rem;
-        color: $text-white;
-      }
-
-      .socialIcons {
-        display: flex;
-        gap: 1rem;
-        justify-content: flex-start;
-
-        .socialIcon {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          width: 45px;
-          height: 45px;
-          background: $glass-bg-light;
-          border-radius: 50%;
-          color: $text-white;
-          text-decoration: none;
-          transition: all $duration-normal $ease-in-out;
-          backdrop-filter: blur(10px);
-          border: 1px solid $glass-border-light;
-
-          &:hover {
-            background: $glass-bg-medium;
-            transform: translateY(-3px);
-            box-shadow: $shadow-xl;
-          }
-
-          svg {
-            max-width: 18px;
-            width: 100%;
-            transition: transform $duration-normal $ease-in-out;
-          }
-
-          &:hover svg {
-            transform: scale(1.1);
-          }
-        }
-      }
     }
 
     .emailSection {
-      text-align: start;
-      width: 100%;
-
-      .emailTitle {
-        font-size: $font-size-base;
-        font-weight: $font-weight-semibold;
-        margin-bottom: 1rem;
-        color: $text-white;
-      }
-
       .emailForm {
         .emailInputGroup {
           position: relative;
           display: flex;
           align-items: center;
-          background: $glass-bg-light;
-          border-radius: 50px;
-          padding: 5px;
+          background: $glass-bg-medium;
           backdrop-filter: blur(10px);
-          border: 1px solid $glass-border-light;
+          border-radius: 16px;
+          padding: 6px;
+          border: 1px solid $glass-border-medium;
+          max-width: 380px;
           transition: all $duration-normal $ease-in-out;
+          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 
           &:focus-within {
-            background: $glass-bg-medium;
-            box-shadow: $shadow-glow-blue;
+            border-color: $primary-orange;
+            box-shadow:
+              0 0 0 3px rgba(255, 107, 53, 0.2),
+              0 8px 30px rgba(255, 107, 53, 0.1);
+            transform: translateY(-2px);
           }
 
           .emailInput {
@@ -221,36 +165,45 @@
             background: transparent;
             border: none;
             color: $text-white;
-            padding: 10px 20px;
-            font-size: $font-size-sm;
+            padding: 16px 20px;
+            font-size: $font-size-base;
             outline: none;
+            font-weight: $font-weight-normal;
 
             &::placeholder {
               color: $text-gray-medium;
+              font-weight: $font-weight-normal;
             }
           }
 
           .emailButton {
-            background: $gradient-secondary;
+            background: $gradient-button-primary;
             border: none;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
+            border-radius: 12px;
+            width: 48px;
+            height: 48px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: $text-white;
             cursor: pointer;
             transition: all $duration-normal $ease-in-out;
-            position: relative;
-            overflow: hidden;
+            margin-right: 6px;
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+
+            &:hover {
+              transform: scale(1.05) translateY(-2px);
+              box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
+            }
 
             .sendIcon {
               transition: transform $duration-normal $ease-in-out;
+              width: 18px;
+              height: 18px;
             }
 
             &:hover .sendIcon {
-              transform: translateX(2px);
+              transform: translateX(3px);
             }
           }
         }
@@ -259,201 +212,561 @@
   }
 }
 
-// Copyright
-.copyright {
+// Middle Column - Products
+.middleColumn {
+  .productsSection {
+    .sectionTitle {
+      font-size: $font-size-xl;
+      font-weight: $font-weight-bold;
+      color: $text-white;
+      margin: 0 0 16px 0;
+      position: relative;
+      line-height: 1.2;
+      font-family: $font-title;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4); // Add subtle shadow for better readability
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -8px;
+        left: 0;
+        width: 40px;
+        height: 3px;
+        background: $gradient-primary;
+        border-radius: 2px;
+        animation: titleGlow 4s ease-in-out infinite;
+      }
+    }
+
+    .linkList {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      li {
+        margin-bottom: 12px;
+
+        .link {
+          color: $text-gray-light;
+          text-decoration: none;
+          font-size: $font-size-base;
+          transition: all $duration-normal $ease-in-out;
+          display: block;
+          padding: 0px 0;
+          text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); // Add subtle shadow for better readability
+
+          &:hover {
+            color: $primary-orange;
+            transform: translateX(8px);
+            text-shadow: 0 0 10px rgba(255, 107, 53, 0.3);
+          }
+        }
+      }
+    }
+  }
+}
+
+.footer_rightColumn_section_inner {
+  display: flex;
+  justify-content: space-between;
+  gap: 42px;
+}
+
+.footer_rightColumn_section {
+  display: flex;
+  gap: 24px;
+  flex-direction: column;
+
+  // Newsletter Section
+  .newsletterSection {
+    margin-top: 10px;
+    width: 100%;
+    max-width: 500px;
+
+    .newsletterTitle {
+      font-size: $font-size-lg;
+      font-weight: $font-weight-bold;
+      color: $text-white;
+      margin: 0 0 8px 0;
+      font-family: $font-title;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    }
+
+    .newsletterDescription {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: $font-size-sm;
+      line-height: $line-height-normal;
+      margin: 0 0 20px 0;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    }
+
+    .newsletterForm {
+        .emailInputGroup {
+          position: relative;
+          display: flex;
+          align-items: center;
+          background: #2C2F33; // Dark charcoal gray background
+          border-radius: 50px; // Heavily rounded corners for pill shape
+          padding: 4px;
+          border: 1px solid #4A4D50; // Subtle lighter gray border
+          transition: all $duration-normal $ease-in-out;
+          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+          max-width: 500px;
+
+          &:focus-within {
+            border-color: $primary-orange;
+            box-shadow:
+              0 0 0 2px rgba(255, 107, 53, 0.2),
+              0 4px 20px rgba(255, 107, 53, 0.1);
+            transform: translateY(-1px);
+          }
+
+        .emailInput {
+          flex: 1;
+          background: transparent;
+          border: none;
+          color: $text-white;
+          padding: 12px 20px;
+          font-size: $font-size-sm;
+          outline: none;
+          font-weight: $font-weight-normal;
+          border-radius: 50px; // Match the pill shape
+
+          &::placeholder {
+            color: #8E9297; // Medium gray placeholder text
+            font-weight: $font-weight-normal;
+          }
+        }
+
+        .subscribeButton {
+          // Custom button styles removed - now using common Button component
+          margin-right: 4px;
+        }
+      }
+    }
+  }
+}
+
+// Right Column - Let's Connect
+.rightColumn {
+  .connectSection {
+    .sectionTitle {
+      font-size: $font-size-xl;
+      font-weight: $font-weight-bold;
+      color: $text-white;
+      margin: 0 0 16px 0;
+      position: relative;
+      line-height: 1.2;
+      font-family: $font-title;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4); // Add subtle shadow for better readability
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -8px;
+        left: 0;
+        width: 40px;
+        height: 3px;
+        background: $gradient-primary;
+        border-radius: 2px;
+        animation: titleGlow 4s ease-in-out infinite;
+      }
+    }
+
+    .linkList {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      li {
+        margin-bottom: 12px;
+
+        .link {
+          color: $text-gray-light;
+          text-decoration: none;
+          font-size: $font-size-base;
+          transition: all $duration-normal $ease-in-out;
+          display: block;
+          padding: 4px 0;
+          text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); // Add subtle shadow for better readability
+
+          &:hover {
+            color: $primary-orange;
+            transform: translateX(8px);
+            text-shadow: 0 0 10px rgba(255, 107, 53, 0.3);
+          }
+        }
+      }
+    }
+  }
+}
+
+// Bottom Section - Copyright and Social Media
+.bottomSection {
+  border-top: 1px solid rgba(255, 255, 255, 0.05); // Softer border to blend with gradient
+  padding-top: 32px;
   position: relative;
-  z-index: 2;
-  border-top: 1px solid $glass-border-dark;
-  padding-top: 1.5rem;
+  z-index: 1;
 
   .copyrightContent {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
-    gap: 1rem;
+    justify-content: space-between;
+    gap: 16px;
   }
 
   .copyrightText {
     color: $text-gray-light;
-    font-size: $font-size-sm;
+    font-size: $font-size-base;
     margin: 0;
+    font-weight: $font-weight-normal;
+    opacity: 0.9; // Slightly increase opacity for better readability
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3); // Add subtle shadow for better readability
   }
 
   .legalLinks {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-  }
+    gap: 12px;
+    margin: 8px 0;
 
-  .legalLink {
-    color: $text-gray-light;
-    font-size: $font-size-sm;
-    text-decoration: none;
-    transition: all $duration-normal $ease-in-out;
-    position: relative;
+    .legalLink {
+      color: $text-gray-light;
+      text-decoration: none;
+      font-size: $font-size-base;
+      transition: all $duration-normal $ease-in-out;
+      opacity: 0.9;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 
-    &:hover {
-      color: $text-white;
-      text-decoration: underline;
+      &:hover {
+        color: $primary-orange;
+        opacity: 1;
+        text-shadow: 0 0 10px rgba(255, 107, 53, 0.3);
+      }
+    }
+
+    .separator {
+      color: $text-gray-light;
+      opacity: 0.6;
+      font-size: $font-size-base;
     }
   }
 
-  .separator {
-    color: $text-gray-light;
-    font-size: $font-size-sm;
+  .socialIcons {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    .socialIcon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      background: $glass-bg-medium;
+      backdrop-filter: blur(10px);
+      border-radius: 16px;
+      color: $text-white;
+      text-decoration: none;
+      transition: all $duration-normal $ease-in-out;
+      border: 1px solid $glass-border-medium;
+      position: relative;
+      overflow: hidden;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: $gradient-button-primary;
+        opacity: 0;
+        transition: opacity $duration-normal $ease-in-out;
+        border-radius: 16px;
+      }
+
+      &:hover {
+        transform: translateY(-4px) scale(1.05);
+        border-color: $primary-orange;
+        box-shadow: 0 8px 25px rgba(255, 107, 53, 0.3);
+
+        &::before {
+          opacity: 0.1;
+        }
+      }
+
+      svg {
+        max-width: 20px;
+        width: 100%;
+        transition: transform $duration-normal $ease-in-out;
+        position: relative;
+        z-index: 1;
+      }
+
+      &:hover svg {
+        transform: scale(1.2) rotate(5deg);
+      }
+    }
   }
 }
 
 // Responsive design
+@media (max-width: 1024px) {
+  .footer {
+    padding: 3rem 0 2rem;
+  }
+
+  .mainContent {
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+
+  .leftColumn {
+    grid-column: 1 / -1;
+  }
+
+  .footer_rightColumn_section {
+    gap: 2rem;
+  }
+}
+
 @media (max-width: 768px) {
   .footer {
-    padding: 3rem 0 1.5rem;
+    padding: 48px 0 24px;
+  }
 
-    .mainContent {
-      margin-bottom: 1rem;
-    }
+  .mainContent {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    margin-bottom: 32px;
+  }
+
+  .leftColumn {
+    text-align: center;
 
     .companySection {
-      padding: 0 1rem;
-      margin-bottom: 2rem;
-      text-align: center;
-
       .logoSection {
-        .logoContainer {
-          justify-content: center;
+        .logoContainer::after {
+          left: 0%;
+          transform: translateX(0%);
         }
 
         .companyDescription {
-          font-size: 0.9rem;
           max-width: 100%;
-          text-align: center;
-        }
-      }
-    }
-
-    .rightSideContent {
-      padding-left: 0.5rem;
-
-      .navigationMenu {
-        .column {
-          padding: 0 0.5rem;
-
-          .columnTitle {
-            font-size: 1rem;
-            margin-bottom: 0.75rem;
-          }
-
-          .linkList li {
-            margin-bottom: 0.4rem;
-
-            .link {
-              font-size: 0.85rem;
-            }
-          }
+          text-align: start;
+          font-size: $font-size-base;
+          margin-bottom: 1rem !important;
         }
       }
 
-      .socialEmailSection {
-        align-items: center;
-        gap: 1rem;
-
-        .socialSection {
-          text-align: center;
-
-          .socialIcons {
-            justify-content: center;
-            gap: 0.75rem;
-
-            .socialIcon {
-              width: 40px;
-              height: 40px;
-            }
-          }
+      .emailSection {
+        .emailForm .emailInputGroup {
+          max-width: 100%;
+          margin: 0 auto;
         }
-
-        .emailSection {
-          text-align: center;
-          
-          .emailForm .emailInputGroup {
-            .emailInput {
-              padding: 10px 15px;
-              font-size: 0.9rem;
-            }
-
-            .emailButton {
-              width: 40px;
-              height: 40px;
-            }
-          }
-        }
-      }
-    }
-
-    .copyright {
-      .copyrightContent {
-        flex-direction: column;
-        text-align: center;
-        gap: 0.75rem;
       }
     }
   }
 
-  @media (max-width: 576px) {
-    .footer {
-      .companySection {
-        .logoSection {
-          .companyDescription {
-            font-size: 0.85rem;
+  .footer_rightColumn_section {
+    gap: 2rem;
+
+    .newsletterSection {
+      margin-top: 24px;
+      padding: 20px;
+
+      .newsletterTitle {
+        font-size: $font-size-base;
+        text-align: center;
+      }
+
+      .newsletterDescription {
+        text-align: center;
+        font-size: 13px;
+      }
+
+      .newsletterForm .emailInputGroup {
+        flex-direction: column;
+        gap: 12px;
+        padding: 16px;
+        max-width: 100%;
+
+        .emailInput {
+          padding: 14px 20px;
+          font-size: $font-size-base;
+          text-align: center;
+          border-radius: 50px;
+        }
+
+        .subscribeButton {
+          width: 100%;
+          height: 100%;
+          align-self: center;
+          margin-right: 0;
+        }
+      }
+    }
+  }
+
+  .middleColumn,
+  .rightColumn {
+    text-align: start;
+
+    .sectionTitle {
+      font-size: $font-size-base !important;
+
+      &::after {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+
+    .linkList li::before {
+      display: none;
+    }
+  }
+
+  .bottomSection {
+    padding-top: 2rem;
+
+    .copyrightContent {
+      flex-direction: column;
+      text-align: center;
+      gap: 16px;
+    }
+
+    .legalLinks {
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .socialIcons {
+      justify-content: center;
+      gap: 1rem;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .footer {
+    padding: 32px 0 16px;
+  }
+
+  .mainContent {
+    gap: 24px;
+    margin-bottom: 24px;
+  }
+
+  .leftColumn {
+    .companySection {
+      .logoSection {
+        .logoImage {
+          max-width: 200px;
+        }
+
+        .companyDescription {
+          font-size: 14.4px;
+          margin-bottom: 24px;
+        }
+
+      }
+
+      .emailSection {
+        .emailForm .emailInputGroup {
+          .emailInput {
+            padding: 10px 14px;
+            font-size: 14.4px;
+          }
+
+          .emailButton {
+            width: 44px;
+            height: 44px;
           }
         }
       }
+    }
+  }
 
-      .rightSideContent {
-        padding-left: 0.25rem;
+  .footer_rightColumn_section {
+    gap: 1.5rem;
 
-        .navigationMenu {
-          .column {
-            padding: 0 0.25rem;
+    .newsletterSection {
+      margin-top: 20px;
+      padding: 16px;
 
-            .columnTitle {
-              font-size: 0.95rem;
-              margin-bottom: 0.5rem;
-            }
+      .newsletterTitle {
+        font-size: 15px;
+      }
 
-            .linkList li {
-              margin-bottom: 0.3rem;
+      .newsletterDescription {
+        font-size: 12px;
+      }
 
-              .link {
-                font-size: 0.8rem;
-              }
-            }
-          }
+      .newsletterForm .emailInputGroup {
+        padding: 12px;
+        max-width: 100%;
+
+        .emailInput {
+          padding: 12px 20px;
+          font-size: 14px;
+          border-radius: 50px;
         }
 
-        .socialEmailSection {
-          gap: 0.75rem;
+        .subscribeButton {
+          width: 100%;
+          height: 100%;
+          align-self: center;
+          margin-right: 0;
+        }
+      }
+    }
+  }
 
-          .socialSection .socialIcons {
-            gap: 0.5rem;
+  .middleColumn,
+  .rightColumn {
+    .sectionTitle {
+      font-size: 16px;
+      margin-bottom: 12px;
+    }
 
-            .socialIcon {
-              width: 35px;
-              height: 35px;
-            }
-          }
+    .linkList li {
+      margin-bottom: 0px;
 
-          .emailSection .emailForm .emailInputGroup {
-            .emailInput {
-              padding: 8px 12px;
-              font-size: 0.85rem;
-            }
+      .link {
+        font-size: 14.4px;
+      }
+    }
+  }
 
-            .emailButton {
-              width: 35px;
-              height: 35px;
-            }
-          }
+  .bottomSection {
+    padding-top: 24px;
+
+    .copyrightText {
+      font-size: 13.6px;
+    }
+
+    .legalLinks {
+      gap: 6px;
+
+      .legalLink {
+        font-size: 13.6px;
+      }
+
+      .separator {
+        font-size: 13.6px;
+      }
+    }
+
+    .socialIcons {
+      gap: 12px;
+
+      .socialIcon {
+        width: 44px;
+        height: 44px;
+
+        svg {
+          max-width: 18px;
         }
       }
     }
