@@ -1,783 +1,419 @@
 'use client';
-import { useEffect, useRef, useState, useMemo, useCallback } from 'react';
+
+import React, { useEffect } from 'react';
 import Image from 'next/image';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { TextPlugin } from 'gsap/TextPlugin';
 import styles from './OurServices.module.scss';
 import Button from '@/components/ui/button';
 
-// Register GSAP plugins
-if (typeof window !== 'undefined') {
-  gsap.registerPlugin(ScrollTrigger, TextPlugin);
-}
+const DemoAnimation = () => {
+  const [activeVideoIndex, setActiveVideoIndex] = React.useState(0);
+  const [isMobile, setIsMobile] = React.useState(false);
+  const [touchStart, setTouchStart] = React.useState(0);
+  const [touchEnd, setTouchEnd] = React.useState(0);
+  const [refreshKey, setRefreshKey] = React.useState(0);
+  const [autoRefreshEnabled, setAutoRefreshEnabled] = React.useState(true);
 
-const OurServices = () => {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const horizontalContainerRef = useRef<HTMLDivElement>(null);
-  const progressBarRef = useRef<HTMLDivElement>(null);
-  const [isMobile, setIsMobile] = useState(false);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [isVisible, setIsVisible] = useState(false);
-  const [currentSection, setCurrentSection] = useState(0);
-  const [isRefreshing, setIsRefreshing] = useState(false);
-  const [refreshCount, setRefreshCount] = useState(0);
-  const isMountedRef = useRef(true);
-  const refreshIntervalRef = useRef<NodeJS.Timeout | null>(null);
+  // Synchronized slide change function
+  const changeSlide = (newIndex: number) => {
+    console.log('Changing slide to:', newIndex, 'Is mobile:', isMobile);
+    setActiveVideoIndex(newIndex);
+  };
 
-  // Scroll-animated section refs
-  const scrollSectionRef = useRef<HTMLElement>(null);
-  const leftContentRef = useRef<HTMLDivElement>(null);
-  const rightImageRef = useRef<HTMLDivElement>(null);
-  const contentPanelRef = useRef<HTMLDivElement>(null);
-  const titleRef = useRef<HTMLHeadingElement>(null);
-  const subtitleRef = useRef<HTMLHeadingElement>(null);
-  const descriptionRef = useRef<HTMLParagraphElement>(null);
-  const buttonRef = useRef<HTMLAnchorElement>(null);
-  const imageRef = useRef<HTMLImageElement>(null);
-  const videoRef = useRef<HTMLVideoElement>(null);
+  // Refresh function for mobile/tablet screens
+  const handleRefresh = () => {
+    if (isMobile) {
+      console.log('Refreshing content for mobile/tablet');
+      setActiveVideoIndex(0);
+      setRefreshKey((prev) => prev + 1);
 
-  // Multiple scroll sections data
-  const scrollSectionsData = useMemo(
-    () => [
-      {
-        id: 1,
-        title: 'Plug-and-Play RAG System',
-        subtitle: 'Your Data. Your Control. Smarter Insights.',
-        description:
-          'Seamlessly connect your databases with secure local embeddings and zero external storage. Our RAG system delivers instant AI-powered chat and real-time answers—keeping sensitive data fully in your environment while unlocking actionable intelligence.',
-        buttonText: 'Learn More About RAG System',
-        buttonLink: '#contact',
-        imageSrc:
-          'https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-        imageAlt: 'AI Dashboard Preview',
-        videoSrc: '/video/Rag-product-video.mp4',
-        backgroundColor: 'linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%)',
-        textColor: '#ffffff',
-        accentColor: '#63cfe9',
-      },
-      {
-        id: 2,
-        title: 'Task Prompt AI Chrome Extension',
-        subtitle: 'AI-Powered Prompts Where Work Happens.',
-        description:
-          "Supercharge your workflows in Jira, ClickUp, Asana, and Trello with contextual, role-specific AI prompts. Cut task completion time in half while customizing prompts to match your team's industry, style, and goals.",
-        buttonText: 'Try the Extension',
-        buttonLink: '#services',
-        imageSrc:
-          'https://images.unsplash.com/photo-1611224923853-80b023f02d71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-        imageAlt: 'Chrome Extension Preview',
-        videoSrc: '/video/task-prompt-ai-video.mp4',
-        backgroundColor: 'linear-gradient(135deg, #1e293b 0%, #334155 50%, #475569 100%)',
-        textColor: '#ffffff',
-        accentColor: '#f59e0b',
-      },
-    ],
-    []
-  );
-  // Auto-refresh functions for mobile - defined early to avoid hoisting issues
-  const performRefresh = useCallback(async () => {
-    if (isRefreshing) {
-      console.log('Refresh already in progress, skipping...');
-      return;
-    }
-
-    console.log('Starting refresh...');
-    setIsRefreshing(true);
-    setRefreshCount((prev) => {
-      const newCount = prev + 1;
-      console.log('Refresh count updated to:', newCount);
-      return newCount;
-    });
-
-    try {
-      // Simulate content refresh - you can replace this with actual API calls
-      // For now, we'll just trigger a re-render with a subtle animation
-      const mobileCards = document.querySelectorAll(`.${styles.mobileServiceCard}`);
-      console.log('Found mobile cards:', mobileCards.length);
-
-      // Add refresh animation
-      mobileCards.forEach((card, index) => {
-        const element = card as HTMLElement;
-        element.style.transition = 'opacity 0.3s ease';
-        element.style.opacity = '0.7';
-
-        setTimeout(
-          () => {
-            element.style.opacity = '1';
-          },
-          150 + index * 100
-        );
-      });
-
-      // You can add actual data fetching here
-      // Example: await fetchLatestData();
-      console.log('Refresh animation completed');
-    } catch (error) {
-      console.error('Refresh failed:', error);
-    } finally {
+      // Reset all active states
       setTimeout(() => {
-        setIsRefreshing(false);
-        console.log('Refresh completed');
-      }, 1000);
+        const allSections = document.querySelectorAll(`.${styles.locker__section}`);
+        const allImages = document.querySelectorAll(
+          `.${styles.locker__container} img, .${styles.locker__container} picture, .${styles.locker__container} video`
+        );
+
+        // Reset all sections and images
+        allSections.forEach((section) => {
+          section.classList.remove(styles.active, 'active');
+        });
+        allImages.forEach((media) => {
+          media.classList.remove(styles.active, 'active');
+        });
+
+        // Set first section and image as active
+        if (allSections[0]) {
+          allSections[0].classList.add(styles.active, 'active');
+        }
+        if (allImages[0]) {
+          allImages[0].classList.add(styles.active, 'active');
+        }
+      }, 100);
     }
-  }, [isRefreshing]);
+  };
 
-  const stopAutoRefresh = useCallback(() => {
-    if (refreshIntervalRef.current) {
-      console.log('Stopping auto-refresh interval with ID:', refreshIntervalRef.current);
-      clearInterval(refreshIntervalRef.current);
-      refreshIntervalRef.current = null;
-      console.log('Auto-refresh stopped');
-    } else {
-      console.log('No auto-refresh interval to stop');
+  // Toggle auto-refresh function
+  const toggleAutoRefresh = () => {
+    setAutoRefreshEnabled((prev) => !prev);
+    console.log('Auto-refresh toggled:', !autoRefreshEnabled);
+  };
+
+  // Swipe functionality for mobile
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > 50;
+    const isRightSwipe = distance < -50;
+
+    if (isLeftSwipe && activeVideoIndex < 1) {
+      changeSlide(activeVideoIndex + 1);
     }
-  }, []);
-
-  const startAutoRefresh = useCallback(() => {
-    // Clear any existing interval
-    if (refreshIntervalRef.current) {
-      clearInterval(refreshIntervalRef.current);
-      refreshIntervalRef.current = null;
-    }
-
-    console.log('Starting auto-refresh interval...');
-
-    // Auto-refresh every 10 seconds for testing (change to 30000 for production)
-    refreshIntervalRef.current = setInterval(() => {
-      const isCurrentlyMobile = window.innerWidth < 993;
-      console.log(
-        'Auto-refresh tick - isMobile:',
-        isCurrentlyMobile,
-        'isMounted:',
-        isMountedRef.current
-      );
-
-      if (isCurrentlyMobile && isMountedRef.current) {
-        console.log('Performing auto-refresh...');
-        performRefresh();
-      } else {
-        console.log('Skipping auto-refresh - not mobile or not mounted');
-      }
-    }, 10000); // 10 seconds for testing, change to 30000 for production
-
-    console.log('Auto-refresh interval started with ID:', refreshIntervalRef.current);
-  }, [performRefresh]);
-
-  // Manual refresh function
-  const handleManualRefresh = useCallback(() => {
-    performRefresh();
-  }, [performRefresh]);
-
-  // Check if screen is mobile/tablet (under 992px)
-  useEffect(() => {
-    const checkScreenSize = () => {
-      const nowMobile = window.innerWidth < 993;
-      const wasMobile = isMobile;
-
-      setIsMobile(nowMobile);
-
-      // Start/stop auto-refresh based on mobile state
-      if (nowMobile && !wasMobile) {
-        console.log('Switching to mobile - starting auto-refresh');
-        startAutoRefresh();
-      } else if (!nowMobile && wasMobile) {
-        console.log('Switching to desktop - stopping auto-refresh');
-        stopAutoRefresh();
-      }
-    };
-
-    // Initial check
-    checkScreenSize();
-    window.addEventListener('resize', checkScreenSize);
-
-    return () => {
-      window.removeEventListener('resize', checkScreenSize);
-      stopAutoRefresh();
-    };
-  }, [isMobile, startAutoRefresh, stopAutoRefresh]);
-
-  // Mouse tracking for interactive background effects
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      if (sectionRef.current) {
-        const rect = sectionRef.current.getBoundingClientRect();
-        const x = ((e.clientX - rect.left) / rect.width) * 100;
-        const y = ((e.clientY - rect.top) / rect.height) * 100;
-        setMousePosition({ x, y });
-      }
-    };
-
-    const currentSection = sectionRef.current;
-    if (currentSection) {
-      currentSection.addEventListener('mousemove', handleMouseMove);
-      return () => {
-        currentSection.removeEventListener('mousemove', handleMouseMove);
-      };
-    }
-  }, []);
-
-  // Smooth scroll to section function
-  const scrollToSection = (target: string) => {
-    const element = document.querySelector(target);
-    if (element) {
-      element.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start',
-      });
+    if (isRightSwipe && activeVideoIndex > 0) {
+      changeSlide(activeVideoIndex - 1);
     }
   };
 
   useEffect(() => {
-    if (!sectionRef.current) return;
+    // Only apply scroll functionality for screens >= 992px
+    const checkScreenSize = () => {
+      return window.innerWidth >= 992;
+    };
 
-    // Use Intersection Observer for scroll-based animations
-    const observer = new IntersectionObserver(
-      (entries) => {
+    // Check if mobile/tablet
+    const checkMobile = () => {
+      return window.innerWidth < 992;
+    };
+
+    // Set mobile state
+    if (typeof window !== 'undefined') {
+      const isMobileDevice = checkMobile();
+      setIsMobile(isMobileDevice);
+      console.log('Screen width:', window.innerWidth, 'Is mobile:', isMobileDevice);
+
+      // For mobile/tablet, sync video navigation with content
+      if (isMobileDevice) {
+        setActiveVideoIndex(0);
+      }
+    }
+
+    // Handle window resize
+    const handleResize = () => {
+      setIsMobile(checkMobile());
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    // Auto-refresh for mobile/tablet screens
+    let autoRefreshInterval: NodeJS.Timeout;
+    if (typeof window !== 'undefined' && checkMobile() && autoRefreshEnabled) {
+      autoRefreshInterval = setInterval(() => {
+        console.log('Auto-refreshing content...');
+        handleRefresh();
+      }, 10000); // Auto-refresh every 10 seconds
+    }
+
+    // Intersection Observer for image swapping (only on desktop)
+    if (typeof window !== 'undefined' && window.IntersectionObserver && checkScreenSize()) {
+      console.log('Setting up intersection observer for desktop');
+      const options = {
+        threshold: [0.1, 0.3, 0.5, 0.7, 0.9], // Multiple thresholds for better detection
+        rootMargin: '0px 0px -10% 0px', // Trigger when section is 10% from bottom
+      };
+
+      const targets = document.querySelectorAll('.cb');
+      console.log('Found targets:', targets.length);
+      let currentActiveSection = 'image--1'; // Default to first image
+
+      function handleIntersection(entries: IntersectionObserverEntry[]) {
+        console.log('Intersection observer triggered:', entries.length, 'entries');
+        // Find the section with the highest intersection ratio
+        let maxRatio = 0;
+        let activeSection = currentActiveSection;
+
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setIsVisible(true);
-            // Add animation classes to trigger CSS animations
-            const header = entry.target.querySelector('.header');
-            const serviceCards = entry.target.querySelectorAll('.serviceCard');
-            const progressContainer = entry.target.querySelector('.progressContainer');
-
-            if (header) {
-              const title = header.querySelector('.title');
-              const description = header.querySelector('.description');
-              if (title) title.classList.add(styles.animateIn);
-              if (description) description.classList.add(styles.animateIn);
+          console.log(
+            'Entry:',
+            entry.target,
+            'isIntersecting:',
+            entry.isIntersecting,
+            'ratio:',
+            entry.intersectionRatio
+          );
+          if (entry.isIntersecting && entry.intersectionRatio > maxRatio) {
+            maxRatio = entry.intersectionRatio;
+            const currentImage = entry.target.getAttribute('data-swap');
+            if (currentImage) {
+              activeSection = currentImage;
             }
-
-            if (progressContainer) {
-              progressContainer.classList.add(styles.animateIn);
-            }
-
-            // Animate service cards with stagger
-            serviceCards.forEach((card, index) => {
-              setTimeout(() => {
-                card.classList.add(styles.animateIn);
-              }, index * 100);
-            });
-          } else {
-            setIsVisible(false);
           }
         });
-      },
-      {
-        threshold: 0.2,
-        rootMargin: '0px 0px -10% 0px',
-      }
-    );
 
-    observer.observe(sectionRef.current);
+        // Only update if we have a new active section
+        if (activeSection !== currentActiveSection) {
+          currentActiveSection = activeSection;
+          console.log('Switching to:', currentActiveSection);
 
-    return () => {
-      observer.disconnect();
-    };
-  }, []);
-
-  // Mobile-only animations - handled by CSS
-  useEffect(() => {
-    if (!isMobile) return;
-
-    // Mobile animations are now handled by CSS classes
-    // The intersection observer will trigger the animations
-  }, [isMobile]);
-
-  // GSAP ScrollTrigger animations for multiple vertical scroll sections (desktop only)
-  useEffect(() => {
-    if (isMobile) return; // Skip GSAP animations on mobile
-    if (!scrollSectionRef.current || !leftContentRef.current || !rightImageRef.current) return;
-
-    // Check if elements are still connected to DOM
-    const elements = [
-      scrollSectionRef.current,
-      leftContentRef.current,
-      rightImageRef.current,
-      titleRef.current,
-      subtitleRef.current,
-      descriptionRef.current,
-      buttonRef.current,
-    ];
-
-    if (elements.some((el) => !el || !el.isConnected)) {
-      return;
-    }
-
-    // Ensure image/video is visible initially
-    if (imageRef.current) {
-      gsap.set(imageRef.current, {
-        opacity: 1,
-        display: 'block',
-        visibility: 'visible',
-      });
-    }
-    if (videoRef.current) {
-      gsap.set(videoRef.current, {
-        opacity: 1,
-        display: 'block',
-        visibility: 'visible',
-      });
-    }
-
-    // Force video to be visible if it's the first section
-    if (currentSection === 0 && videoRef.current) {
-      gsap.set(videoRef.current, {
-        opacity: 1,
-        display: 'block',
-        visibility: 'visible',
-        scale: 1,
-        y: 0,
-      });
-    }
-
-    // Capture video ref at effect start to avoid stale closure
-    const currentVideoRef = videoRef.current;
-
-    const ctx = gsap.context(() => {
-      // Set initial states - content starts visible to prevent blinking
-      gsap.set([titleRef.current, subtitleRef.current, descriptionRef.current, buttonRef.current], {
-        opacity: 1,
-        y: 0,
-        x: 0,
-        scale: 1,
-        clearProps: 'none',
-      });
-
-      gsap.set(rightImageRef.current, {
-        opacity: 1,
-        y: 0,
-        x: 0,
-        scale: 1,
-        clearProps: 'none',
-      });
-
-      // Set initial states for image and video refs (only if they exist)
-      const mediaElements = [imageRef.current, videoRef.current].filter(Boolean);
-      if (mediaElements.length > 0) {
-        gsap.set(mediaElements, {
-          scale: 1,
-          opacity: 1,
-          y: 0,
-          display: 'block',
-          rotation: 0,
-          clearProps: 'none',
-        });
-      }
-
-      // Create main vertical scroll timeline with pinning via GSAP only
-      const computeEnd = () => {
-        const viewport = window.innerHeight || 1000;
-        const sections = Math.max(1, scrollSectionsData.length - 1);
-        const contentEl = contentPanelRef.current;
-        const contentScroll = contentEl ? Math.max(0, contentEl.scrollHeight - viewport) : 0;
-        const bySections = viewport * sections;
-        const distance = Math.max(bySections, contentScroll || viewport);
-        return `+=${distance}`;
-      };
-      gsap.timeline({
-        scrollTrigger: {
-          trigger: scrollSectionRef.current,
-          start: 'top top',
-          end: computeEnd(),
-          scrub: 0.2,
-          pin: true,
-          pinSpacing: true,
-          anticipatePin: 0.1,
-          invalidateOnRefresh: true,
-          onRefreshInit: () => {
-            // ensure end recalculates on refresh
-            // no-op; computeEnd will re-evaluate due to invalidateOnRefresh
-          },
-          onUpdate: (self) => {
-            const progress = self.progress;
-            const sectionIndex = Math.floor(progress * scrollSectionsData.length);
-            const newSection = Math.min(sectionIndex, scrollSectionsData.length - 1);
-
-            if (newSection !== currentSection) {
-              // Smooth transition without complete fade out
-              const transitionElements = [
-                titleRef.current,
-                subtitleRef.current,
-                descriptionRef.current,
-                buttonRef.current,
-                imageRef.current,
-                videoRef.current,
-              ].filter(Boolean);
-
-              // Create a smooth crossfade effect
-              gsap.to(transitionElements, {
-                opacity: 0.3,
-                y: -10,
-                scale: 0.98,
-                duration: 0.15,
-                ease: 'power2.inOut',
-                onComplete: () => {
-                  setCurrentSection(newSection);
-
-                  // Smooth fade back in with new content
-                  gsap.to(transitionElements, {
-                    opacity: 1,
-                    y: 0,
-                    scale: 1,
-                    duration: 0.25,
-                    ease: 'power2.out',
-                    stagger: 0.05,
-                  });
-                },
-              });
-            }
-          },
-        },
-      });
-
-      // Content is already visible, no initial fade needed
-
-      // Smooth parallax effect for image/video
-      const parallaxElements = [imageRef.current, videoRef.current].filter(Boolean);
-      if (parallaxElements.length > 0) {
-        gsap.to(parallaxElements, {
-          y: -20,
-          // rotation: 5,
-          scrollTrigger: {
-            trigger: scrollSectionRef.current,
-            start: 'top bottom',
-            end: 'bottom top',
-            scrub: 1,
-          },
-        });
-      }
-
-      // No fade effects on scroll - content stays fully visible
-
-      // Hover animations
-      if (buttonRef.current) {
-        buttonRef.current.addEventListener('mouseenter', () => {
-          gsap.to(buttonRef.current, {
-            scale: 1,
-            duration: 0.2,
-            ease: 'power2.out',
+          // Remove active class from all images and videos
+          const allImages = document.querySelectorAll(
+            `.${styles.locker__container} img, .${styles.locker__container} picture, .${styles.locker__container} video`
+          );
+          allImages.forEach((media) => {
+            media.classList.remove(styles.active, 'active');
           });
-        });
 
-        buttonRef.current.addEventListener('mouseleave', () => {
-          gsap.to(buttonRef.current, {
-            scale: 1,
-            duration: 0.2,
-            ease: 'power2.out',
+          // Remove active class from all sections
+          const allSections = document.querySelectorAll(`.${styles.locker__section}`);
+          allSections.forEach((section) => {
+            section.classList.remove(styles.active, 'active');
           });
-        });
-      }
 
-      // Image/Video hover effect
-      if (imageRef.current) {
-        imageRef.current.addEventListener('mouseenter', () => {
-          gsap.to(imageRef.current, {
-            rotation: 0,
-            duration: 0.2,
-            ease: 'power2.out',
+          // Remove active class from all progress dots
+          const allDots = document.querySelectorAll(`.${styles.progressDot}`);
+          allDots.forEach((dot) => {
+            dot.classList.remove(styles.active, 'active');
           });
-        });
 
-        imageRef.current.addEventListener('mouseleave', () => {
-          gsap.to(imageRef.current, {
-            rotation: 0,
-            duration: 0.2,
-            ease: 'power2.out',
-          });
-        });
-      }
+          // Add active class to current image/video based on index
+          const imageIndex = parseInt(currentActiveSection.replace('image--', '')) - 1;
+          const images = document.querySelectorAll(
+            `.${styles.locker__container} img, .${styles.locker__container} picture, .${styles.locker__container} video`
+          );
+          if (images[imageIndex]) {
+            images[imageIndex].classList.add(styles.active, 'active');
+            console.log('Media activated by index:', currentActiveSection, 'index:', imageIndex);
+          } else {
+            console.log('Media not found:', currentActiveSection, 'index:', imageIndex);
+          }
 
-      if (videoRef.current) {
-        const handleVideoMouseEnter = () => {
-          gsap.to(videoRef.current, {
-            rotation: 0,
-            duration: 0.2,
-            ease: 'power2.out',
-          });
-        };
+          // Add active class to current section
+          const activeSectionElement = document.querySelector(
+            `[data-swap="${currentActiveSection}"]`
+          );
+          if (activeSectionElement) {
+            activeSectionElement.classList.add(styles.active, 'active');
+            console.log('Section activated:', currentActiveSection);
+          }
 
-        const handleVideoMouseLeave = () => {
-          gsap.to(videoRef.current, {
-            rotation: 0,
-            duration: 0.2,
-            ease: 'power2.out',
-          });
-        };
-
-        videoRef.current.addEventListener('mouseenter', handleVideoMouseEnter);
-        videoRef.current.addEventListener('mouseleave', handleVideoMouseLeave);
-
-        // Store the handlers for cleanup
-        (videoRef.current as any)._mouseEnterHandler = handleVideoMouseEnter;
-        (videoRef.current as any)._mouseLeaveHandler = handleVideoMouseLeave;
-      }
-    }, scrollSectionRef);
-
-    return () => {
-      // Only cleanup if component is still mounted
-      if (!isMountedRef.current) return;
-
-      // Clean up video event listeners using captured ref
-      if (currentVideoRef) {
-        const video = currentVideoRef as any;
-        if (video._mouseEnterHandler && video._mouseLeaveHandler) {
-          video.removeEventListener('mouseenter', video._mouseEnterHandler);
-          video.removeEventListener('mouseleave', video._mouseLeaveHandler);
-          delete video._mouseEnterHandler;
-          delete video._mouseLeaveHandler;
+          // Add active class to current progress dot
+          const activeProgressDot = document.querySelector(
+            `.${styles.progressDot}[data-section="${currentActiveSection}"]`
+          );
+          if (activeProgressDot) {
+            activeProgressDot.classList.add(styles.active, 'active');
+            console.log('Progress dot activated:', currentActiveSection);
+          }
         }
       }
 
-      try {
-        ctx.revert();
-        // Clean up ScrollTrigger instances without refresh to avoid DOM issues
-        ScrollTrigger.getAll().forEach((trigger) => {
-          if (trigger.trigger && trigger.trigger.isConnected) {
-            trigger.kill();
-          }
-        });
-      } catch (error) {
-        console.warn('Error during GSAP cleanup:', error);
-      }
-    };
-  }, [scrollSectionsData, currentSection, isMobile]);
+      const observer = new IntersectionObserver(handleIntersection, options);
+      console.log('Observer created, observing targets:', targets.length);
+      targets.forEach((target) => {
+        console.log('Observing target:', target);
+        observer.observe(target);
+      });
 
-  // Ensure video is visible when component mounts (desktop only)
-  useEffect(() => {
-    if (isMobile) return; // Skip on mobile
-
-    console.log(
-      'Current section:',
-      currentSection,
-      'VideoSrc:',
-      scrollSectionsData[currentSection]?.videoSrc
-    );
-
-    if (currentSection === 0 && videoRef.current) {
-      // Small delay to ensure video element is rendered
+      // Set first section and progress dot as active by default
       setTimeout(() => {
-        if (videoRef.current) {
-          gsap.set(videoRef.current, {
-            opacity: 1,
-            display: 'block',
-            visibility: 'visible',
-            scale: 1,
-            y: 0,
-          });
+        const firstSection = document.querySelector('[data-swap="image--1"]');
+        if (firstSection) {
+          firstSection.classList.add(styles.active, 'active');
+        }
+        const firstProgressDot = document.querySelector(
+          `.${styles.progressDot}[data-section="image--1"]`
+        );
+        if (firstProgressDot) {
+          firstProgressDot.classList.add(styles.active, 'active');
+        }
+        // Set first image/video as active by index
+        const images = document.querySelectorAll(
+          `.${styles.locker__container} img, .${styles.locker__container} picture, .${styles.locker__container} video`
+        );
+        if (images[0]) {
+          images[0].classList.add(styles.active, 'active');
+          console.log('First media activated by index');
         }
       }, 100);
+
+      // Store observer for cleanup
+      const desktopObserver = observer;
+
+      // Cleanup function
+      return () => {
+        if (autoRefreshInterval) {
+          clearInterval(autoRefreshInterval);
+        }
+        window.removeEventListener('resize', handleResize);
+        targets.forEach((target) => desktopObserver.unobserve(target));
+      };
+    } else {
+      // For mobile/tablet, show all content without scroll functionality
+      setTimeout(() => {
+        const allSections = document.querySelectorAll(`.${styles.locker__section}`);
+        const allImages = document.querySelectorAll(
+          `.${styles.locker__container} img, .${styles.locker__container} picture, .${styles.locker__container} video`
+        );
+
+        // Show all sections and images on mobile
+        allSections.forEach((section) => {
+          section.classList.add(styles.active, 'active');
+        });
+        allImages.forEach((media) => {
+          media.classList.add(styles.active, 'active');
+        });
+      }, 100);
+
+      // Cleanup function for mobile
+      return () => {
+        if (autoRefreshInterval) {
+          clearInterval(autoRefreshInterval);
+        }
+        window.removeEventListener('resize', handleResize);
+      };
     }
-  }, [currentSection, scrollSectionsData, isMobile]);
-
-  // Start auto-refresh on mobile when component mounts
-  useEffect(() => {
-    // Check if we're on mobile and start auto-refresh
-    const isCurrentlyMobile = window.innerWidth < 992;
-    if (isCurrentlyMobile) {
-      console.log('Component mounted on mobile - starting auto-refresh');
-      startAutoRefresh();
-    }
-
-    return () => {
-      stopAutoRefresh();
-    };
-  }, [startAutoRefresh, stopAutoRefresh]);
-
-  // Cleanup effect
-  useEffect(() => {
-    return () => {
-      isMountedRef.current = false;
-      stopAutoRefresh();
-    };
-  }, [stopAutoRefresh]);
+  }, [refreshKey, autoRefreshEnabled]);
 
   return (
     <>
-      {isMobile ? (
-        // Mobile/Tablet Static Layout (under 992px) - Both Services
-        <section className={styles.mobileSection}>
+      <div className={styles.ourServices}>
+        <div className={styles.section}>
           <div className={styles.container}>
-            <div className={styles.header}>
-              <div className={styles.headerTop}>
-                <h2 className={styles.title}>Our AI-Powered Services</h2>
-              </div>
-              <p className={styles.description}>
+            <div className={`${styles.header} header`}>
+              <h2 className={`${styles.title} title`}>Our AI-Powered Services</h2>
+              <p className={`${styles.description} description`}>
                 Empower your team with <strong>secure, AI-driven insights</strong> and{' '}
                 <em>workflow automation</em> tailored to your data, tools, and processes.
               </p>
             </div>
-
-            <div className={styles.mobileServicesGrid}>
-              {/* RAG System Card */}
-              <div className={styles.mobileServiceCard}>
-                <div className={styles.mobileImageContainer}>
-                  <video className={styles.mobileVideo} autoPlay muted loop playsInline>
-                    <source src={scrollSectionsData[0]?.videoSrc} type="video/mp4" />
-                    Your browser does not support the video tag.
-                  </video>
-                </div>
-                <div className={styles.mobileTextContent}>
-                  <h2 className={styles.mobileTitle}>{scrollSectionsData[0]?.title}</h2>
-                  <h3 className={styles.mobileSubtitle}>{scrollSectionsData[0]?.subtitle}</h3>
-                  <p className={styles.mobileDescription}>{scrollSectionsData[0]?.description}</p>
-                  <div className="d-flex justify-content-center">
-                    <Button
-                      label={scrollSectionsData[0]?.buttonText || ''}
-                      onClick={() => window.open(scrollSectionsData[0]?.buttonLink, '_blank')}
-                    />
-                  </div>
-                </div>
+          </div>
+        </div>
+        <div className={styles.locker}>
+          <div className={styles.locker__image}>
+            <div
+              className={`${styles.locker__container} ${isMobile ? styles.sliderContainer : ''}`}
+              onTouchStart={isMobile ? handleTouchStart : undefined}
+              onTouchMove={isMobile ? handleTouchMove : undefined}
+              onTouchEnd={isMobile ? handleTouchEnd : undefined}
+            >
+              <div
+                className={`${styles.imagerow} ${activeVideoIndex === 0 ? styles.active : ''} ${isMobile ? styles.slide : ''}`}
+              >
+                <video
+                  src="/video/Rag-product-video.mp4"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  className={styles.video}
+                />
               </div>
-
-              {/* Chrome Extension Card */}
-              <div className={styles.mobileServiceCard}>
-                <div className={styles.mobileImageContainer}>
-                  <video className={styles.mobileVideo} autoPlay muted loop playsInline>
-                    <source src={scrollSectionsData[1]?.videoSrc} type="video/mp4" />
-                    Your browser does not support the video tag.
-                  </video>
-                </div>
-                <div className={styles.mobileTextContent}>
-                  <h2 className={styles.mobileTitle}>{scrollSectionsData[1]?.title}</h2>
-                  <h3 className={styles.mobileSubtitle}>{scrollSectionsData[1]?.subtitle}</h3>
-                  <p className={styles.mobileDescription}>{scrollSectionsData[1]?.description}</p>
-                  <div className="d-flex justify-content-center">
-                    <Button
-                      label={scrollSectionsData[1]?.buttonText || ''}
-                      onClick={() => window.open(scrollSectionsData[1]?.buttonLink, '_blank')}
-                    />
-                  </div>
-                </div>
+              <div
+                className={`${styles.imagerow} ${activeVideoIndex === 1 ? styles.active : ''} ${isMobile ? styles.slide : ''}`}
+              >
+                <video
+                  src="/video/task-prompt-ai-video.mp4"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  className={styles.video}
+                />
               </div>
             </div>
           </div>
-        </section>
-      ) : (
-        // Desktop Scroll-Animated Section (992px and larger)
-        <section ref={scrollSectionRef} className={styles.scrollSection}>
-          <section ref={sectionRef} className={styles.section}>
-            <div className={styles.container}>
-              <div className={`${styles.header} header`}>
-                <h2 className={`${styles.title} title`}>Our AI-Powered Services</h2>
-                <p className={`${styles.description} description`}>
-                  Empower your team with <strong>secure, AI-driven insights</strong> and{' '}
-                  <em>workflow automation</em> tailored to your data, tools, and processes.
-                </p>
-              </div>
-            </div>
-          </section>
-          <div className={styles.scrollContainer}>
-            <div className={styles.stickyContainer}>
-              <div ref={contentPanelRef} className={styles.contentPanel}>
-                {/* Left Content */}
-                <div ref={leftContentRef} className={styles.leftContent}>
-                  <h2 ref={titleRef} className={styles.scrollTitle}>
-                    {scrollSectionsData[currentSection]?.title || scrollSectionsData[0].title}
-                  </h2>
-                  <h3 ref={subtitleRef} className={styles.scrollSubtitle}>
-                    {scrollSectionsData[currentSection]?.subtitle || scrollSectionsData[0].subtitle}
-                  </h3>
-                  <p ref={descriptionRef} className={styles.scrollDescription}>
-                    {scrollSectionsData[currentSection]?.description ||
-                      scrollSectionsData[0].description}
-                  </p>
-                  <a
-                    ref={buttonRef}
-                    href={
-                      scrollSectionsData[currentSection]?.buttonLink ||
-                      scrollSectionsData[0].buttonLink
-                    }
-                    className={styles.scrollButton}
-                  >
-                    {scrollSectionsData[currentSection]?.buttonText ||
-                      scrollSectionsData[0].buttonText}
-                  </a>
-                </div>
 
-                {/* Right Image/Video */}
-                <div ref={rightImageRef} className={styles.rightImage}>
-                  <div className={styles.imageContainer}>
-                    {/* Video or Image based on data */}
-                    {scrollSectionsData[currentSection]?.videoSrc ? (
-                      <video
-                        key={scrollSectionsData[currentSection]?.videoSrc}
-                        ref={videoRef}
-                        className={styles.scrollVideo}
-                        autoPlay
-                        muted
-                        loop
-                        playsInline
-                        style={{ opacity: 1, display: 'block' }}
-                        onLoadedData={() => {
-                          console.log(
-                            'Video loaded successfully:',
-                            scrollSectionsData[currentSection]?.videoSrc
-                          );
-                          if (videoRef.current) {
-                            gsap.set(videoRef.current, {
-                              opacity: 1,
-                              display: 'block',
-                              visibility: 'visible',
-                            });
-                          }
-                        }}
-                        onError={(e) => {
-                          console.error('Video failed to load:', e);
-                          console.error(
-                            'Video source:',
-                            scrollSectionsData[currentSection]?.videoSrc
-                          );
-                        }}
-                        onLoadStart={() => {
-                          console.log(
-                            'Video loading started:',
-                            scrollSectionsData[currentSection]?.videoSrc
-                          );
-                        }}
-                      >
-                        <source
-                          src={scrollSectionsData[currentSection]?.videoSrc}
-                          type="video/mp4"
-                        />
-                        Your browser does not support the video tag.
-                      </video>
-                    ) : (
-                      <Image
-                        ref={imageRef}
-                        src={
-                          scrollSectionsData[currentSection]?.imageSrc ||
-                          scrollSectionsData[0]?.imageSrc ||
-                          ''
-                        }
-                        alt={
-                          scrollSectionsData[currentSection]?.imageAlt ||
-                          scrollSectionsData[0]?.imageAlt ||
-                          ''
-                        }
-                        className={styles.scrollImage}
-                        fill
-                        priority
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                        onLoad={() => {
-                          // Ensure image is visible after load
-                          if (imageRef.current) {
-                            gsap.set(imageRef.current, { opacity: 1 });
-                          }
-                        }}
-                      />
-                    )}
-                    <div className={styles.imageOverlay}></div>
-                  </div>
-                </div>
-              </div>
+          <div
+            className={`${styles.locker__content} ${isMobile ? styles.contentSlider : ''}`}
+            onTouchStart={isMobile ? handleTouchStart : undefined}
+            onTouchMove={isMobile ? handleTouchMove : undefined}
+            onTouchEnd={isMobile ? handleTouchEnd : undefined}
+          >
+            <div
+              className={`${styles.locker__section} ${styles['locker__section--1']} cb ${activeVideoIndex === 0 ? styles.active : ''} ${isMobile ? styles.contentSlide : ''}`}
+              data-swap="image--1"
+              onClick={() => changeSlide(0)}
+            >
+              <h2>Plug-and-Play RAG System</h2>
+              <p className={styles.subtitle}>Your data. your control. smarter insights.</p>
+              <p>
+                Seamlessly connect your databases with secure local embeddings and zero external
+                storage. Our RAG system delivers instant AI-powered chat and real-time
+                answers—keeping sensitive data fully in your environment while unlocking actionable
+                intelligence.
+              </p>
+              <Button label="LEARN MORE ABOUT RAG SYSTEM" />
+            </div>
+
+            <div
+              className={`${styles.locker__section} ${styles['locker__section--2']} cb ${activeVideoIndex === 1 ? styles.active : ''} ${isMobile ? styles.contentSlide : ''}`}
+              data-swap="image--2"
+              onClick={() => changeSlide(1)}
+            >
+              <h2>Task Prompt AI Chrome Extension</h2>
+              <p className={styles.subtitle}>AI-Powered Prompts Where Work Happens.</p>
+              <p>
+                Supercharge your workflows in Jira, ClickUp, Asana, and Trello with contextual,
+                role-specific AI prompts. Cut task completion time in half while customizing prompts
+                to match your team's industry, style, and goals.
+              </p>
+              <Button label="Try the Extension" />
             </div>
           </div>
-        </section>
-      )}
+        </div>
+
+        {/* Arrow navigation for mobile - moved to bottom */}
+        {isMobile && (
+          <div className={styles.arrowNavigation}>
+            <button
+              className={styles.arrowButton}
+              onClick={() => changeSlide(activeVideoIndex === 0 ? 1 : 0)}
+              aria-label="Previous slide"
+            >
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M15 18L9 12L15 6"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </button>
+
+            <div className={styles.slideIndicator}>
+              <span className={styles.currentSlide}>{activeVideoIndex + 1}</span>
+              <span className={styles.slideSeparator}>/</span>
+              <span className={styles.totalSlides}>2</span>
+            </div>
+
+            <button
+              className={styles.arrowButton}
+              onClick={() => changeSlide(activeVideoIndex === 1 ? 0 : 1)}
+              aria-label="Next slide"
+            >
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M9 18L15 12L9 6"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </button>
+          </div>
+        )}
+      </div>
     </>
   );
 };
 
-export default OurServices;
+export default DemoAnimation;
