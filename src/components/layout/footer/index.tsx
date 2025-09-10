@@ -44,16 +44,18 @@ export default function Footer() {
             <div className={styles.companySection}>
               <div className={styles.logoSection}>
                 <div className={styles.logoContainer}>
-                  <div className={styles.logoImage}>
-                    <Image
-                      src={logo}
-                      alt="Neophoenix Logo"
-                      width={210}
-                      height={60}
-                      loading="lazy"
-                      className={styles.phoenixImage}
-                    />
-                  </div>
+                  <Link href="/" className={styles.logoLink}>
+                    <div className={styles.logoImage}>
+                      <Image
+                        src={logo}
+                        alt="Neophoenix Logo"
+                        width={210}
+                        height={60}
+                        loading="lazy"
+                        className={styles.phoenixImage}
+                      />
+                    </div>
+                  </Link>
                 </div>
                 <p className={styles.companyDescription}>
                   We create digital experiences for brands and companies by using cutting-edge
