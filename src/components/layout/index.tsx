@@ -2,6 +2,7 @@ import { ReactNode } from 'react';
 import Header from './header';
 import Footer from './footer';
 import CookieConsent from '../ui/cookie-consent';
+import AOSProvider from '../providers/AOSProvider';
 // import CustomCursor from '../ui/custom-cursor';
 
 interface LayoutProps {
@@ -10,12 +11,14 @@ interface LayoutProps {
 
 export default function Layout({ children }: LayoutProps) {
   return (
-    <div className="layout">
-      {/* <CustomCursor /> */}
-      <Header />
-      <main className="layout_main">{children}</main>
-      <Footer />
-      <CookieConsent />
-    </div>
+    <AOSProvider>
+      <div className="layout">
+        {/* <CustomCursor /> */}
+        <Header />
+        <main className="layout_main">{children}</main>
+        <Footer />
+        <CookieConsent />
+      </div>
+    </AOSProvider>
   );
 }

@@ -1,6 +1,7 @@
 @use './variables' as *;
 @use './mixins' as *;
 @import 'bootstrap/dist/css/bootstrap.min.css';
+@import 'aos/dist/aos.css';
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
@@ -109,12 +110,6 @@ p {
   &:last-child {
     margin-bottom: 0;
   }
-}
-.container {
-  max-width: 1220px;
-  width: 100%;
-  margin: 0 auto;
-  padding: 0 16px;
 }
 
 .layout {

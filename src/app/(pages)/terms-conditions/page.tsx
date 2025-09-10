@@ -1,6 +1,7 @@
 'use client';
 
 import styles from './page.module.scss';
+import { Container, Row, Col } from 'react-bootstrap';
 
 export default function TermsConditionsPage() {
   return (
@@ -8,7 +9,7 @@ export default function TermsConditionsPage() {
       <div className={`${styles.termsContainer} hero`}>
         {/* Hero Section */}
         <div className={styles.heroSection}>
-          <div className="container">
+          <Container>
             <div className={styles.heroContent}>
               <div className={styles.headline}>
                 <h1 className={styles.title}>Terms & Conditions</h1>
@@ -18,14 +19,14 @@ export default function TermsConditionsPage() {
                 <p className={styles.lastUpdated}>Last updated: {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
               </div>
             </div>
-          </div>
+          </Container>
         </div>
 
         {/* Main Content */}
         <div className={styles.mainSection}>
-          <div className="container-fluid">
-            <div className="row justify-content-center">
-              <div className="col-12 col-lg-10 col-xl-8">
+          <Container fluid>
+            <Row className="justify-content-center">
+              <Col xs={12} lg={10} xl={8}>
                 <h2 className={styles.sectionTitle}>1. Acceptance of Terms</h2>
                 <div className={styles.sectionContent}>
                   <p className={styles.paragraph}>
@@ -178,9 +179,9 @@ export default function TermsConditionsPage() {
                     <p><strong>Phone:</strong> [Your Contact Number]</p>
                   </div>
                 </div>
-              </div>
-            </div>
-          </div>
+              </Col>
+            </Row>
+          </Container>
         </div>
       </div>
     </>
