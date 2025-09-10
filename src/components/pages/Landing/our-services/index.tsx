@@ -20,7 +20,7 @@ const DemoAnimation = () => {
   };
 
   // Refresh function for mobile/tablet screens
-  const handleRefresh = () => {
+  const handleRefresh = React.useCallback(() => {
     if (isMobile) {
       console.log('Refreshing content for mobile/tablet');
       setActiveVideoIndex(0);
@@ -50,7 +50,7 @@ const DemoAnimation = () => {
         }
       }, 100);
     }
-  };
+  }, [isMobile]);
 
   // Toggle auto-refresh function
   const toggleAutoRefresh = () => {
@@ -279,7 +279,7 @@ const DemoAnimation = () => {
         window.removeEventListener('resize', handleResize);
       };
     }
-  }, [refreshKey, autoRefreshEnabled]);
+  }, [refreshKey, autoRefreshEnabled, handleRefresh]);
 
   return (
     <>
