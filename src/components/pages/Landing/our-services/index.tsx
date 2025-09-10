@@ -284,6 +284,36 @@ const DemoAnimation = () => {
   return (
     <>
       <div className={styles.ourServices}>
+        {/* Floating Objects Animation */}
+        <div className={styles.floatingObjects}>
+          {/* Geometric Shapes */}
+          <div className={styles.geometricShapes}>
+            <div className={`${styles.shape} ${styles.shape1}`}></div>
+            <div className={`${styles.shape} ${styles.shape2}`}></div>
+            <div className={`${styles.shape} ${styles.shape3}`}></div>
+            <div className={`${styles.shape} ${styles.shape4}`}></div>
+            <div className={`${styles.shape} ${styles.shape5}`}></div>
+            <div className={`${styles.shape} ${styles.shape6}`}></div>
+            <div className={`${styles.shape} ${styles.shape7}`}></div>
+            <div className={`${styles.shape} ${styles.shape8}`}></div>
+            <div className={`${styles.shape} ${styles.shape9}`}></div>
+            <div className={`${styles.shape} ${styles.shape10}`}></div>
+          </div>
+
+          {/* Glowing Dots */}
+          <div className={styles.glowingDots}>
+            {[...Array(20)].map((_, i) => (
+              <div
+                key={i}
+                className={styles.dot}
+                style={{
+                  animationDelay: `${i * 0.3}s`,
+                }}
+              />
+            ))}
+          </div>
+        </div>
+
         <div className={styles.section}>
           <div className={styles.container}>
             <div className={`${styles.header} header`}>

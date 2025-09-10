@@ -5,7 +5,7 @@
   align-items: center;
   justify-content: center;
   line-height: 1;
-  background: linear-gradient(90deg, #FF6B35 0%, #FF9F1C 50%, #cf9c56 100%);
+  background: linear-gradient(90deg, #ff6b35 0%, #ff9f1c 50%, #cf9c56 100%);
   max-width: max-content;
   max-height: max-content;
   color: $text-white; // White text (#FFFFFF)
@@ -22,10 +22,11 @@
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 
   &:hover {
-    background: linear-gradient(90deg, #FF6B35 0%, #FF9F1C 50%, #cf9c56 100%);
+    background: linear-gradient(90deg, #ff6b35 0%, #ff9f1c 50%, #cf9c56 100%);
     box-shadow:
       0 8px 25px rgba(0, 0, 0, 0.3),
-      0 0 20px rgba(255, 107, 53, 0.3), // Soft orange glow
+      0 0 20px rgba(255, 107, 53, 0.3),
+      // Soft orange glow
       0 0 40px rgba(255, 159, 28, 0.2); // Soft gold glow
     transform: translateY(-2px);
   }
@@ -44,12 +45,7 @@
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      rgba(255, 255, 255, 0.2),
-      transparent
-    );
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
     transition: left 0.5s;
   }
 
@@ -94,7 +90,7 @@
   display: flex;
   align-items: center;
   line-height: 1;
-  background: linear-gradient(90deg, #FF6B35 0%, #FF9F1C 50%, #cf9c56 100%);
+  background: linear-gradient(90deg, #ff6b35 0%, #ff9f1c 50%, #cf9c56 100%);
   max-width: max-content;
   max-height: max-content;
   color: $text-white; // White text (#FFFFFF)
@@ -111,10 +107,11 @@
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 
   &:hover {
-    background: linear-gradient(90deg, #FF6B35 0%, #FF9F1C 50%, #cf9c56 100%);
+    background: linear-gradient(90deg, #ff6b35 0%, #ff9f1c 50%, #cf9c56 100%);
     box-shadow:
       0 8px 25px rgba(0, 0, 0, 0.3),
-      0 0 20px rgba(255, 107, 53, 0.3), // Soft orange glow
+      0 0 20px rgba(255, 107, 53, 0.3),
+      // Soft orange glow
       0 0 40px rgba(255, 159, 28, 0.2); // Soft gold glow
     transform: translateY(-2px);
   }
@@ -174,5 +171,16 @@
 
   .icon {
     margin-right: 0;
+  }
+}
+@media (max-width: 992px) {
+  .btnFill {
+    font-size: 14px;  
+  }
+  .btnOutline {
+    font-size: 14px;
+  }
+  .btnSecondary {
+    font-size: 14px;
   }
 }

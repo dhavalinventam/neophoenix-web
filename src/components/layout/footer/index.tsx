@@ -10,6 +10,32 @@ export default function Footer() {
 
   return (
     <footer className={styles.footer}>
+      {/* Floating Objects Animation */}
+      <div className={styles.floatingObjects}>
+        {/* Geometric Shapes */}
+        <div className={styles.geometricShapes}>
+          <div className={`${styles.shape} ${styles.shape1}`}></div>
+          <div className={`${styles.shape} ${styles.shape2}`}></div>
+          {/* <div className={`${styles.shape} ${styles.shape3}`}></div> */}
+          <div className={`${styles.shape} ${styles.shape4}`}></div>
+          {/* <div className={`${styles.shape} ${styles.shape5}`}></div> */}
+          <div className={`${styles.shape} ${styles.shape6}`}></div>
+        </div>
+
+        {/* Glowing Dots */}
+        <div className={styles.glowingDots}>
+          {[...Array(15)].map((_, i) => (
+            <div
+              key={i}
+              className={styles.dot}
+              style={{
+                animationDelay: `${i * 0.3}s`,
+              }}
+            />
+          ))}
+        </div>
+      </div>
+
       <Container>
         {/* Main Footer Content - Three Column Layout */}
         <div className={styles.mainContent}>
@@ -33,7 +59,6 @@ export default function Footer() {
                   We create digital experiences for brands and companies by using cutting-edge
                   technology and innovative solutions.
                 </p>
-
               </div>
             </div>
           </div>
@@ -106,9 +131,7 @@ export default function Footer() {
         <Row className={styles.bottomSection}>
           <Col>
             <div className={styles.copyrightContent}>
-              <p className={styles.copyrightText}>
-                © {year} Neophoenix. All rights reserved.
-              </p>
+              <p className={styles.copyrightText}>© {year} Neophoenix. All rights reserved.</p>
               <div className={styles.legalLinks}>
                 <Link href="/privacy-policy" className={styles.legalLink}>
                   Privacy Policy
