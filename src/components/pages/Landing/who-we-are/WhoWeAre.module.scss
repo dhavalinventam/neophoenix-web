@@ -456,14 +456,6 @@
   justify-content: center;
   gap: 16px;
   margin-bottom: 16px;
-  opacity: 0;
-  transform: translateY(50px);
-  transition: all 0.8s ease;
-
-  &.animateIn {
-    opacity: 1;
-    transform: translateY(0);
-  }
 
   .sectionNumber {
     font-family: $font-title;
@@ -498,27 +490,11 @@
   margin-bottom: 2rem;
   letter-spacing: $letter-spacing-tight;
   text-align: center;
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s ease 0.2s;
-
-  &.animateIn {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 // Description
 .description {
   margin-bottom: 3rem;
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s ease 0.4s;
-
-  &.animateIn {
-    opacity: 1;
-    transform: translateY(0);
-  }
 
   p {
     font-size: $font-size-lg; // Increased font size for better readability
@@ -547,14 +523,6 @@
   justify-content: center;
   align-items: center;
   margin-top: 2rem;
-  opacity: 0;
-  transform: translateY(30px) scale(0.9);
-  transition: all 0.6s ease 0.6s;
-
-  &.animateIn {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
 }
 
 .meetTeamButton {

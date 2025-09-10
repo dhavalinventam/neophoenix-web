@@ -6,8 +6,9 @@ import Button from '@/components/ui/button';
 import { Container } from 'react-bootstrap';
 
 const HeroSection = () => {
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(true); // Set to true immediately for text
 
+  // Keep useEffect for any future needs but text is now always visible
   useEffect(() => {
     setIsVisible(true);
   }, []);
@@ -71,32 +72,66 @@ const HeroSection = () => {
           <Container>
             {/* Main Headline */}
             <div className={`${styles.headline} ${isVisible ? styles.visible : ''}`}>
-              <div className={styles.badge}>
+              <div
+                className={styles.badge}
+                data-aos="fade-up"
+                data-aos-delay="200"
+                data-aos-duration="1000"
+                data-aos-easing="ease-out-cubic"
+              >
                 <span className={styles.badgeIcon}>🚀</span>
                 <span className={styles.badgeText}>Enterprise AI Solutions</span>
               </div>
-              
-              <h1 className={styles.title}>
+
+              <h1
+                className={styles.title}
+                data-aos="fade-up"
+                data-aos-delay="400"
+                data-aos-duration="1200"
+                data-aos-easing="ease-out-cubic"
+              >
                 Reimagining Enterprise{' '}
                 <span className={styles.highlight}> AI with RAG & Prompting Innovation</span>
               </h1>
-              
-              <p className={styles.subtitle}>
+
+              <p
+                className={styles.subtitle}
+                data-aos="fade-up"
+                data-aos-delay="600"
+                data-aos-duration="1000"
+                data-aos-easing="ease-out-cubic"
+              >
                 Secure. Scalable. Human-Centric AI Solutions.
               </p>
-              
-              <p className={styles.description}>
-                At Neophoenix, we build next-generation AI products and enterprise solutions that combine the power of Retrieval-Augmented Generation (RAG) with precision-driven prompt engineering. From white-label platforms to plug-and-play extensions, we empower businesses to unlock real-time intelligence and transform workflows at scale.
+
+              <p
+                className={styles.description}
+                data-aos="fade-up"
+                data-aos-delay="800"
+                data-aos-duration="1200"
+                data-aos-easing="ease-out-cubic"
+              >
+                At Neophoenix, we build next-generation AI products and enterprise solutions that
+                combine the power of Retrieval-Augmented Generation (RAG) with precision-driven
+                prompt engineering. From white-label platforms to plug-and-play extensions, we
+                empower businesses to unlock real-time intelligence and transform workflows at
+                scale.
               </p>
             </div>
 
             {/* CTA Section */}
-            <div className={`${styles.ctaSection} ${isVisible ? styles.visible : ''}`}>
-              <Button 
-                variant="filled" 
+            <div
+              className={styles.ctaSection}
+              data-aos="fade-up"
+              data-aos-delay="1000"
+              data-aos-duration="1000"
+              data-aos-easing="ease-out-cubic"
+            >
+              <Button
+                variant="filled"
                 label="Explore Our Solutions"
                 onClick={() => {
-                  window.location.hash = "#personalized-wishlist";
+                  window.location.hash = '#personalized-wishlist';
                 }}
               />
             </div>

@@ -47,20 +47,21 @@ const PersonalizedWishlist = () => {
       if (response.ok) {
         setSubmitStatus({
           type: 'success',
-          message: 'Thank you! Your request has been sent successfully. We\'ll get back to you soon!'
+          message:
+            "Thank you! Your request has been sent successfully. We'll get back to you soon!",
         });
         // Reset form
         setFormData({ fullName: '', email: '', aiInterests: '' });
       } else {
         setSubmitStatus({
           type: 'error',
-          message: result.error || 'Failed to send request. Please try again.'
+          message: result.error || 'Failed to send request. Please try again.',
         });
       }
     } catch (error) {
       setSubmitStatus({
         type: 'error',
-        message: 'Network error. Please check your connection and try again.'
+        message: 'Network error. Please check your connection and try again.',
       });
     } finally {
       setIsSubmitting(false);
@@ -77,12 +78,18 @@ const PersonalizedWishlist = () => {
         <div className={styles.gradientMesh}></div>
         <div className={styles.particleField}>
           {[...Array(20)].map((_, i) => (
-            <div key={i} className={styles.particle} style={{
-              '--delay': `${i * 0.1}s`,
-              '--duration': `${3 + (i % 3)}s`,
-              '--x': `${Math.random() * 100}%`,
-              '--y': `${Math.random() * 100}%`,
-            } as React.CSSProperties}></div>
+            <div
+              key={i}
+              className={styles.particle}
+              style={
+                {
+                  '--delay': `${i * 0.1}s`,
+                  '--duration': `${3 + (i % 3)}s`,
+                  '--x': `${Math.random() * 100}%`,
+                  '--y': `${Math.random() * 100}%`,
+                } as React.CSSProperties
+              }
+            ></div>
           ))}
         </div>
       </div>
@@ -94,11 +101,10 @@ const PersonalizedWishlist = () => {
             <div className={styles.mainCard}>
               {/* Header Section */}
               <div className={styles.headerSection}>
-                <h2 className={styles.title}>
-                  AI That Adapts to Your Business
-                </h2>
+                <h2 className={styles.title}>AI That Adapts to Your Business</h2>
                 <p className={styles.subtitle}>
-                  Every enterprise is unique. That's why Neophoenix offers <strong>Tailored AI Solutions </strong> 
+                  Every enterprise is unique. That's why Neophoenix offers{' '}
+                  <strong>Tailored AI Solutions </strong>
                   from white-label platforms to custom-built integrations. We collaborate closely
                   with your team to align AI adoption with your strategic goals, ensuring measurable
                   impact across operations, customer experience, and decision-making.
@@ -107,8 +113,7 @@ const PersonalizedWishlist = () => {
 
               {/* Form Section */}
               <div className={styles.formSection}>
-                <div className={styles.formHeader}>
-                </div>
+                <div className={styles.formHeader}></div>
 
                 <Form onSubmit={handleSubmit} className={styles.form}>
                   <Row>
@@ -186,8 +191,8 @@ const PersonalizedWishlist = () => {
                   </Form.Group>
 
                   <div className={styles.buttonWrapper}>
-                    <Button 
-                      label={isSubmitting ? "Creating Your Solution..." : "Get Custom AI Solution"} 
+                    <Button
+                      label={isSubmitting ? 'Creating Your Solution...' : 'Get Custom AI Solution'}
                       disabled={isSubmitting}
                     />
                   </div>

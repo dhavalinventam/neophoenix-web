@@ -316,7 +316,13 @@ const DemoAnimation = () => {
 
         <div className={styles.section}>
           <div className={styles.container}>
-            <div className={`${styles.header} header`}>
+            <div
+              className={`${styles.header} header`}
+              data-aos="fade-up"
+              data-aos-delay="200"
+              data-aos-duration="1000"
+              data-aos-easing="ease-out-cubic"
+            >
               <h2 className={`${styles.title} title`}>Our AI-Powered Services</h2>
               <p className={`${styles.description} description`}>
                 Empower your team with <strong>secure, AI-driven insights</strong> and{' '}
@@ -325,7 +331,13 @@ const DemoAnimation = () => {
             </div>
           </div>
         </div>
-        <div className={styles.locker}>
+        <div
+          className={styles.locker}
+          data-aos="fade-up"
+          data-aos-delay="400"
+          data-aos-duration="1200"
+          data-aos-easing="ease-out-cubic"
+        >
           <div className={styles.locker__image}>
             <div
               className={`${styles.locker__container} ${isMobile ? styles.sliderContainer : ''}`}
@@ -401,7 +413,13 @@ const DemoAnimation = () => {
 
         {/* Arrow navigation for mobile - moved to bottom */}
         {isMobile && (
-          <div className={styles.arrowNavigation}>
+          <div
+            className={styles.arrowNavigation}
+            // data-aos="fade-up"
+            // data-aos-delay="600"
+            // data-aos-duration="1000"
+            // data-aos-easing="ease-out-cubic"
+          >
             <button
               className={styles.arrowButton}
               onClick={() => changeSlide(activeVideoIndex === 0 ? 1 : 0)}
