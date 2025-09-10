@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Form, FormControl, FormSelect } from 'react-bootstrap';
+import { Container, Row, Col, Form, FormControl, FormSelect } from 'react-bootstrap';
 import Button from '@/components/ui/button';
 import styles from './PersonalizedWishlist.module.scss';
 
@@ -87,9 +87,9 @@ const PersonalizedWishlist = () => {
         </div>
       </div>
 
-      <div className="container">
-        <div className="row justify-content-center">
-          <div className="col-lg-10 col-md-12 col-12">
+      <Container>
+        <Row className="justify-content-center">
+          <Col lg={10} md={12} xs={12}>
             {/* Main Content Card */}
             <div className={styles.mainCard}>
               {/* Header Section */}
@@ -111,8 +111,8 @@ const PersonalizedWishlist = () => {
                 </div>
 
                 <Form onSubmit={handleSubmit} className={styles.form}>
-                  <div className="row">
-                    <div className="col-md-6">
+                  <Row>
+                    <Col md={6}>
                       <Form.Group className={styles.formGroup}>
                         <Form.Label htmlFor="fullName" className={styles.label}>
                           Full Name
@@ -133,8 +133,8 @@ const PersonalizedWishlist = () => {
                           <div className={styles.inputGlow}></div>
                         </div>
                       </Form.Group>
-                    </div>
-                    <div className="col-md-6">
+                    </Col>
+                    <Col md={6}>
                       <Form.Group className={styles.formGroup}>
                         <Form.Label htmlFor="email" className={styles.label}>
                           Email Address
@@ -155,8 +155,8 @@ const PersonalizedWishlist = () => {
                           <div className={styles.inputGlow}></div>
                         </div>
                       </Form.Group>
-                    </div>
-                  </div>
+                    </Col>
+                  </Row>
 
                   <Form.Group className={styles.formGroup}>
                     <Form.Label htmlFor="aiInterests" className={styles.label}>
@@ -201,9 +201,9 @@ const PersonalizedWishlist = () => {
                 </Form>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
+          </Col>
+        </Row>
+      </Container>
     </section>
   );
 };
