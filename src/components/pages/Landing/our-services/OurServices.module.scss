@@ -1024,7 +1024,7 @@
     width: 70px;
     height: 70px;
     background: linear-gradient(45deg, #ff6b35, #ff9f1c);
-    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    border-radius: 50%;
     animation-delay: 0s;
   }
 
@@ -1044,7 +1044,7 @@
     width: 90px;
     height: 90px;
     background: linear-gradient(45deg, #ff9f1c, #ff6b35);
-    clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
+    border-radius: 50%;
     animation-delay: 4s;
   }
 
@@ -1054,7 +1054,7 @@
     width: 60px;
     height: 60px;
     background: linear-gradient(45deg, #2ec4b6, #63cfe9);
-    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    border-radius: 50%;
     animation-delay: 6s;
   }
 
@@ -1064,7 +1064,7 @@
     width: 80px;
     height: 80px;
     background: linear-gradient(45deg, #ff6b35, #63cfe9);
-    clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
+    border-radius: 50%;
     animation-delay: 8s;
   }
 
@@ -1084,7 +1084,7 @@
     width: 55px;
     height: 55px;
     background: linear-gradient(45deg, #63cfe9, #ff6b35);
-    clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+    border-radius: 50%;
     animation-delay: 12s;
   }
 
@@ -1094,7 +1094,7 @@
     width: 65px;
     height: 65px;
     background: linear-gradient(45deg, #2ec4b6, #ff9f1c);
-    clip-path: polygon(40% 0%, 60% 0%, 100% 40%, 100% 60%, 60% 100%, 40% 100%, 0% 60%, 0% 40%);
+    border-radius: 50%;
     animation-delay: 14s;
   }
 
@@ -1104,7 +1104,7 @@
     width: 40px;
     height: 40px;
     background: linear-gradient(45deg, #ff6b35, #63cfe9);
-    clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+    border-radius: 50%;
     animation-delay: 16s;
   }
 
@@ -1114,7 +1114,7 @@
     width: 50px;
     height: 50px;
     background: linear-gradient(45deg, #ff9f1c, #2ec4b6);
-    clip-path: polygon(20% 0%, 80% 0%, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0% 80%, 0% 20%);
+    border-radius: 50%;
     animation-delay: 18s;
   }
 }

@@ -923,7 +923,7 @@
     width: 50px;
     height: 50px;
     background: linear-gradient(45deg, #ff6b35, #ff9f1c);
-    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    border-radius: 50%;
     animation-delay: 0s;
   }
 
@@ -943,7 +943,7 @@
     width: 60px;
     height: 60px;
     background: linear-gradient(45deg, #ff9f1c, #ff6b35);
-    clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
+    border-radius: 50%;
     animation-delay: 4s;
   }
 
@@ -953,7 +953,7 @@
     width: 40px;
     height: 40px;
     background: linear-gradient(45deg, #2ec4b6, #63cfe9);
-    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    border-radius: 50%;
     animation-delay: 6s;
   }
 
@@ -963,7 +963,7 @@
     width: 55px;
     height: 55px;
     background: linear-gradient(45deg, #ff6b35, #63cfe9);
-    clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
+    border-radius: 50%;
     animation-delay: 8s;
   }
 

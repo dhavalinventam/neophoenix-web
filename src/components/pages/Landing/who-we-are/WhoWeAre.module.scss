@@ -9,7 +9,8 @@
   justify-content: center;
   z-index: 1;
   font-family: $font-primary;
-  padding: 50px 0 !important;
+  padding-top: 80px !important;
+  padding-bottom: 50px !important;
   overflow: hidden;
 }
 
@@ -42,19 +43,10 @@
     width: 80px;
     height: 80px;
     background: linear-gradient(45deg, $primary-orange, $primary-gold);
-    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    border-radius: 50%;
     animation-delay: 0s;
   }
 
-  &.shape2 {
-    top: 70%;
-    right: 12%;
-    width: 60px;
-    height: 60px;
-    background: linear-gradient(45deg, $primary-cyan, $primary-blue);
-    border-radius: 50%;
-    animation-delay: 2s;
-  }
 
   &.shape3 {
     top: 25%;
@@ -62,39 +54,12 @@
     width: 100px;
     height: 100px;
     background: linear-gradient(45deg, $primary-gold, $primary-orange);
-    clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
+    border-radius: 50%;
     animation-delay: 4s;
   }
 
-  &.shape4 {
-    bottom: 20%;
-    left: 15%;
-    width: 70px;
-    height: 70px;
-    background: linear-gradient(45deg, $primary-blue, $primary-cyan);
-    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-    animation-delay: 6s;
-  }
 
-  &.shape5 {
-    top: 10%;
-    left: 65%;
-    width: 90px;
-    height: 90px;
-    background: linear-gradient(45deg, $primary-orange, $primary-cyan);
-    clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
-    animation-delay: 8s;
-  }
 
-  &.shape6 {
-    bottom: 35%;
-    right: 8%;
-    width: 55px;
-    height: 55px;
-    background: linear-gradient(45deg, $primary-gold, $primary-blue);
-    border-radius: 50%;
-    animation-delay: 10s;
-  }
 }
 
 @keyframes floatShape {
@@ -139,14 +104,6 @@
     animation-delay: 0s;
   }
 
-  &.orb2 {
-    top: 65%;
-    right: 15%;
-    width: 350px;
-    height: 350px;
-    background: radial-gradient(circle, rgba(46, 196, 182, 0.12) 0%, transparent 70%);
-    animation-delay: 7s;
-  }
 
   &.orb3 {
     bottom: 15%;
@@ -209,46 +166,6 @@
     top: 42%;
     left: 30%;
     animation-delay: 1.5s;
-  }
-  &:nth-child(5) {
-    top: 52%;
-    left: 50%;
-    animation-delay: 2s;
-  }
-  &:nth-child(6) {
-    top: 62%;
-    left: 70%;
-    animation-delay: 2.5s;
-  }
-  &:nth-child(7) {
-    top: 72%;
-    left: 20%;
-    animation-delay: 3s;
-  }
-  &:nth-child(8) {
-    top: 82%;
-    left: 40%;
-    animation-delay: 3.5s;
-  }
-  &:nth-child(9) {
-    top: 18%;
-    left: 75%;
-    animation-delay: 4s;
-  }
-  &:nth-child(10) {
-    top: 28%;
-    left: 10%;
-    animation-delay: 4.5s;
-  }
-  &:nth-child(11) {
-    top: 68%;
-    left: 10%;
-    animation-delay: 5s;
-  }
-  &:nth-child(12) {
-    top: 78%;
-    left: 60%;
-    animation-delay: 5.5s;
   }
 }
 
@@ -327,46 +244,6 @@
   &:nth-child(10) {
     left: 13%;
     animation-delay: 5.4s;
-  }
-  &:nth-child(11) {
-    left: 23%;
-    animation-delay: 6s;
-  }
-  &:nth-child(12) {
-    left: 33%;
-    animation-delay: 6.6s;
-  }
-  &:nth-child(13) {
-    left: 43%;
-    animation-delay: 7.2s;
-  }
-  &:nth-child(14) {
-    left: 53%;
-    animation-delay: 7.8s;
-  }
-  &:nth-child(15) {
-    left: 63%;
-    animation-delay: 8.4s;
-  }
-  &:nth-child(16) {
-    left: 73%;
-    animation-delay: 9s;
-  }
-  &:nth-child(17) {
-    left: 83%;
-    animation-delay: 9.6s;
-  }
-  &:nth-child(18) {
-    left: 93%;
-    animation-delay: 10.2s;
-  }
-  &:nth-child(19) {
-    left: 3%;
-    animation-delay: 10.8s;
-  }
-  &:nth-child(20) {
-    left: 53%;
-    animation-delay: 11.4s;
   }
 }
 
@@ -474,7 +351,7 @@
 
 // Main Content
 .mainContent {
-  max-width: 900px;
+  max-width: 88%;
   margin: 0 auto;
 }
 
@@ -500,8 +377,8 @@
     line-height: 1.6; // Consistent line height
     font-weight: $font-weight-normal;
     text-align: center;
-    max-width: 700px; // Consistent max-width for info paragraphs
-    margin: 0 auto;
+    width: 100%;
+    margin: 0;
     font-family: $font-primary;
 
     strong {
@@ -594,17 +471,9 @@
 
   .shape {
     &.shape1,
-    &.shape3,
-    &.shape5 {
+    &.shape3 {
       width: 60px;
       height: 60px;
-    }
-
-    &.shape2,
-    &.shape4,
-    &.shape6 {
-      width: 45px;
-      height: 45px;
     }
   }
 
@@ -612,11 +481,6 @@
     &.orb1 {
       width: 300px;
       height: 300px;
-    }
-
-    &.orb2 {
-      width: 250px;
-      height: 250px;
     }
 
     &.orb3 {
