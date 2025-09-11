@@ -319,7 +319,7 @@ const DemoAnimation = () => {
             <div
               className={`${styles.header} header`}
               data-aos="fade-up"
-              data-aos-delay="200"
+              data-aos-delay="100"
               data-aos-duration="1000"
               data-aos-easing="ease-out-cubic"
             >
@@ -334,8 +334,8 @@ const DemoAnimation = () => {
         <div
           className={styles.locker}
           data-aos="fade-up"
-          data-aos-delay="400"
-          data-aos-duration="1200"
+          data-aos-delay="200"
+          data-aos-duration="1000"
           data-aos-easing="ease-out-cubic"
         >
           <div className={styles.locker__image}>

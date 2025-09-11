@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, ReactNode } from 'react';
-import dynamic from 'next/dynamic';
 
 interface AOSProviderProps {
   children: ReactNode;
@@ -13,36 +12,84 @@ export default function AOSProvider({ children }: AOSProviderProps) {
     const initAOS = async () => {
       const AOS = (await import('aos')).default;
 
+      // Check if we're on mobile/tablet for responsive behavior
+      const isMobile = window.innerWidth <= 768;
+      const isTablet = window.innerWidth > 768 && window.innerWidth <= 1024;
+
       AOS.init({
-        duration: 1200, // Longer duration for smoother animations
-        easing: 'ease-out-cubic', // Smoother easing curve
-        once: false, // Animation happens only once
-        offset: 50, // Smaller offset for earlier trigger
-        delay: 0, // No base delay
-        anchorPlacement: 'top-bottom', // Trigger when element enters viewport
-        disable: false, // Enable AOS
-        startEvent: 'DOMContentLoaded', // Start after DOM is ready
-        initClassName: 'aos-init', // Class added after initialization
-        animatedClassName: 'aos-animate', // Class added on animation
-        useClassNames: false, // Don't use class names for animations
-        disableMutationObserver: false, // Enable mutation observer
-        debounceDelay: 50, // Debounce delay for resize
-        throttleDelay: 99, // Throttle delay for scroll
+        duration: isMobile ? 800 : 1200, // Shorter duration on mobile
+        easing: 'ease-out-cubic',
+        once: false, // Allow animations to repeat on scroll
+        offset: isMobile ? 20 : 50, // Smaller offset on mobile for earlier trigger
+        delay: 0,
+        anchorPlacement: 'top-bottom',
+        disable: false, // Keep enabled on all devices
+        startEvent: 'DOMContentLoaded',
+        initClassName: 'aos-init',
+        animatedClassName: 'aos-animate',
+        useClassNames: false,
+        disableMutationObserver: false,
+        debounceDelay: 50,
+        throttleDelay: 99,
       });
 
-      // Refresh AOS on window resize
+      // Handle responsive behavior
       const handleResize = () => {
-        AOS.refresh();
+        const newIsMobile = window.innerWidth <= 768;
+        const newIsTablet = window.innerWidth > 768 && window.innerWidth <= 1024;
+
+        // Reinitialize AOS with new settings based on screen size
+        AOS.init({
+          duration: newIsMobile ? 800 : 1200,
+          easing: 'ease-out-cubic',
+          once: false,
+          offset: newIsMobile ? 20 : 50,
+          delay: 0,
+          anchorPlacement: 'top-bottom',
+          disable: false,
+          startEvent: 'DOMContentLoaded',
+          initClassName: 'aos-init',
+          animatedClassName: 'aos-animate',
+          useClassNames: false,
+          disableMutationObserver: false,
+          debounceDelay: 50,
+          throttleDelay: 99,
+        });
       };
 
+      // Handle scroll events for better performance
+      let ticking = false;
+      const handleScroll = () => {
+        if (!ticking) {
+          requestAnimationFrame(() => {
+            AOS.refresh();
+            ticking = false;
+          });
+          ticking = true;
+        }
+      };
+
+      // Add event listeners
       window.addEventListener('resize', handleResize);
+      window.addEventListener('scroll', handleScroll, { passive: true });
+
+      // Initial refresh after a short delay to ensure DOM is ready
+      setTimeout(() => {
+        AOS.refresh();
+      }, 100);
 
       return () => {
         window.removeEventListener('resize', handleResize);
+        window.removeEventListener('scroll', handleScroll);
       };
     };
 
-    initAOS();
+    // Small delay to ensure DOM is fully loaded
+    const timer = setTimeout(initAOS, 100);
+
+    return () => {
+      clearTimeout(timer);
+    };
   }, []);
 
   return <>{children}</>;

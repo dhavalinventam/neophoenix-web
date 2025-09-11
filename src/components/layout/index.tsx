@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 import Header from './header';
 import Footer from './footer';
 import CookieConsent from '../ui/cookie-consent';
-import AOSProvider from '../../providers/AOSProvider';
+import AOSProvider from '../providers/AOSProvider';
 // import CustomCursor from '../ui/custom-cursor';
 
 interface LayoutProps {

@@ -75,7 +75,7 @@ const HeroSection = () => {
               <div
                 className={styles.badge}
                 data-aos="fade-up"
-                data-aos-delay="200"
+                data-aos-delay="100"
                 data-aos-duration="1000"
                 data-aos-easing="ease-out-cubic"
               >
@@ -86,8 +86,8 @@ const HeroSection = () => {
               <h1
                 className={styles.title}
                 data-aos="fade-up"
-                data-aos-delay="400"
-                data-aos-duration="1200"
+                data-aos-delay="300"
+                data-aos-duration="1000"
                 data-aos-easing="ease-out-cubic"
               >
                 Reimagining Enterprise{' '}
@@ -97,7 +97,7 @@ const HeroSection = () => {
               <p
                 className={styles.subtitle}
                 data-aos="fade-up"
-                data-aos-delay="600"
+                data-aos-delay="500"
                 data-aos-duration="1000"
                 data-aos-easing="ease-out-cubic"
               >
@@ -107,8 +107,8 @@ const HeroSection = () => {
               <p
                 className={styles.description}
                 data-aos="fade-up"
-                data-aos-delay="800"
-                data-aos-duration="1200"
+                data-aos-delay="700"
+                data-aos-duration="1000"
                 data-aos-easing="ease-out-cubic"
               >
                 At Neophoenix, we build next-generation AI products and enterprise solutions that
@@ -123,7 +123,7 @@ const HeroSection = () => {
             <div
               className={styles.ctaSection}
               data-aos="fade-up"
-              data-aos-delay="1000"
+              data-aos-delay="900"
               data-aos-duration="1000"
               data-aos-easing="ease-out-cubic"
             >

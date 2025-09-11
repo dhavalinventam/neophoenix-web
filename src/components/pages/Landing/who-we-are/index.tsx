@@ -11,7 +11,7 @@ const WhoWeAre = () => {
         className={styles.backgroundAnimation}
         data-aos="fade-in"
         data-aos-delay="100"
-        data-aos-duration="2000"
+        data-aos-duration="1000"
         data-aos-easing="ease-out-cubic"
       >
         {/* Floating Geometric Shapes */}
@@ -19,7 +19,7 @@ const WhoWeAre = () => {
           className={styles.floatingShapes}
           data-aos="zoom-in"
           data-aos-delay="200"
-          data-aos-duration="1500"
+          data-aos-duration="1000"
           data-aos-easing="ease-out-cubic"
         >
           <div className={`${styles.shape} ${styles.shape1}`}></div>
@@ -35,7 +35,7 @@ const WhoWeAre = () => {
           className={styles.gradientOrbs}
           data-aos="fade-in"
           data-aos-delay="400"
-          data-aos-duration="2000"
+          data-aos-duration="1000"
           data-aos-easing="ease-out-cubic"
         >
           <div className={`${styles.orb} ${styles.orb1}`}></div>
@@ -48,7 +48,7 @@ const WhoWeAre = () => {
           className={styles.neuralGrid}
           data-aos="fade-in"
           data-aos-delay="600"
-          data-aos-duration="1800"
+          data-aos-duration="1000"
           data-aos-easing="ease-out-cubic"
         >
           {[...Array(12)].map((_, i) => (
@@ -61,7 +61,7 @@ const WhoWeAre = () => {
           className={styles.particleSystem}
           data-aos="fade-in"
           data-aos-delay="800"
-          data-aos-duration="2000"
+          data-aos-duration="1000"
           data-aos-easing="ease-out-cubic"
         >
           {[...Array(20)].map((_, i) => (
@@ -84,7 +84,7 @@ const WhoWeAre = () => {
         className={styles.contentContainer}
         data-aos="fade-up"
         data-aos-delay="200"
-        data-aos-duration="1200"
+        data-aos-duration="1000"
         data-aos-easing="ease-out-cubic"
       >
         <Container>
@@ -96,8 +96,8 @@ const WhoWeAre = () => {
                 <h2
                   className={styles.headline}
                   data-aos="fade-up"
-                  data-aos-delay="400"
-                  data-aos-duration="1200"
+                  data-aos-delay="100"
+                  data-aos-duration="1000"
                   data-aos-easing="ease-out-cubic"
                 >
                   Who We Are <br /> An AI-First Team with Human Ingenuity
@@ -107,8 +107,8 @@ const WhoWeAre = () => {
                 <div
                   className={styles.description}
                   data-aos="fade-up"
-                  data-aos-delay="600"
-                  data-aos-duration="1200"
+                  data-aos-delay="300"
+                  data-aos-duration="1000"
                   data-aos-easing="ease-out-cubic"
                 >
                   <p>
@@ -125,7 +125,7 @@ const WhoWeAre = () => {
                 <div
                   className={styles.ctaSection}
                   data-aos="fade-up"
-                  data-aos-delay="800"
+                  data-aos-delay="400"
                   data-aos-duration="1000"
                   data-aos-easing="ease-out-cubic"
                 >

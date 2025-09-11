@@ -4,7 +4,7 @@
 .personalizedWishlistSection {
   position: relative;
   background: transparent; // Remove background to show global gradient
-  padding: 100px 0px !important; // Remove padding for seamless layout
+  padding: 50px 0px !important; // Remove padding for seamless layout
   overflow: hidden;
   z-index: 1;
   // min-height: 100vh;
@@ -105,7 +105,6 @@
   position: relative;
   z-index: 2;
   overflow: hidden;
-  margin: 32px 0px; // Reduced margin for content spacing
 
   &::before {
     content: '';
@@ -466,7 +465,7 @@
 // Responsive Design
 @media (max-width: 992px) {
   .personalizedWishlistSection {
-    padding: 0 !important; // Keep seamless layout
+    padding: 30px 0px !important; // Keep seamless layout
   }
   .headerSection {
     margin-bottom: 20px;
@@ -480,21 +479,19 @@
   .buttonWrapper {
     margin-top: 10px;
   }
-}
-@media (max-width: 768px) {
   .mainCard {
     padding: 24px 16px;
-    margin: 16px 0px !important; // Reduced margin for mobile
   }
-
+  
   .title {
-    font-size: 30px;
+    font-size: 28px;
   }
-
+  
   .subtitle {
     font-size: $font-size-sm;
   }
 }
+
 
 @media (max-width: 480px) {
   .mainCard {
