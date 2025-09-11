@@ -72,17 +72,6 @@ const HeroSection = () => {
           <Container>
             {/* Main Headline */}
             <div className={`${styles.headline} ${isVisible ? styles.visible : ''}`}>
-              <div
-                className={styles.badge}
-                data-aos="fade-up"
-                data-aos-delay="100"
-                data-aos-duration="1000"
-                data-aos-easing="ease-out-cubic"
-              >
-                <span className={styles.badgeIcon}>🚀</span>
-                <span className={styles.badgeText}>Enterprise AI Solutions</span>
-              </div>
-
               <h1
                 className={styles.title}
                 data-aos="fade-up"
@@ -91,7 +80,9 @@ const HeroSection = () => {
                 data-aos-easing="ease-out-cubic"
               >
                 Reimagining Enterprise{' '}
-                <span className={styles.highlight}> AI with RAG & Prompting Innovation</span>
+                <span className={styles.highlight}>
+                  AI Solutions with RAG & Prompting Innovation
+                </span>
               </h1>
 
               <p
