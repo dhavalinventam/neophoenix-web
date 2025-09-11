@@ -23,11 +23,7 @@ const WhoWeAre = () => {
           data-aos-easing="ease-out-cubic"
         >
           <div className={`${styles.shape} ${styles.shape1}`}></div>
-          <div className={`${styles.shape} ${styles.shape2}`}></div>
           <div className={`${styles.shape} ${styles.shape3}`}></div>
-          <div className={`${styles.shape} ${styles.shape4}`}></div>
-          <div className={`${styles.shape} ${styles.shape5}`}></div>
-          <div className={`${styles.shape} ${styles.shape6}`}></div>
         </div>
 
         {/* Gradient Orbs */}
@@ -39,7 +35,6 @@ const WhoWeAre = () => {
           data-aos-easing="ease-out-cubic"
         >
           <div className={`${styles.orb} ${styles.orb1}`}></div>
-          <div className={`${styles.orb} ${styles.orb2}`}></div>
           <div className={`${styles.orb} ${styles.orb3}`}></div>
         </div>
 
@@ -51,7 +46,7 @@ const WhoWeAre = () => {
           data-aos-duration="1000"
           data-aos-easing="ease-out-cubic"
         >
-          {[...Array(12)].map((_, i) => (
+          {[...Array(4)].map((_, i) => (
             <div key={i} className={styles.gridNode}></div>
           ))}
         </div>
@@ -64,7 +59,7 @@ const WhoWeAre = () => {
           data-aos-duration="1000"
           data-aos-easing="ease-out-cubic"
         >
-          {[...Array(20)].map((_, i) => (
+          {[...Array(10)].map((_, i) => (
             <div
               key={i}
               className={styles.particle}
@@ -88,8 +83,8 @@ const WhoWeAre = () => {
         data-aos-easing="ease-out-cubic"
       >
         <Container>
-          <Row className="justify-content-center">
-            <Col xs={12} lg={10}>
+          <Row>
+            <Col xs={12}>
               {/* Main Content */}
               <div className={styles.mainContent}>
                 {/* Headline */}
