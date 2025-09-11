@@ -341,7 +341,7 @@
   z-index: 2;
   width: 100%;
   text-align: center;
-  padding: 64px 0; // Add internal padding for content spacing
+  padding: 20px 0 64px; // Add internal padding for content spacing
 }
 
 // Badge
@@ -382,7 +382,7 @@
   }
 
   .title {
-    font-size: clamp(32px, 4vw, 40px); // Consistent with section title sizing
+    font-size: clamp(32px, 4vw, 44px); // Consistent with section title sizing
     font-weight: 700;
     color: #ffffff; // Pure white color
     line-height: 1.2;
@@ -419,7 +419,6 @@
 
 // CTA Section
 .ctaSection {
-  margin-bottom: 64px;
   opacity: 1; // Always visible
   transform: translateY(0); // No transform
   // transition: all 0.8s ease-out 0.4s;
@@ -464,8 +463,7 @@
     min-height: unset !important;
   }
   .contentContainer {
-    padding: 20px 0px 30px;
-    // Add internal padding for mobile
+    padding: 0px 0px 30px;
   }
   .ctaSection {
     margin-bottom: 32px;
@@ -512,10 +510,6 @@
 @media (max-width: 480px) {
   .heroSection {
     padding: 0; // Keep seamless layout
-  }
-
-  .contentContainer {
-    padding: 16px 0; // Add internal padding for mobile
   }
 
   .headline .title {

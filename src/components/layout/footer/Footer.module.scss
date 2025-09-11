@@ -4,9 +4,7 @@
   position: relative;
   background: transparent; // Remove background to show global gradient
   color: $text-white;
-  padding: 64px 0 32px;
   margin-top: auto;
-  overflow: hidden;
   z-index: 1;
 
   // Subtle background elements to enhance gradient integration
@@ -17,15 +15,18 @@
     left: 0;
     right: 0;
     bottom: 0;
-    // background:
-    //   radial-gradient(circle at 20% 80%, rgba(255, 107, 53, 0.02) 0%, transparent 50%),
-    //   radial-gradient(circle at 80% 20%, rgba(255, 159, 28, 0.02) 0%, transparent 50%),
-    //   radial-gradient(circle at 40% 40%, rgba(46, 196, 182, 0.01) 0%, transparent 50%);
     z-index: 0;
     pointer-events: none;
   }
+  .footerRow {
+    position: relative;
+    z-index: 1;
+    padding: 64px 0 32px;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+    border-radius: 0 0 80px 80px;
+    box-shadow: 0 79px 58px 8px rgb(0 0 0 / 15%);
+  }
 }
-
 @keyframes backgroundFloat {
   0%,
   100% {
@@ -461,6 +462,7 @@
   .legalLinks {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 12px;
     margin: 8px 0;
 
@@ -854,6 +856,41 @@
           max-width: 18px;
         }
       }
+    }
+  }
+}
+
+// Bottom Sticky Text
+.bottomStickyText {
+  position: sticky;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  backdrop-filter: blur(10px);
+  padding: 60px 0;
+  text-align: center;
+  @media (max-width: 992px) {
+    padding: 30px 0;
+  }
+
+  .stickyText {
+    font-size: 11vw;
+    line-height: 1;
+    font-weight: 600;
+    color: transparent;
+    font-family: 'Frederic', sans-serif;
+    letter-spacing: 2px;
+    transition: all 0.3s ease-in-out;
+    -webkit-text-stroke: transparent;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: #ffffff;
+    opacity: 0.4;
+    transition: all 0.3s ease-in-out;
+    &:hover {
+      opacity: 0.6;
+    }
+    @media (max-width: 992px) {
+      -webkit-text-stroke-width: 1px;
     }
   }
 }

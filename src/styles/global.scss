@@ -19,6 +19,49 @@ html {
   scroll-behavior: smooth;
 }
 
+/* AOS Animation Improvements */
+.aos-init {
+  opacity: 0;
+  transition-property: opacity, transform;
+  transition-duration: 0.6s;
+  transition-timing-function: ease-out-cubic;
+}
+
+.aos-animate {
+  opacity: 1;
+}
+
+/* Ensure AOS works on all devices */
+@media (max-width: 768px) {
+  .aos-init {
+    transition-duration: 0.4s;
+  }
+}
+
+/* Prevent layout shift during animations */
+[data-aos] {
+  will-change: transform, opacity;
+}
+
+/* Smooth transitions for all AOS elements */
+[data-aos^='fade'][data-aos^='fade'] {
+  opacity: 0;
+  transition-property: opacity;
+}
+
+[data-aos^='fade'][data-aos^='fade'].aos-animate {
+  opacity: 1;
+}
+
+[data-aos^='zoom'][data-aos^='zoom'] {
+  opacity: 0;
+  transition-property: opacity, transform;
+}
+
+[data-aos^='zoom'][data-aos^='zoom'].aos-animate {
+  opacity: 1;
+}
+
 body {
   color: var(--foreground);
   background: var(--background); // Hero gradient background for entire page
@@ -131,9 +174,14 @@ p {
 section {
   padding: 0 !important; // Remove all section padding for seamless layout
 }
-
+.container {
+  padding: 0 16px;
+}
 .hero {
-  padding-top: 120px !important; // Remove hero padding for seamless layout
+  padding-top: 140px !important;
+  @media (max-width: 992px) {
+    padding-top: 120px !important;
+  }
 }
 
 // =============================================================================
