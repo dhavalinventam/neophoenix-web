@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import styles from './HeroSection.module.scss';
 import Button from '@/components/ui/button';
+import NeuralNetwork from '@/components/ui/neural-network';
 import { Container } from 'react-bootstrap';
 
 const HeroSection = () => {
@@ -18,6 +19,9 @@ const HeroSection = () => {
       <section className={`${styles.heroSection} hero`}>
         {/* Smart Background Animation */}
         <div className={styles.backgroundAnimation}>
+          {/* Neural Network Animation */}
+          <NeuralNetwork />
+
           {/* Floating Geometric Shapes */}
           <div className={styles.floatingShapes}>
             {[...Array(6)].map((_, i) => (
