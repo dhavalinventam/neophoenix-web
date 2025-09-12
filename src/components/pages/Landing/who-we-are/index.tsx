@@ -1,11 +1,27 @@
 'use client';
 import Button from '../../../ui/button';
 import { Container, Row, Col } from 'react-bootstrap';
+import NeuralNetworkAccent from '../../../ui/neural-network-accent';
 import styles from './WhoWeAre.module.scss';
 
 const WhoWeAre = () => {
   return (
     <section className={styles.whoWeAre}>
+      {/* Neural Network Accent Elements */}
+      <NeuralNetworkAccent 
+        size="small" 
+        position="top-left" 
+        opacity={0.8}
+        nodeCount={20}
+        maxConnectionDist={80}
+      />
+      <NeuralNetworkAccent 
+        size="medium" 
+        position="bottom-right" 
+        opacity={0.7}
+        nodeCount={25}
+        maxConnectionDist={90}
+      />
 
       {/* Content Container */}
       <div

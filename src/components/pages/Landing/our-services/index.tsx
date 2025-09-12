@@ -4,6 +4,7 @@ import React, { useEffect } from 'react';
 import Image from 'next/image';
 import styles from './OurServices.module.scss';
 import Button from '@/components/ui/button';
+import NeuralNetworkAccent from '@/components/ui/neural-network-accent';
 
 const DemoAnimation = () => {
   const [activeVideoIndex, setActiveVideoIndex] = React.useState(0);
@@ -284,6 +285,42 @@ const DemoAnimation = () => {
   return (
     <>
       <div className={styles.ourServices}>
+        {/* Neural Network Accent Elements */}
+        <NeuralNetworkAccent 
+          size="medium" 
+          position="top-right" 
+          opacity={0.75}
+          nodeCount={30}
+          maxConnectionDist={100}
+        />
+        <NeuralNetworkAccent 
+          size="small" 
+          position="bottom-left" 
+          opacity={0.65}
+          nodeCount={15}
+          maxConnectionDist={70}
+        />
+        <NeuralNetworkAccent 
+          size="small" 
+          position="top-left" 
+          opacity={0.6}
+          nodeCount={20}
+          maxConnectionDist={85}
+        />
+        <NeuralNetworkAccent 
+          size="medium" 
+          position="bottom-right" 
+          opacity={0.55}
+          nodeCount={25}
+          maxConnectionDist={95}
+        />
+        <NeuralNetworkAccent 
+          size="small" 
+          position="center" 
+          opacity={0.45}
+          nodeCount={18}
+          maxConnectionDist={75}
+        />
 
         <div className={styles.section}>
           <div className={styles.container}>
