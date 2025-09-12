@@ -1,0 +1,40 @@
+@use '../../../styles/variables' as *;
+
+.neuralNetworkBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: auto; // Enable mouse interaction
+  z-index: 1;
+  overflow: hidden;
+  background: transparent; // Match CodePen - no background
+}
+
+.neuralCanvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  opacity: 1; // Match CodePen - full opacity
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .neuralCanvas {
+    opacity: 0.8;
+  }
+}
+
+@media (max-width: 480px) {
+  .neuralCanvas {
+    opacity: 0.6;
+  }
+}
+
+// Performance optimization for low-end devices
+@media (prefers-reduced-motion: reduce) {
+  .neuralCanvas {
+    opacity: 0.5;
+  }
+}
