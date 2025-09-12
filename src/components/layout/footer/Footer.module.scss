@@ -874,16 +874,16 @@
   }
 
   .stickyText {
-    font-size: 11vw;
+    font-size: 16vw;
     line-height: 1;
     font-weight: 600;
     color: transparent;
     font-family: 'Frederic', sans-serif;
-    letter-spacing: 2px;
+    letter-spacing: -1.2vw;
     transition: all 0.3s ease-in-out;
     -webkit-text-stroke: transparent;
-    -webkit-text-stroke-width: 2px;
-    -webkit-text-stroke-color: #ffffff;
+    -webkit-text-stroke-width: 3px;
+    -webkit-text-stroke-color: #4FABC7;
     opacity: 0.4;
     transition: all 0.3s ease-in-out;
     &:hover {
