@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useRef, useState } from 'react';
-import styles from './NeuralNetworkBackground.module.scss';
+import styles from './NeuralNetworkAccent.module.scss';
 
 interface Node {
   [x: string]: any;
@@ -18,22 +18,24 @@ interface Node {
   originalZ: number;
 }
 
-interface NeuralNetworkBackgroundProps {
+interface NeuralNetworkAccentProps {
   className?: string;
+  size?: 'small' | 'medium' | 'large';
+  position?: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right' | 'center';
+  opacity?: number;
   nodeCount?: number;
   maxConnectionDist?: number;
-  opacity?: number;
   color?: string;
-  mouseInfluence?: number;
 }
 
-const NeuralNetworkBackground: React.FC<NeuralNetworkBackgroundProps> = ({ 
-  className,
-  nodeCount = 100,
-  maxConnectionDist = 150,
-  opacity = 1,
-  color = 'rgba(0, 229, 255, 0.8)',
-  mouseInfluence = 100
+const NeuralNetworkAccent: React.FC<NeuralNetworkAccentProps> = ({
+  className = '',
+  size = 'medium',
+  position = 'top-right',
+  opacity = 0.6,
+  nodeCount = 30,
+  maxConnectionDist = 100,
+  color = 'rgba(0, 229, 255, 0.8)'
 }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -42,6 +44,8 @@ const NeuralNetworkBackground: React.FC<NeuralNetworkBackgroundProps> = ({
   const mouseRef = useRef({ x: null as number | null, y: null as number | null });
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
   const [isMobile, setIsMobile] = useState(false);
+
+  const mouseInfluence = 80;
 
   class Node3D {
     x: number;
@@ -63,13 +67,12 @@ const NeuralNetworkBackground: React.FC<NeuralNetworkBackgroundProps> = ({
       this.x = x;
       this.y = y;
       this.z = z;
-      this.vx = Math.random() * 0.5 - 0.25;
-      this.vy = Math.random() * 0.5 - 0.25;
-      this.vz = Math.random() * 0.5 - 0.25;
+      this.vx = Math.random() * 0.3 - 0.15;
+      this.vy = Math.random() * 0.3 - 0.15;
+      this.vz = Math.random() * 0.3 - 0.15;
       
-      // Use provided color with variations
       this.color = color;
-      this.size = 2;
+      this.size = 1.5;
     }
 
     update(canvas: HTMLCanvasElement, mouse: { x: number | null; y: number | null }) {
@@ -87,13 +90,13 @@ const NeuralNetworkBackground: React.FC<NeuralNetworkBackgroundProps> = ({
         this.vy *= -1;
         this.y = Math.max(0, Math.min(canvas.height, this.y));
       }
-      if (this.z > 500 || this.z < -500) {
+      if (this.z > 300 || this.z < -300) {
         this.vz *= -1;
-        this.z = Math.max(-500, Math.min(500, this.z));
+        this.z = Math.max(-300, Math.min(300, this.z));
       }
 
-      // 3D projection - match CodePen projection
-      const scale = 500 / (500 + this.z);
+      // 3D projection
+      const scale = 300 / (300 + this.z);
       const projectedX = (this.x - canvas.width / 2) * scale + canvas.width / 2;
       const projectedY = (this.y - canvas.height / 2) * scale + canvas.height / 2;
 
@@ -105,24 +108,22 @@ const NeuralNetworkBackground: React.FC<NeuralNetworkBackgroundProps> = ({
     if (!canvasRef.current) return;
     
     const canvas = canvasRef.current;
-    const count = isMobile ? Math.floor(nodeCount * 0.6) : nodeCount;
+    const count = isMobile ? Math.floor(nodeCount * 0.7) : nodeCount;
     nodesRef.current = [];
     
     for (let i = 0; i < count; i++) {
       nodesRef.current.push(new Node3D(
         Math.random() * canvas.width,
         Math.random() * canvas.height,
-        Math.random() * 1000 - 500
+        Math.random() * 600 - 300
       ));
     }
   };
 
   const drawConnections = (ctx: CanvasRenderingContext2D) => {
     const nodes = nodesRef.current;
-    const mouse = mouseRef.current;
-    const connectionDist = isMobile ? 120 : maxConnectionDist;
+    const connectionDist = isMobile ? maxConnectionDist * 0.8 : maxConnectionDist;
     
-    // Match CodePen connection drawing style
     for (let i = 0; i < nodes.length; i++) {
       for (let j = i + 1; j < nodes.length; j++) {
         const dx = nodes[i].x - nodes[j].x;
@@ -132,6 +133,7 @@ const NeuralNetworkBackground: React.FC<NeuralNetworkBackgroundProps> = ({
         if (distance < connectionDist) {
           const connectionOpacity = (1 - (distance / connectionDist)) * opacity;
           ctx.strokeStyle = `rgba(0, 229, 255, ${connectionOpacity})`;
+          ctx.lineWidth = 0.5;
           ctx.beginPath();
           ctx.moveTo(nodes[i].x, nodes[i].y);
           ctx.lineTo(nodes[j].x, nodes[j].y);
@@ -147,13 +149,10 @@ const NeuralNetworkBackground: React.FC<NeuralNetworkBackgroundProps> = ({
     
     if (!canvas || !ctx) return;
 
-    // Clear canvas completely - match CodePen style
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     
-    // Draw connections first
     drawConnections(ctx);
     
-    // Update and draw nodes - match CodePen simple style
     nodesRef.current.forEach(node => {
       const projected = node.update(canvas, mouseRef.current);
       
@@ -191,7 +190,6 @@ const NeuralNetworkBackground: React.FC<NeuralNetworkBackgroundProps> = ({
   };
 
   const handleMouseLeave = () => {
-    // Reset mouse position when leaving the container
     mouseRef.current = { x: null, y: null };
   };
 
@@ -201,20 +199,14 @@ const NeuralNetworkBackground: React.FC<NeuralNetworkBackgroundProps> = ({
     
     if (!canvas || !container) return;
 
-    // Detect mobile device
     const checkMobile = () => {
       setIsMobile(window.innerWidth <= 768 || /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
     };
     
     checkMobile();
-
-    // Initial setup
     handleResize();
-    
-    // Start animation
     animate();
 
-    // Event listeners
     window.addEventListener('resize', handleResize);
     window.addEventListener('resize', checkMobile);
     container.addEventListener('mousemove', handleMouseMove);
@@ -234,7 +226,7 @@ const NeuralNetworkBackground: React.FC<NeuralNetworkBackgroundProps> = ({
   return (
     <div 
       ref={containerRef} 
-      className={`${styles.neuralNetworkBackground} ${className || ''}`}
+      className={`${styles.neuralNetworkAccent} ${styles[size]} ${styles[position]} ${className}`}
     >
       <canvas
         ref={canvasRef}
@@ -250,4 +242,4 @@ const NeuralNetworkBackground: React.FC<NeuralNetworkBackgroundProps> = ({
   );
 };
 
-export default NeuralNetworkBackground;
+export default NeuralNetworkAccent;

@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { Container, Row, Col, Form, FormControl, FormSelect } from 'react-bootstrap';
 import Button from '@/components/ui/button';
+import NeuralNetworkAccent from '@/components/ui/neural-network-accent';
 import styles from './PersonalizedWishlist.module.scss';
 
 const PersonalizedWishlist = () => {
@@ -70,6 +71,29 @@ const PersonalizedWishlist = () => {
 
   return (
     <section id="personalized-wishlist" className={styles.personalizedWishlistSection}>
+      {/* Neural Network Accent Elements */}
+      <NeuralNetworkAccent 
+        size="large" 
+        position="top-left" 
+        opacity={0.6}
+        nodeCount={40}
+        maxConnectionDist={120}
+      />
+      <NeuralNetworkAccent 
+        size="medium" 
+        position="bottom-right" 
+        opacity={0.5}
+        nodeCount={25}
+        maxConnectionDist={90}
+      />
+      <NeuralNetworkAccent 
+        size="small" 
+        position="center" 
+        opacity={0.4}
+        nodeCount={20}
+        maxConnectionDist={80}
+      />
+
       {/* Animated Background Elements */}
       <div className={styles.backgroundElements}>
         <div className={styles.floatingOrb1}></div>
