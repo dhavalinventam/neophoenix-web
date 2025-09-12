@@ -9,7 +9,7 @@
   position: relative;
   font-size: vars.$section-title-font-size;
   font-weight: vars.$section-title-font-weight;
-  color: #ffffff; // Force white color for all section titles
+  color: vars.$text-white; // Using new text color
   line-height: vars.$section-title-line-height;
   letter-spacing: vars.$section-title-letter-spacing;
   margin-bottom: vars.$section-title-margin-bottom;
@@ -24,7 +24,7 @@
     height: 4px;
     background: vars.$gradient-primary;
     border-radius: 2px;
-    box-shadow: 0 0 10px rgba(255, 107, 53, 0.5);
+    box-shadow: vars.$shadow-glow-teal;
   }
 }
 
@@ -32,7 +32,7 @@
 @mixin section-subtitle {
   font-size: vars.$font-size-lg; // Increased font size for better readability
   font-weight: vars.$section-subtitle-font-weight;
-  color: rgba(255, 255, 255, 0.7); // Force consistent color
+  color: vars.$text-gray-light; // Using new text color
   line-height: 1.6; // Consistent line height for info paragraphs
   max-width: 700px; // Consistent max-width for info paragraphs
   margin: 0 auto vars.$section-subtitle-margin-bottom;
@@ -57,36 +57,36 @@
 // Responsive Section Title Mixin
 @mixin section-title-responsive {
   @include section-title;
-  color: #ffffff; // Force white color for responsive titles
+  color: vars.$text-white; // Using new text color
 
   @include tablet {
     font-size: clamp(28px, 3.5vw, 32px);
     margin-bottom: 20.8px;
-    color: #ffffff; // Ensure white color on tablet
+    color: vars.$text-white; // Ensure consistent color on tablet
   }
 
   @include mobile {
     font-size: 24px;
     margin-bottom: 16px;
-    color: #ffffff; // Ensure white color on mobile
+    color: vars.$text-white; // Ensure consistent color on mobile
   }
 }
 
 // Responsive Section Subtitle Mixin
 @mixin section-subtitle-responsive {
   @include section-subtitle;
-  color: rgba(255, 255, 255, 0.7); // Force consistent color
+  color: vars.$text-gray-light; // Using new text color
 
   @include tablet {
     font-size: vars.$font-size-base; // Increased font size for tablet
     max-width: 600px; // Consistent max-width for tablet
-    color: rgba(255, 255, 255, 0.7); // Ensure consistent color on tablet
+    color: vars.$text-gray-light; // Ensure consistent color on tablet
   }
 
   @include mobile {
     font-size: vars.$font-size-base; // Increased font size for mobile
     max-width: 500px; // Consistent max-width for mobile
-    color: rgba(255, 255, 255, 0.7); // Ensure consistent color on mobile
+    color: vars.$text-gray-light; // Ensure consistent color on mobile
   }
 }
 
@@ -139,10 +139,10 @@
 // GLASS EFFECT MIXINS
 // =============================================================================
 
-@mixin glass-effect($opacity: 0.1) {
-  background: rgba(255, 255, 255, $opacity);
+@mixin glass-effect($opacity: 0.05) {
+  background: rgba(240, 240, 240, $opacity);
   backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(240, 240, 240, 0.1);
 }
 
 @mixin glass-card {

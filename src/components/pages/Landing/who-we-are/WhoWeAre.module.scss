@@ -42,7 +42,7 @@
     left: 8%;
     width: 80px;
     height: 80px;
-    background: linear-gradient(45deg, $primary-orange, $primary-gold);
+    background: linear-gradient(45deg, $primary-teal, $primary-magenta);
     border-radius: 50%;
     animation-delay: 0s;
   }
@@ -53,7 +53,7 @@
     right: 20%;
     width: 100px;
     height: 100px;
-    background: linear-gradient(45deg, $primary-gold, $primary-orange);
+    background: linear-gradient(45deg, $primary-magenta, $primary-teal);
     border-radius: 50%;
     animation-delay: 4s;
   }
@@ -100,7 +100,7 @@
     left: 15%;
     width: 400px;
     height: 400px;
-    background: radial-gradient(circle, rgba(255, 107, 53, 0.15) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(0, 77, 97, 0.15) 0%, transparent 70%);
     animation-delay: 0s;
   }
 
@@ -110,7 +110,7 @@
     left: 45%;
     width: 300px;
     height: 300px;
-    background: radial-gradient(circle, rgba(67, 97, 238, 0.1) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(130, 38, 89, 0.1) 0%, transparent 70%);
     animation-delay: 14s;
   }
 }
@@ -142,10 +142,10 @@
   position: absolute;
   width: 6px;
   height: 6px;
-  background: linear-gradient(45deg, $primary-cyan, $primary-blue);
+  background: linear-gradient(45deg, $primary-teal, $primary-magenta);
   border-radius: 50%;
   animation: gridPulse 6s ease-in-out infinite;
-  box-shadow: 0 0 10px rgba(46, 196, 182, 0.3);
+  box-shadow: 0 0 10px rgba(0, 77, 97, 0.3);
 
   &:nth-child(1) {
     top: 12%;
@@ -174,12 +174,12 @@
   100% {
     opacity: 0.2;
     transform: scale(1);
-    box-shadow: 0 0 10px rgba(46, 196, 182, 0.3);
+    box-shadow: 0 0 10px rgba(0, 77, 97, 0.3);
   }
   50% {
     opacity: 1;
     transform: scale(1.8);
-    box-shadow: 0 0 20px rgba(46, 196, 182, 0.6);
+    box-shadow: 0 0 20px rgba(0, 77, 97, 0.6);
   }
 }
 
@@ -194,14 +194,14 @@
   position: absolute;
   width: 3px;
   height: 3px;
-  background: linear-gradient(45deg, $primary-gold, $primary-orange);
+  background: linear-gradient(45deg, $primary-magenta, $primary-teal);
   border-radius: 50%;
   animation: particleFloat 12s linear infinite;
-  box-shadow: 0 0 6px rgba(255, 159, 28, 0.4);
+  box-shadow: 0 0 6px rgba(130, 38, 89, 0.4);
 
   &:nth-child(odd) {
-    background: linear-gradient(45deg, $primary-cyan, $primary-blue);
-    box-shadow: 0 0 6px rgba(46, 196, 182, 0.4);
+    background: linear-gradient(45deg, $primary-teal, $primary-magenta);
+    box-shadow: 0 0 6px rgba(0, 77, 97, 0.4);
   }
 
   // Position particles across the screen
@@ -336,7 +336,7 @@
     font-family: $font-title;
     font-size: clamp(24px, 3vw, 32px);
     font-weight: $font-weight-bold;
-    color: $primary-orange;
+    color: $primary-teal;
     letter-spacing: $letter-spacing-tight;
   }
 
@@ -360,7 +360,7 @@
   font-family: $font-title;
   font-size: clamp(2rem, 4vw, 2.5rem); // Consistent with section title sizing
   font-weight: $font-weight-bold;
-  color: #ffffff; // Pure white color
+    color: $text-white; // Using new text color
   line-height: $line-height-tight;
   margin-bottom: 2rem;
   letter-spacing: $letter-spacing-tight;
@@ -373,7 +373,7 @@
 
   p {
     font-size: $font-size-lg; // Increased font size for better readability
-    color: rgba(255, 255, 255, 0.7); // Consistent with other sections
+    color: $text-gray-light; // Using new text color
     line-height: 1.6; // Consistent line height
     font-weight: $font-weight-normal;
     text-align: center;
@@ -382,7 +382,7 @@
     font-family: $font-primary;
 
     strong {
-      color: $secondary-blue;
+      color: #35ebff;
       font-weight: $font-weight-semibold;
       background: #35ebff;
       -webkit-background-clip: text;
@@ -426,7 +426,7 @@
 
   &:hover {
     transform: translateY(-3px);
-    box-shadow: $shadow-glow-orange;
+    box-shadow: $shadow-glow-teal;
 
     &::before {
       left: 100%;

@@ -42,7 +42,7 @@
     left: 10%;
     width: 60px;
     height: 60px;
-    background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+    background: linear-gradient(45deg, $primary-teal, $primary-magenta);
     border-radius: 50%;
   }
 
@@ -349,9 +349,9 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: rgba(255, 255, 255, 0.1);
+  background: $glass-bg-light;
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid $glass-border-light;
   border-radius: 50px;
   padding: 12px 24px;
   margin-bottom: 32px;
@@ -362,7 +362,7 @@
   }
 
   .badgeText {
-    color: #ffffff;
+    color: $text-white;
     font-size: 14.4px;
     font-weight: 500;
     letter-spacing: 0.5px;
@@ -384,7 +384,7 @@
   .title {
     font-size: clamp(32px, 4vw, 44px); // Consistent with section title sizing
     font-weight: 700;
-    color: #ffffff; // Pure white color
+    color: $text-white; // Using new text color
     line-height: 1.2;
     margin-bottom: 24px;
     letter-spacing: -0.02em;
@@ -394,13 +394,13 @@
     justify-content: center;
 
     .highlight {
-      color: #ffffff; // Keep highlight as white instead of gradient
+      color: $text-white; // Using new text color
     }
   }
 
   .subtitle {
     font-size: clamp(19.2px, 2.5vw, 28.8px);
-    color: rgba(255, 255, 255, 0.7); // Consistent with other sections
+    color: $text-gray-light; // Using new text color
     font-weight: 600;
     margin-bottom: 24px;
     letter-spacing: 0.5px;
@@ -408,7 +408,7 @@
 
   .description {
     font-size: $font-size-lg; // Increased font size for better readability
-    color: rgba(255, 255, 255, 0.7); // Consistent with other sections
+    color: $text-gray-light; // Using new text color
     line-height: 1.6;
     max-width: 700px; // Consistent max-width for info paragraphs
     margin: 0 auto;

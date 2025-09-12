@@ -370,7 +370,7 @@
   width: 16px;
   height: 16px;
   margin-top: 2px;
-  accent-color: $primary-blue;
+  accent-color: $primary-teal;
   cursor: pointer;
 }
 
@@ -383,14 +383,14 @@
 }
 
 .privacyLink {
-  color: $primary-blue;
+  color: $primary-teal;
   text-decoration: underline;
   transition: all $duration-normal $ease-out;
   font-weight: $font-weight-medium;
 
   &:hover {
-    color: lighten($primary-blue, 15%);
-          text-shadow: 0 0 8px rgba(255, 107, 53, 0.4);
+    color: lighten($primary-teal, 15%);
+          text-shadow: 0 0 8px rgba(0, 77, 97, 0.4);
   }
 }
 

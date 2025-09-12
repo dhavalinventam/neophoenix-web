@@ -39,14 +39,14 @@
     top: 10%;
     right: 5%;
     animation-delay: 1s;
-    background: $phoenix-orange-medium; // Use new orange color
+    background: $accent-teal-medium; // Use new teal color
   }
 
   &:nth-child(2) {
     bottom: 10%;
     left: 5%;
     animation-delay: 3s;
-    background: $phoenix-gold-medium; // Use new gold color
+    background: $accent-magenta-medium; // Use new magenta color
   }
 
   @media (max-width: 768px) {

@@ -65,7 +65,7 @@
     bottom: 0;
     border-radius: 20px;
     padding: 1px;
-    background: linear-gradient(135deg, $primary-orange 0%, $primary-blue 100%); // (#FF6B35 → #4361EE)
+    background: linear-gradient(135deg, $primary-teal 0%, $primary-magenta 100%); // New gradient
     mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     mask-composite: exclude;
     opacity: 0.3;
@@ -85,13 +85,13 @@
     }
 
     .quoteIcon {
-      color: $primary-orange; // Orange on hover
+      color: $primary-teal; // Teal on hover
     }
   }
 
   // Focus state for accessibility
   &:focus-within {
-    outline: 2px solid $primary-orange;
+    outline: 2px solid $primary-teal;
     outline-offset: 2px;
   }
 }
@@ -176,9 +176,9 @@
 }
 
 .star {
-  color: $primary-gold; // Golden-orange star ratings (#FF9F1C)
+  color: $primary-magenta; // Magenta star ratings
   font-size: 1rem;
-  filter: drop-shadow(0 0 4px rgba(255, 159, 28, 0.3)); // Subtle glow effect
+  filter: drop-shadow(0 0 4px rgba(130, 38, 89, 0.3)); // Subtle glow effect
 }
 
 // Custom Swiper Navigation Styles

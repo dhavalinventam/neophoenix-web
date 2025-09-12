@@ -5,7 +5,7 @@
   align-items: center;
   justify-content: center;
   line-height: 1;
-  background: linear-gradient(90deg, #ff6b35 0%, #ff9f1c 50%, #cf9c56 100%);
+  background: $gradient-button-primary;
   max-width: max-content;
   max-height: max-content;
   color: $text-white; // White text (#FFFFFF)
@@ -22,20 +22,18 @@
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 
   &:hover {
-    background: linear-gradient(90deg, #ff6b35 0%, #ff9f1c 50%, #cf9c56 100%);
+    background: $gradient-button-primary;
     box-shadow:
-      0 8px 25px rgba(0, 0, 0, 0.3),
-      0 0 20px rgba(255, 107, 53, 0.3),
-      // Soft orange glow
-      0 0 40px rgba(255, 159, 28, 0.2); // Soft gold glow
+      0 8px 25px rgba(0, 0, 0, 0.4),
+      $shadow-glow-teal;
     transform: translateY(-2px);
   }
 
   &:focus {
     outline: none;
     box-shadow:
-      0 0 0 3px rgba(255, 107, 53, 0.3),
-      0 8px 25px rgba(0, 0, 0, 0.3);
+      0 0 0 3px rgba(0, 77, 97, 0.3),
+      0 8px 25px rgba(0, 0, 0, 0.4);
   }
 
   &::before {
@@ -90,7 +88,7 @@
   display: flex;
   align-items: center;
   line-height: 1;
-  background: linear-gradient(90deg, #ff6b35 0%, #ff9f1c 50%, #cf9c56 100%);
+  background: $gradient-button-primary;
   max-width: max-content;
   max-height: max-content;
   color: $text-white; // White text (#FFFFFF)
@@ -107,20 +105,18 @@
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 
   &:hover {
-    background: linear-gradient(90deg, #ff6b35 0%, #ff9f1c 50%, #cf9c56 100%);
+    background: $gradient-button-primary;
     box-shadow:
-      0 8px 25px rgba(0, 0, 0, 0.3),
-      0 0 20px rgba(255, 107, 53, 0.3),
-      // Soft orange glow
-      0 0 40px rgba(255, 159, 28, 0.2); // Soft gold glow
+      0 8px 25px rgba(0, 0, 0, 0.4),
+      $shadow-glow-teal;
     transform: translateY(-2px);
   }
 
   &:focus {
     outline: none;
     box-shadow:
-      0 0 0 3px rgba(255, 107, 53, 0.3),
-      0 8px 25px rgba(0, 0, 0, 0.3);
+      0 0 0 3px rgba(0, 77, 97, 0.3),
+      0 8px 25px rgba(0, 0, 0, 0.4);
   }
 }
 

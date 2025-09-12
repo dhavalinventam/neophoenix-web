@@ -22,7 +22,7 @@
     position: relative;
     z-index: 1;
     padding: 64px 0 32px;
-    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+    background: $gradient-background;
     border-radius: 0 0 80px 80px;
     box-shadow: 0 79px 58px 8px rgb(0 0 0 / 15%);
   }
@@ -59,12 +59,12 @@
 @keyframes logoGlow {
   0%,
   100% {
-    box-shadow: 0 0 10px rgba(255, 107, 53, 0.3);
+    box-shadow: $shadow-glow-teal;
     transform: scaleX(1);
   }
 
   50% {
-    box-shadow: 0 0 20px rgba(255, 107, 53, 0.6);
+    box-shadow: 0 0 20px rgba(0, 77, 97, 0.6);
     transform: scaleX(1.1);
   }
 }
@@ -72,12 +72,12 @@
 @keyframes titleGlow {
   0%,
   100% {
-    box-shadow: 0 0 8px rgba(255, 107, 53, 0.4);
+    box-shadow: 0 0 8px rgba(0, 77, 97, 0.4);
     transform: scaleX(1);
   }
 
   50% {
-    box-shadow: 0 0 15px rgba(255, 107, 53, 0.7);
+    box-shadow: 0 0 15px rgba(0, 77, 97, 0.7);
     transform: scaleX(1.05);
   }
 }
@@ -110,12 +110,12 @@
 
       .logoImage {
         max-width: 250px;
-        filter: drop-shadow(0 4px 20px rgba(255, 107, 53, 0.2));
+        filter: drop-shadow(0 4px 20px rgba(0, 77, 97, 0.2));
         transition: all $duration-normal $ease-in-out;
 
         &:hover {
           transform: scale(1.02);
-          filter: drop-shadow(0 6px 25px rgba(255, 107, 53, 0.3));
+          filter: drop-shadow(0 6px 25px rgba(0, 77, 97, 0.3));
         }
       }
 
@@ -150,10 +150,10 @@
           box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 
           &:focus-within {
-            border-color: $primary-orange;
+            border-color: $primary-teal;
             box-shadow:
-              0 0 0 3px rgba(255, 107, 53, 0.2),
-              0 8px 30px rgba(255, 107, 53, 0.1);
+              0 0 0 3px rgba(0, 77, 97, 0.2),
+              0 8px 30px rgba(0, 77, 97, 0.1);
             transform: translateY(-2px);
           }
 
@@ -186,11 +186,11 @@
             cursor: pointer;
             transition: all $duration-normal $ease-in-out;
             margin-right: 6px;
-            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+            box-shadow: 0 4px 15px rgba(0, 77, 97, 0.3);
 
             &:hover {
               transform: scale(1.05) translateY(-2px);
-              box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
+              box-shadow: 0 6px 20px rgba(0, 77, 97, 0.4);
             }
 
             .sendIcon {
@@ -253,9 +253,9 @@
           text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); // Add subtle shadow for better readability
 
           &:hover {
-            color: $primary-orange;
+            color: $primary-teal;
             transform: translateX(8px);
-            text-shadow: 0 0 10px rgba(255, 107, 53, 0.3);
+            text-shadow: 0 0 10px rgba(0, 77, 97, 0.3);
           }
         }
       }
@@ -315,17 +315,17 @@
         max-width: 500px;
 
         &:focus-within {
-          border-color: $primary-orange;
+          border-color: $primary-teal;
           box-shadow:
-            0 0 0 2px rgba(255, 107, 53, 0.2),
-            0 4px 20px rgba(255, 107, 53, 0.1);
+            0 0 0 2px rgba(0, 77, 97, 0.2),
+            0 4px 20px rgba(0, 77, 97, 0.1);
           transform: translateY(-1px);
         }
         &:focus-within {
-          border-color: $primary-orange;
+          border-color: $primary-teal;
           box-shadow:
-            0 0 0 2px rgba(255, 107, 53, 0.2),
-            0 4px 20px rgba(255, 107, 53, 0.1);
+            0 0 0 2px rgba(0, 77, 97, 0.2),
+            0 4px 20px rgba(0, 77, 97, 0.1);
           transform: translateY(-1px);
         }
 
@@ -352,7 +352,7 @@
           align-items: center;
           justify-content: center;
           line-height: 1;
-          background: linear-gradient(90deg, #ff6b35 0%, #ff9f1c 50%, #cf9c56 100%);
+          background: $gradient-button-primary;
           max-width: max-content;
           max-height: max-content;
           color: #ffffff;
@@ -426,9 +426,9 @@
           text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); // Add subtle shadow for better readability
 
           &:hover {
-            color: $primary-orange;
+            color: $primary-teal;
             transform: translateX(8px);
-            text-shadow: 0 0 10px rgba(255, 107, 53, 0.3);
+            text-shadow: 0 0 10px rgba(0, 77, 97, 0.3);
           }
         }
       }
@@ -475,9 +475,9 @@
       text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 
       &:hover {
-        color: $primary-orange;
+        color: $primary-teal;
         opacity: 1;
-        text-shadow: 0 0 10px rgba(255, 107, 53, 0.3);
+        text-shadow: 0 0 10px rgba(0, 77, 97, 0.3);
       }
     }
 
@@ -524,8 +524,8 @@
 
       &:hover {
         transform: translateY(-4px) scale(1.05);
-        border-color: $primary-orange;
-        box-shadow: 0 8px 25px rgba(255, 107, 53, 0.3);
+        border-color: $primary-teal;
+        box-shadow: 0 8px 25px rgba(0, 77, 97, 0.3);
 
         &::before {
           opacity: 0.1;

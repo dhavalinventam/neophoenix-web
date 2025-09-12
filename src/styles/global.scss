@@ -8,11 +8,11 @@
 :root {
   --background: linear-gradient(
     135deg,
-    #0a0a0a 0%,
-    #1a1a2e 50%,
-    #16213e 100%
-  ); // Hero gradient background
-  --foreground: #{$text-white}; // White text
+    #{$bg-dark-primary} 0%,
+    #{$bg-dark-secondary} 50%,
+    #{$bg-dark-tertiary} 100%
+  ); // New dark theme gradient background
+  --foreground: #{$text-white}; // Updated text color
 }
 
 html {
@@ -96,7 +96,7 @@ h6 {
 .social-title {
   font-family: $font-title; // Frederic for all title classes
   font-weight: 700;
-  color: #ffffff; // Force white color for all title classes
+  color: $text-white; // Using new text color
 }
 
 * {
@@ -112,11 +112,11 @@ a {
 
 // Global select dropdown styling
 select {
-  color: #ffffff !important; // Ensure selected text is always white
+  color: $text-white !important; // Using new text color
 
   option {
-    background: rgba(0, 0, 0, 0.9) !important;
-    color: #ffffff !important;
+    background: $bg-dark-primary !important;
+    color: $text-white !important;
     padding: 12px 16px !important;
     border: none !important;
     font-family: $font-primary !important; // Inter for select options
@@ -125,19 +125,19 @@ select {
   }
 
   option:hover {
-    background: rgba(99, 207, 233, 0.8) !important; // Blue background for hover
-    color: #ffffff !important;
+    background: $primary-teal !important; // Teal background for hover
+    color: $text-white !important;
   }
 
   option:checked,
   option:selected {
-    background: rgba(99, 207, 233, 0.9) !important; // Blue background for selected
-    color: #ffffff !important;
+    background: $primary-teal !important; // Teal background for selected
+    color: $text-white !important;
   }
 
   // Ensure the select field text is always visible
   &:not([value='']) {
-    color: #ffffff !important;
+    color: $text-white !important;
   }
 }
 
@@ -145,7 +145,7 @@ select {
 p {
   font-family: $font-primary; // Inter for paragraphs
   font-size: 18px; // Increased font size for better readability
-  color: rgba(255, 255, 255, 0.7);
+  color: $text-gray-light;
   line-height: 1.6;
   font-weight: 400;
   margin: 0 0 16px 0;
