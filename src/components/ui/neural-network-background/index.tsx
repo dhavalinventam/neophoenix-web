@@ -4,6 +4,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import styles from './NeuralNetworkBackground.module.scss';
 
 interface Node {
+  [x: string]: any;
   x: number;
   y: number;
   z: number;
