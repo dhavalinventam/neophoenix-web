@@ -14,6 +14,29 @@
   padding: 0; // Remove padding for seamless layout
 }
 
+// Background Video
+.backgroundVideo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  opacity: 0.6;
+}
+
+// Video Overlay
+.videoOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
 // Smart Background Animation
 .backgroundAnimation {
   position: absolute;
@@ -338,7 +361,7 @@
 // Content Container
 .contentContainer {
   position: relative;
-  z-index: 2;
+  z-index: 3;
   width: 100%;
   text-align: center;
   padding: 20px 0 64px; // Add internal padding for content spacing

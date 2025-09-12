@@ -3,7 +3,6 @@
 import React, { useState, useEffect } from 'react';
 import styles from './HeroSection.module.scss';
 import Button from '@/components/ui/button';
-import NeuralNetwork from '@/components/ui/neural-network';
 import { Container } from 'react-bootstrap';
 
 const HeroSection = () => {
@@ -17,61 +16,25 @@ const HeroSection = () => {
   return (
     <>
       <section className={`${styles.heroSection} hero`}>
-        {/* Smart Background Animation */}
-        <div className={styles.backgroundAnimation}>
-          {/* Neural Network Animation */}
-          <NeuralNetwork />
+        {/* Background Video */}
+        <video
+          className={styles.backgroundVideo}
+          autoPlay
+          muted
+          loop
+          playsInline
+          ref={(video) => {
+            if (video) {
+              video.playbackRate = 0.5; // Set to 50% speed (0.5x)
+            }
+          }}
+        >
+          <source src="/video/hero-section.mp4" type="video/mp4" />
+        </video>
 
-          {/* Floating Geometric Shapes */}
-          <div className={styles.floatingShapes}>
-            {[...Array(6)].map((_, i) => (
-              <div
-                key={i}
-                className={`${styles.shape} ${styles[`shape${i + 1}`]}`}
-                style={{
-                  animationDelay: `${i * 0.5}s`,
-                  animationDuration: `${8 + i * 2}s`,
-                }}
-              />
-            ))}
-          </div>
+        {/* Video Overlay */}
+        <div className={styles.videoOverlay}></div>
 
-          {/* Gradient Orbs */}
-          <div className={styles.gradientOrbs}>
-            <div className={`${styles.orb} ${styles.orb1}`} />
-            <div className={`${styles.orb} ${styles.orb2}`} />
-            <div className={`${styles.orb} ${styles.orb3}`} />
-          </div>
-
-          {/* Neural Network Grid */}
-          <div className={styles.neuralGrid}>
-            {[...Array(12)].map((_, i) => (
-              <div
-                key={i}
-                className={styles.gridNode}
-                style={{
-                  animationDelay: `${i * 0.3}s`,
-                }}
-              />
-            ))}
-          </div>
-
-          {/* Particle System */}
-          <div className={styles.particleSystem}>
-            {[...Array(20)].map((_, i) => (
-              <div
-                key={i}
-                className={styles.particle}
-                style={{
-                  animationDelay: `${i * 0.2}s`,
-                  animationDuration: `${6 + i * 0.5}s`,
-                }}
-              />
-            ))}
-          </div>
-        </div>
-
-        {/* Content Container */}
         <div className={styles.contentContainer}>
           <Container>
             {/* Main Headline */}
