@@ -11,31 +11,6 @@ export default function Footer() {
   return (
     <footer className={styles.footer}>
       <div className={styles.footerRow}>
-        {/* Floating Objects Animation */}
-        <div className={styles.floatingObjects}>
-          {/* Geometric Shapes */}
-          <div className={styles.geometricShapes}>
-            <div className={`${styles.shape} ${styles.shape1}`}></div>
-            <div className={`${styles.shape} ${styles.shape2}`}></div>
-            {/* <div className={`${styles.shape} ${styles.shape3}`}></div> */}
-            <div className={`${styles.shape} ${styles.shape4}`}></div>
-            {/* <div className={`${styles.shape} ${styles.shape5}`}></div> */}
-            <div className={`${styles.shape} ${styles.shape6}`}></div>
-          </div>
-
-          {/* Glowing Dots */}
-          <div className={styles.glowingDots}>
-            {[...Array(15)].map((_, i) => (
-              <div
-                key={i}
-                className={styles.dot}
-                style={{
-                  animationDelay: `${i * 0.3}s`,
-                }}
-              />
-            ))}
-          </div>
-        </div>
 
         <Container>
           {/* Main Footer Content - Three Column Layout */}
