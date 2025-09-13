@@ -27,6 +27,12 @@ interface NeuralNetworkBackgroundProps {
   mouseInfluence?: number;
 }
 
+interface ViewState {
+  x: number;
+  y: number;
+  scale: number;
+}
+
 const NeuralNetworkBackground: React.FC<NeuralNetworkBackgroundProps> = ({ 
   className,
   nodeCount = 100,
@@ -42,6 +48,14 @@ const NeuralNetworkBackground: React.FC<NeuralNetworkBackgroundProps> = ({
   const mouseRef = useRef({ x: null as number | null, y: null as number | null });
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
   const [isMobile, setIsMobile] = useState(false);
+  const [viewState, setViewState] = useState<ViewState>({
+    x: 0,
+    y: 0,
+    scale: 1
+  });
+  const [isDragging, setIsDragging] = useState(false);
+  const lastMousePos = useRef({ x: 0, y: 0 });
+  const canvasContainerRef = useRef<HTMLDivElement>(null);
 
   class Node3D {
     x: number;
@@ -119,10 +133,17 @@ const NeuralNetworkBackground: React.FC<NeuralNetworkBackgroundProps> = ({
 
   const drawConnections = (ctx: CanvasRenderingContext2D) => {
     const nodes = nodesRef.current;
-    const mouse = mouseRef.current;
     const connectionDist = isMobile ? 120 : maxConnectionDist;
     
-    // Match CodePen connection drawing style
+    // Apply view transform
+    ctx.save();
+    ctx.translate(viewState.x, viewState.y);
+    ctx.scale(viewState.scale, viewState.scale);
+    
+    // Track which nodes have connections
+    const connectedNodes = new Set<number>();
+    
+    // First pass: draw all connections
     for (let i = 0; i < nodes.length; i++) {
       for (let j = i + 1; j < nodes.length; j++) {
         const dx = nodes[i].x - nodes[j].x;
@@ -130,8 +151,14 @@ const NeuralNetworkBackground: React.FC<NeuralNetworkBackgroundProps> = ({
         const distance = Math.sqrt(dx * dx + dy * dy);
 
         if (distance < connectionDist) {
-          const connectionOpacity = (1 - (distance / connectionDist)) * opacity;
+          // Mark nodes as connected
+          connectedNodes.add(i);
+          connectedNodes.add(j);
+          
+          // Draw the connection line
+          const connectionOpacity = (1 - (distance / connectionDist)) * opacity * 0.5;
           ctx.strokeStyle = `rgba(0, 229, 255, ${connectionOpacity})`;
+          ctx.lineWidth = 0.5;
           ctx.beginPath();
           ctx.moveTo(nodes[i].x, nodes[i].y);
           ctx.lineTo(nodes[j].x, nodes[j].y);
@@ -139,6 +166,47 @@ const NeuralNetworkBackground: React.FC<NeuralNetworkBackgroundProps> = ({
         }
       }
     }
+    
+    // Second pass: draw dots at line ends
+    nodes.forEach((node, index) => {
+      if (connectedNodes.has(index)) {
+        // Calculate connection count for this node
+        let connectionCount = 0;
+        for (let i = 0; i < nodes.length; i++) {
+          if (i !== index) {
+            const dx = node.x - nodes[i].x;
+            const dy = node.y - nodes[i].y;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+            if (distance < connectionDist) connectionCount++;
+          }
+        }
+        
+        // Draw dot with size based on connection count
+        const size = 1 + (connectionCount * 0.3);
+        const alpha = 0.3 + (connectionCount * 0.05);
+        
+        // Outer glow
+        const gradient = ctx.createRadialGradient(
+          node.x, node.y, 0,
+          node.x, node.y, size * 3
+        );
+        gradient.addColorStop(0, `rgba(0, 229, 255, ${alpha})`);
+        gradient.addColorStop(1, 'rgba(0, 229, 255, 0)');
+        
+        ctx.fillStyle = gradient;
+        ctx.beginPath();
+        ctx.arc(node.x, node.y, size * 3, 0, Math.PI * 2);
+        ctx.fill();
+        
+        // Center dot
+        ctx.fillStyle = `rgba(255, 255, 255, ${alpha + 0.2})`;
+        ctx.beginPath();
+        ctx.arc(node.x, node.y, size, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    });
+    
+    ctx.restore();
   };
 
   const animate = () => {
@@ -147,21 +215,17 @@ const NeuralNetworkBackground: React.FC<NeuralNetworkBackgroundProps> = ({
     
     if (!canvas || !ctx) return;
 
-    // Clear canvas completely - match CodePen style
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    // Clear canvas with a slight fade effect for trails
+    ctx.fillStyle = 'rgba(10, 10, 20, 0.15)';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
     
-    // Draw connections first
-    drawConnections(ctx);
-    
-    // Update and draw nodes - match CodePen simple style
+    // Update nodes
     nodesRef.current.forEach(node => {
-      const projected = node.update(canvas, mouseRef.current);
-      
-      ctx.fillStyle = node.color;
-      ctx.beginPath();
-      ctx.arc(projected.x, projected.y, node.size * projected.scale, 0, Math.PI * 2);
-      ctx.fill();
+      node.update(canvas, mouseRef.current);
     });
+    
+    // Draw connections and dots
+    drawConnections(ctx);
 
     animationRef.current = requestAnimationFrame(animate);
   };
@@ -180,19 +244,69 @@ const NeuralNetworkBackground: React.FC<NeuralNetworkBackgroundProps> = ({
     initNodes();
   };
 
+  const handleMouseDown = (e: React.MouseEvent) => {
+    if (e.button === 0) { // Left mouse button
+      setIsDragging(true);
+      lastMousePos.current = { x: e.clientX, y: e.clientY };
+      if (canvasContainerRef.current) {
+        canvasContainerRef.current.style.cursor = 'grabbing';
+      }
+    }
+  };
+
   const handleMouseMove = (e: MouseEvent) => {
+    if (isDragging) {
+      const dx = e.clientX - lastMousePos.current.x;
+      const dy = e.clientY - lastMousePos.current.y;
+      
+      setViewState(prev => ({
+        ...prev,
+        x: prev.x + dx,
+        y: prev.y + dy
+      }));
+      
+      lastMousePos.current = { x: e.clientX, y: e.clientY };
+    }
+    
+    // Update mouse position for node interaction
+    if (containerRef.current) {
+      const rect = containerRef.current.getBoundingClientRect();
+      mouseRef.current = {
+        x: (e.clientX - rect.left - viewState.x) / viewState.scale,
+        y: (e.clientY - rect.top - viewState.y) / viewState.scale
+      };
+    }
+  };
+
+  const handleMouseUp = () => {
+    setIsDragging(false);
+    if (canvasContainerRef.current) {
+      canvasContainerRef.current.style.cursor = 'grab';
+    }
+  };
+
+  const handleWheel = (e: WheelEvent) => {
+    e.preventDefault();
+    
+    // Get mouse position relative to canvas
     if (!containerRef.current) return;
     
     const rect = containerRef.current.getBoundingClientRect();
-    mouseRef.current = {
-      x: e.clientX - rect.left,
-      y: e.clientY - rect.top
-    };
-  };
-
-  const handleMouseLeave = () => {
-    // Reset mouse position when leaving the container
-    mouseRef.current = { x: null, y: null };
+    const mouseX = e.clientX - rect.left;
+    const mouseY = e.clientY - rect.top;
+    
+    // Calculate new scale (limit between 0.5 and 3)
+    const delta = -e.deltaY * 0.001;
+    const newScale = Math.min(Math.max(0.5, viewState.scale + delta), 3);
+    
+    // Calculate new position to zoom toward mouse
+    const scaleFactor = newScale / viewState.scale;
+    
+    setViewState(prev => ({
+      x: mouseX - (mouseX - prev.x) * scaleFactor,
+      y: mouseY - (mouseY - prev.y) * scaleFactor,
+      scale: newScale
+    }));
   };
 
   useEffect(() => {
@@ -217,8 +331,9 @@ const NeuralNetworkBackground: React.FC<NeuralNetworkBackgroundProps> = ({
     // Event listeners
     window.addEventListener('resize', handleResize);
     window.addEventListener('resize', checkMobile);
-    container.addEventListener('mousemove', handleMouseMove);
-    container.addEventListener('mouseleave', handleMouseLeave);
+    container.addEventListener('mousemove', handleMouseMove as any);
+    container.addEventListener('mouseleave', handleMouseUp);
+    container.addEventListener('wheel', handleWheel, { passive: false });
 
     return () => {
       if (animationRef.current) {
@@ -226,24 +341,29 @@ const NeuralNetworkBackground: React.FC<NeuralNetworkBackgroundProps> = ({
       }
       window.removeEventListener('resize', handleResize);
       window.removeEventListener('resize', checkMobile);
-      container.removeEventListener('mousemove', handleMouseMove);
-      container.removeEventListener('mouseleave', handleMouseLeave);
+      container.removeEventListener('mousemove', handleMouseMove as any);
+      container.removeEventListener('mouseleave', handleMouseUp);
+      container.removeEventListener('wheel', handleWheel);
     };
   }, []);
 
   return (
     <div 
-      ref={containerRef} 
+      ref={containerRef}
       className={`${styles.neuralNetworkBackground} ${className || ''}`}
+      onMouseDown={handleMouseDown}
+      onMouseUp={handleMouseUp}
+      style={{ cursor: isDragging ? 'grabbing' : 'grab' }}
     >
-      <canvas
-        ref={canvasRef}
+      <canvas 
+        ref={canvasRef} 
         className={styles.neuralCanvas}
+        width={dimensions.width}
+        height={dimensions.height}
         style={{
-          width: '100%',
-          height: '100%',
-          display: 'block',
-          opacity: opacity
+          transform: `translate(${viewState.x}px, ${viewState.y}px) scale(${viewState.scale})`,
+          transformOrigin: '0 0',
+          transition: isDragging ? 'none' : 'transform 0.1s ease-out'
         }}
       />
     </div>
