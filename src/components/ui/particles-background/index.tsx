@@ -66,7 +66,7 @@ const ParticlesBackground: React.FC = () => {
                     type: 'circle',
                   },
                   size: {
-                    value: 6,
+                    value: 9,
                     random: true,
                     anim: {
                       enable: true,
