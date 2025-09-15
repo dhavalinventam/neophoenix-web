@@ -22,9 +22,9 @@
     position: relative;
     z-index: 1;
     padding: 64px 0 32px;
-    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
     border-radius: 0 0 80px 80px;
     box-shadow: 0 79px 58px 8px rgb(0 0 0 / 15%);
+    backdrop-filter: blur(53px);
   }
 }
 
@@ -634,8 +634,7 @@
       font-size: $font-size-base !important;
 
       &::after {
-        left: 50%;
-        transform: translateX(-50%);
+        left: 0px;
       }
     }
 
