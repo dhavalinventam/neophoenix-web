@@ -89,9 +89,6 @@ const PersonalizedWishlist = () => {
 
       {/* Animated Background Elements */}
       <div className={styles.backgroundElements}>
-        <div className={styles.floatingOrb1}></div>
-        <div className={styles.floatingOrb2}></div>
-        <div className={styles.floatingOrb3}></div>
         <div className={styles.gradientMesh}></div>
         <div className={styles.particleField}>
           {[...Array(20)].map((_, i) => (
