@@ -510,7 +510,7 @@ const DemoAnimation = () => {
                 answers—keeping sensitive data fully in your environment while unlocking actionable
                 intelligence.
               </p>
-              <Button label="LEARN MORE ABOUT RAG SYSTEM" />
+              <Button label="Learn More About Rag System" />
             </div>
 
             <div
