@@ -80,7 +80,7 @@ const ParticlesBackground: React.FC = () => {
                     distance: 120,
                     color: '#35ebff',
                     opacity: 1,
-                    width: 1.5,
+                    width: 1.2,
                   },
                   move: {
                     enable: true,

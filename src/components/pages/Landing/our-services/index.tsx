@@ -126,8 +126,8 @@ const DemoAnimation = () => {
     if (typeof window !== 'undefined' && window.IntersectionObserver && checkScreenSize()) {
       console.log('Setting up intersection observer for desktop');
       const options = {
-        threshold: [0.1, 0.3, 0.5, 0.7, 0.9], // Multiple thresholds for better detection
-        rootMargin: '0px 0px -10% 0px', // Trigger when section is 10% from bottom
+        threshold: [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9], // More granular thresholds for 100vh sections
+        rootMargin: '0px 0px -20% 0px', // Trigger when section is 20% from bottom for better 100vh detection
       };
 
       const targets = document.querySelectorAll('.cb');
@@ -136,9 +136,10 @@ const DemoAnimation = () => {
 
       function handleIntersection(entries: IntersectionObserverEntry[]) {
         console.log('Intersection observer triggered:', entries.length, 'entries');
-        // Find the section with the highest intersection ratio
+        // Find the section with the highest intersection ratio and is currently visible
         let maxRatio = 0;
         let activeSection = currentActiveSection;
+        let mostVisibleEntry = null;
 
         entries.forEach((entry) => {
           console.log(
@@ -147,21 +148,42 @@ const DemoAnimation = () => {
             'isIntersecting:',
             entry.isIntersecting,
             'ratio:',
-            entry.intersectionRatio
+            entry.intersectionRatio,
+            'boundingRect:',
+            entry.boundingClientRect
           );
-          if (entry.isIntersecting && entry.intersectionRatio > maxRatio) {
-            maxRatio = entry.intersectionRatio;
-            const currentImage = entry.target.getAttribute('data-swap');
-            if (currentImage) {
-              activeSection = currentImage;
+
+          // For 100vh sections, we want to prioritize sections that are more than 50% visible
+          if (entry.isIntersecting && entry.intersectionRatio > 0.5) {
+            if (entry.intersectionRatio > maxRatio) {
+              maxRatio = entry.intersectionRatio;
+              mostVisibleEntry = entry;
+              const currentImage = entry.target.getAttribute('data-swap');
+              if (currentImage) {
+                activeSection = currentImage;
+              }
             }
           }
         });
 
+        // If no section is more than 50% visible, find the one with highest ratio
+        if (maxRatio === 0) {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting && entry.intersectionRatio > maxRatio) {
+              maxRatio = entry.intersectionRatio;
+              mostVisibleEntry = entry;
+              const currentImage = entry.target.getAttribute('data-swap');
+              if (currentImage) {
+                activeSection = currentImage;
+              }
+            }
+          });
+        }
+
         // Only update if we have a new active section
-        if (activeSection !== currentActiveSection) {
+        if (activeSection !== currentActiveSection && activeSection) {
           currentActiveSection = activeSection;
-          console.log('Switching to:', currentActiveSection);
+          console.log('Switching to:', currentActiveSection, 'with ratio:', maxRatio);
 
           // Remove active class from all images and videos
           const allImages = document.querySelectorAll(
@@ -222,6 +244,97 @@ const DemoAnimation = () => {
         observer.observe(target);
       });
 
+      // Add scroll event listener as fallback for better 100vh section detection
+      const handleScroll = () => {
+        const scrollY = window.scrollY;
+        const windowHeight = window.innerHeight;
+
+        // Find which section is most visible
+        let mostVisibleSection = null;
+        let maxVisibility = 0;
+
+        targets.forEach((target) => {
+          const rect = target.getBoundingClientRect();
+          const sectionTop = rect.top + scrollY;
+          const sectionHeight = rect.height;
+
+          // Calculate visibility percentage
+          const visibleTop = Math.max(0, -rect.top);
+          const visibleBottom = Math.min(sectionHeight, windowHeight - rect.top);
+          const visibleHeight = Math.max(0, visibleBottom - visibleTop);
+          const visibility = visibleHeight / sectionHeight;
+
+          if (visibility > maxVisibility && visibility > 0.3) {
+            maxVisibility = visibility;
+            mostVisibleSection = target;
+          }
+        });
+
+        if (mostVisibleSection) {
+          const currentImage = (mostVisibleSection as Element).getAttribute('data-swap');
+          if (currentImage && currentImage !== currentActiveSection) {
+            currentActiveSection = currentImage;
+            console.log(
+              'Scroll-based section change to:',
+              currentActiveSection,
+              'visibility:',
+              maxVisibility
+            );
+
+            // Update active classes
+            const allImages = document.querySelectorAll(
+              `.${styles.locker__container} img, .${styles.locker__container} picture, .${styles.locker__container} video`
+            );
+            allImages.forEach((media) => {
+              media.classList.remove(styles.active, 'active');
+            });
+
+            const allSections = document.querySelectorAll(`.${styles.locker__section}`);
+            allSections.forEach((section) => {
+              section.classList.remove(styles.active, 'active');
+            });
+
+            const allDots = document.querySelectorAll(`.${styles.progressDot}`);
+            allDots.forEach((dot) => {
+              dot.classList.remove(styles.active, 'active');
+            });
+
+            // Add active class to current image/video
+            const imageIndex = parseInt(currentActiveSection.replace('image--', '')) - 1;
+            if (allImages[imageIndex]) {
+              allImages[imageIndex].classList.add(styles.active, 'active');
+            }
+
+            // Add active class to current section
+            const activeSectionElement = document.querySelector(
+              `[data-swap="${currentActiveSection}"]`
+            );
+            if (activeSectionElement) {
+              activeSectionElement.classList.add(styles.active, 'active');
+            }
+
+            // Add active class to current progress dot
+            const activeProgressDot = document.querySelector(
+              `.${styles.progressDot}[data-section="${currentActiveSection}"]`
+            );
+            if (activeProgressDot) {
+              activeProgressDot.classList.add(styles.active, 'active');
+            }
+          }
+        }
+      };
+
+      // Throttled scroll handler
+      let scrollTimeout: NodeJS.Timeout;
+      const throttledScroll = () => {
+        if (scrollTimeout) {
+          clearTimeout(scrollTimeout);
+        }
+        scrollTimeout = setTimeout(handleScroll, 50);
+      };
+
+      window.addEventListener('scroll', throttledScroll, { passive: true });
+
       // Set first section and progress dot as active by default
       setTimeout(() => {
         const firstSection = document.querySelector('[data-swap="image--1"]');
@@ -252,7 +365,11 @@ const DemoAnimation = () => {
         if (autoRefreshInterval) {
           clearInterval(autoRefreshInterval);
         }
+        if (scrollTimeout) {
+          clearTimeout(scrollTimeout);
+        }
         window.removeEventListener('resize', handleResize);
+        window.removeEventListener('scroll', throttledScroll);
         targets.forEach((target) => desktopObserver.unobserve(target));
       };
     } else {
@@ -287,26 +404,33 @@ const DemoAnimation = () => {
       <div className={styles.ourServices}>
         {/* Neural Network Accent Elements */}
 
-        <NeuralNetworkAccent 
-          size="small" 
-          position="bottom-left" 
+        <NeuralNetworkAccent
+          size="medium"
+          position="bottom-left"
           opacity={0.65}
           nodeCount={15}
           maxConnectionDist={70}
         />
-        <NeuralNetworkAccent 
-          size="medium" 
-          position="bottom-right" 
-          opacity={0.55}
+        <NeuralNetworkAccent
+          size="medium"
+          position="top-left"
+          opacity={0.70}
           nodeCount={25}
           maxConnectionDist={95}
         />
-        <NeuralNetworkAccent 
-          size="small" 
-          position="center" 
-          opacity={0.45}
-          nodeCount={18}
-          maxConnectionDist={75}
+        <NeuralNetworkAccent
+          size="medium"
+          position="center"
+          opacity={0.70}
+          nodeCount={25}
+          maxConnectionDist={95}
+        />
+        <NeuralNetworkAccent
+          size="small"
+          position="bottom-left"
+          opacity={0.8}
+          nodeCount={20}
+          maxConnectionDist={80}
         />
 
         <div className={styles.section}>

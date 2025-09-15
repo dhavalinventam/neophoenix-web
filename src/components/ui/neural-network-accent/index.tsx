@@ -28,7 +28,7 @@ interface NeuralNetworkAccentProps {
   color?: string;
 }
 
-const NeuralNetworkAccent: React.FC<NeuralNetworkAccentProps> = ({
+const   NeuralNetworkAccent: React.FC<NeuralNetworkAccentProps> = ({
   className = '',
   size = 'medium',
   position = 'top-right',
