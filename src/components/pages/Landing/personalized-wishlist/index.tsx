@@ -80,13 +80,6 @@ const PersonalizedWishlist = () => {
         maxConnectionDist={120}
       />
       <NeuralNetworkAccent 
-        size="medium" 
-        position="bottom-right" 
-        opacity={0.5}
-        nodeCount={25}
-        maxConnectionDist={90}
-      />
-      <NeuralNetworkAccent 
         size="small" 
         position="center" 
         opacity={0.4}

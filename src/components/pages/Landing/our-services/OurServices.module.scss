@@ -9,12 +9,13 @@
   justify-content: center;
   width: 100%;
   margin: 0 auto;
-
+  
   p {
     width: 40%;
   }
 }
 .ourServices {
+  position: relative;
   .header {
     margin-bottom: 48px;
     text-align: center;
@@ -65,8 +66,8 @@
     &__container {
       position: sticky;
       position: -webkit-sticky;
-      top: 0;
-      height: 60vh;
+      top: 140px;
+      height: 68vh;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -82,7 +83,6 @@
             0 25px 50px rgba(0, 0, 0, 0.5),
             0 0 0 1px rgba(99, 207, 233, 0.2);
           opacity: 0;
-          transition: all 0.8s ease;
           position: absolute;
           top: 50%;
           left: 0%;
@@ -92,7 +92,7 @@
           filter: grayscale(20%) brightness(0.9);
           border-radius: 1rem;
           object-fit: cover;
-          transition: all 1s ease-in-out;
+          transition: all 0.9s ease-in-out;
 
           &.active {
             opacity: 1;
@@ -337,13 +337,13 @@
     }
 
     &__section {
-      height: 60vh;
+      height: 68vh;
       display: flex;
       justify-content: center;
       flex-direction: column;
       border-top: 1px solid rgba(255, 255, 255, 0.1);
       padding: 0 1.2rem;
-      transition: all 0.3s ease;
+      transition: all 0.5s ease-in-out;
       opacity: 0.5;
 
       &:first-child {

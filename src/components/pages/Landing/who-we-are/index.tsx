@@ -9,13 +9,6 @@ const WhoWeAre = () => {
     <section className={styles.whoWeAre}>
       {/* Neural Network Accent Elements */}
       <NeuralNetworkAccent 
-        size="small" 
-        position="top-left" 
-        opacity={0.8}
-        nodeCount={20}
-        maxConnectionDist={80}
-      />
-      <NeuralNetworkAccent 
         size="medium" 
         position="bottom-right" 
         opacity={0.7}
