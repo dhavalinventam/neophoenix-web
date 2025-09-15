@@ -286,26 +286,13 @@ const DemoAnimation = () => {
     <>
       <div className={styles.ourServices}>
         {/* Neural Network Accent Elements */}
-        <NeuralNetworkAccent 
-          size="medium" 
-          position="top-right" 
-          opacity={0.75}
-          nodeCount={30}
-          maxConnectionDist={100}
-        />
+
         <NeuralNetworkAccent 
           size="small" 
           position="bottom-left" 
           opacity={0.65}
           nodeCount={15}
           maxConnectionDist={70}
-        />
-        <NeuralNetworkAccent 
-          size="small" 
-          position="top-left" 
-          opacity={0.6}
-          nodeCount={20}
-          maxConnectionDist={85}
         />
         <NeuralNetworkAccent 
           size="medium" 

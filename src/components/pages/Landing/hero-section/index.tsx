@@ -3,7 +3,8 @@
 import React, { useState, useEffect } from 'react';
 import styles from './HeroSection.module.scss';
 import Button from '@/components/ui/button';
-import NeuralNetworkBackground from '@/components/ui/neural-network-background';
+import ParticlesBackground from '@/components/ui/particles-background';
+// import NeuralNetworkBackground from '@/components/ui/neural-network-background';
 import { Container } from 'react-bootstrap';
 
 const HeroSection = () => {
@@ -17,8 +18,8 @@ const HeroSection = () => {
   return (
     <>
       <section className={`${styles.heroSection} hero`}>
-        {/* Neural Network Background */}
-        <NeuralNetworkBackground />
+        {/* Particles Background */}
+        <ParticlesBackground />
 
         {/* Content Container */}
         <div className={styles.contentContainer}>

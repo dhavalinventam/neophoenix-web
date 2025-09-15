@@ -11,7 +11,6 @@ export default function Footer() {
   return (
     <footer className={styles.footer}>
       <div className={styles.footerRow}>
-
         <Container>
           {/* Main Footer Content - Three Column Layout */}
           <div className={styles.mainContent}>
