@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { HeroSection as GalaxyHeroSection } from '@/components/ui/galaxy-interactive-hero';
+import { HeroSection as GalaxyHeroSection } from '@/components/ui/galaxy-interactive-hero-section';
 
 const HeroSection = () => {
 

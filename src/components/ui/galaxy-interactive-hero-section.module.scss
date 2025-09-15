@@ -1,0 +1,110 @@
+.heroWrapper {
+  position: relative;
+  background: black;
+  color: white;
+}
+
+.customContainer {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  width: 100%;
+}
+
+.splineWrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 75%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.splineScene {
+  width: 100%;
+  height: 100vh;
+}
+
+.splineOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.9), transparent 50%),
+              linear-gradient(to bottom, transparent 50%, rgba(0, 0, 0, 0.9));
+  pointer-events: none;
+}
+
+
+.heroMain {
+  position: relative;
+  min-height: 100vh;
+}
+
+.heroOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  z-index: 10;
+}
+
+.heroOverlayContainer {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  width: 100%;
+}
+
+.heroContent {
+  max-width: 700px;
+  padding: 2rem;
+}
+
+.heroContent h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.heroContent p {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+  opacity: 0.8;
+}
+
+.heroButtons {
+  display: flex;
+  gap: 1rem;
+}
+
+
+// Responsive adjustments for right-positioned spline
+@media (max-width: 1200px) {
+  .splineWrapper {
+    width: 70%;
+  }
+}
+
+@media (max-width: 992px) {
+  .splineWrapper {
+    width: 80%;
+  }
+}
+
+@media (max-width: 768px) {
+  .splineWrapper {
+    width: 100%;
+    position: relative;
+    right: auto;
+  }
+  
+  .splineOverlay {
+    background: linear-gradient(to bottom, transparent 30%, rgba(0, 0, 0, 0.9));
+  }
+}
+

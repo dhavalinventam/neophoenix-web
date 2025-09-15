@@ -2,29 +2,20 @@
 
 .footer {
   position: relative;
-  background: transparent; // Remove background to show global gradient
+  background: black; // Remove background to show global gradient
   color: $text-white;
   margin-top: auto;
   z-index: 1;
 
   // Subtle background elements to enhance gradient integration
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 0;
-    pointer-events: none;
-  }
+  
   .footerRow {
     position: relative;
     z-index: 1;
     padding: 64px 0 32px;
-    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+    background: rgb(0, 0, 0);
     border-radius: 0 0 80px 80px;
-    box-shadow: 0 79px 58px 8px rgb(0 0 0 / 15%);
+    box-shadow: 0 79px 58px 8px rgb(12, 12, 12);
   }
 }
 
@@ -808,6 +799,7 @@
 
 // Bottom Sticky Text
 .bottomStickyText {
+  background: black;
   position: sticky;
   bottom: 0;
   left: 0;
