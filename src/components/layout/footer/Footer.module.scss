@@ -818,22 +818,53 @@
     padding: 30px 0;
   }
 
+  // .stickyText {
+  //   font-size: 16vw;
+  //   line-height: 1;
+  //   font-weight: 600;
+  //   color: transparent;
+  //   font-family: 'Frederic', sans-serif;
+  //   letter-spacing: -1.2vw;
+  //   transition: all 0.3s ease-in-out;
+  //   -webkit-text-stroke: transparent;
+  //   -webkit-text-stroke-width: 3px;
+  //   -webkit-text-stroke-color: #4fabc7;
+  //   opacity: 0.4;
+  //   transition: all 0.3s ease-in-out;
+  //   &:hover {
+  //     opacity: 0.6;
+  //   }
+  //   @media (max-width: 992px) {
+  //     -webkit-text-stroke-width: 1px;
+  //   }
+  // }
   .stickyText {
     font-size: 16vw;
     line-height: 1;
     font-weight: 600;
-    color: transparent;
     font-family: 'Frederic', sans-serif;
     letter-spacing: -1.2vw;
-    transition: all 0.3s ease-in-out;
-    -webkit-text-stroke: transparent;
+  
+    /* Gradient text */
+    background: linear-gradient(90deg,
+      #4cc9f0,
+      #4361ee
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  
+    /* Stroke */
     -webkit-text-stroke-width: 3px;
     -webkit-text-stroke-color: #4fabc7;
+  
+    /* Effects */
     opacity: 0.4;
     transition: all 0.3s ease-in-out;
+  
     &:hover {
       opacity: 0.6;
     }
+  
     @media (max-width: 992px) {
       -webkit-text-stroke-width: 1px;
     }

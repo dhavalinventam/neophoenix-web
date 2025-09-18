@@ -21,9 +21,14 @@
   position: relative;
   z-index: 11; // Higher z-index to ensure content is above any background objects
   width: 100%;
-  text-align: center;
-  padding: 20px 0 64px; // Add internal padding for content spacing
+  text-align: left; // Changed to left alignment for new layout
+  padding: 80px 0 64px; // Increased top padding to account for fixed header
   isolation: isolate; // Create new stacking context for content
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  justify-content: flex-start; // Changed from center to flex-start to reduce space
+  align-items: flex-start; // Align content to start
 }
 
 // Badge
@@ -57,6 +62,8 @@
   opacity: 1; // Always visible
   transform: translateY(0); // No transform
   // transition: all 0.8s ease-out;
+  position: relative;
+  z-index: 2;
 
   &.visible {
     opacity: 1;
@@ -72,8 +79,8 @@
     letter-spacing: -0.02em;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    align-items: center; // Changed to center alignment
+    justify-content: flex-start;
 
     .highlight {
       color: #ffffff; // Keep highlight as white instead of gradient
@@ -86,16 +93,27 @@
     font-weight: 600;
     margin-bottom: 24px;
     letter-spacing: 0.5px;
+    text-align: center; // Center align subtitle
   }
+}
+
+// Description Container
+.descriptionContainer {
+  position: absolute;
+  right: 10%;
+  bottom: 30%;
+  width: 26%;
+  z-index: 2;
+
 
   .description {
     font-size: $font-size-lg; // Increased font size for better readability
-    color: rgba(255, 255, 255, 0.7); // Consistent with other sections
+    color: rgba(255, 255, 255, 0.9); // Slightly more opaque for better readability
     line-height: 1.6;
-    max-width: 700px; // Consistent max-width for info paragraphs
-    margin: 0 auto;
+    margin: 0px; // Add bottom margin for button spacing
     font-weight: $font-weight-normal;
     font-family: $font-primary;
+    text-align: left;
   }
 }
 
@@ -105,8 +123,11 @@
   transform: translateY(0); // No transform
   // transition: all 0.8s ease-out 0.4s;
   display: flex;
-  justify-content: center;
+  justify-content: center; // Center align since it's now below the centered subtitle
   align-items: center;
+  position: static; // Static positioning since it's now in the headline section
+  z-index: 2;
+  margin-top: 24px; // Add some spacing below the subtitle
 
   &.visible {
     opacity: 1;
@@ -127,6 +148,21 @@
   }
 }
 
+// Curved Arrow
+.curvedArrow {
+  position: absolute;
+  left: 45%;
+  top: 40%;
+  z-index: 1;
+  opacity: 0.9;
+
+  .arrowSvg {
+    width: 250px;
+    height: 120px;
+    filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.3));
+  }
+}
+
 // Animations
 @keyframes fadeInUp {
   from {
@@ -140,27 +176,69 @@
 }
 
 // Responsive Design
-@media (max-width: 992px) {
-  .heroSection {
-    min-height: unset !important;
-  }
-  .contentContainer {
-    padding: 0px 0px 30px;
-  }
-  .ctaSection {
-    margin-bottom: 32px;
+@media (max-width: 1200px) {
+  .curvedArrow {
+    left: 45%;
+    top: 45%;
+    
+    .arrowSvg {
+      width: 200px;
+      height: 100px;
+    }
   }
 }
 
 @media (max-width: 992px) {
   .heroSection {
-    padding: 0; // Keep seamless layout
+    min-height: unset !important;
+  }
+  
+  .contentContainer {
+    padding: 60px 0px 30px; // Reduced top padding for smaller screens
+    text-align: center; // Center on smaller screens
+  }
+
+  .headline {
+    .title {
+      align-items: center; // Center title on smaller screens
+    }
+    
+    .subtitle {
+      text-align: center; // Center subtitle on smaller screens
+    }
+  }
+
+  .curvedArrow {
+    display: none; // Hide arrow on smaller screens for better mobile experience
+  }
+
+  .descriptionContainer {
+    position: static; // Reset positioning
+    width: 100%;
+    transform: none;
+    margin-top: 32px;
+    
+    .description {
+      text-align: center; // Center description on smaller screens
+      max-width: 700px;
+      margin: 0 auto 24px auto;
+    }
+  }
+
+  .ctaSection {
+    position: static; // Reset positioning
+    justify-content: center;
+    margin-top: 24px; // Keep margin for spacing below subtitle
   }
 }
 
 @media (max-width: 768px) {
   .heroSection {
     padding: 0; // Keep seamless layout
+  }
+  
+  .contentContainer {
+    padding: 50px 0px 30px; // Further reduced top padding for mobile
   }
 
   .headline {
@@ -174,7 +252,9 @@
     .subtitle {
       font-size: 17.6px;
     }
+  }
 
+  .descriptionContainer {
     .description {
       font-size: 15.2px;
     }
@@ -202,7 +282,9 @@
     .subtitle {
       font-size: 16px;
     }
+  }
 
+  .descriptionContainer {
     .description {
       font-size: 14.4px;
     }
