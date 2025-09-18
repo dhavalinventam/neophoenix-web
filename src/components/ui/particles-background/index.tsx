@@ -36,7 +36,7 @@ const ParticlesBackground: React.FC = () => {
         await loadParticlesScript();
 
         if (window.particlesJS && particlesRef.current) {
-          console.log('Initializing particles with interactivity...');
+          console.log('Initializing particles with reduced center density...');
 
           // Small delay to ensure DOM is ready
           setTimeout(() => {
@@ -44,7 +44,7 @@ const ParticlesBackground: React.FC = () => {
               window.particlesJS('particles-js', {
                 particles: {
                   number: {
-                    value: 80,
+                    value: 70, // Increased from 60 to 90 for denser neural network effect
                     density: {
                       enable: true,
                     },
@@ -53,7 +53,7 @@ const ParticlesBackground: React.FC = () => {
                     value: ['#35ebff', '#35ebff', '#35ebff', '#35ebff'],
                   },
                   opacity: {
-                    value: 0.6,
+                    value: 0.5, // Slightly reduced opacity for better text contrast
                     random: true,
                     anim: {
                       enable: true,
@@ -66,7 +66,7 @@ const ParticlesBackground: React.FC = () => {
                     type: 'circle',
                   },
                   size: {
-                    value: 9,
+                    value: 8, // Slightly smaller particles
                     random: true,
                     anim: {
                       enable: true,
@@ -77,14 +77,14 @@ const ParticlesBackground: React.FC = () => {
                   },
                   line_linked: {
                     enable: true,
-                    distance: 120,
+                    distance: 130, // Increased connection distance for more connecting lines
                     color: '#35ebff',
-                    opacity: 1,
-                    width: 1.2,
+                    opacity: 0.8, // Slightly reduced line opacity
+                    width: 1,
                   },
                   move: {
                     enable: true,
-                    speed: 1.5,
+                    speed: 1.2, // Slightly slower movement for calmer effect
                     random: true,
                     direction: 'none',
                     straight: false,
@@ -107,7 +107,7 @@ const ParticlesBackground: React.FC = () => {
                   },
                   modes: {
                     grab: {
-                      distance: 140,
+                      distance: 160, // Increased grab distance to work with more particles
                       line_linked: {
                         opacity: 1,
                       },

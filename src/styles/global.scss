@@ -6,12 +6,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
 :root {
-  --background: linear-gradient(
-    135deg,
-    #0a0a0a 0%,
-    #1a1a2e 50%,
-    #16213e 100%
-  ); // Hero gradient background
+  --background: linear-gradient(135deg, #000000 0%, #0a0a0a 25%, #1a1a1a 50%, #0f0f0f 75%, #000000 100%); // Hero gradient background
   --foreground: #{$text-white}; // White text
 }
 
@@ -178,9 +173,9 @@ section {
   padding: 0 16px;
 }
 .hero {
-  padding-top: 140px !important;
+  padding-top: 50px !important;
   @media (max-width: 992px) {
-    padding-top: 120px !important;
+    padding-top: 90px !important;
   }
 }
 
