@@ -41,12 +41,33 @@ const HeroSection = () => {
 
               <p
                 className={styles.subtitle}
+                style={{ color: '#FF6B6B' }}
                 data-aos="fade-up"
                 data-aos-delay="500"
                 data-aos-duration="1000"
                 data-aos-easing="ease-out-cubic"
               >
-                Secure. Scalable. Human-Centric AI Solutions.
+                Secure.
+                <span
+                  className={styles.subtitle}
+                  style={{ color: '#00C6A7' }}
+                  data-aos="fade-up"
+                  data-aos-delay="500"
+                  data-aos-duration="1000"
+                  data-aos-easing="ease-out-cubic"
+                >
+                  Scalable.
+                </span>
+                <span
+                  className={styles.subtitle}
+                  style={{ color: '#FFD93D' }}
+                  data-aos="fade-up"
+                  data-aos-delay="500"
+                  data-aos-duration="1000"
+                  data-aos-easing="ease-out-cubic"
+                >
+                  Human-Centric AI Solutions.
+                </span>
               </p>
 
               <p
