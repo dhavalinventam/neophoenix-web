@@ -1,11 +1,14 @@
 'use client';
 import Button from '../../../ui/button';
+import SoftParticleGlow from '../../../ui/soft-particle-glow';
 import { Container, Row, Col } from 'react-bootstrap';
 import styles from './WhoWeAre.module.scss';
 
 const WhoWeAre = () => {
   return (
     <section className={styles.whoWeAre}>
+      {/* Soft Particle Glow Animation */}
+      <SoftParticleGlow />
 
       {/* Content Container */}
       <div

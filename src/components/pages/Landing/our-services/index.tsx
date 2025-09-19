@@ -4,6 +4,7 @@ import React, { useEffect } from 'react';
 import Image from 'next/image';
 import styles from './OurServices.module.scss';
 import Button from '@/components/ui/button';
+import SoftParticleGlow from '@/components/ui/soft-particle-glow';
 
 const DemoAnimation = () => {
   const [activeVideoIndex, setActiveVideoIndex] = React.useState(0);
@@ -401,6 +402,8 @@ const DemoAnimation = () => {
   return (
     <>
       <div className={styles.ourServices}>
+        {/* Soft Particle Glow Animation */}
+        <SoftParticleGlow />
 
         <div className={styles.section}>
           <div className={styles.container}>
