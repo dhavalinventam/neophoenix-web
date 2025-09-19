@@ -5,6 +5,7 @@ import Image from 'next/image';
 import styles from './OurServices.module.scss';
 import Button from '@/components/ui/button';
 import SoftParticleGlow from '@/components/ui/soft-particle-glow';
+import FloatingDataBlocks from '@/components/ui/floating-data-blocks';
 
 const DemoAnimation = () => {
   const [activeVideoIndex, setActiveVideoIndex] = React.useState(0);
@@ -404,6 +405,13 @@ const DemoAnimation = () => {
       <div className={styles.ourServices}>
         {/* Soft Particle Glow Animation */}
         <SoftParticleGlow />
+        
+        {/* Floating Data Blocks Animation */}
+        <FloatingDataBlocks 
+          blockCount={12}
+          intensity="low"
+          className={styles.floatingBlocks}
+        />
 
         <div className={styles.section}>
           <div className={styles.container}>

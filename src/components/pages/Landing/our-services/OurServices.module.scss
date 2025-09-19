@@ -16,6 +16,11 @@
 }
 .ourServices {
   position: relative;
+  
+  // Floating Data Blocks
+  .floatingBlocks {
+    z-index: 1;
+  }
   .header {
     margin-bottom: 48px;
     text-align: center;
