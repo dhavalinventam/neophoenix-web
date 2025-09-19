@@ -839,8 +839,11 @@
   //   }
   // }
   .stickyText {
+    display: flex;
+    justify-content: center;
+    line-height: 1.2;
     font-size: 16vw;
-    line-height: 1;
+    // line-height: 1;
     font-weight: 600;
     font-family: 'Frederic', sans-serif;
     letter-spacing: -1.2vw;
