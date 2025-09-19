@@ -4,7 +4,7 @@ import React, { useEffect } from 'react';
 import Image from 'next/image';
 import styles from './OurServices.module.scss';
 import Button from '@/components/ui/button';
-import NeuralNetworkAccent from '@/components/ui/neural-network-accent';
+import SoftParticleGlow from '@/components/ui/soft-particle-glow';
 
 const DemoAnimation = () => {
   const [activeVideoIndex, setActiveVideoIndex] = React.useState(0);
@@ -402,36 +402,8 @@ const DemoAnimation = () => {
   return (
     <>
       <div className={styles.ourServices}>
-        {/* Neural Network Accent Elements */}
-
-        <NeuralNetworkAccent
-          size="medium"
-          position="bottom-left"
-          opacity={0.65}
-          nodeCount={15}
-          maxConnectionDist={70}
-        />
-        <NeuralNetworkAccent
-          size="medium"
-          position="top-left"
-          opacity={0.70}
-          nodeCount={25}
-          maxConnectionDist={95}
-        />
-        <NeuralNetworkAccent
-          size="medium"
-          position="center"
-          opacity={0.70}
-          nodeCount={25}
-          maxConnectionDist={95}
-        />
-        <NeuralNetworkAccent
-          size="small"
-          position="bottom-left"
-          opacity={0.8}
-          nodeCount={20}
-          maxConnectionDist={80}
-        />
+        {/* Soft Particle Glow Animation */}
+        <SoftParticleGlow />
 
         <div className={styles.section}>
           <div className={styles.container}>

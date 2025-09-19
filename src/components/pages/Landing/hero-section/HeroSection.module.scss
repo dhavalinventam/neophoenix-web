@@ -3,60 +3,80 @@
 
 .heroSection {
   position: relative;
-  background: transparent; // Remove background to show global gradient
+  background: transparent;
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  z-index: 10; // Higher z-index to ensure it's above any background objects
+  z-index: 10;
   font-family: $font-primary;
-  padding: 0; // Remove padding for seamless layout
-  isolation: isolate; // Create new stacking context to prevent background bleeding
+  padding: 0;
+  isolation: isolate;
 }
 
+// Black Gradient Background
+.gradientBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  z-index: 1;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(
+      ellipse at center,
+      rgba(255, 255, 255, 0.02) 0%,
+      transparent 70%
+    );
+    z-index: 2;
+  }
+}
 
 // Content Container
 .contentContainer {
   position: relative;
-  z-index: 11; // Higher z-index to ensure content is above any background objects
+  z-index: 11;
   width: 100%;
-  text-align: center;
-  padding: 20px 0 64px; // Add internal padding for content spacing
-  isolation: isolate; // Create new stacking context for content
-}
-
-// Badge
-.badge {
-  display: inline-flex;
+  padding: 80px 0;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  justify-content: center;
   align-items: center;
-  gap: 8px;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 50px;
-  padding: 12px 24px;
-  margin-bottom: 32px;
-  // animation: fadeInUp 0.8s ease-out 0.2s both;
-
-  .badgeIcon {
-    font-size: 19.2px;
-  }
-
-  .badgeText {
-    color: #ffffff;
-    font-size: 14.4px;
-    font-weight: 500;
-    letter-spacing: 0.5px;
-  }
 }
+
+// Main Content - Centered
+.mainContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  gap: 32px;
+  min-height: 70vh;
+  justify-content: center;
+}
+
 
 // Main Headline
 .headline {
-  margin-bottom: 48px;
-  opacity: 1; // Always visible
-  transform: translateY(0); // No transform
-  // transition: all 0.8s ease-out;
+  margin-bottom: 0;
+  opacity: 1;
+  transform: translateY(0);
+  position: relative;
+  z-index: 2;
 
   &.visible {
     opacity: 1;
@@ -64,68 +84,100 @@
   }
 
   .title {
-    font-size: clamp(32px, 4vw, 48px); // Increased size since holographic title is removed
-    font-weight: 700;
-    color: #ffffff; // Pure white color
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 600;
+    color: #ffffff;
     line-height: 1.2;
-    margin-bottom: 24px;
-    letter-spacing: -0.02em;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    margin-bottom: 0;
+    letter-spacing: -0.01em;
+    text-align: center;
+    font-family: $font-primary;
+    text-transform: none;
+    max-width: 900px;
+  }
+}
+
+// Tagline
+.tagline {
+  margin-bottom: 0;
+  opacity: 1;
+  transform: translateY(0);
+  position: relative;
+  z-index: 2;
+
+  .taglineText {
+    font-size: clamp(18px, 2.5vw, 24px);
+    font-weight: 500;
+    color: #ffffff;
+    line-height: 1.3;
+    margin: 0;
+    text-align: center;
+    font-family: $font-primary;
 
     .highlight {
-      color: #ffffff; // Keep highlight as white instead of gradient
+      background: linear-gradient(135deg, $primary-orange 0%, $primary-gold 50%, $primary-cyan 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 700;
+      position: relative;
+      
+      // &::after {
+      //   content: '';
+      //   position: absolute;
+      //   bottom: -2px;
+      //   left: 0;
+      //   right: 0;
+      //   height: 2px;
+      //   background: linear-gradient(90deg, $primary-orange 0%, $primary-gold 50%, $primary-cyan 100%);
+      //   border-radius: 1px;
+      //   opacity: 0.6;
+      // }
+    }
+
+    .ai-solutions {
+      background: linear-gradient(135deg, $primary-blue 0%, $primary-cyan 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 600;
+      text-shadow: 0 0 20px rgba(67, 97, 238, 0.3);
     }
   }
+}
 
-  .subtitle {
-    font-size: clamp(19.2px, 2.5vw, 28.8px);
-    color: rgba(255, 255, 255, 0.7); // Consistent with other sections
-    font-weight: 600;
-    margin-bottom: 24px;
-    letter-spacing: 0.5px;
-  }
 
+// Supporting Text
+.supportingText {
   .description {
-    font-size: $font-size-lg; // Increased font size for better readability
-    color: rgba(255, 255, 255, 0.7); // Consistent with other sections
+    font-size: clamp(16px, 2vw, 18px);
+    color: #ffffff;
     line-height: 1.6;
-    max-width: 700px; // Consistent max-width for info paragraphs
-    margin: 0 auto;
-    font-weight: $font-weight-normal;
+    margin: 0;
+    font-weight: 400;
     font-family: $font-primary;
+    text-align: center;
+    max-width: 800px;
   }
 }
 
 // CTA Section
 .ctaSection {
-  opacity: 1; // Always visible
-  transform: translateY(0); // No transform
-  // transition: all 0.8s ease-out 0.4s;
+  opacity: 1;
+  transform: translateY(0);
   display: flex;
   justify-content: center;
   align-items: center;
+  position: static;
+  z-index: 2;
+  margin-top: 0;
 
   &.visible {
     opacity: 1;
     transform: translateY(0);
   }
-
-  .exploreButton {
-    padding: 12px 24px;
-    font-size: 16px;
-    font-weight: 600;
-    border-radius: 32px;
-    transition: all 0.3s ease;
-
-    &:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 30px rgba(255, 107, 107, 0.3);
-    }
-  }
 }
+
 
 // Animations
 @keyframes fadeInUp {
@@ -139,72 +191,116 @@
   }
 }
 
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
 // Responsive Design
-@media (max-width: 992px) {
-  .heroSection {
-    min-height: unset !important;
-  }
-  .contentContainer {
-    padding: 0px 0px 30px;
-  }
-  .ctaSection {
-    margin-bottom: 32px;
+@media (max-width: 1200px) {
+  .mainContent {
+    max-width: 900px;
+    gap: 28px;
   }
 }
 
 @media (max-width: 992px) {
   .heroSection {
-    padding: 0; // Keep seamless layout
+    min-height: unset !important;
+  }
+  
+  .contentContainer {
+    padding: 60px 0 60px;
+  }
+
+  .mainContent {
+    gap: 24px;
+    max-width: 800px;
+  }
+
+  .headline {
+    .title {
+      font-size: clamp(28px, 6vw, 40px);
+    }
+  }
+
+  .tagline {
+    .taglineText {
+      font-size: clamp(16px, 3vw, 20px);
+    }
+  }
+
+  .supportingText {
+    .description {
+      max-width: 700px;
+    }
   }
 }
 
 @media (max-width: 768px) {
   .heroSection {
-    padding: 0; // Keep seamless layout
+    padding: 0;
+  }
+  
+  .contentContainer {
+    padding: 50px 0 40px;
+  }
+
+  .mainContent {
+    gap: 20px;
+    max-width: 100%;
   }
 
   .headline {
-    margin-bottom: 32px;
-
     .title {
-      font-size: 28px;
-      margin-bottom: 16px;
-    }
-
-    .subtitle {
-      font-size: 17.6px;
-    }
-
-    .description {
-      font-size: 15.2px;
+      font-size: clamp(24px, 6vw, 32px);
+      line-height: 1.2;
     }
   }
 
-  .badge {
-    padding: 8px 16px;
+  .tagline {
+    .taglineText {
+      font-size: clamp(14px, 4vw, 18px);
+    }
+  }
 
-    .badgeText {
-      font-size: 12.8px;
+  .supportingText {
+    .description {
+      font-size: clamp(14px, 3vw, 16px);
     }
   }
 }
 
 @media (max-width: 480px) {
-  .heroSection {
-    padding: 0; // Keep seamless layout
+  .contentContainer {
+    padding: 40px 0 30px;
+  }
+
+  .mainContent {
+    gap: 16px;
   }
 
   .headline {
     .title {
-      font-size: 24px;
+      font-size: clamp(20px, 8vw, 28px);
+      line-height: 1.3;
     }
+  }
 
-    .subtitle {
-      font-size: 16px;
+  .tagline {
+    .taglineText {
+      font-size: clamp(12px, 4vw, 16px);
     }
+  }
 
+  .supportingText {
     .description {
-      font-size: 14.4px;
+      font-size: 14px;
+      line-height: 1.5;
     }
   }
 }
