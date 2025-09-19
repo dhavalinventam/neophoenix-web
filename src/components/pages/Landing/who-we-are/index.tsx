@@ -1,6 +1,7 @@
 'use client';
 import Button from '../../../ui/button';
 import SoftParticleGlow from '../../../ui/soft-particle-glow';
+import FloatingDataBlocks from '../../../ui/floating-data-blocks';
 import { Container, Row, Col } from 'react-bootstrap';
 import styles from './WhoWeAre.module.scss';
 
@@ -9,6 +10,13 @@ const WhoWeAre = () => {
     <section className={styles.whoWeAre}>
       {/* Soft Particle Glow Animation */}
       <SoftParticleGlow />
+      
+      {/* Floating Data Blocks Animation */}
+      <FloatingDataBlocks 
+        blockCount={8}
+        intensity="medium"
+        className={styles.floatingBlocks}
+      />
 
       {/* Content Container */}
       <div
