@@ -261,18 +261,15 @@
         max-width: 500px;
 
         &:focus-within {
-          border-color: $primary-orange;
-          box-shadow:
-            0 0 0 2px rgba(255, 107, 53, 0.2),
-            0 4px 20px rgba(255, 107, 53, 0.1);
-          transform: translateY(-1px);
-        }
-        &:focus-within {
-          border-color: $primary-orange;
-          box-shadow:
-            0 0 0 2px rgba(255, 107, 53, 0.2),
-            0 4px 20px rgba(255, 107, 53, 0.1);
-          transform: translateY(-1px);
+          // border-color: $primary-orange;
+          // box-shadow:
+          //   0 0 0 2px rgba(255, 107, 53, 0.2),
+          //   0 4px 20px rgba(255, 107, 53, 0.1);
+          // transform: translateY(-1px);
+          background: #2c2f33 !important;
+          transform: translateY(-2px);
+          outline: 0;
+          box-shadow: none !important;
         }
 
         .emailInput {

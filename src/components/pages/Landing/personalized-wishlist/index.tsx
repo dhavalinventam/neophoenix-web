@@ -201,7 +201,7 @@ const PersonalizedWishlist = () => {
 
                   <div className={styles.buttonWrapper}>
                     <Button
-                      label={isSubmitting ? 'Creating Your Solution...' : 'Get Custom AI Solution'}
+                      label={isSubmitting ? 'Creating Your Solution...' : 'Get Custom AI Solutions'}
                       disabled={isSubmitting}
                     />
                   </div>
