@@ -15,7 +15,7 @@ const HeroSection = () => {
 
   return (
     <>
-      <section className={`${styles.heroSection} hero`}>
+      <section className={`${styles.heroSection}`}>
         {/* Black Gradient Background */}
         <div className={styles.gradientBackground} />
         

@@ -2,8 +2,10 @@
 
 import { useState } from 'react';
 import styles from './page.module.scss';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col, Form, FormControl } from 'react-bootstrap';
 import Button from '@/components/ui/button';
+import SoftParticleGlow from '@/components/ui/soft-particle-glow';
+import FloatingDataBlocks from '@/components/ui/floating-data-blocks';
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -18,10 +20,10 @@ export default function ContactPage() {
   }>({ type: null, message: '' });
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { id, value } = e.target;
+    const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
-      [id]: value
+      [name]: value
     }));
   };
 
@@ -67,6 +69,37 @@ export default function ContactPage() {
   return (
     <>
       <div className={`${styles.contactContainer} hero`}>
+        {/* Soft Particle Glow Animation */}
+        <SoftParticleGlow />
+        
+        {/* Floating Data Blocks Animation */}
+        <FloatingDataBlocks 
+          blockCount={10}
+          intensity="medium"
+          className={styles.floatingBlocks}
+        />
+
+        {/* Animated Background Elements */}
+        <div className={styles.backgroundElements}>
+          <div className={styles.gradientMesh}></div>
+          <div className={styles.particleField}>
+            {[...Array(20)].map((_, i) => (
+              <div
+                key={i}
+                className={styles.particle}
+                style={
+                  {
+                    '--delay': `${i * 0.1}s`,
+                    '--duration': `${3 + (i % 3)}s`,
+                    '--x': `${Math.random() * 100}%`,
+                    '--y': `${Math.random() * 100}%`,
+                  } as React.CSSProperties
+                }
+              ></div>
+            ))}
+          </div>
+        </div>
+
         {/* Hero Section */}
         <div className={styles.heroSection}>
           <Container>
@@ -160,90 +193,100 @@ export default function ContactPage() {
 
               {/* Contact Form */}
               <Col lg={8}>
-                <div className={styles.formSection}>
-                  <div className={styles.formHeader}>
-                    <h2 className={styles.formTitle}>Send us a Message</h2>
-                    <p className={styles.formSubtitle}>
-                      Tell us about your project and we&apos;ll get back to you
-                    </p>
-                  </div>
+                <div className={styles.mainCard}>
+                  <div className={styles.formSection}>
+                    <div className={styles.formHeader}>
+                      <h2 className={styles.formTitle}>Send us a Message</h2>
+                      <p className={styles.formSubtitle}>
+                        Tell us about your project and we&apos;ll get back to you
+                      </p>
+                    </div>
 
-                  <form className={styles.contactForm} onSubmit={handleSubmit}>
-                    <Row className="g-2">
-                      <Col md={6}>
-                        <div className={styles.formGroup}>
-                          <label htmlFor="fullName" className={styles.formLabel}>
-                            Full Name
-                          </label>
-                          <input
-                            type="text"
-                            className={styles.formInput}
-                            id="fullName"
-                            value={formData.fullName}
-                            onChange={handleInputChange}
-                            placeholder="Enter your full name"
-                            required
-                          />
-                        </div>
-                      </Col>
-                      <Col md={6}>
-                        <div className={styles.formGroup}>
-                          <label htmlFor="email" className={styles.formLabel}>
-                            Email Address
-                          </label>
-                          <input
-                            type="email"
-                            className={styles.formInput}
-                            id="email"
-                            value={formData.email}
-                            onChange={handleInputChange}
-                            placeholder="Enter your email address"
-                            required
-                          />
-                        </div>
-                      </Col>
-                    </Row>
-                    
-                    <Row className="g-2">
-                      <Col xs={12}>
-                        <div className={styles.formGroup}>
-                          <label htmlFor="message" className={styles.formLabel}>
-                            Message
-                          </label>
-                          <textarea
-                            className={styles.formTextarea}
+                    <Form onSubmit={handleSubmit} className={styles.form}>
+                      <Row>
+                        <Col md={6}>
+                          <Form.Group className={styles.formGroup}>
+                            <Form.Label htmlFor="fullName" className={styles.label}>
+                              Full Name
+                            </Form.Label>
+                            <div className={styles.inputWrapper}>
+                              <FormControl
+                                type="text"
+                                id="fullName"
+                                name="fullName"
+                                value={formData.fullName}
+                                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                                  handleInputChange(e)
+                                }
+                                placeholder="Your name"
+                                className={styles.input}
+                                required
+                              />
+                              <div className={styles.inputGlow}></div>
+                            </div>
+                          </Form.Group>
+                        </Col>
+                        <Col md={6}>
+                          <Form.Group className={styles.formGroup}>
+                            <Form.Label htmlFor="email" className={styles.label}>
+                              Email Address
+                            </Form.Label>
+                            <div className={styles.inputWrapper}>
+                              <FormControl
+                                type="email"
+                                id="email"
+                                name="email"
+                                value={formData.email}
+                                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                                  handleInputChange(e)
+                                }
+                                placeholder="your@email.com"
+                                className={styles.input}
+                                required
+                              />
+                              <div className={styles.inputGlow}></div>
+                            </div>
+                          </Form.Group>
+                        </Col>
+                      </Row>
+
+                      <Form.Group className={styles.formGroup}>
+                        <Form.Label htmlFor="message" className={styles.label}>
+                          Message
+                        </Form.Label>
+                        <div className={styles.inputWrapper}>
+                          <FormControl
+                            as="textarea"
                             id="message"
+                            name="message"
                             value={formData.message}
-                            onChange={handleInputChange}
-                            rows={3}
+                            onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
+                              handleInputChange(e)
+                            }
                             placeholder="Tell us about your project, goals, or any questions you have..."
+                            className={styles.input}
+                            rows={4}
                             required
-                          ></textarea>
-                        </div>
-                      </Col>
-                    </Row>
-
-                    <Row className="g-2">
-                      <Col xs={12}>
-                        <div
-                          className={styles.formSubmit}
-                          style={{ display: 'flex', justifyContent: 'center' }}
-                        >
-                          <Button 
-                            label={isSubmitting ? "Submit..." : "Submit"} 
-                            disabled={isSubmitting}
                           />
+                          <div className={styles.inputGlow}></div>
                         </div>
-                      </Col>
-                      
+                      </Form.Group>
+
+                      <div className={styles.buttonWrapper}>
+                        <Button
+                          label={isSubmitting ? 'Sending Message...' : 'Send Message'}
+                          disabled={isSubmitting}
+                        />
+                      </div>
+
                       {/* Status Messages */}
                       {submitStatus.type && (
                         <div className={`${styles.statusMessage} ${styles[submitStatus.type]}`}>
                           {submitStatus.message}
                         </div>
                       )}
-                    </Row>
-                  </form>
+                    </Form>
+                  </div>
                 </div>
               </Col>
             </Row>

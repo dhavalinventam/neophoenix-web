@@ -1,27 +1,57 @@
 @use '../../../styles/variables' as *;
 @use '../../../styles/mixins' as *;
 
-.contactPage {
+.contactContainer {
   position: relative;
-  background: $bg-dark-primary; // Single solid background
-  min-height: 100vh;
-  padding: 48px 0; // Consistent with global section spacing
+  background: transparent; // Remove background to show global gradient
+  padding: 120px 0px !important; // Remove padding for seamless layout
   overflow: hidden;
   z-index: 1;
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    // background: 
-    //   radial-gradient(circle at 20% 80%, rgba(255, 107, 53, 0.15) 0%, transparent 50%),
-    //   radial-gradient(circle at 80% 20%, rgba(67, 97, 238, 0.15) 0%, transparent 50%),
-    //   radial-gradient(circle at 40% 40%, rgba(46, 196, 182, 0.1) 0%, transparent 50%);
-    pointer-events: none;
+  
+  // Floating Data Blocks
+  .floatingBlocks {
+    z-index: 1;
   }
+}
+
+// Animated Background Elements
+.backgroundElements {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.gradientMesh {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  animation: meshMove 20s ease-in-out infinite;
+}
+
+.particleField {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.particle {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: rgba(255, 107, 53, 0.4);
+  border-radius: 50%;
+  animation: particleFloat var(--duration) ease-in-out infinite;
+  animation-delay: var(--delay);
+  left: var(--x);
+  top: var(--y);
 }
 
 // =============================================================================
@@ -237,126 +267,144 @@
   }
 }
 
+// Main Content Card
+.mainCard {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  padding: 40px 32px;
+  backdrop-filter: blur(20px);
+  box-shadow:
+    0 25px 50px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  position: relative;
+  z-index: 2;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 107, 53, 0.5), transparent);
+  }
+}
+
 // =============================================================================
 // FORM SECTION
 // =============================================================================
 
 .formSection {
-  background: rgba(255, 255, 255, 0.03);
-  border-radius: 24px;
-  padding: 32px;
-  backdrop-filter: blur(20px);
-  border: 1px solid $glass-border-light;
-  box-shadow: $shadow-xl;
-  position: relative;
-  overflow: hidden;
-
-  // &::before {
-  //   content: '';
-  //   position: absolute;
-  //   top: 0;
-  //   left: 0;
-  //   right: 0;
-  //   bottom: 0;
-  //   background: linear-gradient(135deg, rgba(255, 159, 28, 0.05) 0%, rgba(255, 107, 53, 0.05) 100%);
-  //   border-radius: 1.5rem;
-  // }
+  // background: rgba(255, 255, 255, 0.02);
+  // border: 1px solid rgba(255, 255, 255, 0.05);
+  // border-radius: 20px;
+  // padding: 24px;
+  // backdrop-filter: blur(10px);
 }
 
 .formHeader {
-  margin-bottom: 32px;
-  position: relative;
-  z-index: 1;
+  text-align: center;
+  margin-bottom: 24px;
 }
 
 .formTitle {
   font-family: $font-title;
-  font-size: $font-size-2xl;
+  font-size: $font-size-xl;
   font-weight: $font-weight-bold;
   color: $text-white;
-  margin-bottom: 4px;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  margin-bottom: 8px;
 }
 
 .formSubtitle {
-  font-size: $font-size-base;
-  color: rgba(255, 255, 255, 0.7);
-  margin: 0;
+  font-family: $font-primary;
+  font-size: $font-size-lg; // Increased font size for better readability
+  color: rgba(255, 255, 255, 0.7); // Consistent with other sections
+  line-height: 1.6;
+  font-weight: $font-weight-normal;
 }
 
-.contactForm {
-  border-radius: 25px;
-  position: relative;
-  z-index: 2;
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
 .formGroup {
-  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0;
+}
 
-  .inputWrapper {
-    position: relative;
-    background: rgba(255, 107, 53, 0.2); // Use new orange
-    border-radius: 12px;
-    padding: 8px;
-    transition: all $duration-normal $ease-out;
+.label {
+  font-family: $font-primary;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  color: #ffffff;
+  margin-bottom: 8px;
+  display: block;
+}
 
-    &:focus-within {
-      background: rgba(255, 107, 53, 0.3); // Use new orange
-      border: 1px solid rgba(255, 107, 53, 0.3); // Use new orange
-      box-shadow: 0 6px 20px rgba(255, 107, 53, 0.3); // Use new orange
-    }
+.inputWrapper {
+  position: relative;
+
+  &:focus-within .inputGlow {
+    opacity: 1;
+    transform: scale(1.02);
   }
 }
 
-.formLabel {
-  font-family: $font-primary;
-  font-size: $font-size-xs;
-  font-weight: $font-weight-medium;
-  color: $text-white;
-  margin-bottom: 6px;
-  display: block;
-  text-transform: uppercase;
-  letter-spacing: $letter-spacing-wide;
-  opacity: 0.9;
-}
-
-.formInput,
-.formTextarea {
+.input {
   width: 100%;
-  background: rgb(25 29 40);
-  border: 2px solid $glass-border-medium;
-  border-radius: 12px;
-  color: $text-white;
-  font-size: $font-size-sm;
-  padding: 10px 14px;
-  transition: all $duration-normal $ease-out;
-  backdrop-filter: blur(10px);
+  padding: 12px 16px !important;
+  background: rgba(255, 255, 255, 0.03) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 12px !important;
+  color: $text-white !important;
   font-family: $font-primary;
+  font-size: $font-size-sm;
   font-weight: $font-weight-normal;
+  transition: all 0.3s ease;
+  outline: none;
+  min-height: 48px;
+  backdrop-filter: blur(10px);
 
   &::placeholder {
-    color: rgba(160, 160, 160, 0.6);
+    color: rgba(255, 255, 255, 0.4) !important;
   }
 
-  // &:hover {
-  //         border-color: rgba(255, 107, 53, 0.4);
-  //   background: rgba(26, 26, 46, 0.9);
-  //         box-shadow: 0 4px 15px rgba(255, 107, 53, 0.1);
-  // }
-
   &:focus {
-    background: rgb(25 29 40);
-    border-color: #2c3e7f;
-    box-shadow: none;
-    color: $text-white;
-    outline: none;
+    border-color: rgba(255, 107, 53, 0.5);
+    background: rgba(255, 255, 255, 0.05) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  }
+
+  &:hover {
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-1px);
+  }
+
+  // Ensure selected text is visible
+  &:not(:placeholder-shown) {
+    color: $text-white !important;
+    background: rgba(255, 255, 255, 0.05) !important;
   }
 }
 
-.formTextarea {
-  resize: vertical;
-  min-height: 100px;
-  line-height: 1.5;
+.inputGlow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255, 107, 53, 0.1) 0%, rgba(255, 159, 28, 0.1) 100%);
+  border-radius: 16px;
+  opacity: 0;
+  transition: all 0.3s ease;
+  pointer-events: none;
+  z-index: -1;
 }
 
 .formCheck {
@@ -394,43 +442,34 @@
   }
 }
 
-.formSubmit {
-  text-align: center;
-  
-  button {
-    padding: 12px 32px;
-    font-size: $font-size-base;
-    font-weight: $font-weight-semibold;
-    border-radius: 50px;
-    transition: all $duration-normal $ease-out;
-    
-    &:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(255, 107, 53, 0.3);
-    }
-  }
+.buttonWrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 8px;
 }
 
 // Status Messages
 .statusMessage {
-  margin-top: 16px;
-  padding: 12px 16px;
-  border-radius: 8px;
+  padding: 16px 20px;
+  border-radius: 12px;
+  font-family: $font-primary;
   font-size: $font-size-sm;
   font-weight: $font-weight-medium;
   text-align: center;
-  animation: fadeInUp 0.3s $ease-out;
-  
+  margin-top: 24px;
+  border: 1px solid transparent;
+  backdrop-filter: blur(10px);
+
   &.success {
-    background: rgba(46, 196, 182, 0.2);
-    border: 1px solid rgba(46, 196, 182, 0.4);
-    color: #2ec4b6;
+    background: rgba(34, 197, 94, 0.1);
+    color: #22c55e;
+    border-color: rgba(34, 197, 94, 0.2);
   }
-  
+
   &.error {
-    background: rgba(255, 107, 53, 0.2);
-    border: 1px solid rgba(255, 107, 53, 0.4);
-    color: #ff6b35;
+    background: rgba(239, 68, 68, 0.1);
+    color: #ef4444;
+    border-color: rgba(239, 68, 68, 0.2);
   }
 }
 
@@ -439,6 +478,34 @@
 // =============================================================================
 // ANIMATIONS
 // =============================================================================
+
+@keyframes meshMove {
+  0%,
+  100% {
+    transform: translateX(0px) translateY(0px);
+  }
+  25% {
+    transform: translateX(10px) translateY(-5px);
+  }
+  50% {
+    transform: translateX(-5px) translateY(10px);
+  }
+  75% {
+    transform: translateX(-10px) translateY(-5px);
+  }
+}
+
+@keyframes particleFloat {
+  0%,
+  100% {
+    transform: translateY(0px) translateX(0px);
+    opacity: 0.4;
+  }
+  50% {
+    transform: translateY(-20px) translateX(10px);
+    opacity: 0.8;
+  }
+}
 
 @keyframes pulse {
   0%, 100% {
@@ -460,6 +527,22 @@
 }
 
 @media (max-width: 992px) {
+  .contactContainer {
+    padding: 30px 0px !important; // Keep seamless layout
+  }
+  .formHeader {
+    margin-bottom: 20px;
+  }
+  .formSection {
+    padding: 16px 0;
+  }
+  .buttonWrapper {
+    margin-top: 10px;
+  }
+  .mainCard {
+    padding: 24px 16px;
+  }
+  
   .infoSection,
   .formSection {
     padding: 24px;
@@ -562,6 +645,19 @@
 }
 
 @media (max-width: 576px) {
+  .mainCard {
+    padding: 16px 12px;
+    margin: 8px 0px; // Further reduced margin for mobile
+  }
+
+  .formSection {
+    padding: 12px;
+  }
+
+  .input {
+    padding: 10px 12px !important;
+    min-height: 44px;
+  }
   
   .heroTitle {
     font-size: 28px;
