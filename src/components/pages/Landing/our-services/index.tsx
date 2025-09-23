@@ -401,7 +401,83 @@ const DemoAnimation = () => {
   return (
     <>
       <div className={styles.ourServices}>
-        
+        {/* Animated Background Elements */}
+        <div className={styles.backgroundElements}>
+          <div className={styles.gradientMesh}></div>
+          <div className={styles.particleField}>
+            {[...Array(20)].map((_, i) => (
+              <div
+                key={i}
+                className={styles.particle}
+                style={
+                  {
+                    '--delay': `${i * 0.1}s`,
+                    '--duration': `${3 + (i % 3)}s`,
+                    '--x': `${Math.random() * 100}%`,
+                    '--y': `${Math.random() * 100}%`,
+                  } as React.CSSProperties
+                }
+              ></div>
+            ))}
+          </div>
+        </div>
+
+        {/* Geometric Pattern Elements */}
+        <div className={styles.geometricPattern}>
+          {/* Large geometric elements - reduced to 2 */}
+          <div 
+            className={styles.geometricElementLarge}
+            style={{
+              top: '15%',
+              left: '8%',
+              animationDelay: '0s'
+            }}
+          ></div>
+          <div 
+            className={styles.geometricElementLarge}
+            style={{
+              bottom: '20%',
+              right: '8%',
+              animationDelay: '3s'
+            }}
+          ></div>
+
+          {/* Medium geometric elements - reduced to 2 */}
+          <div 
+            className={styles.geometricElement}
+            style={{
+              top: '35%',
+              right: '15%',
+              animationDelay: '1.5s'
+            }}
+          ></div>
+          <div 
+            className={styles.geometricElement}
+            style={{
+              top: '60%',
+              left: '5%',
+              animationDelay: '2s'
+            }}
+          ></div>
+
+          {/* Small geometric elements - reduced to 2 */}
+          <div 
+            className={styles.geometricElementSmall}
+            style={{
+              top: '25%',
+              right: '10%',
+              animationDelay: '0.8s'
+            }}
+          ></div>
+          <div 
+            className={styles.geometricElementSmall}
+            style={{
+              bottom: '20%',
+              left: '13%',
+              animationDelay: '3.8s'
+            }}
+          ></div>
+        </div>
 
         <div className={styles.section}>
           <div className={styles.container}>
