@@ -3,8 +3,6 @@
 import { useState, useEffect } from 'react';
 import { Container, Row, Col, Form, FormControl, FormSelect } from 'react-bootstrap';
 import Button from '@/components/ui/button';
-import SoftParticleGlow from '@/components/ui/soft-particle-glow';
-import FloatingDataBlocks from '@/components/ui/floating-data-blocks';
 import styles from './PersonalizedWishlist.module.scss';
 
 const PersonalizedWishlist = () => {
@@ -72,15 +70,7 @@ const PersonalizedWishlist = () => {
 
   return (
     <section id="personalized-wishlist" className={styles.personalizedWishlistSection}>
-      {/* Soft Particle Glow Animation */}
-      <SoftParticleGlow />
       
-      {/* Floating Data Blocks Animation */}
-      <FloatingDataBlocks 
-        blockCount={10}
-        intensity="medium"
-        className={styles.floatingBlocks}
-      />
 
       {/* Animated Background Elements */}
       <div className={styles.backgroundElements}>

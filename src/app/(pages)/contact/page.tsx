@@ -4,8 +4,6 @@ import { useState } from 'react';
 import styles from './page.module.scss';
 import { Container, Row, Col, Form, FormControl } from 'react-bootstrap';
 import Button from '@/components/ui/button';
-import SoftParticleGlow from '@/components/ui/soft-particle-glow';
-import FloatingDataBlocks from '@/components/ui/floating-data-blocks';
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -69,15 +67,7 @@ export default function ContactPage() {
   return (
     <>
       <div className={`${styles.contactContainer} hero`}>
-        {/* Soft Particle Glow Animation */}
-        <SoftParticleGlow />
         
-        {/* Floating Data Blocks Animation */}
-        <FloatingDataBlocks 
-          blockCount={10}
-          intensity="medium"
-          className={styles.floatingBlocks}
-        />
 
         {/* Animated Background Elements */}
         <div className={styles.backgroundElements}>
