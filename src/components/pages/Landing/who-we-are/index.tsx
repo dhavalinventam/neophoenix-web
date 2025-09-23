@@ -1,11 +1,20 @@
 'use client';
 import Button from '../../../ui/button';
 import { Container, Row, Col } from 'react-bootstrap';
+import NeuralNetworkBackground from '../../../ui/neural-network-background';
 import styles from './WhoWeAre.module.scss';
 
 const WhoWeAre = () => {
   return (
     <section className={styles.whoWeAre}>
+      {/* Neural Network Background Animation */}
+      <NeuralNetworkBackground 
+        nodeCount={80}
+        maxConnectionDist={120}
+        opacity={0.6}
+        color="rgba(0, 229, 255, 0.8)"
+        mouseInfluence={80}
+      />
 
       {/* Content Container */}
       <div

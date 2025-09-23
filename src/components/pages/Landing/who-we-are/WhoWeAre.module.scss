@@ -3,7 +3,7 @@
 
 .whoWeAre {
   position: relative;
-  background: transparent; // Remove background to show global gradient
+  background: transparent; // Keep background transparent to show global gradient
   display: flex;
   align-items: center;
   justify-content: center;
@@ -12,6 +12,7 @@
   padding-top: 80px !important;
   padding-bottom: 50px !important;
   overflow: hidden;
+  isolation: isolate; // Create new stacking context for neural network
 }
 
 // Hexagon Mesh Overlay
@@ -38,9 +39,10 @@
 // Content Container
 .contentContainer {
   position: relative;
-  z-index: 2;
+  z-index: 11; // Ensure content is above neural network background
   width: 100%;
   text-align: center;
+  isolation: isolate; // Create new stacking context for content
 }
 
 // Section Title

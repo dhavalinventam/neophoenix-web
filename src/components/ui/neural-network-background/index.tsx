@@ -215,9 +215,8 @@ const NeuralNetworkBackground: React.FC<NeuralNetworkBackgroundProps> = ({
     
     if (!canvas || !ctx) return;
 
-    // Clear canvas with a slight fade effect for trails
-    ctx.fillStyle = 'rgba(10, 10, 20, 0.15)';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    // Clear canvas with transparent background
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
     
     // Update nodes
     nodesRef.current.forEach(node => {
