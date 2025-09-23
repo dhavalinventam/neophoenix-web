@@ -1,21 +1,17 @@
 'use client';
 import Button from '../../../ui/button';
-import SoftParticleGlow from '../../../ui/soft-particle-glow';
-import FloatingDataBlocks from '../../../ui/floating-data-blocks';
+import HexagonMeshOverlay from '../../../ui/hexagon-mesh-overlay';
 import { Container, Row, Col } from 'react-bootstrap';
 import styles from './WhoWeAre.module.scss';
 
 const WhoWeAre = () => {
   return (
     <section className={styles.whoWeAre}>
-      {/* Soft Particle Glow Animation */}
-      <SoftParticleGlow />
-      
-      {/* Floating Data Blocks Animation */}
-      <FloatingDataBlocks 
-        blockCount={8}
-        intensity="medium"
-        className={styles.floatingBlocks}
+      {/* Hexagon Mesh Overlay */}
+      <HexagonMeshOverlay 
+        intensity="medium" 
+        speed="slow" 
+        className={styles.hexagonOverlay}
       />
 
       {/* Content Container */}

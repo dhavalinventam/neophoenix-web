@@ -3,8 +3,6 @@
 import { useState, useEffect } from 'react';
 import { Container, Row, Col, Form, FormControl, FormSelect } from 'react-bootstrap';
 import Button from '@/components/ui/button';
-import SoftParticleGlow from '@/components/ui/soft-particle-glow';
-import FloatingDataBlocks from '@/components/ui/floating-data-blocks';
 import styles from './PersonalizedWishlist.module.scss';
 
 const PersonalizedWishlist = () => {
@@ -72,15 +70,7 @@ const PersonalizedWishlist = () => {
 
   return (
     <section id="personalized-wishlist" className={styles.personalizedWishlistSection}>
-      {/* Soft Particle Glow Animation */}
-      <SoftParticleGlow />
       
-      {/* Floating Data Blocks Animation */}
-      <FloatingDataBlocks 
-        blockCount={10}
-        intensity="medium"
-        className={styles.floatingBlocks}
-      />
 
       {/* Animated Background Elements */}
       <div className={styles.backgroundElements}>
@@ -101,6 +91,63 @@ const PersonalizedWishlist = () => {
             ></div>
           ))}
         </div>
+      </div>
+
+      {/* Geometric Pattern Elements */}
+      <div className={styles.geometricPattern}>
+        {/* Large geometric elements - reduced to 2 */}
+        <div 
+          className={styles.geometricElementLarge}
+          style={{
+            top: '15%',
+            left: '8%',
+            animationDelay: '0s'
+          }}
+        ></div>
+        <div 
+          className={styles.geometricElementLarge}
+          style={{
+            bottom: '20%',
+            right: '8%',
+            animationDelay: '3s'
+          }}
+        ></div>
+
+        {/* Medium geometric elements - reduced to 2 */}
+        <div 
+          className={styles.geometricElement}
+          style={{
+            top: '35%',
+            right: '15%',
+            animationDelay: '1.5s'
+          }}
+        ></div>
+        <div 
+          className={styles.geometricElement}
+          style={{
+            top: '60%',
+            left: '5%',
+            animationDelay: '2s'
+          }}
+        ></div>
+
+        {/* Small geometric elements - reduced to 2 */}
+        <div 
+          className={styles.geometricElementSmall}
+          style={{
+            top: '25%',
+            right: '10%',
+            animationDelay: '0.8s'
+          }}
+        ></div>
+        <div 
+          className={styles.geometricElementSmall}
+          style={{
+            bottom: '20%',
+            left: '13%',
+            animationDelay: '3.8s'
+          }}
+        ></div>
       </div>
 
       <Container>
