@@ -1,0 +1,62 @@
+@use '../../../styles/variables' as *;
+@import '../../../styles/mixins';
+
+.hexagonMeshOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0.8;
+  mix-blend-mode: screen;
+}
+
+// Animation variants
+.hexagonMeshOverlay {
+  &.lowIntensity {
+    .canvas {
+      opacity: 0.3;
+    }
+  }
+
+  &.mediumIntensity {
+    .canvas {
+      opacity: 0.6;
+    }
+  }
+
+  &.highIntensity {
+    .canvas {
+      opacity: 0.9;
+    }
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .hexagonMeshOverlay {
+    .canvas {
+      opacity: 0.5; // Reduce intensity on mobile
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .hexagonMeshOverlay {
+    .canvas {
+      opacity: 0.4; // Further reduce on small screens
+    }
+  }
+}

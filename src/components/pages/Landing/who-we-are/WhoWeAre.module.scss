@@ -14,6 +14,17 @@
   overflow: hidden;
 }
 
+// Hexagon Mesh Overlay
+.hexagonOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
 // Floating Data Blocks
 .floatingBlocks {
   z-index: 1;
@@ -92,7 +103,7 @@
     strong {
       color: $secondary-blue;
       font-weight: $font-weight-semibold;
-      background: #35ebff;
+      background: linear-gradient(135deg, #FF6B35 0%, #FF9F1C 50%, #2EC4B6 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;

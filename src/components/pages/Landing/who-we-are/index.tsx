@@ -1,12 +1,18 @@
 'use client';
 import Button from '../../../ui/button';
+import HexagonMeshOverlay from '../../../ui/hexagon-mesh-overlay';
 import { Container, Row, Col } from 'react-bootstrap';
 import styles from './WhoWeAre.module.scss';
 
 const WhoWeAre = () => {
   return (
     <section className={styles.whoWeAre}>
-      
+      {/* Hexagon Mesh Overlay */}
+      <HexagonMeshOverlay 
+        intensity="medium" 
+        speed="slow" 
+        className={styles.hexagonOverlay}
+      />
 
       {/* Content Container */}
       <div

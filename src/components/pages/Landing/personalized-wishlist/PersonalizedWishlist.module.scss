@@ -10,7 +10,7 @@
   // min-height: 100vh;
   display: flex;
   align-items: center;
-  
+
   // Floating Data Blocks
   .floatingBlocks {
     z-index: 1;
@@ -26,6 +26,113 @@
   height: 100%;
   pointer-events: none;
   z-index: 0;
+}
+
+// Geometric Pattern Elements
+.geometricPattern {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.geometricElement {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  opacity: 0.3;
+  animation: geometricFloat 8s ease-in-out infinite;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    border: 2px solid #35ebff;
+    border-radius: 4px;
+    box-shadow: 
+      0 0 10px rgba(53, 235, 255, 0.4),
+      inset 0 0 10px rgba(53, 235, 255, 0.1);
+  }
+  
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 80%;
+    height: 80%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    border: 1px solid rgba(53, 235, 255, 0.6);
+    border-radius: 2px;
+    box-shadow: 0 0 5px rgba(53, 235, 255, 0.3);
+  }
+}
+
+.geometricElementLarge {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  opacity: 0.3;
+  animation: geometricFloat 8s ease-in-out infinite;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    border: 2px solid #35ebff;
+    border-radius: 4px;
+    box-shadow: 
+      0 0 10px rgba(53, 235, 255, 0.4),
+      inset 0 0 10px rgba(53, 235, 255, 0.1);
+  }
+  
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 80%;
+    height: 80%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    border: 1px solid rgba(53, 235, 255, 0.6);
+    border-radius: 2px;
+    box-shadow: 0 0 5px rgba(53, 235, 255, 0.3);
+  }
+}
+
+.geometricElementSmall {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  opacity: 0.4;
+  animation: geometricFloat 6s ease-in-out infinite;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    border: 1px solid #35ebff;
+    border-radius: 2px;
+    box-shadow: 
+      0 0 8px rgba(53, 235, 255, 0.3),
+      inset 0 0 8px rgba(53, 235, 255, 0.1);
+  }
 }
 
 
@@ -136,7 +243,10 @@
   font-weight: $font-weight-normal;
 
   strong {
-    color: #35ebff;
+    // color: #35ebff;
+    background: linear-gradient(135deg, #FF6B35 0%, #FF9F1C 50%, #2EC4B6 100%);
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     font-weight: $font-weight-semibold;
   }
 }
@@ -336,66 +446,81 @@
 
 // Animations
 @keyframes float1 {
+
   0%,
   100% {
     transform: translateY(0px) translateX(0px);
   }
+
   25% {
     transform: translateY(-20px) translateX(10px);
   }
+
   50% {
     transform: translateY(-10px) translateX(-5px);
   }
+
   75% {
     transform: translateY(-30px) translateX(15px);
   }
 }
 
 @keyframes float2 {
+
   0%,
   100% {
     transform: translateY(0px) translateX(0px);
   }
+
   33% {
     transform: translateY(-15px) translateX(-10px);
   }
+
   66% {
     transform: translateY(-25px) translateX(5px);
   }
 }
 
 @keyframes float3 {
+
   0%,
   100% {
     transform: translateY(0px) translateX(0px);
   }
+
   50% {
     transform: translateY(-20px) translateX(-8px);
   }
 }
 
 @keyframes meshMove {
+
   0%,
   100% {
     transform: translateX(0px) translateY(0px);
   }
+
   25% {
     transform: translateX(10px) translateY(-5px);
   }
+
   50% {
     transform: translateX(-5px) translateY(10px);
   }
+
   75% {
     transform: translateX(-10px) translateY(-5px);
   }
 }
 
 @keyframes particleFloat {
+
   0%,
   100% {
     transform: translateY(0px) translateX(0px);
     opacity: 0.4;
   }
+
   50% {
     transform: translateY(-20px) translateX(10px);
     opacity: 0.8;
@@ -403,32 +528,57 @@
 }
 
 @keyframes badgeGlow {
+
   0%,
   100% {
     box-shadow: 0 0 20px rgba(255, 107, 53, 0.2);
   }
+
   50% {
     box-shadow: 0 0 30px rgba(255, 107, 53, 0.4);
   }
 }
 
 @keyframes sparkle {
+
   0%,
   100% {
     transform: scale(1) rotate(0deg);
   }
+
   50% {
     transform: scale(1.1) rotate(180deg);
   }
 }
 
 @keyframes titleGlow {
+
   0%,
   100% {
     filter: brightness(1);
   }
+
   50% {
     filter: brightness(1.1);
+  }
+}
+
+@keyframes geometricFloat {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px) rotate(0deg);
+    opacity: 0.3;
+  }
+  25% {
+    transform: translateY(-15px) translateX(10px) rotate(90deg);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translateY(-10px) translateX(-5px) rotate(180deg);
+    opacity: 0.4;
+  }
+  75% {
+    transform: translateY(-20px) translateX(15px) rotate(270deg);
+    opacity: 0.6;
   }
 }
 
@@ -437,26 +587,31 @@
   .personalizedWishlistSection {
     padding: 30px 0px !important; // Keep seamless layout
   }
+
   .headerSection {
     margin-bottom: 20px;
   }
+
   .formHeader {
     margin-bottom: 0;
   }
+
   .formSection {
     padding: 16px 0;
   }
+
   .buttonWrapper {
     margin-top: 10px;
   }
+
   .mainCard {
     padding: 24px 16px;
   }
-  
+
   .title {
     font-size: 28px;
   }
-  
+
   .subtitle {
     font-size: $font-size-sm;
   }
