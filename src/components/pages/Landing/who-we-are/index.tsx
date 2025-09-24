@@ -1,10 +1,45 @@
 'use client';
+import { useRef, useEffect, useState } from 'react';
 import Button from '../../../ui/button';
 import { Container, Row, Col } from 'react-bootstrap';
 import NeuralNetworkBackground from '../../../ui/neural-network-background';
 import styles from './WhoWeAre.module.scss';
 
 const WhoWeAre = () => {
+  const contentRef = useRef<HTMLDivElement>(null);
+  const [exclusionZone, setExclusionZone] = useState({
+    x: 0,
+    y: 0,
+    width: 0,
+    height: 0,
+    densityReduction: 0.2
+  });
+
+  useEffect(() => {
+    const calculateExclusionZone = () => {
+      if (contentRef.current) {
+        const rect = contentRef.current.getBoundingClientRect();
+        const sectionRect = contentRef.current.closest('section')?.getBoundingClientRect();
+        
+        if (sectionRect) {
+          setExclusionZone({
+            x: rect.left - sectionRect.left,
+            y: rect.top - sectionRect.top,
+            width: rect.width,
+            height: rect.height,
+            densityReduction: 0.2
+          });
+        }
+      }
+    };
+
+    // Calculate on mount and resize
+    calculateExclusionZone();
+    window.addEventListener('resize', calculateExclusionZone);
+    
+    return () => window.removeEventListener('resize', calculateExclusionZone);
+  }, []);
+
   return (
     <section className={styles.whoWeAre}>
       {/* Neural Network Background Animation */}
@@ -14,10 +49,12 @@ const WhoWeAre = () => {
         opacity={0.6}
         color="rgba(0, 229, 255, 0.8)"
         mouseInfluence={80}
+        exclusionZones={[exclusionZone]}
       />
 
       {/* Content Container */}
       <div
+        ref={contentRef}
         className={styles.contentContainer}
         data-aos="fade-up"
         data-aos-delay="200"
