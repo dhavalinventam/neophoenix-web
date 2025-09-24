@@ -224,6 +224,10 @@ const NeuralNetworkBackground: React.FC<NeuralNetworkBackgroundProps> = ({
     ctx.translate(viewState.x, viewState.y);
     ctx.scale(viewState.scale, viewState.scale);
     
+    // Add subtle pulsing effect
+    const time = Date.now() * 0.001;
+    const pulseFactor = 1 + Math.sin(time * 2) * 0.1;
+    
     // Track which nodes have connections
     const connectedNodes = new Set<number>();
     
@@ -243,8 +247,9 @@ const NeuralNetworkBackground: React.FC<NeuralNetworkBackgroundProps> = ({
           const densityReduction = nodeIInExclusion || nodeJInExclusion ? 
             Math.min(nodes[i].densityReduction, nodes[j].densityReduction) : 1;
           
-          // Skip some connections in exclusion zones based on density reduction
-          if (Math.random() > densityReduction) {
+          // Reduce the impact of density reduction on connection visibility
+          // Only skip connections if density reduction is very low (less than 0.3)
+          if (densityReduction < 0.3 && Math.random() > densityReduction) {
             continue;
           }
           
@@ -252,15 +257,25 @@ const NeuralNetworkBackground: React.FC<NeuralNetworkBackgroundProps> = ({
           connectedNodes.add(i);
           connectedNodes.add(j);
           
-          // Draw the connection line with reduced opacity in exclusion zones
-          const baseOpacity = (1 - (distance / connectionDist)) * opacity * 0.5;
-          const connectionOpacity = baseOpacity * densityReduction;
-          ctx.strokeStyle = `rgba(0, 229, 255, ${connectionOpacity})`;
-          ctx.lineWidth = 0.5;
+          // Draw the connection line with improved visibility
+          const baseOpacity = (1 - (distance / connectionDist)) * opacity * 0.8;
+          const connectionOpacity = Math.max(baseOpacity * densityReduction * pulseFactor, 0.2); // Ensure minimum visibility with pulse
+          
+          // Create gradient for the connection line
+          const gradient = ctx.createLinearGradient(nodes[i].x, nodes[i].y, nodes[j].x, nodes[j].y);
+          gradient.addColorStop(0, `rgba(0, 229, 255, ${connectionOpacity})`);
+          gradient.addColorStop(0.5, `rgba(0, 255, 255, ${connectionOpacity * 1.2})`);
+          gradient.addColorStop(1, `rgba(0, 229, 255, ${connectionOpacity})`);
+          
+          ctx.strokeStyle = gradient;
+          ctx.lineWidth = 1.5 * pulseFactor; // Dynamic line width with pulse
+          ctx.shadowColor = 'rgba(0, 229, 255, 0.4)'; // Enhanced glow
+          ctx.shadowBlur = 3 * pulseFactor;
           ctx.beginPath();
           ctx.moveTo(nodes[i].x, nodes[i].y);
           ctx.lineTo(nodes[j].x, nodes[j].y);
           ctx.stroke();
+          ctx.shadowBlur = 0; // Reset shadow
         }
       }
     }

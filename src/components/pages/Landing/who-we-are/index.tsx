@@ -3,6 +3,7 @@ import { useRef, useEffect, useState } from 'react';
 import Button from '../../../ui/button';
 import { Container, Row, Col } from 'react-bootstrap';
 import NeuralNetworkBackground from '../../../ui/neural-network-background';
+import ParticlesBackground from '../../../ui/particles-background';
 import styles from './WhoWeAre.module.scss';
 
 const WhoWeAre = () => {
@@ -42,6 +43,12 @@ const WhoWeAre = () => {
 
   return (
     <section className={styles.whoWeAre}>
+      {/* Black Gradient Background */}
+      <div className={styles.gradientBackground} />
+      
+      {/* Particles Background */}
+      <ParticlesBackground />
+
       {/* Neural Network Background Animation */}
       <NeuralNetworkBackground 
         nodeCount={80}
