@@ -4,7 +4,7 @@ import { ButtonHTMLAttributes, ReactNode } from 'react';
 
 type Props = ButtonHTMLAttributes<HTMLButtonElement> & {
   label: string;
-  variant?: 'filled' | 'outline' | 'secondary';
+  variant?: 'filled' | 'outline';
   icon?: ReactNode;
   showIconOnly?: boolean;
 };
@@ -15,8 +15,6 @@ export default function Button({ label, variant = 'filled', className, icon, sho
       switch (variant) {
         case 'outline':
           return styles.btnOutline;
-        case 'secondary':
-          return styles.btnSecondary;
         default:
           return styles.btnFill;
       }

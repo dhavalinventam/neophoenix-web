@@ -86,7 +86,6 @@ export default function Header() {
                 className={styles.phoenixImage}
               />
             </div>
-            {/* <span className={styles.brandText}>NEOPHONIEX</span> */}
           </div>
         </Link>
 
@@ -95,9 +94,6 @@ export default function Header() {
           <Link className={styles.link} href="/" onClick={(e) => handleNavClick(e, '/')}>
             Home
           </Link>
-          {/* <Link className={styles.link} href="#services" onClick={(e) => handleNavClick(e, '#services')}>
-            Services
-          </Link> */}
           <Link className={styles.link} href="/contact" onClick={(e) => handleNavClick(e, '/contact')}>
             Contact
           </Link>
@@ -127,9 +123,6 @@ export default function Header() {
           <Link className={styles.mobileLink} href="/" onClick={(e) => handleNavClick(e, '/')}>
             Home
           </Link>
-          {/* <Link className={styles.mobileLink} href="#services" onClick={(e) => handleNavClick(e, '#services')}>
-            Services
-          </Link> */}
           <Link className={styles.mobileLink} href="/contact" onClick={(e) => handleNavClick(e, '/contact')}>
             Contact
           </Link>

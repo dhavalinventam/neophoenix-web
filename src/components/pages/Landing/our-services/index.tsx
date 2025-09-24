@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useEffect } from 'react';
-import Image from 'next/image';
 import styles from './OurServices.module.scss';
 import Button from '@/components/ui/button';
 
@@ -15,14 +14,12 @@ const DemoAnimation = () => {
 
   // Synchronized slide change function
   const changeSlide = (newIndex: number) => {
-    console.log('Changing slide to:', newIndex, 'Is mobile:', isMobile);
     setActiveVideoIndex(newIndex);
   };
 
   // Refresh function for mobile/tablet screens
   const handleRefresh = React.useCallback(() => {
     if (isMobile) {
-      console.log('Refreshing content for mobile/tablet');
       setActiveVideoIndex(0);
       setRefreshKey((prev) => prev + 1);
 
@@ -55,7 +52,6 @@ const DemoAnimation = () => {
   // Toggle auto-refresh function
   const toggleAutoRefresh = () => {
     setAutoRefreshEnabled((prev) => !prev);
-    console.log('Auto-refresh toggled:', !autoRefreshEnabled);
   };
 
   // Swipe functionality for mobile
@@ -97,7 +93,6 @@ const DemoAnimation = () => {
     if (typeof window !== 'undefined') {
       const isMobileDevice = checkMobile();
       setIsMobile(isMobileDevice);
-      console.log('Screen width:', window.innerWidth, 'Is mobile:', isMobileDevice);
 
       // For mobile/tablet, sync video navigation with content
       if (isMobileDevice) {
@@ -116,41 +111,27 @@ const DemoAnimation = () => {
     let autoRefreshInterval: NodeJS.Timeout;
     if (typeof window !== 'undefined' && checkMobile() && autoRefreshEnabled) {
       autoRefreshInterval = setInterval(() => {
-        console.log('Auto-refreshing content...');
         handleRefresh();
       }, 10000); // Auto-refresh every 10 seconds
     }
 
     // Intersection Observer for image swapping (only on desktop)
     if (typeof window !== 'undefined' && window.IntersectionObserver && checkScreenSize()) {
-      console.log('Setting up intersection observer for desktop');
       const options = {
         threshold: [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9], // More granular thresholds for 100vh sections
         rootMargin: '0px 0px -20% 0px', // Trigger when section is 20% from bottom for better 100vh detection
       };
 
       const targets = document.querySelectorAll('.cb');
-      console.log('Found targets:', targets.length);
       let currentActiveSection = 'image--1'; // Default to first image
 
       function handleIntersection(entries: IntersectionObserverEntry[]) {
-        console.log('Intersection observer triggered:', entries.length, 'entries');
         // Find the section with the highest intersection ratio and is currently visible
         let maxRatio = 0;
         let activeSection = currentActiveSection;
         let mostVisibleEntry = null;
 
         entries.forEach((entry) => {
-          console.log(
-            'Entry:',
-            entry.target,
-            'isIntersecting:',
-            entry.isIntersecting,
-            'ratio:',
-            entry.intersectionRatio,
-            'boundingRect:',
-            entry.boundingClientRect
-          );
 
           // For 100vh sections, we want to prioritize sections that are more than 50% visible
           if (entry.isIntersecting && entry.intersectionRatio > 0.5) {
@@ -182,7 +163,6 @@ const DemoAnimation = () => {
         // Only update if we have a new active section
         if (activeSection !== currentActiveSection && activeSection) {
           currentActiveSection = activeSection;
-          console.log('Switching to:', currentActiveSection, 'with ratio:', maxRatio);
 
           // Remove active class from all images and videos
           const allImages = document.querySelectorAll(
@@ -198,11 +178,6 @@ const DemoAnimation = () => {
             section.classList.remove(styles.active, 'active');
           });
 
-          // Remove active class from all progress dots
-          const allDots = document.querySelectorAll(`.${styles.progressDot}`);
-          allDots.forEach((dot) => {
-            dot.classList.remove(styles.active, 'active');
-          });
 
           // Add active class to current image/video based on index
           const imageIndex = parseInt(currentActiveSection.replace('image--', '')) - 1;
@@ -211,9 +186,6 @@ const DemoAnimation = () => {
           );
           if (images[imageIndex]) {
             images[imageIndex].classList.add(styles.active, 'active');
-            console.log('Media activated by index:', currentActiveSection, 'index:', imageIndex);
-          } else {
-            console.log('Media not found:', currentActiveSection, 'index:', imageIndex);
           }
 
           // Add active class to current section
@@ -222,24 +194,13 @@ const DemoAnimation = () => {
           );
           if (activeSectionElement) {
             activeSectionElement.classList.add(styles.active, 'active');
-            console.log('Section activated:', currentActiveSection);
           }
 
-          // Add active class to current progress dot
-          const activeProgressDot = document.querySelector(
-            `.${styles.progressDot}[data-section="${currentActiveSection}"]`
-          );
-          if (activeProgressDot) {
-            activeProgressDot.classList.add(styles.active, 'active');
-            console.log('Progress dot activated:', currentActiveSection);
-          }
         }
       }
 
       const observer = new IntersectionObserver(handleIntersection, options);
-      console.log('Observer created, observing targets:', targets.length);
       targets.forEach((target) => {
-        console.log('Observing target:', target);
         observer.observe(target);
       });
 
@@ -273,12 +234,6 @@ const DemoAnimation = () => {
           const currentImage = (mostVisibleSection as Element).getAttribute('data-swap');
           if (currentImage && currentImage !== currentActiveSection) {
             currentActiveSection = currentImage;
-            console.log(
-              'Scroll-based section change to:',
-              currentActiveSection,
-              'visibility:',
-              maxVisibility
-            );
 
             // Update active classes
             const allImages = document.querySelectorAll(
@@ -293,10 +248,6 @@ const DemoAnimation = () => {
               section.classList.remove(styles.active, 'active');
             });
 
-            const allDots = document.querySelectorAll(`.${styles.progressDot}`);
-            allDots.forEach((dot) => {
-              dot.classList.remove(styles.active, 'active');
-            });
 
             // Add active class to current image/video
             const imageIndex = parseInt(currentActiveSection.replace('image--', '')) - 1;
@@ -312,13 +263,6 @@ const DemoAnimation = () => {
               activeSectionElement.classList.add(styles.active, 'active');
             }
 
-            // Add active class to current progress dot
-            const activeProgressDot = document.querySelector(
-              `.${styles.progressDot}[data-section="${currentActiveSection}"]`
-            );
-            if (activeProgressDot) {
-              activeProgressDot.classList.add(styles.active, 'active');
-            }
           }
         }
       };
@@ -340,19 +284,12 @@ const DemoAnimation = () => {
         if (firstSection) {
           firstSection.classList.add(styles.active, 'active');
         }
-        const firstProgressDot = document.querySelector(
-          `.${styles.progressDot}[data-section="image--1"]`
-        );
-        if (firstProgressDot) {
-          firstProgressDot.classList.add(styles.active, 'active');
-        }
         // Set first image/video as active by index
         const images = document.querySelectorAll(
           `.${styles.locker__container} img, .${styles.locker__container} picture, .${styles.locker__container} video`
         );
         if (images[0]) {
           images[0].classList.add(styles.active, 'active');
-          console.log('First media activated by index');
         }
       }, 100);
 
@@ -580,10 +517,6 @@ const DemoAnimation = () => {
         {isMobile && (
           <div
             className={styles.arrowNavigation}
-            // data-aos="fade-up"
-            // data-aos-delay="600"
-            // data-aos-duration="1000"
-            // data-aos-easing="ease-out-cubic"
           >
             <button
               className={styles.arrowButton}

@@ -1,13 +1,7 @@
-import React from 'react';
 import HeroSection from './hero-section';
 import WhoWeAre from './who-we-are';
-// import HowItWorks from './how-it-works';
 import PersonalizedWishlist from './personalized-wishlist';
 import DemoAnimation from './our-services';
-// import Testimonials from './testimonials';
-// import FAQ from './faq';
-// import CtaBanner from './cta-banner';
-// import FeatureComparison from './Feature-Comparison';
 
 const LandingPage = () => {
   return (
@@ -15,11 +9,6 @@ const LandingPage = () => {
       <HeroSection />
       <DemoAnimation />
       <WhoWeAre />
-      {/* <HowItWorks /> */}
-      {/* <Testimonials /> */}
-      {/* <FAQ /> */}
-      {/* <FeatureComparison /> */}
-      {/* <CtaBanner /> */}
       <PersonalizedWishlist />
     </>
   );

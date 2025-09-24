@@ -64,6 +64,27 @@
     min-width: 100px;
     text-align: center;
   }
+
+  .accept {
+    background: #007bff;
+    color: white;
+    border: none;
+
+    &:hover {
+      background: #0056b3;
+    }
+  }
+
+  .learnMore {
+    background: transparent;
+    color: #007bff;
+    border: 1px solid #007bff;
+
+    &:hover {
+      background: #007bff;
+      color: white;
+    }
+  }
 }
 
 // Mobile responsiveness

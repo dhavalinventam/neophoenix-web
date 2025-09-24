@@ -8,33 +8,16 @@
   overflow: hidden;
   z-index: 1;
   
-  // Floating Data Blocks
-  .floatingBlocks {
-    z-index: 1;
-  }
 }
 
 // Animated Background Elements
 .backgroundElements {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 0;
+  @include background-elements;
 }
 
 // Geometric Pattern Elements
 .geometricPattern {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 1;
-  overflow: hidden;
+  @include geometric-pattern;
 }
 
 .geometricElement {
@@ -166,20 +149,13 @@
 // =============================================================================
 
 .heroSection {
-  // background: 
-  //   radial-gradient(circle at 20% 80%, rgba(255, 107, 53, 0.15) 0%, transparent 50%), // Use new orange
-  //   radial-gradient(circle at 80% 20%, rgba(67, 97, 238, 0.15) 0%, transparent 50%), // Use new blue
-  //   $gradient-background;
   position: relative;
   overflow: hidden;
   min-height: 400px;
-  // padding-top: 120px; 
-  // padding-bottom: 70px; 
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: $font-primary;
-  // cursor: none;
 }
 
 .heroContent {
@@ -194,10 +170,6 @@
       @include section-title-responsive;
     }
   
-    .gradientText {
-      color: $text-white;
-      animation: gradientShift 3s $ease-in-out infinite;
-    }
   
     .description {
       @include section-subtitle-responsive;
@@ -238,7 +210,6 @@
     left: 0;
     right: 0;
     bottom: 0;
-    // background: linear-gradient(135deg, rgba(255, 107, 53, 0.05) 0%, rgba(255, 159, 28, 0.05) 100%);
     border-radius: 24px;
   }
 }
@@ -324,11 +295,6 @@
   line-height: 1.4;
 }
 
-.methodNote {
-  font-size: $font-size-xs;
-  color: rgba(255, 255, 255, 0.6);
-  font-style: italic;
-}
 
 .socialSection {
   margin-top: 24px;
@@ -404,11 +370,6 @@
 // =============================================================================
 
 .formSection {
-  // background: rgba(255, 255, 255, 0.02);
-  // border: 1px solid rgba(255, 255, 255, 0.05);
-  // border-radius: 20px;
-  // padding: 24px;
-  // backdrop-filter: blur(10px);
 }
 
 .formHeader {
@@ -439,27 +400,20 @@
 }
 
 .formGroup {
+  @include form-group;
   display: flex;
   flex-direction: column;
   margin-bottom: 0;
 }
 
 .label {
-  font-family: $font-primary;
-  font-size: $font-size-sm;
+  @include form-label;
   font-weight: $font-weight-semibold;
   color: #ffffff;
-  margin-bottom: 8px;
-  display: block;
 }
 
 .inputWrapper {
-  position: relative;
-
-  &:focus-within .inputGlow {
-    opacity: 1;
-    transform: scale(1.02);
-  }
+  @include input-wrapper;
 }
 
 .input {
@@ -493,7 +447,6 @@
     transform: translateY(-1px);
   }
 
-  // Ensure selected text is visible
   &:not(:placeholder-shown) {
     color: $text-white !important;
     background: rgba(255, 255, 255, 0.05) !important;
@@ -514,40 +467,9 @@
   z-index: -1;
 }
 
-.formCheck {
-  display: flex;
-  align-items: flex-start;
-  gap: 8px;
-  margin-bottom: 16px;
-}
 
-.checkbox {
-  width: 16px;
-  height: 16px;
-  margin-top: 2px;
-  accent-color: $primary-blue;
-  cursor: pointer;
-}
 
-.checkboxLabel {
-  font-size: $font-size-xs;
-  color: rgba(255, 255, 255, 0.8);
-  line-height: 1.4;
-  cursor: pointer;
-  margin: 0;
-}
 
-.privacyLink {
-  color: $primary-blue;
-  text-decoration: underline;
-  transition: all $duration-normal $ease-out;
-  font-weight: $font-weight-medium;
-
-  &:hover {
-    color: lighten($primary-blue, 15%);
-          text-shadow: 0 0 8px rgba(255, 107, 53, 0.4);
-  }
-}
 
 .buttonWrapper {
   display: flex;
@@ -580,7 +502,6 @@
   }
 }
 
-// Custom button styles removed - now using common Button component
 
 // =============================================================================
 // ANIMATIONS
@@ -674,13 +595,6 @@
     padding: 24px;
   }
   
-  .heroTitle {
-    font-size: clamp(28px, 3.5vw, 40px);
-  }
-  
-  .heroSubtitle {
-    font-size: clamp(14.4px, 1.25vw, 16px);
-  }
   
   .infoTitle,
   .formTitle {
@@ -750,24 +664,6 @@
     margin-bottom: 8px;
   }
   
-  .formLabel {
-    margin-bottom: 4px;
-  }
-  
-  .formInput,
-  .formTextarea {
-    padding: 8px 12px;
-    font-size: $font-size-xs;
-  }
-  
-  .formCheck {
-    margin-bottom: 12px;
-  }
-  
-  .formSubmit button {
-    padding: 10px 24px;
-    font-size: $font-size-sm;
-  }
 }
 
 @media (max-width: 576px) {
@@ -785,13 +681,6 @@
     min-height: 44px;
   }
   
-  .heroTitle {
-    font-size: 28px;
-  }
-  
-  .heroSubtitle {
-    font-size: 14.4px;
-  }
   
   .infoTitle,
   .formTitle {
@@ -817,7 +706,4 @@
     margin-bottom: 6px;
   }
   
-  .formLabel {
-    margin-bottom: 4px;
-  }
 }

@@ -86,43 +86,6 @@
   }
 }
 
-.btnSecondary {
-  display: flex;
-  align-items: center;
-  line-height: 1;
-  background: linear-gradient(90deg, #ff6b35 0%, #ff9f1c 50%, #cf9c56 100%);
-  max-width: max-content;
-  max-height: max-content;
-  color: $text-white; // White text (#FFFFFF)
-  border: none;
-  padding: 12px 24px;
-  border-radius: 32px;
-  font-weight: $font-weight-bold; // Bold typography
-  font-size: 16px;
-  cursor: pointer;
-  transition: all 0.3s ease-in-out;
-  min-height: 43px;
-  position: relative;
-  overflow: hidden;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-
-  &:hover {
-    background: linear-gradient(90deg, #ff6b35 0%, #ff9f1c 50%, #cf9c56 100%);
-    box-shadow:
-      0 8px 25px rgba(0, 0, 0, 0.3),
-      0 0 20px rgba(255, 107, 53, 0.3),
-      // Soft orange glow
-      0 0 40px rgba(255, 159, 28, 0.2); // Soft gold glow
-    transform: translateY(-2px);
-  }
-
-  &:focus {
-    outline: none;
-    box-shadow:
-      0 0 0 3px rgba(255, 107, 53, 0.3),
-      0 8px 25px rgba(0, 0, 0, 0.3);
-  }
-}
 
 // Icon and label styles
 .icon {
@@ -164,23 +127,11 @@
   }
 }
 
-.btnSecondary:has(.icon:only-child) {
-  padding: 12px;
-  min-width: 48px;
-  justify-content: center;
-
-  .icon {
-    margin-right: 0;
-  }
-}
 @media (max-width: 992px) {
   .btnFill {
     font-size: 14px;  
   }
   .btnOutline {
-    font-size: 14px;
-  }
-  .btnSecondary {
     font-size: 14px;
   }
 }

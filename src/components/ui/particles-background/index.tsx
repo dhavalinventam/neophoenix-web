@@ -36,8 +36,6 @@ const ParticlesBackground: React.FC = () => {
         await loadParticlesScript();
 
         if (window.particlesJS && particlesRef.current) {
-          console.log('Initializing particles with reduced center density...');
-
           // Small delay to ensure DOM is ready
           setTimeout(() => {
             try {
@@ -131,12 +129,12 @@ const ParticlesBackground: React.FC = () => {
                 retina_detect: true,
               });
             } catch (initError) {
-              console.error('Error initializing particles:', initError);
+              // Error initializing particles
             }
           }, 100); // 100ms delay
         }
       } catch (error) {
-        console.error('Error initializing particles:', error);
+        // Error initializing particles
       }
     };
 
