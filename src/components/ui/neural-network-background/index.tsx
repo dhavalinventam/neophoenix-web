@@ -18,6 +18,14 @@ interface Node {
   originalZ: number;
 }
 
+interface ExclusionZone {
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+  densityReduction?: number; // 0-1, where 0 = no nodes, 1 = normal density
+}
+
 interface NeuralNetworkBackgroundProps {
   className?: string;
   nodeCount?: number;
@@ -25,6 +33,7 @@ interface NeuralNetworkBackgroundProps {
   opacity?: number;
   color?: string;
   mouseInfluence?: number;
+  exclusionZones?: ExclusionZone[];
 }
 
 interface ViewState {
@@ -39,7 +48,8 @@ const NeuralNetworkBackground: React.FC<NeuralNetworkBackgroundProps> = ({
   maxConnectionDist = 150,
   opacity = 1,
   color = 'rgba(0, 229, 255, 0.8)',
-  mouseInfluence = 100
+  mouseInfluence = 100,
+  exclusionZones = []
 }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -57,6 +67,23 @@ const NeuralNetworkBackground: React.FC<NeuralNetworkBackgroundProps> = ({
   const lastMousePos = useRef({ x: 0, y: 0 });
   const canvasContainerRef = useRef<HTMLDivElement>(null);
 
+  // Helper function to check if a point is within any exclusion zone
+  const isInExclusionZone = (x: number, y: number): boolean => {
+    return exclusionZones.some(zone => 
+      x >= zone.x && x <= zone.x + zone.width &&
+      y >= zone.y && y <= zone.y + zone.height
+    );
+  };
+
+  // Helper function to get density reduction factor for a point
+  const getDensityReduction = (x: number, y: number): number => {
+    const zone = exclusionZones.find(zone => 
+      x >= zone.x && x <= zone.x + zone.width &&
+      y >= zone.y && y <= zone.y + zone.height
+    );
+    return zone ? (zone.densityReduction ?? 0.3) : 1;
+  };
+
   class Node3D {
     x: number;
     y: number;
@@ -69,6 +96,8 @@ const NeuralNetworkBackground: React.FC<NeuralNetworkBackgroundProps> = ({
     originalX: number;
     originalY: number;
     originalZ: number;
+    isInExclusionZone: boolean;
+    densityReduction: number;
 
     constructor(x: number, y: number, z: number) {
       this.originalX = x;
@@ -80,6 +109,10 @@ const NeuralNetworkBackground: React.FC<NeuralNetworkBackgroundProps> = ({
       this.vx = Math.random() * 0.5 - 0.25;
       this.vy = Math.random() * 0.5 - 0.25;
       this.vz = Math.random() * 0.5 - 0.25;
+      
+      // Check if node is in exclusion zone
+      this.isInExclusionZone = isInExclusionZone(x, y);
+      this.densityReduction = getDensityReduction(x, y);
       
       // Use provided color with variations
       this.color = color;
@@ -119,15 +152,66 @@ const NeuralNetworkBackground: React.FC<NeuralNetworkBackgroundProps> = ({
     if (!canvasRef.current) return;
     
     const canvas = canvasRef.current;
-    const count = isMobile ? Math.floor(nodeCount * 0.6) : nodeCount;
+    const baseCount = isMobile ? Math.floor(nodeCount * 0.6) : nodeCount;
     nodesRef.current = [];
     
-    for (let i = 0; i < count; i++) {
-      nodesRef.current.push(new Node3D(
-        Math.random() * canvas.width,
-        Math.random() * canvas.height,
-        Math.random() * 1000 - 500
-      ));
+    // Calculate total area and exclusion zone areas
+    const totalArea = canvas.width * canvas.height;
+    let exclusionArea = 0;
+    
+    exclusionZones.forEach(zone => {
+      exclusionArea += zone.width * zone.height;
+    });
+    
+    const normalArea = totalArea - exclusionArea;
+    const exclusionDensity = exclusionZones.length > 0 ? 
+      (exclusionZones[0].densityReduction ?? 0.3) : 1;
+    
+    // Calculate node counts for each area
+    const normalNodeCount = Math.floor(baseCount * (normalArea / totalArea));
+    const exclusionNodeCount = Math.floor(baseCount * (exclusionArea / totalArea) * exclusionDensity);
+    
+    // Generate nodes for normal areas
+    for (let i = 0; i < normalNodeCount; i++) {
+      let x, y;
+      let attempts = 0;
+      
+      // Try to place node outside exclusion zones
+      do {
+        x = Math.random() * canvas.width;
+        y = Math.random() * canvas.height;
+        attempts++;
+      } while (isInExclusionZone(x, y) && attempts < 50);
+      
+      // If we couldn't find a spot outside exclusion zones, place it anyway
+      if (attempts >= 50) {
+        x = Math.random() * canvas.width;
+        y = Math.random() * canvas.height;
+      }
+      
+      nodesRef.current.push(new Node3D(x, y, Math.random() * 1000 - 500));
+    }
+    
+    // Generate nodes for exclusion areas (with reduced density)
+    for (let i = 0; i < exclusionNodeCount; i++) {
+      let x, y;
+      let attempts = 0;
+      
+      // Try to place node inside exclusion zones
+      do {
+        const zone = exclusionZones[Math.floor(Math.random() * exclusionZones.length)];
+        x = zone.x + Math.random() * zone.width;
+        y = zone.y + Math.random() * zone.height;
+        attempts++;
+      } while (!isInExclusionZone(x, y) && attempts < 50);
+      
+      // If we couldn't find a spot inside exclusion zones, place it randomly
+      if (attempts >= 50) {
+        x = Math.random() * canvas.width;
+        y = Math.random() * canvas.height;
+      }
+      
+      nodesRef.current.push(new Node3D(x, y, Math.random() * 1000 - 500));
     }
   };
 
@@ -140,6 +224,10 @@ const NeuralNetworkBackground: React.FC<NeuralNetworkBackgroundProps> = ({
     ctx.translate(viewState.x, viewState.y);
     ctx.scale(viewState.scale, viewState.scale);
     
+    // Add subtle pulsing effect
+    const time = Date.now() * 0.001;
+    const pulseFactor = 1 + Math.sin(time * 2) * 0.1;
+    
     // Track which nodes have connections
     const connectedNodes = new Set<number>();
     
@@ -151,18 +239,43 @@ const NeuralNetworkBackground: React.FC<NeuralNetworkBackgroundProps> = ({
         const distance = Math.sqrt(dx * dx + dy * dy);
 
         if (distance < connectionDist) {
+          // Check if either node is in an exclusion zone
+          const nodeIInExclusion = nodes[i].isInExclusionZone;
+          const nodeJInExclusion = nodes[j].isInExclusionZone;
+          
+          // Apply density reduction for connections involving exclusion zone nodes
+          const densityReduction = nodeIInExclusion || nodeJInExclusion ? 
+            Math.min(nodes[i].densityReduction, nodes[j].densityReduction) : 1;
+          
+          // Reduce the impact of density reduction on connection visibility
+          // Only skip connections if density reduction is very low (less than 0.3)
+          if (densityReduction < 0.3 && Math.random() > densityReduction) {
+            continue;
+          }
+          
           // Mark nodes as connected
           connectedNodes.add(i);
           connectedNodes.add(j);
           
-          // Draw the connection line
-          const connectionOpacity = (1 - (distance / connectionDist)) * opacity * 0.5;
-          ctx.strokeStyle = `rgba(0, 229, 255, ${connectionOpacity})`;
-          ctx.lineWidth = 0.5;
+          // Draw the connection line with improved visibility
+          const baseOpacity = (1 - (distance / connectionDist)) * opacity * 0.8;
+          const connectionOpacity = Math.max(baseOpacity * densityReduction * pulseFactor, 0.2); // Ensure minimum visibility with pulse
+          
+          // Create gradient for the connection line
+          const gradient = ctx.createLinearGradient(nodes[i].x, nodes[i].y, nodes[j].x, nodes[j].y);
+          gradient.addColorStop(0, `rgba(0, 229, 255, ${connectionOpacity})`);
+          gradient.addColorStop(0.5, `rgba(0, 255, 255, ${connectionOpacity * 1.2})`);
+          gradient.addColorStop(1, `rgba(0, 229, 255, ${connectionOpacity})`);
+          
+          ctx.strokeStyle = gradient;
+          ctx.lineWidth = 1.5 * pulseFactor; // Dynamic line width with pulse
+          ctx.shadowColor = 'rgba(0, 229, 255, 0.4)'; // Enhanced glow
+          ctx.shadowBlur = 3 * pulseFactor;
           ctx.beginPath();
           ctx.moveTo(nodes[i].x, nodes[i].y);
           ctx.lineTo(nodes[j].x, nodes[j].y);
           ctx.stroke();
+          ctx.shadowBlur = 0; // Reset shadow
         }
       }
     }
@@ -181,9 +294,13 @@ const NeuralNetworkBackground: React.FC<NeuralNetworkBackgroundProps> = ({
           }
         }
         
-        // Draw dot with size based on connection count
-        const size = 1 + (connectionCount * 0.3);
-        const alpha = 0.3 + (connectionCount * 0.05);
+        // Apply density reduction for nodes in exclusion zones
+        const densityReduction = node.densityReduction;
+        const size = (1 + (connectionCount * 0.3)) * densityReduction;
+        const alpha = (0.3 + (connectionCount * 0.05)) * densityReduction;
+        
+        // Skip drawing very small nodes in exclusion zones
+        if (size < 0.5) return;
         
         // Outer glow
         const gradient = ctx.createRadialGradient(
@@ -215,9 +332,8 @@ const NeuralNetworkBackground: React.FC<NeuralNetworkBackgroundProps> = ({
     
     if (!canvas || !ctx) return;
 
-    // Clear canvas with a slight fade effect for trails
-    ctx.fillStyle = 'rgba(10, 10, 20, 0.15)';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    // Clear canvas with transparent background
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
     
     // Update nodes
     nodesRef.current.forEach(node => {
