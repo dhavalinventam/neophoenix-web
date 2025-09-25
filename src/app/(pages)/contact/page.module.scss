@@ -14,152 +14,6 @@
   }
 }
 
-// Animated Background Elements
-.backgroundElements {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 0;
-}
-
-// Geometric Pattern Elements
-.geometricPattern {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 1;
-  overflow: hidden;
-}
-
-.geometricElement {
-  position: absolute;
-  width: 60px;
-  height: 60px;
-  opacity: 0.3;
-  animation: geometricFloat 8s ease-in-out infinite;
-  
-  &::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 100%;
-    height: 100%;
-    transform: translate(-50%, -50%) rotate(45deg);
-    border: 2px solid #35ebff;
-    border-radius: 4px;
-    box-shadow: 
-      0 0 10px rgba(53, 235, 255, 0.4),
-      inset 0 0 10px rgba(53, 235, 255, 0.1);
-  }
-  
-  &::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 80%;
-    height: 80%;
-    transform: translate(-50%, -50%) rotate(45deg);
-    border: 1px solid rgba(53, 235, 255, 0.6);
-    border-radius: 2px;
-    box-shadow: 0 0 5px rgba(53, 235, 255, 0.3);
-  }
-}
-
-.geometricElementLarge {
-  position: absolute;
-  width: 60px;
-  height: 60px;
-  opacity: 0.3;
-  animation: geometricFloat 8s ease-in-out infinite;
-  
-  &::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 100%;
-    height: 100%;
-    transform: translate(-50%, -50%) rotate(45deg);
-    border: 2px solid #35ebff;
-    border-radius: 4px;
-    box-shadow: 
-      0 0 10px rgba(53, 235, 255, 0.4),
-      inset 0 0 10px rgba(53, 235, 255, 0.1);
-  }
-  
-  &::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 80%;
-    height: 80%;
-    transform: translate(-50%, -50%) rotate(45deg);
-    border: 1px solid rgba(53, 235, 255, 0.6);
-    border-radius: 2px;
-    box-shadow: 0 0 5px rgba(53, 235, 255, 0.3);
-  }
-}
-
-.geometricElementSmall {
-  position: absolute;
-  width: 40px;
-  height: 40px;
-  opacity: 0.4;
-  animation: geometricFloat 6s ease-in-out infinite;
-  
-  &::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 100%;
-    height: 100%;
-    transform: translate(-50%, -50%) rotate(45deg);
-    border: 1px solid #35ebff;
-    border-radius: 2px;
-    box-shadow: 
-      0 0 8px rgba(53, 235, 255, 0.3),
-      inset 0 0 8px rgba(53, 235, 255, 0.1);
-  }
-}
-
-.gradientMesh {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  animation: meshMove 20s ease-in-out infinite;
-}
-
-.particleField {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.particle {
-  position: absolute;
-  width: 2px;
-  height: 2px;
-  background: rgba(255, 107, 53, 0.4);
-  border-radius: 50%;
-  animation: particleFloat var(--duration) ease-in-out infinite;
-  animation-delay: var(--delay);
-  left: var(--x);
-  top: var(--y);
-}
 
 // =============================================================================
 // HERO SECTION
@@ -179,6 +33,7 @@
   align-items: center;
   justify-content: center;
   font-family: $font-primary;
+  z-index: 1;
   // cursor: none;
 }
 
@@ -230,6 +85,7 @@
   height: fit-content;
   position: relative;
   overflow: hidden;
+  min-height: 462px;
 
   &::before {
     content: '';
@@ -240,6 +96,13 @@
     bottom: 0;
     // background: linear-gradient(135deg, rgba(255, 107, 53, 0.05) 0%, rgba(255, 159, 28, 0.05) 100%);
     border-radius: 24px;
+  }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 992px) {
+  .infoSection {
+    min-height: auto;
+    margin-bottom: 30px;
   }
 }
 
@@ -586,53 +449,6 @@
 // ANIMATIONS
 // =============================================================================
 
-@keyframes meshMove {
-  0%,
-  100% {
-    transform: translateX(0px) translateY(0px);
-  }
-  25% {
-    transform: translateX(10px) translateY(-5px);
-  }
-  50% {
-    transform: translateX(-5px) translateY(10px);
-  }
-  75% {
-    transform: translateX(-10px) translateY(-5px);
-  }
-}
-
-@keyframes particleFloat {
-  0%,
-  100% {
-    transform: translateY(0px) translateX(0px);
-    opacity: 0.4;
-  }
-  50% {
-    transform: translateY(-20px) translateX(10px);
-    opacity: 0.8;
-  }
-}
-
-@keyframes geometricFloat {
-  0%, 100% {
-    transform: translateY(0px) translateX(0px) rotate(0deg);
-    opacity: 0.3;
-  }
-  25% {
-    transform: translateY(-15px) translateX(10px) rotate(90deg);
-    opacity: 0.5;
-  }
-  50% {
-    transform: translateY(-10px) translateX(-5px) rotate(180deg);
-    opacity: 0.4;
-  }
-  75% {
-    transform: translateY(-20px) translateX(15px) rotate(270deg);
-    opacity: 0.6;
-  }
-}
-
 @keyframes pulse {
   0%, 100% {
     opacity: 1;
@@ -695,15 +511,15 @@
     }
   }
   
-  .methodIcon {
-    width: 32px;
-    height: 32px;
-  }
+  // .methodIcon {
+  //   width: 32px;
+  //   height: 32px;
+  // }
   
-  .socialIcon {
-    width: 32px;
-    height: 32px;
-  }
+  // .socialIcon {
+  //   width: 32px;
+  //   height: 32px;
+  // }
 }
 
 @media (max-width: 768px) {  
@@ -724,10 +540,10 @@
     gap: 12px;
   }
   
-  .methodIcon {
-    width: 28px;
-    height: 28px;
-  }
+  // .methodIcon {
+  //   width: 28px;
+  //   height: 28px;
+  // }
   
   .methodTitle {
     font-size: $font-size-sm;
@@ -741,10 +557,10 @@
     gap: 8px;
   }
   
-  .socialIcon {
-    width: 28px;
-    height: 28px;
-  }
+  // .socialIcon {
+  //   width: 28px;
+  //   height: 28px;
+  // }
   
   .formGroup {
     margin-bottom: 8px;

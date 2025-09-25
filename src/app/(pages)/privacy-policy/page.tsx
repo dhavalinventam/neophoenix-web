@@ -16,7 +16,7 @@ export default function PrivacyPolicyPage() {
                 <p className={styles.description}>
                   Your privacy is important to us. This policy explains how we collect, use, and protect your information.
                 </p>
-                <p className={styles.lastUpdated}>Last updated: {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+                {/* <p className={styles.lastUpdated}>Last updated: {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p> */}
               </div>
             </div>
           </Container>
@@ -146,7 +146,7 @@ export default function PrivacyPolicyPage() {
                   </p>
                 </div>
 
-                <h2 className={styles.sectionTitle}>11. Contact Us</h2>
+                {/* <h2 className={styles.sectionTitle}>11. Contact Us</h2>
                 <div className={styles.sectionContent}>
                   <p className={styles.paragraph}>
                     If you have any questions about this privacy policy or our data practices, please contact us:
@@ -156,7 +156,7 @@ export default function PrivacyPolicyPage() {
                     <p><strong>Address:</strong> Neophoenix, [Your Business Address]</p>
                     <p><strong>Phone:</strong> [Your Contact Number]</p>
                   </div>
-                </div>
+                </div> */}
               </Col>
             </Row>
           </Container>
