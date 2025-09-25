@@ -12,6 +12,76 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 80px; // Account for fixed header
+  scroll-snap-type: y proximity; // Optional: adds snap scrolling
+}
+
+/* Enhanced smooth scrolling for better performance */
+* {
+  scroll-behavior: smooth;
+}
+
+/* Optimize scrolling performance */
+body {
+  -webkit-overflow-scrolling: touch; // Smooth scrolling on iOS
+  scroll-behavior: smooth;
+}
+
+/* GPU acceleration for smooth animations */
+[data-aos] {
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Optimize elements that will be animated */
+.heroSection,
+.whoWeAre,
+.ourServices,
+.personalizedWishlistSection,
+.footer {
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+/* Smooth scrolling optimizations */
+.smooth-scroll {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Optimize fixed elements for better scroll performance */
+.fixed,
+.sticky {
+  will-change: transform;
+  backface-visibility: hidden;
+  transform: translateZ(0); // Force GPU acceleration
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Optimize scroll snap points */
+.scroll-snap-container {
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+  height: 100vh;
+}
+
+.scroll-snap-item {
+  scroll-snap-align: start;
+  scroll-snap-stop: normal;
 }
 
 /* AOS Animation Improvements */

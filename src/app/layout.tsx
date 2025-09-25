@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Open_Sans, Poppins } from "next/font/google";
 import "@/styles/global.scss";
 import Layout from "@/components/layout";
+import SmoothScrollProvider from "@/components/providers/SmoothScrollProvider";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -50,7 +51,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${poppins.variable} ${openSans.variable}`}>
       <body>
-        <Layout>{children}</Layout>
+        <SmoothScrollProvider>
+          <Layout>{children}</Layout>
+        </SmoothScrollProvider>
       </body>
     </html>
   );

@@ -16,7 +16,7 @@ export default function TermsConditionsPage() {
                 <p className={styles.description}>
                   Please read these terms carefully before using our AI tools directory platform.
                 </p>
-                <p className={styles.lastUpdated}>Last updated: {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+                {/* <p className={styles.lastUpdated}>Last updated: {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p> */}
               </div>
             </div>
           </Container>
@@ -168,7 +168,7 @@ export default function TermsConditionsPage() {
                   </p>
                 </div>
 
-                <h2 className={styles.sectionTitle}>15. Contact Information</h2>
+                {/* <h2 className={styles.sectionTitle}>15. Contact Information</h2>
                 <div className={styles.sectionContent}>
                   <p className={styles.paragraph}>
                     If you have any questions about these terms and conditions, please contact us:
@@ -178,7 +178,7 @@ export default function TermsConditionsPage() {
                     <p><strong>Address:</strong> Neophoenix, [Your Business Address]</p>
                     <p><strong>Phone:</strong> [Your Contact Number]</p>
                   </div>
-                </div>
+                </div> */}
               </Col>
             </Row>
           </Container>
