@@ -20,7 +20,7 @@ const HeroSection = () => {
         <div className={styles.gradientBackground} />
         
         {/* Particles Background */}
-        <ParticlesBackground />
+        <ParticlesBackground id="particles-hero" />
 
         {/* Content Container */}
         <div className={styles.contentContainer}>

@@ -193,7 +193,7 @@ export default function ContactPage() {
                       </div>
                     </div>
 
-                    <div className={styles.contactMethod}>
+                    {/* <div className={styles.contactMethod}>
                       <div className={styles.methodIcon}>
                         <svg
                           width="24"
@@ -212,7 +212,7 @@ export default function ContactPage() {
                         <h3 className={styles.methodTitle}>Call Us</h3>
                         <p className={styles.methodText}>+1 (XXX) XXX-XXXX</p>
                       </div>
-                    </div>
+                    </div> */}
                   </div>
 
                   <div className={styles.socialSection}>

@@ -6,27 +6,27 @@
   height: 100%;
   z-index: 1; // Behind content but above background
   pointer-events: none; // Allow clicks to pass through to content
-  opacity: 0.85; // Slightly increased opacity to show enhanced neural network density
+  opacity: 0.9; // Increased opacity to make particles more visible
   
-  // Create a radial gradient mask to reduce particle visibility in center area
+  // Create a subtle radial gradient mask to reduce particle visibility in center area
   mask: radial-gradient(
     ellipse at center,
     transparent 0%,
-    transparent 30%,
-    rgba(0, 0, 0, 0.3) 40%,
-    rgba(0, 0, 0, 0.6) 50%,
-    rgba(0, 0, 0, 0.8) 60%,
-    black 70%,
+    transparent 50%,
+    rgba(0, 0, 0, 0.2) 60%,
+    rgba(0, 0, 0, 0.4) 70%,
+    rgba(0, 0, 0, 0.6) 80%,
+    black 90%,
     black 100%
   );
   -webkit-mask: radial-gradient(
     ellipse at center,
     transparent 0%,
-    transparent 30%,
-    rgba(0, 0, 0, 0.3) 40%,
-    rgba(0, 0, 0, 0.6) 50%,
-    rgba(0, 0, 0, 0.8) 60%,
-    black 70%,
+    transparent 50%,
+    rgba(0, 0, 0, 0.2) 60%,
+    rgba(0, 0, 0, 0.4) 70%,
+    rgba(0, 0, 0, 0.6) 80%,
+    black 90%,
     black 100%
   );
 }

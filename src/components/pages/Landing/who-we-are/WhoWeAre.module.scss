@@ -7,7 +7,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1;
+  z-index: 10;
   font-family: $font-primary;
   padding-top: 80px !important;
   padding-bottom: 50px !important;
@@ -39,21 +39,6 @@
   }
 }
 
-// Hexagon Mesh Overlay
-.hexagonOverlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-  pointer-events: none;
-}
-
-// Floating Data Blocks
-.floatingBlocks {
-  z-index: 1;
-}
 
 
 
@@ -63,26 +48,10 @@
 // Content Container
 .contentContainer {
   position: relative;
-  z-index: 11; // Ensure content is above neural network background
+  z-index: 11; // Ensure content is above particles background
   width: 100%;
   text-align: center;
   isolation: isolate; // Create new stacking context for content
-
-  // Add mask for better text visibility
-  &::before {
-    content: '';
-    position: absolute;
-    top: -80px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100%;
-    height: 450px;
-    background: radial-gradient(ellipse at center, rgb(19 19 19 / 30%) 0%, rgb(19 19 19 / 40%) 30%, rgb(19 19 19 / 50%) 40%, rgb(17 17 17 / 60%) 50%, rgb(18 18 18 / 70%) 60%, #12121200 70%, #13131300 100%);
-    backdrop-filter: blur(2px);
-    border-radius: 20px;
-    z-index: -1;
-    pointer-events: none;
-  }
 }
 
 // Section Title
@@ -128,14 +97,14 @@
   text-align: center;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); // Add text shadow for better visibility
   position: relative;
-  z-index: 1; // Ensure text is above the mask
+  z-index: 12; // Ensure text is above particles background
 }
 
 // Description
 .description {
   margin-bottom: 3rem;
   position: relative;
-  z-index: 1; // Ensure text is above the mask
+  z-index: 12; // Ensure text is above particles background
 
   p {
     font-size: $font-size-lg; // Increased font size for better readability
@@ -167,7 +136,7 @@
   align-items: center;
   margin-top: 2rem;
   position: relative;
-  z-index: 1; // Ensure CTA is above the mask
+  z-index: 12; // Ensure CTA is above particles background
 }
 
 .meetTeamButton {

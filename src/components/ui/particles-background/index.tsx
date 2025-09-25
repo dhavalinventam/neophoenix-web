@@ -10,7 +10,11 @@ declare global {
   }
 }
 
-const ParticlesBackground: React.FC = () => {
+interface ParticlesBackgroundProps {
+  id?: string;
+}
+
+const ParticlesBackground: React.FC<ParticlesBackgroundProps> = ({ id = 'particles-js' }) => {
   const particlesRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -41,7 +45,7 @@ const ParticlesBackground: React.FC = () => {
           // Small delay to ensure DOM is ready
           setTimeout(() => {
             try {
-              window.particlesJS('particles-js', {
+              window.particlesJS(id, {
                 particles: {
                   number: {
                     value: 70, // Increased from 60 to 90 for denser neural network effect
@@ -145,16 +149,16 @@ const ParticlesBackground: React.FC = () => {
     // Cleanup function
     return () => {
       // Remove particles canvas if it exists
-      const canvas = document.querySelector('#particles-js canvas');
+      const canvas = document.querySelector(`#${id} canvas`);
       if (canvas && canvas.parentNode) {
         canvas.parentNode.removeChild(canvas);
       }
     };
-  }, []);
+  }, [id]);
 
   return (
     <div className={styles.particlesContainer}>
-      <div id="particles-js" ref={particlesRef} className={styles.particlesCanvas} />
+      <div id={id} ref={particlesRef} className={styles.particlesCanvas} />
     </div>
   );
 };
