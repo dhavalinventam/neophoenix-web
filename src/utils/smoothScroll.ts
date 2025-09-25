@@ -29,6 +29,11 @@ class SmoothScrollManager {
   }
 
   private init(): void {
+    // Only initialize in browser environment
+    if (typeof window === 'undefined' || typeof document === 'undefined') {
+      return;
+    }
+
     // Check if CSS smooth scroll is supported
     if (!this.isCSSSmoothScrollSupported()) {
       this.addJavaScriptFallback();
@@ -39,10 +44,18 @@ class SmoothScrollManager {
   }
 
   private isCSSSmoothScrollSupported(): boolean {
+    if (typeof document === 'undefined') {
+      return false;
+    }
     return 'scrollBehavior' in document.documentElement.style;
   }
 
   private addJavaScriptFallback(): void {
+    // Only add fallback in browser environment
+    if (typeof document === 'undefined') {
+      return;
+    }
+
     // Override default anchor link behavior
     document.addEventListener('click', (e) => {
       const target = e.target as HTMLElement;
@@ -63,6 +76,11 @@ class SmoothScrollManager {
   }
 
   private addPerformanceOptimizations(): void {
+    // Only add optimizations in browser environment
+    if (typeof window === 'undefined') {
+      return;
+    }
+
     // Throttle scroll events for better performance
     let ticking = false;
     
@@ -90,6 +108,12 @@ class SmoothScrollManager {
     options: SmoothScrollOptions = {}
   ): Promise<void> {
     return new Promise((resolve) => {
+      // Only work in browser environment
+      if (typeof document === 'undefined' || typeof window === 'undefined') {
+        resolve();
+        return;
+      }
+
       const element = document.getElementById(elementId);
       if (!element) {
         console.warn(`Element with id "${elementId}" not found`);

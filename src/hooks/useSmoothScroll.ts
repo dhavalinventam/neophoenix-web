@@ -16,19 +16,19 @@ export const useSmoothScroll = (options: UseSmoothScrollOptions = {}) => {
     return scrollToElement(elementId, { duration, offset });
   }, [duration, offset]);
 
-  const scrollToTop = useCallback(() => {
+  const scrollToTopHandler = useCallback(() => {
     return scrollToTop({ duration });
   }, [duration]);
 
   // Auto-scroll to top on component mount (optional)
   useEffect(() => {
     // Uncomment if you want to scroll to top when component mounts
-    // scrollToTop();
+    // scrollToTopHandler();
   }, []);
 
   return {
     scrollTo,
-    scrollToTop,
+    scrollToTop: scrollToTopHandler,
   };
 };
 

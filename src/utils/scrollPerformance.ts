@@ -164,6 +164,10 @@ export const useOptimizedScroll = (handler: () => void, options?: ScrollPerforma
  * Utility to check if element is in viewport
  */
 export const isElementInViewport = (element: HTMLElement, threshold = 0.1): boolean => {
+  if (typeof window === 'undefined' || typeof document === 'undefined') {
+    return false;
+  }
+
   const rect = element.getBoundingClientRect();
   const windowHeight = window.innerHeight || document.documentElement.clientHeight;
   const windowWidth = window.innerWidth || document.documentElement.clientWidth;
@@ -180,6 +184,10 @@ export const isElementInViewport = (element: HTMLElement, threshold = 0.1): bool
  * Utility to get scroll progress (0-1)
  */
 export const getScrollProgress = (element: HTMLElement): number => {
+  if (typeof window === 'undefined' || typeof document === 'undefined') {
+    return 0;
+  }
+
   const rect = element.getBoundingClientRect();
   const windowHeight = window.innerHeight || document.documentElement.clientHeight;
   
