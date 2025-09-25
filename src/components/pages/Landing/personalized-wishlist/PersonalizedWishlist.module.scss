@@ -434,3 +434,13 @@
     font-size: clamp(20px, 8vw, 28px);
   }
 }
+
+
+@media (max-width: 767px) { 
+  .formGroup {
+    margin-bottom: 16px;
+  }
+  .form {
+    gap: 0px;
+  }
+}

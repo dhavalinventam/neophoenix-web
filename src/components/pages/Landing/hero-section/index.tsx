@@ -5,9 +5,11 @@ import styles from './HeroSection.module.scss';
 import Button from '@/components/ui/button';
 import ParticlesBackground from '@/components/ui/particles-background';
 import { Container } from 'react-bootstrap';
+import { useSmoothScroll } from '@/hooks/useSmoothScroll';
 
 const HeroSection = () => {
   const [isVisible, setIsVisible] = useState(true);
+  const { scrollTo } = useSmoothScroll();
 
   useEffect(() => {
     setIsVisible(true);
@@ -79,7 +81,7 @@ const HeroSection = () => {
                   variant="filled"
                   label="Explore Our Solutions"
                   onClick={() => {
-                    window.location.hash = '#personalized-wishlist';
+                    scrollTo('personalized-wishlist');
                   }}
                 />
               </div>
