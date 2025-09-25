@@ -4,12 +4,16 @@ import logo from '../../../../public/logo.png';
 import Link from 'next/link';
 import Button from '@/components/ui/button';
 import { Container, Row, Col } from 'react-bootstrap';
+import ParticlesBackground from '../../ui/particles-background';
 
 export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
     <footer className={styles.footer}>
+      {/* Particles Background */}
+      <ParticlesBackground id="particles-footer" />
+      
       <div className={styles.footerRow}>
         <Container>
           {/* Main Footer Content - Three Column Layout */}

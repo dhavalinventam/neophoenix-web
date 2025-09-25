@@ -35,8 +35,12 @@ const WhoWeAre = () => {
                   data-aos-duration="1000"
                   data-aos-easing="ease-out-cubic"
                 >
-                  Who We Are <br /> An AI-First Team with Human Ingenuity
+                  Who We Are
                 </h2>
+
+                <p className={styles.description_sub_text}>
+                  An AI-First Team with Human Ingenuity
+                </p>
 
                 {/* Description */}
                 <div
