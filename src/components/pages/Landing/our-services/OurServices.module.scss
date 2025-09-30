@@ -410,7 +410,7 @@
         font-weight: 500;
         color: #c7d1e0;
         margin-bottom: 10px;
-        text-transform: uppercase;
+        text-transform: capitalize;
         letter-spacing: 0.1em;
         text-align: left;
         width: 100%;
@@ -418,7 +418,7 @@
         -webkit-backface-visibility: hidden;
         backface-visibility: hidden;
         transform-style: preserve-3d;
-        background: linear-gradient(135deg, #FF6B35 0%, #FF9F1C 50%, #2EC4B6 100%);
+        background: $gradient-phoenix-fire;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
