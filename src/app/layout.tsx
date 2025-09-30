@@ -24,14 +24,14 @@ export const metadata: Metadata = {
     default: "Neophoenix",
     template: "%s | Neophoenix",
   },
-  description: "Modern Next.js 14 app with SCSS modules and TypeScript.",
+  description: "At Neophoenix, we build next-generation AI products and enterprise solutions that combine the power of Retrieval-Augmented Generation (RAG) with precision-driven prompt engineering. From white-label platforms to plug-and-play extensions, we empower businesses to unlock real-time intelligence and transform workflows at scale.",
   metadataBase: new URL("https://example.com"),
   icons: {
     icon: '/favicon.png',
   },
   openGraph: {
     title: "Neophoenix",
-    description: "Modern Next.js 14 app with SCSS modules and TypeScript.",
+    description: "At Neophoenix, we build next-generation AI products and enterprise solutions that combine the power of Retrieval-Augmented Generation (RAG) with precision-driven prompt engineering. From white-label platforms to plug-and-play extensions, we empower businesses to unlock real-time intelligence and transform workflows at scale.",
     url: "https://example.com",
     siteName: "Neophoenix",
     locale: "en_US",
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Neophoenix",
-    description: "Modern Next.js 14 app with SCSS modules and TypeScript.",
+    description: "At Neophoenix, we build next-generation AI products and enterprise solutions that combine the power of Retrieval-Augmented Generation (RAG) with precision-driven prompt engineering. From white-label platforms to plug-and-play extensions, we empower businesses to unlock real-time intelligence and transform workflows at scale.",
   },
 };
 
