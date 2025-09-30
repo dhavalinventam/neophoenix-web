@@ -56,10 +56,10 @@
     position: relative;
     display: flex;
     min-height: 100vh;
-    max-width: 1220px;
+    // max-width: 1220px;
     width: 100%;
     margin: 0 auto;
-    padding: 0 1rem;
+    // padding: 0 1rem;
     z-index: 2;
 
     &__image {
@@ -490,7 +490,7 @@
       flex-direction: column;
       min-height: auto;
       max-width: 100%;
-      padding: 0 1rem;
+      // padding: 0 1rem;
       gap: 15px;
       width: 100%;
 
@@ -859,7 +859,7 @@
     }
 
     .locker {
-      padding: 0 1rem;
+      // padding: 0 1rem;
       gap: 10px;
 
       &__image {

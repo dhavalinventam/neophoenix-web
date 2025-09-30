@@ -97,9 +97,8 @@
   }
 }
 
-// Early Access Tagline
+// Early Access Tagline - Enhanced Design
 .earlyAccessTagline {
-  // margin-bottom: 16px;
   opacity: 1;
   transform: translateY(0);
   position: relative;
@@ -107,36 +106,109 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 8px;
 
   .taglineContainer {
     display: inline-flex;
     align-items: center;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 50px;
-    padding: 8px 16px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
+    position: relative;
+    background: linear-gradient(135deg, 
+      rgba(255, 107, 53, 0.15) 0%, 
+      rgba(255, 159, 28, 0.1) 50%, 
+      rgba(46, 196, 182, 0.1) 100%
+    );
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 60px;
+    padding: 10px 20px;
+    box-shadow: 
+      0 8px 32px rgba(0, 0, 0, 0.2),
+      0 0 0 1px rgba(255, 255, 255, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
 
-    &:hover {
-      background: rgba(255, 255, 255, 0.15);
-      border-color: rgba(255, 255, 255, 0.3);
-      transform: translateY(-1px);
-      box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15);
+    // Animated gradient border effect
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, 
+        rgba(255, 107, 53, 0.3) 0%, 
+        rgba(255, 159, 28, 0.2) 50%, 
+        rgba(46, 196, 182, 0.2) 100%
+      );
+      border-radius: 60px;
+      padding: 1px;
+      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      mask-composite: xor;
+      animation: gradientShift 3s ease-in-out infinite;
+      z-index: -1;
+    }
+
+    // Subtle inner glow
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(
+        ellipse at center,
+        rgba(255, 107, 53, 0.1) 0%,
+        transparent 70%
+      );
+      transform: translate(-50%, -50%);
+      border-radius: 60px;
+      z-index: -1;
     }
 
     .taglineText {
-      font-size: clamp(14px, 2vw, 16px);
-      font-weight: 500;
-      color: #ffffff;
+      font-size: 18px;
+      font-weight: 600;
+      background: linear-gradient(135deg, 
+        #ffffff 0%, 
+        rgba(255, 255, 255, 0.9) 50%, 
+        rgba(255, 255, 255, 0.8) 100%
+      );
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
       line-height: 1.2;
       margin: 0;
       text-align: center;
       font-family: $font-primary;
       letter-spacing: 0.5px;
       text-transform: capitalize;
+      position: relative;
+      z-index: 1;
+      transition: all 0.3s ease;
+
+      // Add subtle text shadow for depth
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
     }
+  }
+}
+
+// Gradient animation for the border
+@keyframes gradientShift {
+  0%, 100% {
+    background: linear-gradient(135deg, 
+      rgba(255, 107, 53, 0.3) 0%, 
+      rgba(255, 159, 28, 0.2) 50%, 
+      rgba(46, 196, 182, 0.2) 100%
+    );
+  }
+  50% {
+    background: linear-gradient(135deg, 
+      rgba(46, 196, 182, 0.2) 0%, 
+      rgba(255, 107, 53, 0.3) 50%, 
+      rgba(255, 159, 28, 0.2) 100%
+    );
   }
 }
 
@@ -273,10 +345,12 @@
 
   .earlyAccessTagline {
     .taglineContainer {
-      padding: 6px 16px;
+      padding: 10px 20px;
+      border-radius: 50px;
       
       .taglineText {
-        font-size: clamp(12px, 2.5vw, 14px);
+        font-size: clamp(14px, 2.5vw, 16px);
+        letter-spacing: 0.3px;
       }
     }
   }
@@ -317,10 +391,12 @@
 
   .earlyAccessTagline {
     .taglineContainer {
-      padding: 5px 14px;
+      padding: 8px 18px;
+      border-radius: 45px;
       
       .taglineText {
-        font-size: clamp(11px, 3vw, 13px);
+        font-size: clamp(12px, 3vw, 14px);
+        letter-spacing: 0.2px;
       }
     }
   }
@@ -356,10 +432,12 @@
 
   .earlyAccessTagline {
     .taglineContainer {
-      padding: 4px 12px;
+      padding: 6px 16px;
+      border-radius: 40px;
       
       .taglineText {
         font-size: clamp(10px, 3.5vw, 12px);
+        letter-spacing: 0.1px;
       }
     }
   }

@@ -405,151 +405,153 @@ const DemoAnimation = () => {
         {/* Particles Background */}
         <ParticlesBackground id="particles-services" />
 
-        <div className={styles.section}>
-          <div className={styles.container}>
-            <div
-              className={`${styles.header} header`}
-              data-aos="fade-up"
-              data-aos-delay="100"
-              data-aos-duration="1000"
-              data-aos-easing="ease-out-cubic"
-            >
-              <h2 className={`${styles.title} title`}>Our AI-Powered Services</h2>
-              <p className={`${styles.description} description`}>
-                Empower your team with <strong>secure, AI-driven insights</strong> and{' '}
-                <em>workflow automation</em> tailored to your data, tools, and processes.
-              </p>
+        <div className="container">
+          <div className={styles.section}>
+            <div className={styles.container}>
+              <div
+                className={`${styles.header} header`}
+                data-aos="fade-up"
+                data-aos-delay="100"
+                data-aos-duration="1000"
+                data-aos-easing="ease-out-cubic"
+              >
+                <h2 className={`${styles.title} title`}>Our AI-Powered Services</h2>
+                <p className={`${styles.description} description`}>
+                  Empower your team with <strong>secure, AI-driven insights</strong> and{' '}
+                  <em>workflow automation</em> tailored to your data, tools, and processes.
+                </p>
+              </div>
             </div>
           </div>
-        </div>
-        <div
-          className={styles.locker}
-          data-aos="fade-up"
-          data-aos-delay="200"
-          data-aos-duration="1000"
-          data-aos-easing="ease-out-cubic"
-        >
-          <div className={styles.locker__image}>
+          <div
+            className={styles.locker}
+            data-aos="fade-up"
+            data-aos-delay="200"
+            data-aos-duration="1000"
+            data-aos-easing="ease-out-cubic"
+          >
+            <div className={styles.locker__image}>
+              <div
+                className={`${styles.locker__container} ${isMobile ? styles.sliderContainer : ''}`}
+                onTouchStart={isMobile ? handleTouchStart : undefined}
+                onTouchMove={isMobile ? handleTouchMove : undefined}
+                onTouchEnd={isMobile ? handleTouchEnd : undefined}
+              >
+                <div
+                  className={`${styles.imagerow} ${activeVideoIndex === 0 ? styles.active : ''} ${isMobile ? styles.slide : ''}`}
+                >
+                  <video
+                    src="/video/Rag-product-video.mp4"
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    className={styles.video}
+                  />
+                </div>
+                <div
+                  className={`${styles.imagerow} ${activeVideoIndex === 1 ? styles.active : ''} ${isMobile ? styles.slide : ''}`}
+                >
+                  <video
+                    src="/video/task-prompt-ai-video.mp4"
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    className={styles.video}
+                  />
+                </div>
+              </div>
+            </div>
+
             <div
-              className={`${styles.locker__container} ${isMobile ? styles.sliderContainer : ''}`}
+              className={`${styles.locker__content} ${isMobile ? styles.contentSlider : ''}`}
               onTouchStart={isMobile ? handleTouchStart : undefined}
               onTouchMove={isMobile ? handleTouchMove : undefined}
               onTouchEnd={isMobile ? handleTouchEnd : undefined}
             >
               <div
-                className={`${styles.imagerow} ${activeVideoIndex === 0 ? styles.active : ''} ${isMobile ? styles.slide : ''}`}
+                className={`${styles.locker__section} ${styles['locker__section--1']} cb ${activeVideoIndex === 0 ? styles.active : ''} ${isMobile ? styles.contentSlide : ''}`}
+                data-swap="image--1"
+                onClick={() => changeSlide(0)}
               >
-                <video
-                  src="/video/Rag-product-video.mp4"
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  className={styles.video}
-                />
+                <h2>Plug-and-Play RAG System</h2>
+                <p className={styles.subtitle}>Your data. your control. smarter insights.</p>
+                <p>
+                  Seamlessly connect your databases with secure local embeddings and zero external
+                  storage. Our RAG system delivers instant AI-powered chat and real-time
+                  answers—keeping sensitive data fully in your environment while unlocking actionable
+                  intelligence.
+                </p>
+                <Button label="Learn More About Rag System" />
               </div>
+
               <div
-                className={`${styles.imagerow} ${activeVideoIndex === 1 ? styles.active : ''} ${isMobile ? styles.slide : ''}`}
+                className={`${styles.locker__section} ${styles['locker__section--2']} cb ${activeVideoIndex === 1 ? styles.active : ''} ${isMobile ? styles.contentSlide : ''}`}
+                data-swap="image--2"
+                onClick={() => changeSlide(1)}
               >
-                <video
-                  src="/video/task-prompt-ai-video.mp4"
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  className={styles.video}
-                />
+                <h2>Task Prompt AI Chrome Extension</h2>
+                <p className={styles.subtitle}>AI-Powered Prompts Where Work Happens.</p>
+                <p>
+                  Supercharge your workflows in Jira, ClickUp, Asana, and Trello with contextual,
+                  role-specific AI prompts. Cut task completion time in half while customizing prompts
+                  to match your team's industry, style, and goals.
+                </p>
+                <Button label="Try the Extension" />
               </div>
             </div>
           </div>
 
-          <div
-            className={`${styles.locker__content} ${isMobile ? styles.contentSlider : ''}`}
-            onTouchStart={isMobile ? handleTouchStart : undefined}
-            onTouchMove={isMobile ? handleTouchMove : undefined}
-            onTouchEnd={isMobile ? handleTouchEnd : undefined}
-          >
+          {/* Arrow navigation for mobile - moved to bottom */}
+          {isMobile && (
             <div
-              className={`${styles.locker__section} ${styles['locker__section--1']} cb ${activeVideoIndex === 0 ? styles.active : ''} ${isMobile ? styles.contentSlide : ''}`}
-              data-swap="image--1"
-              onClick={() => changeSlide(0)}
-            >
-              <h2>Plug-and-Play RAG System</h2>
-              <p className={styles.subtitle}>Your data. your control. smarter insights.</p>
-              <p>
-                Seamlessly connect your databases with secure local embeddings and zero external
-                storage. Our RAG system delivers instant AI-powered chat and real-time
-                answers—keeping sensitive data fully in your environment while unlocking actionable
-                intelligence.
-              </p>
-              <Button label="Learn More About Rag System" />
-            </div>
-
-            <div
-              className={`${styles.locker__section} ${styles['locker__section--2']} cb ${activeVideoIndex === 1 ? styles.active : ''} ${isMobile ? styles.contentSlide : ''}`}
-              data-swap="image--2"
-              onClick={() => changeSlide(1)}
-            >
-              <h2>Task Prompt AI Chrome Extension</h2>
-              <p className={styles.subtitle}>AI-Powered Prompts Where Work Happens.</p>
-              <p>
-                Supercharge your workflows in Jira, ClickUp, Asana, and Trello with contextual,
-                role-specific AI prompts. Cut task completion time in half while customizing prompts
-                to match your team's industry, style, and goals.
-              </p>
-              <Button label="Try the Extension" />
-            </div>
-          </div>
-        </div>
-
-        {/* Arrow navigation for mobile - moved to bottom */}
-        {isMobile && (
-          <div
-            className={styles.arrowNavigation}
+              className={styles.arrowNavigation}
             // data-aos="fade-up"
             // data-aos-delay="600"
             // data-aos-duration="1000"
             // data-aos-easing="ease-out-cubic"
-          >
-            <button
-              className={styles.arrowButton}
-              onClick={() => changeSlide(activeVideoIndex === 0 ? 1 : 0)}
-              aria-label="Previous slide"
             >
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <path
-                  d="M15 18L9 12L15 6"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </button>
+              <button
+                className={styles.arrowButton}
+                onClick={() => changeSlide(activeVideoIndex === 0 ? 1 : 0)}
+                aria-label="Previous slide"
+              >
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M15 18L9 12L15 6"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </button>
 
-            <div className={styles.slideIndicator}>
-              <span className={styles.currentSlide}>{activeVideoIndex + 1}</span>
-              <span className={styles.slideSeparator}>/</span>
-              <span className={styles.totalSlides}>2</span>
+              <div className={styles.slideIndicator}>
+                <span className={styles.currentSlide}>{activeVideoIndex + 1}</span>
+                <span className={styles.slideSeparator}>/</span>
+                <span className={styles.totalSlides}>2</span>
+              </div>
+
+              <button
+                className={styles.arrowButton}
+                onClick={() => changeSlide(activeVideoIndex === 1 ? 0 : 1)}
+                aria-label="Next slide"
+              >
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M9 18L15 12L9 6"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </button>
             </div>
-
-            <button
-              className={styles.arrowButton}
-              onClick={() => changeSlide(activeVideoIndex === 1 ? 0 : 1)}
-              aria-label="Next slide"
-            >
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <path
-                  d="M9 18L15 12L9 6"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </button>
-          </div>
-        )}
+          )}
+        </div>
       </div>
     </>
   );
