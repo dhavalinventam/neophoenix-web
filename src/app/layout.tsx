@@ -52,6 +52,8 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${poppins.variable} ${openSans.variable}`}>
       <head>
+
+        {/*  microsoft Clarity script */}
         <Script id="ms-clarity" strategy="afterInteractive">
           {`(function(c,l,a,r,i,t,y){
   c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
@@ -59,6 +61,8 @@ export default function RootLayout({
   y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
 })(window, document, "clarity", "script", "tisfc62mtm");`}
         </Script>
+
+
       </head>
       <body>
         <SmoothScrollProvider>
