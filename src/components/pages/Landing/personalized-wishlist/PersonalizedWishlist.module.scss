@@ -93,7 +93,7 @@
 
   strong {
     // color: #35ebff;
-    background: linear-gradient(135deg, #FF6B35 0%, #FF9F1C 50%, #2EC4B6 100%);
+    background: $gradient-phoenix-fire;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     font-weight: $font-weight-semibold;

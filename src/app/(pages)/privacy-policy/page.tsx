@@ -13,9 +13,6 @@ export default function PrivacyPolicyPage() {
             <div className={styles.heroContent}>
               <div className={styles.headline}>
                 <h1 className={styles.title}>Privacy Policy</h1>
-                <p className={styles.description}>
-                  Your privacy is important to us. This policy explains how we collect, use, and protect your information.
-                </p>
                 {/* <p className={styles.lastUpdated}>Last updated: {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p> */}
               </div>
             </div>
@@ -24,141 +21,153 @@ export default function PrivacyPolicyPage() {
 
         {/* Main Content */}
         <div className={styles.mainSection}>
-          <Container fluid>
-            <Row className="justify-content-center">
-              <Col xs={12} lg={10} xl={8}>
+          <Container>
+              <div className={styles.mainContent}>
+                <p className={styles.description}>
+                  Neophoenix respects your privacy and is committed to protecting it through this Privacy Policy.
+                </p>
+                <p className={styles.description}>
+                  This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website <b><a href="https://www.neophoenix.ai" target="_blank">www.neophoenix.ai</a></b> and use our services. Please read this carefully. If you do not agree with the terms of this Privacy Policy, please do not access the website.
+                </p>
+
+                {/* Information 1 */}
+                
                 <h2 className={styles.sectionTitle}>1. Information We Collect</h2>
                 <div className={styles.sectionContent}>
-                  <h3 className={styles.subsectionTitle}>Personal Information</h3>
                   <p className={styles.paragraph}>
-                    When you use Neophoenix, we may collect personal information that you voluntarily provide to us, including:
+                    We may collect the following types of information:
                   </p>
                   <ul className={styles.list}>
-                    <li>Name and contact information (email address, phone number)</li>
-                    <li>Account credentials and profile information</li>
-                    <li>Communication preferences and feedback</li>
-                    <li>Payment information (processed securely through third-party providers)</li>
-                  </ul>
-
-                  <h3 className={styles.subsectionTitle}>Usage Information</h3>
-                  <p className={styles.paragraph}>
-                    We automatically collect certain information about your use of our platform:
-                  </p>
-                  <ul className={styles.list}>
-                    <li>Device information (IP address, browser type, operating system)</li>
-                    <li>Usage patterns and interactions with our services</li>
-                    <li>Log data and analytics information</li>
-                    <li>Cookies and similar tracking technologies</li>
+                    <li>Personal Information: Name, email address, phone number, company details, payment information, etc.</li>
+                    <li>Non-Personal Information: Browser type, operating system, referring URLs, IP address, device information.</li>
+                    <li>Cookies & Tracking Data: We use cookies, pixels, and analytics tools (e.g., Google Analytics) to improve user experience and performance.
+                    </li>
                   </ul>
                 </div>
+
+                {/* Information 2 */}
 
                 <h2 className={styles.sectionTitle}>2. How We Use Your Information</h2>
                 <div className={styles.sectionContent}>
                   <p className={styles.paragraph}>
-                    We use the information we collect to:
+                    We may use collected information to:
                   </p>
                   <ul className={styles.list}>
-                    <li>Provide, maintain, and improve our AI tools directory services</li>
-                    <li>Process transactions and manage your account</li>
-                    <li>Communicate with you about our services and updates</li>
-                    <li>Personalize your experience and recommend relevant AI tools</li>
-                    <li>Analyze usage patterns to enhance our platform</li>
-                    <li>Ensure security and prevent fraud</li>
-                    <li>Comply with legal obligations</li>
+                    <li>Provide, operate, and maintain our website and services.</li>
+                    <li>Personalize user experience.</li>
+                    <li>Improve website functionality and customer service.</li>
+                    <li>Process transactions and deliver services you requested.</li>
+                    <li>Send periodic emails, newsletters, and marketing communications (with opt-out options).</li>
+                    <li>Comply with legal obligations.</li>
                   </ul>
                 </div>
 
-                <h2 className={styles.sectionTitle}>3. Information Sharing and Disclosure</h2>
+                {/* Information 3 */}
+
+                <h2 className={styles.sectionTitle}>3. Sharing of Information</h2>
                 <div className={styles.sectionContent}>
                   <p className={styles.paragraph}>
-                    We do not sell, trade, or rent your personal information to third parties. We may share your information only in the following circumstances:
+                    We do not sell or rent your personal data. We may share information with:
                   </p>
                   <ul className={styles.list}>
-                    <li><strong>Service Providers:</strong> With trusted third-party vendors who assist in operating our platform</li>
-                    <li><strong>Legal Requirements:</strong> When required by law or to protect our rights and safety</li>
-                    <li><strong>Business Transfers:</strong> In connection with mergers, acquisitions, or asset sales</li>
-                    <li><strong>Consent:</strong> When you have given explicit consent for specific sharing</li>
+                    <li><strong>Service Providers:</strong> (payment gateways, hosting providers, analytics)</li>
+                    <li><strong>Legal Requirements:</strong> (when required by law, regulation, or court order)</li>
+                    <li><strong>Business Transfers:</strong> (mergers, acquisitions, restructuring)</li>
                   </ul>
                 </div>
 
-                <h2 className={styles.sectionTitle}>4. Data Security</h2>
+                {/* Information 4 */}
+
+                <h2 className={styles.sectionTitle}>4. Data Retention</h2>
                 <div className={styles.sectionContent}>
-                  <p className={styles.paragraph}>
-                    We implement appropriate technical and organizational measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction. These measures include:
-                  </p>
                   <ul className={styles.list}>
-                    <li>Encryption of data in transit and at rest</li>
-                    <li>Regular security assessments and updates</li>
-                    <li>Access controls and authentication systems</li>
-                    <li>Employee training on data protection practices</li>
+                    <li>We retain your personal information only as long as necessary for business, legal, or contractual obligations.</li>
                   </ul>
                 </div>
 
-                <h2 className={styles.sectionTitle}>5. Your Rights and Choices</h2>
+                {/* Information 5 */}
+
+                <h2 className={styles.sectionTitle}>5. Data Security</h2>
+                <div className={styles.sectionContent}>
+                  <ul className={styles.list}>
+                    <li>We implement reasonable administrative, technical, and physical safeguards to protect your data. However, no method of transmission over the internet is 100% secure.</li>
+                  </ul>
+                </div>
+
+                {/* Information 6 */}
+
+                <h2 className={styles.sectionTitle}>6. Your Rights</h2>
                 <div className={styles.sectionContent}>
                   <p className={styles.paragraph}>
-                    You have certain rights regarding your personal information:
+                    Depending on your jurisdiction (e.g., GDPR, CCPA), you may have the right to:
                   </p>
                   <ul className={styles.list}>
-                    <li><strong>Access:</strong> Request access to your personal information</li>
-                    <li><strong>Correction:</strong> Update or correct inaccurate information</li>
-                    <li><strong>Deletion:</strong> Request deletion of your personal information</li>
-                    <li><strong>Portability:</strong> Receive a copy of your data in a portable format</li>
-                    <li><strong>Opt-out:</strong> Unsubscribe from marketing communications</li>
+                    <li>Access, correct, or delete your personal data.</li>
+                    <li>Restrict or object to processing.</li>
+                    <li>Request data portability.</li>
+                    <li>Opt out of marketing emails.</li>
                   </ul>
                   <p className={styles.paragraph}>
-                    To exercise these rights, please contact us at privacy@neophoenix.com.
+                    You may exercise these rights by contacting us at <b><a href="mailto:business@neophoenix.com">business@neophoenix.com</a></b>
                   </p>
                 </div>
 
-                <h2 className={styles.sectionTitle}>6. Cookies and Tracking Technologies</h2>
+                {/* Information 7 */}
+
+                <h2 className={styles.sectionTitle}>7. Cookies Policy</h2>
                 <div className={styles.sectionContent}>
                   <p className={styles.paragraph}>
-                    We use cookies and similar technologies to enhance your experience, analyze usage patterns, and provide personalized content. You can control cookie preferences through your browser settings.
+                    We use cookies to:
+                  </p>
+                  <ul className={styles.list}>
+                    <li>Improve functionality.</li>
+                    <li>Analyze site traffic.</li>
+                    <li>Personalize content.</li>
+                    <li>You can disable cookies via your browser settings, but this may affect website performance.</li>
+                  </ul>
+                </div>
+
+                {/* Information 8 */}
+
+                <h2 className={styles.sectionTitle}>8. Third-Party Links</h2>
+                <div className={styles.sectionContent}>
+                  <p className={styles.paragraph}>
+                    Our website may contain links to third-party websites. We are not responsible for the privacy practices of such websites.
                   </p>
                 </div>
 
-                <h2 className={styles.sectionTitle}>7. Third-Party Services</h2>
+                {/* Information 9 */}
+
+                <h2 className={styles.sectionTitle}>9. Children’s Privacy</h2>
                 <div className={styles.sectionContent}>
                   <p className={styles.paragraph}>
-                    Our platform may contain links to third-party AI tools and services. This privacy policy does not apply to these external sites. We encourage you to review the privacy policies of any third-party services you access through our platform.
+                    Our services are not directed at individuals under the age of 13. We do not knowingly collect information from children.
                   </p>
                 </div>
 
-                <h2 className={styles.sectionTitle}>8. International Data Transfers</h2>
+                {/* Information 10 */}
+
+                <h2 className={styles.sectionTitle}>10. Changes to Privacy Policy</h2>
                 <div className={styles.sectionContent}>
                   <p className={styles.paragraph}>
-                    Your information may be transferred to and processed in countries other than your own. We ensure appropriate safeguards are in place to protect your information in accordance with applicable data protection laws.
+                    We may update this Privacy Policy from time to time. Changes will be posted on this page with a revised “Last Updated” date.
                   </p>
                 </div>
 
-                <h2 className={styles.sectionTitle}>9. Children's Privacy</h2>
-                <div className={styles.sectionContent}>
-                  <p className={styles.paragraph}>
-                    Our services are not intended for children under 13 years of age. We do not knowingly collect personal information from children under 13. If we become aware of such collection, we will take steps to delete the information promptly.
-                  </p>
-                </div>
+                {/* Information 11 */}
 
-                <h2 className={styles.sectionTitle}>10. Changes to This Policy</h2>
+                <h2 className={styles.sectionTitle}>11. Contact Us</h2>
                 <div className={styles.sectionContent}>
                   <p className={styles.paragraph}>
-                    We may update this privacy policy from time to time. We will notify you of any material changes by posting the new policy on this page and updating the "Last updated" date. Your continued use of our services after such changes constitutes acceptance of the updated policy.
-                  </p>
-                </div>
-
-                {/* <h2 className={styles.sectionTitle}>11. Contact Us</h2>
-                <div className={styles.sectionContent}>
-                  <p className={styles.paragraph}>
-                    If you have any questions about this privacy policy or our data practices, please contact us:
+                    For any questions or concerns about this Privacy Policy, please contact us at:
                   </p>
                   <div className={styles.contactInfo}>
-                    <p><strong>Email:</strong> privacy@neophoenix.com</p>
-                    <p><strong>Address:</strong> Neophoenix, [Your Business Address]</p>
-                    <p><strong>Phone:</strong> [Your Contact Number]</p>
+                    <p><strong>Company Name:</strong> Neophoenix</p>
+                    <p><strong>Email:</strong> <a href="mailto:business@neophoenix.com">business@neophoenix.com</a></p>
+                    <p><strong>Website:</strong> <a href="https://www.neophoenix.ai" target="_blank">www.neophoenix.ai</a></p>
                   </div>
-                </div> */}
-              </Col>
-            </Row>
+                </div>
+              </div>
           </Container>
         </div>
       </div>
