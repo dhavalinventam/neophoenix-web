@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Open_Sans, Poppins } from "next/font/google";
 import "@/styles/global.scss";
 import Layout from "@/components/layout";
@@ -23,14 +24,14 @@ export const metadata: Metadata = {
     default: "Neophoenix",
     template: "%s | Neophoenix",
   },
-  description: "Modern Next.js 14 app with SCSS modules and TypeScript.",
+  description: "At Neophoenix, we build next-generation AI products and enterprise solutions that combine the power of Retrieval-Augmented Generation (RAG) with precision-driven prompt engineering. From white-label platforms to plug-and-play extensions, we empower businesses to unlock real-time intelligence and transform workflows at scale.",
   metadataBase: new URL("https://example.com"),
   icons: {
     icon: '/favicon.png',
   },
   openGraph: {
     title: "Neophoenix",
-    description: "Modern Next.js 14 app with SCSS modules and TypeScript.",
+    description: "At Neophoenix, we build next-generation AI products and enterprise solutions that combine the power of Retrieval-Augmented Generation (RAG) with precision-driven prompt engineering. From white-label platforms to plug-and-play extensions, we empower businesses to unlock real-time intelligence and transform workflows at scale.",
     url: "https://example.com",
     siteName: "Neophoenix",
     locale: "en_US",
@@ -39,7 +40,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Neophoenix",
-    description: "Modern Next.js 14 app with SCSS modules and TypeScript.",
+    description: "At Neophoenix, we build next-generation AI products and enterprise solutions that combine the power of Retrieval-Augmented Generation (RAG) with precision-driven prompt engineering. From white-label platforms to plug-and-play extensions, we empower businesses to unlock real-time intelligence and transform workflows at scale.",
   },
 };
 
@@ -50,6 +51,19 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${poppins.variable} ${openSans.variable}`}>
+      <head>
+
+        {/*  microsoft Clarity script */}
+        <Script id="ms-clarity" strategy="afterInteractive">
+          {`(function(c,l,a,r,i,t,y){
+  c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+  t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+  y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+})(window, document, "clarity", "script", "tisfc62mtm");`}
+        </Script>
+
+
+      </head>
       <body>
         <SmoothScrollProvider>
           <Layout>{children}</Layout>
