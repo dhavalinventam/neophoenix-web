@@ -1,3 +1,6 @@
+'use client';
+
+import { useState } from 'react';
 import styles from './Footer.module.scss';
 import Image from 'next/image';
 import logo from '../../../../public/logo.png';
@@ -8,6 +11,51 @@ import ParticlesBackground from '../../ui/particles-background';
 
 export default function Footer() {
   const year = new Date().getFullYear();
+  const [email, setEmail] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<{
+    type: 'success' | 'error' | null;
+    message: string;
+  }>({ type: null, message: '' });
+
+  const handleNewsletterSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus({ type: null, message: '' });
+
+    try {
+      const response = await fetch('/api/sendEmail', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, isNewsletter: true }),
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        setSubmitStatus({
+          type: 'success',
+          message: 'Thank you for subscribing to our newsletter!'
+        });
+        // Reset form
+        setEmail('');
+      } else {
+        setSubmitStatus({
+          type: 'error',
+          message: result.error || 'Failed to subscribe. Please try again.'
+        });
+      }
+    } catch (error) {
+      setSubmitStatus({
+        type: 'error',
+        message: 'Network error. Please check your connection and try again.'
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <footer className={styles.footer}>
@@ -86,16 +134,25 @@ export default function Footer() {
                 <p className={styles.newsletterDescription}>
                   Stay ahead with insights on enterprise AI.
                 </p>
-                <form className={styles.newsletterForm}>
+                <form className={styles.newsletterForm} onSubmit={handleNewsletterSubmit}>
                   <div className={styles.emailInputGroup}>
                     <input
                       type="email"
                       placeholder="Enter your email"
                       className={styles.emailInput}
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
                       required
+                      disabled={isSubmitting}
                     />
-                    <button className={`${styles.subscribeButton}`}>
-                      <span className={styles.desktopButton}> Subscribe to Newsletter </span>
+                    <button 
+                      type="submit" 
+                      className={`${styles.subscribeButton}`}
+                      disabled={isSubmitting}
+                    >
+                      <span className={styles.desktopButton}>
+                        {isSubmitting ? 'Subscribing...' : 'Subscribe to Newsletter'}
+                      </span>
                       <span className={styles.mobileButton}>
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
                           <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" />
@@ -103,6 +160,12 @@ export default function Footer() {
                       </span>
                     </button>
                   </div>
+                  {/* Status Messages */}
+                  {submitStatus.type && (
+                    <div className={`${styles.statusMessage} ${styles[submitStatus.type]}`}>
+                      {submitStatus.message}
+                    </div>
+                  )}
                 </form>
               </div>
             </div>
