@@ -1,6 +1,5 @@
 import { NextResponse } from 'next/server';
 import { sendEmail } from '@/utils/mailgun';
-import { ENV } from '@/config';
 
 interface EmailRequestBody {
   email?: string;
@@ -14,10 +13,15 @@ interface EmailRequestBody {
 export async function POST(req: Request) {
   try {
     const { email, fullName, message, phoneNumber, aiInterests, isNewsletter }: EmailRequestBody = await req.json();
-
-    if (!ENV.MAILGUN_DOMAIN || !ENV.MAILGUN_API_KEY || !ENV.EMAIL_USERNAME) {
+    
+    // Log environment variables (remove in production)
+    if (!process.env.MAILGUN_DOMAIN || !process.env.MAILGUN_API_KEY || !process.env.EMAIL_USERNAME) {
+      console.error('Mailgun configuration is missing. Please check your environment variables.');
       return NextResponse.json(
-        { success: false, error: 'Mailgun configuration is missing' },
+        { 
+          success: false, 
+          error: 'Email service is currently unavailable. Please try again later.' 
+        },
         { status: 500 }
       );
     }
@@ -69,7 +73,7 @@ export async function POST(req: Request) {
 
     // Send email using Mailgun
     await sendEmail({
-      email: ENV.EMAIL_USERNAME, // Send to your business email
+      email: process.env.EMAIL_USERNAME!, // Send to your business email
       subject: subject,
       message: emailContent.replace(/<[^>]*>/g, ''), // Plain text version
       html: emailContent,
