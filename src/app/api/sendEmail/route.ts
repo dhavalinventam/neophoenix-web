@@ -16,11 +16,12 @@ interface EmailRequestBody {
   message?: string;
   phoneNumber?: string;
   aiInterests?: string;
+  isNewsletter?: boolean;
 }
 
 export async function POST(req: Request) {
   try {
-    const { email, fullName, message, phoneNumber, aiInterests }: EmailRequestBody = await req.json();
+    const { email, fullName, message, phoneNumber, aiInterests, isNewsletter }: EmailRequestBody = await req.json();
 
     if (!ENV.SES_SENDER_EMAIL || !ENV.SES_RECEIVER_EMAIL) {
       return NextResponse.json(
@@ -29,29 +30,43 @@ export async function POST(req: Request) {
       );
     }
 
-    // Determine if this is an AI wishlist request or contact form
-    const isAIWishlist = aiInterests && !phoneNumber;
-    const subject = isAIWishlist ? 'Personalized AI Solution Request' : 'Contact Inquiry Form';
-    
-    // Build email content based on form type
+    // Determine the type of email
+    let subject = '';
     let emailContent = '';
-    if (isAIWishlist) {
+
+    if (isNewsletter) {
+      // Newsletter subscription
+      subject = 'New Newsletter Subscription';
       emailContent = `
-        <h3>Personalized AI Solution Request Details</h3>
-        <p><strong>Full Name:</strong> ${fullName || 'Not provided'}</p>
+        <h3>Newsletter Subscription</h3>
         <p><strong>Email:</strong> ${email || 'Not provided'}</p>
-        <p><strong>AI Interest:</strong> ${aiInterests || 'Not provided'}</p>
         <br/>
-        <p>This user has requested to join the AI wishlist program.</p>
+        <p>A new user has subscribed to the newsletter.</p>
       `;
     } else {
-      emailContent = `
-        <h3>Contact Form Details</h3>
-        <p><strong>Full Name:</strong> ${fullName || 'Not provided'}</p>
-        <p><strong>Email:</strong> ${email || 'Not provided'}</p>
-        ${phoneNumber ? `<p><strong>Phone Number:</strong> ${phoneNumber}</p>` : ''}
-        <p><strong>Message:</strong> ${message || 'Not provided'}</p>
-      `;
+      // Determine if this is an AI wishlist request or contact form
+      const isAIWishlist = aiInterests && !phoneNumber;
+      subject = isAIWishlist ? 'Personalized AI Solution Request' : 'Contact Inquiry Form';
+      
+      // Build email content based on form type
+      if (isAIWishlist) {
+        emailContent = `
+          <h3>Personalized AI Solution Request Details</h3>
+          <p><strong>Full Name:</strong> ${fullName || 'Not provided'}</p>
+          <p><strong>Email:</strong> ${email || 'Not provided'}</p>
+          <p><strong>AI Interest:</strong> ${aiInterests || 'Not provided'}</p>
+          <br/>
+          <p>This user has requested to join the AI wishlist program.</p>
+        `;
+      } else {
+        emailContent = `
+          <h3>Contact Form Details</h3>
+          <p><strong>Full Name:</strong> ${fullName || 'Not provided'}</p>
+          <p><strong>Email:</strong> ${email || 'Not provided'}</p>
+          ${phoneNumber ? `<p><strong>Phone Number:</strong> ${phoneNumber}</p>` : ''}
+          <p><strong>Message:</strong> ${message || 'Not provided'}</p>
+        `;
+      }
     }
 
     emailContent += `
