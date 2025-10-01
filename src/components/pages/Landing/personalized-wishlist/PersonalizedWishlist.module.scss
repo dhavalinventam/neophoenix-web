@@ -156,7 +156,7 @@
 
   &:focus-within .inputGlow {
     opacity: 1;
-    transform: scale(1.02);
+    // transform: scale(1.02);
   }
 }
 
@@ -169,7 +169,7 @@
   border-radius: 12px !important;
   color: $text-white !important;
   font-family: $font-primary;
-  font-size: $font-size-sm;
+  font-size: $font-size-sm !important;
   font-weight: $font-weight-normal;
   transition: all 0.3s ease;
   outline: none;
@@ -183,13 +183,13 @@
   &:focus {
     border-color: rgba(255, 107, 53, 0.5);
     background: rgba(255, 255, 255, 0.05) !important;
-    transform: translateY(-2px);
+    // transform: translateY(-2px);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
   }
 
   &:hover {
     border-color: rgba(255, 255, 255, 0.2);
-    transform: translateY(-1px);
+    // transform: translateY(-1px);
   }
 
   // Ensure selected text is visible
@@ -254,7 +254,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(135deg, rgba(255, 107, 53, 0.1) 0%, rgba(255, 159, 28, 0.1) 100%);
+  // background: linear-gradient(135deg, rgba(255, 107, 53, 0.1) 0%, rgba(255, 159, 28, 0.1) 100%);
   border-radius: 16px;
   opacity: 0;
   transition: all 0.3s ease;

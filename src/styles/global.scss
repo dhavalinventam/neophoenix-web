@@ -207,6 +207,10 @@ select {
   }
 }
 
+.form-select:focus {
+  box-shadow: none !important;
+}
+
 // Global info paragraph styling for consistency
 p {
   font-family: $font-primary; // Inter for paragraphs
