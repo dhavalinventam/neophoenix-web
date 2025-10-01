@@ -61,7 +61,7 @@ const WhoWeAre = () => {
                 </div>
 
                 {/* CTA Button */}
-                <div
+                {/* <div
                   className={styles.ctaSection}
                   data-aos="fade-up"
                   data-aos-delay="400"
@@ -73,7 +73,7 @@ const WhoWeAre = () => {
                     label="Meet Our Team"
                     className={styles.meetTeamButton}
                   />
-                </div>
+                </div> */}
               </div>
             </Col>
           </Row>
