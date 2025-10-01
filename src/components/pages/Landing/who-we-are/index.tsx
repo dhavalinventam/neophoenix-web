@@ -1,10 +1,19 @@
 'use client';
+
+import React, { useState, useEffect } from 'react';
 import Button from '../../../ui/button';
 import { Container, Row, Col } from 'react-bootstrap';
 import ParticlesBackground from '../../../ui/particles-background';
 import styles from './WhoWeAre.module.scss';
+import { useSmoothScroll } from '@/hooks/useSmoothScroll';
 
 const WhoWeAre = () => {
+  const [isVisible, setIsVisible] = useState(true);
+  const { scrollTo } = useSmoothScroll();
+
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
 
   return (
     <section className={styles.whoWeAre}>
@@ -72,6 +81,9 @@ const WhoWeAre = () => {
                     variant="filled"
                     label="Meet Our Team"
                     className={styles.meetTeamButton}
+                    onClick={() => {
+                      scrollTo('personalized-wishlist');
+                    }}
                   />
                 </div> */}
               </div>

@@ -90,6 +90,9 @@ $gradient-primary: linear-gradient(
 );
 $gradient-secondary: linear-gradient(135deg, $primary-orange 0%, $primary-gold 100%);
 
+// Common Phoenix Fire Gradient (135deg with cyan)
+$gradient-phoenix-fire: linear-gradient(135deg, #FF9F1C 0%, #FF6B35 40%, #0EA5E9 100%);
+
 // New Softer Button Gradients
 $gradient-button-primary: linear-gradient(90deg, #FF6B35 0%, #FF9F1C 50%, #cf9c56 100%); // Warm Phoenix glow
 $gradient-button-secondary: linear-gradient(90deg, $primary-cyan 0%, $primary-blue 100%); // Cool digital effect

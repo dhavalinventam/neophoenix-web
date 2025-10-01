@@ -18,6 +18,7 @@
     z-index: 0;
     pointer-events: none;
   }
+
   .footerRow {
     position: relative;
     z-index: 1;
@@ -503,22 +504,39 @@
   .footer_rightColumn_section {
     gap: 1rem;
   }
+
+  .copyrightText {
+    font-size: 14px !important;
+  }
+
+  .bottomSection {
+    .legalLinks {
+      .legalLink {
+        font-size: 14px !important;
+      }
+    }
+  }
 }
+
 @media (max-width: 992px) {
   .mainContent {
     .logoImage {
       max-width: 150px !important;
     }
+
     .companyDescription {
       font-size: $font-size-base !important;
     }
+
     .footer_rightColumn_section {
       .footer_rightColumn_section_inner {
         margin-left: 0;
       }
+
       h5 {
         font-size: 18px !important;
       }
+
       .linkList {
         li {
           .link {
@@ -526,11 +544,30 @@
           }
         }
       }
+
       .subscribeButton {
         padding: 9px 20px !important;
         font-size: 14px !important;
       }
     }
+  }
+
+  .copyrightText {
+    font-size: 13px !important;
+  }
+
+  .bottomSection {
+    .legalLinks {
+      .legalLink {
+        font-size: 13px !important;
+      }
+    }
+  }
+
+  .copyrightContent {
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
   }
 }
 
@@ -544,6 +581,7 @@
     gap: 32px;
     margin-bottom: 32px;
   }
+
   .rightColumn_section {
     margin: 0;
   }
@@ -643,13 +681,18 @@
   .bottomSection {
     padding-top: 2rem;
 
+    .copyrightText {
+      font-size: 12px !important;
+    }
+
     .copyrightContent {
       flex-direction: column;
       text-align: center;
-      gap: 16px;
+      gap: 10px;
     }
 
     .legalLinks {
+      font-size: 12px !important;
       justify-content: center;
       gap: 8px;
     }
@@ -657,6 +700,14 @@
     .socialIcons {
       justify-content: center;
       gap: 1rem;
+    }
+  }
+
+  .bottomSection {
+    .legalLinks {
+      .legalLink {
+        font-size: 12px !important;
+      }
     }
   }
 
@@ -772,7 +823,7 @@
     padding-top: 24px;
 
     .copyrightText {
-      font-size: 13.6px;
+      font-size: 12px !important;
     }
 
     .legalLinks {
@@ -810,6 +861,7 @@
   right: 0;
   padding: 60px 0;
   text-align: center;
+
   @media (max-width: 992px) {
     padding: 30px 0;
   }
@@ -843,27 +895,26 @@
     font-weight: 600;
     font-family: 'Frederic', sans-serif;
     letter-spacing: -1.2vw;
-  
+
     /* Gradient text */
     background: linear-gradient(90deg,
-      #4cc9f0,
-      #4361ee
-    );
+        #4cc9f0,
+        #4361ee);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-  
+
     /* Stroke */
     -webkit-text-stroke-width: 3px;
     -webkit-text-stroke-color: #4fabc7;
-  
+
     /* Effects */
     opacity: 0.4;
     transition: all 0.3s ease-in-out;
-  
+
     &:hover {
       opacity: 0.6;
     }
-  
+
     @media (max-width: 992px) {
       -webkit-text-stroke-width: 1px;
     }

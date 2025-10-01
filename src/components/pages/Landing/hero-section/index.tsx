@@ -30,6 +30,19 @@ const HeroSection = () => {
             {/* Main Content - Centered */}
             <div className={styles.mainContent}>
               
+              {/* Early Access Tagline */}
+              <div 
+                className={styles.earlyAccessTagline}
+                data-aos="fade-up"
+                data-aos-delay="200"
+                data-aos-duration="1000"
+                data-aos-easing="ease-out-cubic"
+              >
+                <div className={styles.taglineContainer}>
+                  <span className={styles.taglineText}>Product To Powerhouse</span>
+                </div>
+              </div>
+              
               {/* Main Headline */}
               <div className={`${styles.headline} ${isVisible ? styles.visible : ''}`}>
                 <h1

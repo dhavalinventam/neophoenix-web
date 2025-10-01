@@ -18,7 +18,7 @@
   left: 50%;
 
   &.scroll {
-    max-width: 1200px;
+    max-width: 1288px;
     background: rgb(28 28 28 / 95%); // More solid background when scrolled
     box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
   }
@@ -84,7 +84,7 @@
   color: $text-white; // White text for navigation links
   text-decoration: none;
   font-weight: 500;
-  font-size: 14.4px;
+  font-size: 16px;
   transition: all 0.3s ease;
   position: relative;
 
