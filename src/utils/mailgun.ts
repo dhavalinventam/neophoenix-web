@@ -1,4 +1,4 @@
-import Mailgun, { type Mailgun as MailgunType } from 'mailgun.js';
+import Mailgun from 'mailgun.js';
 import FormData from 'form-data';
 
 // Error logging function

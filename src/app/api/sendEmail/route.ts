@@ -32,7 +32,7 @@ export async function POST(req: Request) {
 
     if (isNewsletter) {
       // Newsletter subscription
-      subject = 'New Newsletter Subscription';
+      subject = 'Newsletter Subscription';
       emailContent = `
         <h3>Newsletter Subscription</h3>
         <p><strong>Email:</strong> ${email || 'Not provided'}</p>
