@@ -113,7 +113,7 @@ export default function ContactPage() {
                       </div>
                       <div className={styles.methodContent}>
                         <h3 className={styles.methodTitle}>Email Us</h3>
-                        <p className={styles.methodText}>business@neophoenix.com</p>
+                        <p className={styles.methodText}><a href="mailto:business@neophoenix.com">business@neophoenix.com</a></p>
                       </div>
                     </div>
 
